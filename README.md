@@ -1,8 +1,8 @@
 # Solstice Community Energy — Careers Website
 
-> **COS10026 Applied Web Project Part 1 | Group G03 (Webdev67)**  
-> **Topic:** Sustainable Energy Solutions Company  
-> **Fictional Company Name:** Solstice Community Energy *(Placeholder — team to vote before final release)*  
+> **COS10026 Applied Web Project Part 1 | Group name: Webdev67**
+> **Topic:** G03: Sustainable Energy Solutions Company  
+> **Fictional Company Name:** Solstice Community Energy
 > **Tech Stack:** Semantic HTML5 & CSS3 Only *(Strictly NO JavaScript, NO Bootstrap or external frameworks)*
 
 ---
@@ -11,7 +11,9 @@
 
 This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **COS10026-Web Technology Project (Swinburne Vietnam) (Applied Web Project Part 1)**.
 
-This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **Swinburne University of Technology — COS10026 Computing Technology Inquiry Project (Applied Web Project Part 1)**.
+This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **COS10026-Web Technology Project (Swinburne Vietnam) (Applied Web Project Part 1)**.
+
+This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **COS10026-Web Technology Project (Swinburne Vietnam) (Applied Web Project Part 1)**.
 
 - **GitHub Repository:** [congbinhle120203/COS10026_GroupProject1_Webdev67](https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git)
 - **Jira Project Board & Backlog:** [Jira Board RWP (Sprint 1 & 2)](https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog)
@@ -70,7 +72,7 @@ The team has officially selected the **Eucalyptus Theme** (Sustainable Energy / 
 
 ---
 
-## 5. Collaboration Rules & Conflict Prevention (QUY TẮC BẮT BUỘC)
+## 5. Collaboration Rules & Conflict Prevention
 
 Because our entire team shares a single `styles.css` file, every member **must strictly follow these 4 rules** to avoid breaking each other's pages and prevent merge conflicts:
 
