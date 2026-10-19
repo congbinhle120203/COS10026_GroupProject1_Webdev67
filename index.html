@@ -35,11 +35,12 @@
   </header>
 
   <main id="main">
+    <!-- HERO SECTION -->
     <section class="hero" aria-labelledby="hero-heading">
       <div class="container hero-inner">
         <div class="hero-copy">
           <h1 id="hero-heading">Clean power, shared by everyone.</h1>
-          <p class="lead">Solstice Community Energy builds community-owned solar farms and batteries across Australia. We are growing our digital team to help people follow our projects and have a say in them.</p>
+          <p class="lead">Solstice Community Energy builds community-owned solar farms and storage batteries across Australia. We are growing our digital engineering team to help local communities take control of their clean energy transition.</p>
 
           <form id="search-jobs" class="search-form" action="jobs.html" method="get" role="search">
             <label for="job-search">Search open roles</label>
@@ -53,15 +54,41 @@
       </div>
     </section>
 
+    <!-- IMPACT STATS BAR -->
+    <section class="impact-bar" aria-label="Key organisational milestones">
+      <div class="container">
+        <div class="impact-grid">
+          <div class="impact-card">
+            <span class="impact-number">100%</span>
+            <span class="impact-label">Community-owned &amp; governed</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-number">50 MW</span>
+            <span class="impact-label">Clean generation &amp; storage capacity</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-number">28,000+</span>
+            <span class="impact-label">Regional households supplied</span>
+          </div>
+          <div class="impact-card">
+            <span class="impact-number">Net Zero</span>
+            <span class="impact-label">Target across operations by 2030</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: PROJECTS AT A GLANCE (COMPLEX DATA TABLE) -->
     <section class="page-section" aria-labelledby="glance-heading">
       <div class="container">
         <!-- Inline CSS example (assessment requirement): one-off spacing tweak -->
         <h2 id="glance-heading" style="margin-top: 0;">Our projects at a glance</h2>
+        <p class="section-intro">Here is an overview of active and planned clean energy facilities co-developed with local Australian regional councils.</p>
 
         <!-- Table with merged cells: State uses rowspan, Total row uses colspan -->
         <div class="table-wrap" tabindex="0" role="region" aria-labelledby="glance-heading">
           <table class="data-table">
-            <caption>Selected community projects (fictional figures for coursework)</caption>
+            <caption>Selected community energy facilities (fictional figures for coursework)</caption>
             <thead>
               <tr>
                 <th scope="col">State</th>
@@ -105,24 +132,80 @@
       </div>
     </section>
 
-    <section class="page-section" aria-labelledby="why-heading">
+    <!-- SECTION: CULTURE & VALUES (CARD GRID) -->
+    <section class="page-section" aria-labelledby="values-heading">
       <div class="container">
-        <h2 id="why-heading">Why work with us</h2>
-        <ul class="reasons">
-          <li>
-            <h3>Projects with the community</h3>
-            <p>Every project is planned with the people who live next to it, and our websites show how they can take part.</p>
-          </li>
-          <li>
-            <h3>Websites everyone can use</h3>
-            <p>We follow accessibility guidelines from the first sketch, so people with different needs can use what we build.</p>
-          </li>
-          <li>
-            <h3>A team that shares the work</h3>
-            <p>Our digital team is small and cross-skilled. You help shape what we build, from the first idea to launch.</p>
-          </li>
-        </ul>
-        <p style="margin-top: 2rem;"><a class="button" href="jobs.html">View open roles</a></p>
+        <h2 id="values-heading">Why build your career at Solstice</h2>
+        <p class="section-intro">We balance meaningful environmental impact with supportive, progressive workplace conditions for all staff.</p>
+
+        <div class="values-grid">
+          <article class="value-card">
+            <h3>Direct Community Impact</h3>
+            <p>Every digital tool and dashboard you build directly helps regional residents track energy generation, participate in local voting, and lower household power bills.</p>
+          </article>
+          <article class="value-card">
+            <h3>Flexible &amp; Remote-First</h3>
+            <p>Work from our Melbourne collaborative space or remotely from regional Australia. We prioritize asynchronous communication and healthy work-life boundaries.</p>
+          </article>
+          <article class="value-card">
+            <h3>Ethical Compensation &amp; Super</h3>
+            <p>Enjoy transparent salary bandings, comprehensive health benefits, and 12% superannuation invested exclusively in verified fossil-fuel-free funds.</p>
+          </article>
+          <article class="value-card">
+            <h3>Modern, Accessible Web Craft</h3>
+            <p>We take pride in building fast, semantic, and accessible websites meeting WCAG 2.1 AA standards, avoiding unnecessary bloated dependencies.</p>
+          </article>
+        </div>
+
+        <p class="cta-row"><a class="button" href="jobs.html">Explore Open Opportunities</a></p>
+      </div>
+    </section>
+
+    <!-- SECTION: FREQUENTLY ASKED QUESTIONS (NATIVE HTML5 ACCORDION) -->
+    <section class="page-section" aria-labelledby="faq-heading">
+      <div class="container">
+        <h2 id="faq-heading">Frequently asked questions</h2>
+        <p class="section-intro">Have questions about working with our digital engineering team? Here are answers to common queries.</p>
+
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Are open roles suitable for graduate and early-career developers?</summary>
+            <div class="faq-answer">
+              <p>Yes! We actively welcome early-career applicants. Junior engineers receive structured 1-on-1 mentorship, pair programming sessions, and dedicated weekly learning budgets to master semantic web engineering.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>How does the digital team ensure accessibility (WCAG AA)?</summary>
+            <div class="faq-answer">
+              <p>Accessibility is baked into our development lifecycle from day one. We test with keyboard navigation, screen readers (NVDA/VoiceOver), enforce color contrast minimums, and validate semantic HTML structures before shipping.</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>Where is the team based and what are the remote working options?</summary>
+            <div class="faq-answer">
+              <p>Our main collaboration hub is in Hawthorn, Melbourne (VIC), but all digital positions support hybrid or 100% remote arrangements anywhere within Australian time zones (AEST/AEDT).</p>
+            </div>
+          </details>
+
+          <details class="faq-item">
+            <summary>What does the hiring and interview process look like?</summary>
+            <div class="faq-answer">
+              <p>Our interview process consists of three respectful stages: an initial informal chat about your goals, a practical code review walkthrough (no surprise algorithmic whiteboarding), and a relaxed conversation with the team.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECTION: ACKNOWLEDGEMENT OF COUNTRY -->
+    <section class="page-section" aria-labelledby="country-heading">
+      <div class="container">
+        <div class="country-ack">
+          <h2 id="country-heading" class="country-heading">Acknowledgement of Country</h2>
+          <p>Solstice Community Energy respectfully acknowledges the Traditional Custodians of the lands, skies, and waterways across Australia on which our renewable projects and workplaces operate. We pay our deepest respects to Elders past, present, and emerging, and celebrate the enduring connection of First Nations peoples to Country and caring for the land.</p>
+        </div>
       </div>
     </section>
   </main>

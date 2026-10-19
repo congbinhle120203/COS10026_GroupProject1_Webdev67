@@ -201,7 +201,7 @@ img {
 
 /* Visually Hidden Helper (Screen-reader accessible only) */
 .visually-hidden {
-  position: absolute;
+  position: absolute; 
   width: 1px;
   height: 1px;
   margin: -1px;
@@ -407,9 +407,11 @@ textarea {
    5. PAGE: index.html (Owner: Binh - .page-home)
    ========================================================================== */
 
-/* Hero Banner with Pure CSS Solar Background Graphic (Assessment requirement) */
+/* Hero. BACKGROUND GRAPHIC IN CSS (brief requirement):
+   layers from top to bottom = fade to page colour, solar-cell grid (two
+   gradients), sun glow in the top-right corner. No image file needed. */
 .page-home .hero {
-  padding: 3.5rem 0 4.5rem;
+  padding: 3rem 0 4rem;
   background-image:
     linear-gradient(to bottom, rgba(0, 0, 0, 0) 55%, var(--bg) 100%),
     linear-gradient(var(--grid-line) 1px, transparent 1px),
@@ -418,16 +420,17 @@ textarea {
   background-size: 100% 100%, 2.5rem 2.5rem, 2.5rem 2.5rem, 100% 100%;
 }
 
+/* Two columns: words left, picture right */
 .page-home .hero-inner {
   display: grid;
-  grid-template-columns: 1.15fr 0.85fr;
+  grid-template-columns: 1.1fr 0.9fr;
   gap: 2rem 3rem;
   align-items: center;
 }
 
 .page-home .hero h1 {
   font-size: 3.25rem;
-  line-height: 1.1;
+  line-height: 1.08;
   letter-spacing: -0.025em;
   max-width: 14ch;
 }
@@ -435,19 +438,17 @@ textarea {
 .page-home .hero .lead {
   font-size: 1.2rem;
   color: var(--ink);
-  margin-bottom: 1.5rem;
 }
 
 .page-home .hero-image {
   width: 100%;
-  border-radius: var(--radius-lg);
+  border-radius: 0.9rem;
   border: 1px solid var(--line);
-  box-shadow: 0 4px 12px rgba(27, 42, 35, 0.06);
 }
 
-/* Job Search Form on Hero */
+/* Search form: label above, field + button on one row */
 .page-home .search-form {
-  margin-top: 1.5rem;
+  margin-top: 1.75rem;
 }
 
 .page-home .search-row {
@@ -459,32 +460,77 @@ textarea {
   flex: 1;
 }
 
-/* Home Projects Data Table (Merged Cells with rowspan & colspan) */
+/* Sections under the hero */
+.page-home .page-section {
+  padding: 3rem 0 1rem;
+}
+
+.page-home .section-intro {
+  color: var(--ink-muted);
+  font-size: 1.05rem;
+  margin-top: -0.25rem;
+  margin-bottom: 1.75rem;
+  max-width: 48ch;
+}
+
+/* --- Impact Metrics Bar --- */
+.page-home .impact-bar {
+  background: var(--surface);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  padding: 2.25rem 0;
+}
+
+.page-home .impact-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  text-align: center;
+}
+
+.page-home .impact-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.5rem 0.75rem;
+}
+
+.page-home .impact-number {
+  font-size: 2.25rem;
+  font-weight: 800;
+  color: var(--primary);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+.page-home .impact-label {
+  margin-top: 0.4rem;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--ink-muted);
+}
+
+/* --- Table: "projects at a glance" with merged cells --- */
 .page-home .table-wrap {
   overflow-x: auto;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  margin-top: 1rem;
 }
 
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
+  background: var(--surface);
 }
 
 .page-home .data-table caption {
-  padding: 0.75rem 1rem;
+  padding: 0 0 0.75rem;
   text-align: left;
   font-weight: 700;
   color: var(--ink-muted);
-  background: var(--bg);
-  border-bottom: 1px solid var(--line);
 }
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.85rem 1.15rem;
+  padding: 0.7rem 1rem;
   border: 1px solid var(--line);
   text-align: left;
 }
@@ -492,14 +538,15 @@ textarea {
 .page-home .data-table thead th {
   background: var(--primary);
   color: var(--on-primary);
-  font-weight: 700;
 }
 
+/* Merged first column (State) */
 .page-home .data-table tbody th {
-  background: rgba(44, 94, 79, 0.05);
+  background: var(--bg);
   vertical-align: top;
 }
 
+/* Numbers line up on the right */
 .page-home .data-table td:last-child,
 .page-home .data-table thead th:last-child,
 .page-home .data-table tfoot td {
@@ -508,41 +555,144 @@ textarea {
 }
 
 .page-home .data-table tbody tr:hover td {
-  background: rgba(224, 165, 38, 0.08);
+  background: var(--bg);
 }
 
 .page-home .data-table tfoot th,
 .page-home .data-table tfoot td {
   font-weight: 800;
   border-top: 3px solid var(--ink);
-  background: var(--surface);
 }
 
-/* "Why Work With Us" Section */
-.page-home .reasons {
+/* --- Culture & Value Cards --- */
+.page-home .values-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.75rem;
-  margin: 1.5rem 0 0;
-  padding: 0;
-  list-style: none;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
 }
 
-.page-home .reasons li {
-  padding-left: 1.25rem;
+.page-home .value-card {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.5rem 1.25rem;
+}
+
+.page-home .value-card:nth-child(even) {
+  border-left-color: var(--accent);
+}
+
+.page-home .value-card h3 {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.25rem;
+  color: var(--ink);
+}
+
+.page-home .value-card p {
+  margin-bottom: 0;
+  color: var(--ink-muted);
+  line-height: 1.55;
+}
+
+.page-home .cta-row {
+  margin-top: 2rem;
+}
+
+/* --- Interactive HTML5 FAQ Accordion (<details> & <summary>) --- */
+.page-home .faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+}
+
+.page-home details.faq-item {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
+  overflow: hidden;
+  transition: border-color 0.2s ease;
+}
+
+.page-home details.faq-item[open] {
+  border-color: var(--primary);
+}
+
+.page-home details.faq-item summary {
+  padding: 1.1rem 1.25rem;
+  font-weight: 700;
+  font-size: 1.05rem;
+  color: var(--ink);
+  cursor: pointer;
+  user-select: none;
+  list-style: none; /* Hide default triangle */
+  position: relative;
+  padding-right: 2.75rem;
+}
+
+.page-home details.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.page-home details.faq-item summary::after {
+  content: "+";
+  position: absolute;
+  right: 1.25rem;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--primary);
+  line-height: 1;
+}
+
+.page-home details.faq-item[open] summary::after {
+  content: "−";
+  color: var(--accent);
+}
+
+.page-home details.faq-item summary:hover {
+  background-color: rgba(44, 94, 79, 0.05);
+}
+
+.page-home details.faq-item summary:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: -3px;
+}
+
+.page-home .faq-answer {
+  padding: 0.75rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--line);
+  color: var(--ink-muted);
+  line-height: 1.6;
+}
+
+.page-home .faq-answer p {
+  margin: 0;
+}
+
+/* --- Acknowledgement of Country Card --- */
+.page-home .country-ack {
+  background: var(--bg);
+  border: 1px dashed var(--line);
   border-left: 4px solid var(--accent);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
 }
 
-.page-home .reasons li:first-child {
-  border-left-color: var(--primary);
+.page-home .country-heading {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+  color: var(--ink);
 }
 
-.page-home .reasons li h3 {
-  font-size: 1.2rem;
-  margin-bottom: 0.4rem;
-}
-
-.page-home .reasons li p {
+.page-home .country-ack p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
   color: var(--ink-muted);
 }
 
