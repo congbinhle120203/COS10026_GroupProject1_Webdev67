@@ -125,13 +125,13 @@ Every member's page must contain:
 ## 6. Page Requirements & Assessment Checklist
 
 ### A. `index.html` (Owner: Lê Công Bình) — [Status: Completed]
-- [x] Semantic HTML5 layout (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`).
-- [x] Consistent site navigation menu with `aria-current="page"`.
-- [x] Hero banner with pure CSS solar-cell gradient background graphic (no image file needed).
-- [x] Search form with accessible `<label>` and submit button.
-- [x] Complex data table with merged cells (`rowspan="2"` on State and `colspan="3"` on Total).
-- [x] Responsive layout (stacked hero on tablet/phone, scrollable table).
-- [x] Accessible skip link and footer links (Jira, GitHub, Email).
+- [ ] Semantic HTML5 layout (`<header>`, `<nav>`, `<main>`, `<section>`, `<footer>`).
+- [ ] Consistent site navigation menu with `aria-current="page"`.
+- [ ] Hero banner with pure CSS solar-cell gradient background graphic (no image file needed).
+- [ ] Search form with accessible `<label>` and submit button.
+- [ ] Complex data table with merged cells (`rowspan="2"` on State and `colspan="3"` on Total).
+- [ ] Responsive layout (stacked hero on tablet/phone, scrollable table).
+- [ ] Accessible skip link and footer links (Jira, GitHub, Email).
 
 ### B. `jobs.html` (Owner: Bạch Gia Huy) — [Status: Ready for Implementation]
 - [ ] At least **two realistic job descriptions** in the digital/tech department of a renewable energy firm (e.g. Front-End Web Developer, Smart Energy Data Analyst).
