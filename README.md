@@ -13,6 +13,8 @@ This repository contains the static recruitment website for **Solstice Community
 
 This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **COS10026-Web Technology Project (Swinburne Vietnam) (Applied Web Project Part 1)**.
 
+This repository contains the static recruitment website for **Solstice Community Energy**, a fictional Australian community-owned renewable energy provider. The project is created for **COS10026-Web Technology Project (Swinburne Vietnam) (Applied Web Project Part 1)**.
+
 - **GitHub Repository:** [congbinhle120203/COS10026_GroupProject1_Webdev67](https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git)
 - **Jira Project Board & Backlog:** [Jira Board RWP (Sprint 1 & 2)](https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog)
 - **Live Deployment (GitHub Pages):** [GitHub Pages Preview](https://congbinhle120203.github.io/COS10026_GroupProject1_Webdev67/)
