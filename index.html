@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Home | Solstice Community Energy Careers</title>
+  <meta name="author" content="Lê Công Bình - 106419738">
+  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <meta name="description" content="Careers at Solstice Community Energy, a fictional renewable energy company. Find open digital roles and apply online.">
+  <link rel="stylesheet" href="styles.css">
+  <!-- Embedded CSS example (assessment requirement): a rule that only this page needs -->
+  <style>
+    #search-jobs { max-width: 34rem; }
+  </style>
+</head>
+<body class="page-home">
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <!-- Logo is decorative next to the visible company name, so alt is empty -->
+      <a class="brand" href="index.html">
+        <img src="images/logo.svg" width="44" height="44" alt="">
+        <span>Solstice Community Energy</span>
+      </a>
+      <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="index.html" aria-current="page">Home</a></li>
+          <li><a href="jobs.html">Jobs</a></li>
+          <li><a href="apply.html">Apply</a></li>
+          <li><a href="about.html">About</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="container hero-inner">
+        <div class="hero-copy">
+          <h1 id="hero-heading">Clean power, shared by everyone.</h1>
+          <p class="lead">Solstice Community Energy builds community-owned solar farms and batteries across Australia. We are growing our digital team to help people follow our projects and have a say in them.</p>
+
+          <form id="search-jobs" class="search-form" action="jobs.html" method="get" role="search">
+            <label for="job-search">Search open roles</label>
+            <div class="search-row">
+              <input type="search" id="job-search" name="q" placeholder="For example: front-end developer">
+              <button type="submit" class="button">Search jobs</button>
+            </div>
+          </form>
+        </div>
+        <img class="hero-image" src="images/hero.svg" width="640" height="520" alt="Illustration of rows of solar panels on open ground under a rising sun">
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="glance-heading">
+      <div class="container">
+        <!-- Inline CSS example (assessment requirement): one-off spacing tweak -->
+        <h2 id="glance-heading" style="margin-top: 0;">Our projects at a glance</h2>
+
+        <!-- Table with merged cells: State uses rowspan, Total row uses colspan -->
+        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="glance-heading">
+          <table class="data-table">
+            <caption>Selected community projects (fictional figures for coursework)</caption>
+            <thead>
+              <tr>
+                <th scope="col">State</th>
+                <th scope="col">Project</th>
+                <th scope="col">Type</th>
+                <th scope="col">Capacity (MW)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="rowgroup" rowspan="2">Victoria</th>
+                <td>Riverside Community Solar Farm</td>
+                <td>Solar</td>
+                <td>24</td>
+              </tr>
+              <tr>
+                <td>Hilltop Community Battery</td>
+                <td>Battery storage</td>
+                <td>8</td>
+              </tr>
+              <tr>
+                <th scope="rowgroup" rowspan="2">New South Wales</th>
+                <td>Valley Rooftop Solar Program</td>
+                <td>Rooftop solar</td>
+                <td>12</td>
+              </tr>
+              <tr>
+                <td>Coastal Microgrid</td>
+                <td>Solar and battery</td>
+                <td>6</td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <th scope="row" colspan="3">Total capacity</th>
+                <td>50</td>
+              </tr>
+            </tfoot>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="page-section" aria-labelledby="why-heading">
+      <div class="container">
+        <h2 id="why-heading">Why work with us</h2>
+        <ul class="reasons">
+          <li>
+            <h3>Projects with the community</h3>
+            <p>Every project is planned with the people who live next to it, and our websites show how they can take part.</p>
+          </li>
+          <li>
+            <h3>Websites everyone can use</h3>
+            <p>We follow accessibility guidelines from the first sketch, so people with different needs can use what we build.</p>
+          </li>
+          <li>
+            <h3>A team that shares the work</h3>
+            <p>Our digital team is small and cross-skilled. You help shape what we build, from the first idea to launch.</p>
+          </li>
+        </ul>
+        <p style="margin-top: 2rem;"><a class="button" href="jobs.html">View open roles</a></p>
+      </div>
+    </section>
+
+    <!-- TODO (Huy): Aboriginal and Torres Strait Islander acknowledgement / inclusion
+         statement with a short explanation. Decide where it lives (this page, jobs.html
+         aside, or the footer) and tell the group. -->
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <ul class="footer-links">
+        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project board (Jira)</a></li>
+        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
+        <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
+      </ul>
+      <p>&copy; 2026 Solstice Community Energy. Fictional company created for a university project (COS10026, Group G03).</p>
+    </div>
+  </footer>
+</body>
+</html>
