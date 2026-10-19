@@ -70,7 +70,7 @@ The team has officially selected the **Eucalyptus Theme** (Sustainable Energy / 
 
 ---
 
-## 5. Collaboration Rules & Conflict Prevention (QUY TẮC BẮT BUỘC)
+## 5. Collaboration Rules & Conflict Prevention
 
 Because our entire team shares a single `styles.css` file, every member **must strictly follow these 4 rules** to avoid breaking each other's pages and prevent merge conflicts:
 

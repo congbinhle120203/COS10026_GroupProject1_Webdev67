@@ -548,350 +548,88 @@ textarea {
 
 
 /* ==========================================================================
-   6. PAGE: jobs.html (Owner: Huy - .page-jobs)
+   6. PAGE: jobs.html (Owner: Huy - Scope: .page-jobs)
    ==========================================================================
-   ASSESSMENT REQUIREMENTS FOR HUY:
-   - At least 2 job descriptions in semantic HTML with multiple <section>s.
-   - Reference numbers (exactly 5 alphanumeric characters).
-   - Headings with at least 2 levels (h1, h2, h3).
-   - One ordered list (<ol>) and one unordered list (<ul>).
-   - At least one <aside> floated right, 25% width, with margin, padding, border.
-   - Aboriginal and Torres Strait Islander inclusion / acknowledgement statement.
-   ========================================================================== */
+   RUBRIC KEY REQUIREMENTS FOR HUY:
+   1. Scoping Rule:
+      - Always prefix every selector with .page-jobs:
+        .page-jobs .job-card { ... }
+        .page-jobs aside.jobs-sidebar { ... }
+      - NEVER style bare tags (h2, section, aside, ul, ol) globally!
+   2. Floated Aside (Mandatory Assessment Criterion):
+      - Include at least one <aside> floated right at 25% width.
+      - Style with visible border, padding, and margin.
+      - Wrap content in a container with clearfix so footer does not overlap.
+   3. Job Postings & Structure:
+      - Style at least 2 job descriptions (multiple <section> elements).
+      - Style 5-character alphanumeric reference badges (.job-ref).
+      - Ensure at least 2 heading levels (h2, h3).
+      - Style 1 ordered list (<ol>) and 1 unordered list (<ul>).
+   4. Cultural Element:
+      - Style Aboriginal & Torres Strait Islander acknowledgement statement.
+   5. Design Tokens:
+      - Use variables from Section 1 (var(--primary), var(--surface), var(--accent)).
 
-/* Main Jobs Container (Clearfix wrapper to contain floated sidebar) */
-.page-jobs .jobs-layout::after {
-  content: "";
-  display: table;
-  clear: both;
-}
+   Write your CSS rules for jobs.html below:
+   -------------------------------------------------------------------------- */
 
-/* Assessment Requirement: <aside> floated right, 25% width, margin, padding, border */
-.page-jobs aside.jobs-sidebar {
-  float: right;
-  width: 25%;
-  margin: 0 0 2rem 2.5rem;
-  padding: 1.5rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
-}
 
-.page-jobs aside.jobs-sidebar h2,
-.page-jobs aside.jobs-sidebar h3 {
-  color: var(--primary);
-  margin-top: 0;
-}
-
-/* Job Post Cards (<section class="job-card">) */
-.page-jobs .job-card {
-  margin-bottom: 2.5rem;
-  padding: 2rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--primary);
-  border-radius: var(--radius);
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
-}
-
-/* 5-character Alphanumeric Job Reference Badge */
-.page-jobs .job-ref {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-weight: 700;
-  font-size: 0.85rem;
-  color: var(--primary);
-  background: var(--bg);
-  padding: 0.2rem 0.65rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  margin-bottom: 0.75rem;
-  text-transform: uppercase;
-}
-
-/* Job Metadata Bar (Salary, Reporting Line, Location) */
-.page-jobs .job-meta {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem 2rem;
-  margin: 0.75rem 0 1.25rem;
-  padding-bottom: 1rem;
-  border-bottom: 1px solid var(--line);
-  font-size: 0.95rem;
-  color: var(--ink-muted);
-}
-
-.page-jobs .job-meta strong {
-  color: var(--ink);
-}
-
-/* Responsibilities and Requirements Lists */
-.page-jobs .job-card ol,
-.page-jobs .job-card ul {
-  margin-bottom: 1.25rem;
-}
-
-.page-jobs .job-actions {
-  margin-top: 1.5rem;
-}
-
-/* Aboriginal and Torres Strait Islander Inclusion / Acknowledgement Statement */
-.page-jobs .ats-statement,
-.ats-statement {
-  background: var(--surface);
-  border-left: 4px solid var(--accent);
-  padding: 1.25rem 1.5rem;
-  margin: 2.5rem 0;
-  border-radius: 0 var(--radius) var(--radius) 0;
-}
-
-.ats-statement h2,
-.ats-statement h3 {
-  color: var(--primary);
-  margin-top: 0;
-  font-size: 1.2rem;
-}
 
 
 /* ==========================================================================
-   7. PAGE: apply.html (Owner: Duy - .page-apply)
+   7. PAGE: apply.html (Owner: Duy - Scope: .page-apply)
    ==========================================================================
-   ASSESSMENT REQUIREMENTS FOR DUY:
-   - Application form with POST method to:
-     https://mercury.swin.edu.au/it000000/formtest.php
-   - All 12 required fields with proper input types, labels, and regex patterns:
-     1. Job reference number (exactly 5 alphanumeric)
-     2. First name (max 20 alpha)
-     3. Last name (max 20 alpha)
-     4. Date of birth (dd/mm/yyyy)
-     5. Gender (<fieldset> + <legend> with radio buttons)
-     6. Street address (max 40)
-     7. Suburb/town (max 40)
-     8. State (<select> with VIC, NSW, QLD, NT, WA, SA, TAS, ACT)
-     9. Postcode (exactly 4 digits)
-     10. Email address
-     11. Phone number (8-12 digits)
-     12. Skills (checkboxes) & Other skills (<textarea>, optional)
-   - Layout structured using Flexbox or CSS Grid.
-   ========================================================================== */
+   RUBRIC KEY REQUIREMENTS FOR DUY:
+   1. Scoping Rule:
+      - Always prefix every selector with .page-apply:
+        .page-apply .apply-card { ... }
+        .page-apply .form-grid { ... }
+      - NEVER style bare tags (form, fieldset, label, input, select) globally!
+   2. Form Layout (Mandatory Assessment Criterion):
+      - MUST structure the form layout using CSS Grid or Flexbox.
+      - Create multi-column rows for matching fields (e.g. First/Last Name).
+   3. Form Elements & Validation:
+      - Style <fieldset> and <legend> for gender radio buttons.
+      - Style radio and checkbox groups with neat Flexbox alignment.
+      - Style labels, text inputs, date, dropdown select, and other skills textarea.
+      - Style Submit and Reset buttons (.button, .button-secondary).
+      - Clearly mark required fields (e.g. .required-mark).
+   4. Design Tokens:
+      - Use variables from Section 1 (var(--primary), var(--surface), var(--line)).
 
-/* Main Form Card Container */
-.page-apply .apply-card {
-  max-width: 50rem;
-  margin: 1.5rem auto 3rem;
-  padding: 2.5rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: var(--radius-lg);
-  box-shadow: 0 4px 14px rgba(27, 42, 35, 0.05);
-}
+   Write your CSS rules for apply.html below:
+   -------------------------------------------------------------------------- */
 
-/* CSS Grid Form Layout for Multi-column Rows */
-.page-apply .form-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem 1.5rem;
-  margin-bottom: 1.5rem;
-}
 
-/* Full Width Form Group Spanning Both Columns */
-.page-apply .form-col-full {
-  grid-column: 1 / -1;
-}
-
-.page-apply .form-group {
-  margin-bottom: 0.5rem;
-}
-
-/* Required Asterisk */
-.page-apply .required-mark {
-  color: var(--focus);
-  font-weight: bold;
-}
-
-/* Fieldset and Legend for Gender & Choices */
-.page-apply fieldset {
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: 1.25rem 1.5rem;
-  margin: 0 0 1.5rem;
-  background: var(--surface);
-}
-
-.page-apply legend {
-  padding: 0 0.5rem;
-  font-weight: 700;
-  color: var(--primary);
-  font-size: 1.05rem;
-}
-
-/* Flexbox layout for Radio & Checkbox Groups */
-.page-apply .choice-group {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem 2rem;
-  margin-top: 0.5rem;
-}
-
-.page-apply .choice-item {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  font-weight: 500;
-  cursor: pointer;
-  margin-bottom: 0;
-}
-
-.page-apply .choice-item input[type="radio"],
-.page-apply .choice-item input[type="checkbox"] {
-  width: auto;
-  cursor: pointer;
-  margin: 0;
-  accent-color: var(--primary);
-}
-
-/* Textarea for Additional Skills */
-.page-apply textarea {
-  resize: vertical;
-  min-height: 7rem;
-}
-
-/* Form Action Buttons (Submit & Reset) */
-.page-apply .form-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 2rem;
-  padding-top: 1.5rem;
-  border-top: 1px solid var(--line);
-}
 
 
 /* ==========================================================================
-   8. PAGE: about.html (Owner: An - .page-about)
+   8. PAGE: about.html (Owner: An - Scope: .page-about)
    ==========================================================================
-   ASSESSMENT REQUIREMENTS FOR AN:
-   - Group name and class day/time as a nested list.
-   - Definition list (<dl>) of member contributions and quotes.
-   - Quote from each member in their first language + English translation (lang="vi").
-   - Group photo (< 300KB) in <figure> with <figcaption> (bordered).
-   - Fun facts table with <caption>, HEX colours, and hover effect.
-   - Styled student IDs.
-   ========================================================================== */
+   RUBRIC KEY REQUIREMENTS FOR AN:
+   1. Scoping Rule:
+      - Always prefix every selector with .page-about:
+        .page-about .facts-table { ... }
+        .page-about .student-id { ... }
+      - NEVER style bare tags (table, figure, dl, dt, dd) globally!
+   2. Student ID Badges (Mandatory Assessment Criterion):
+      - Style student IDs with distinctive typography (e.g., monospace font, background badge).
+   3. Group Photo Figure (Mandatory Assessment Criterion):
+      - Photo must be enclosed in <figure> with <figcaption>.
+      - <figure> MUST have a visible border, margin, and padding.
+   4. Lists & Quotes:
+      - Style nested list for group info and class day/time.
+      - Style definition list (<dl>, <dt>, <dd>) for contributions & member quotes.
+      - Style bilingual quotes (Vietnamese lang="vi" + English translation).
+   5. Fun Facts Table (Mandatory Assessment Criterion):
+      - Must include <caption>.
+      - MUST use explicit HEX colours (#2c5e4f, #fbfdfb, #c5d4c8, #eef4ee).
+      - MUST include interactive hover effect (e.g., tbody tr:hover).
 
-/* Styled Student ID Badge (Monospace Tag) */
-.page-about .student-id {
-  display: inline-block;
-  font-family: var(--font-mono);
-  font-size: 0.9em;
-  font-weight: 700;
-  padding: 0.15rem 0.5rem;
-  background: #eef4ee;            /* Explicit Theme Hex */
-  color: #2c5e4f;                 /* Explicit Theme Hex */
-  border: 1px solid #c5d4c8;      /* Explicit Theme Hex */
-  border-radius: var(--radius);
-}
+   Write your CSS rules for about.html below:
+   -------------------------------------------------------------------------- */
 
-/* Bordered Figure & Figcaption for Group Photo (Assessment Requirement) */
-.page-about figure.team-figure {
-  margin: 2rem 0;
-  padding: 0.75rem;
-  background: var(--surface);
-  border: 2px solid var(--line);  /* Visible border requirement */
-  border-radius: var(--radius);
-  max-width: 44rem;
-}
 
-.page-about figure.team-figure img {
-  width: 100%;
-  border-radius: calc(var(--radius) - 2px);
-}
-
-.page-about figcaption {
-  margin-top: 0.75rem;
-  font-size: 0.95rem;
-  font-style: italic;
-  color: var(--ink-muted);
-  text-align: center;
-}
-
-/* Nested List for Group Info and Class Schedule */
-.page-about .group-info-list {
-  background: var(--surface);
-  padding: 1.5rem 2rem 1.5rem 3rem;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  margin-bottom: 2rem;
-}
-
-.page-about .group-info-list ul {
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-}
-
-/* Definition List for Member Contributions & Quotes */
-.page-about dl.contributions-list {
-  margin: 2rem 0;
-}
-
-.page-about dl.contributions-list dt {
-  font-size: 1.15rem;
-  font-weight: 700;
-  color: var(--primary);
-  margin-top: 1.5rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.page-about dl.contributions-list dd {
-  margin-left: 1.25rem;
-  margin-top: 0.4rem;
-  margin-bottom: 0.6rem;
-}
-
-.page-about .member-quote {
-  font-style: italic;
-  color: var(--ink-muted);
-  border-left: 3px solid var(--accent);
-  padding-left: 0.85rem;
-  margin: 0.6rem 0;
-}
-
-/* Fun Facts Table with HEX Colours & Hover (Assessment Requirement) */
-.page-about .facts-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin: 2rem 0;
-  background-color: #fbfdfb;       /* Surface Hex */
-}
-
-.page-about .facts-table caption {
-  padding: 0.75rem 1rem;
-  text-align: left;
-  font-weight: 700;
-  color: #455a4e;                 /* Ink Muted Hex */
-  background-color: #eef4ee;      /* Background Hex */
-  border: 1px solid #c5d4c8;
-  border-bottom: none;
-}
-
-.page-about .facts-table th,
-.page-about .facts-table td {
-  padding: 0.85rem 1.15rem;
-  border: 1px solid #c5d4c8;      /* Line Hex */
-  text-align: left;
-}
-
-.page-about .facts-table thead th {
-  background-color: #2c5e4f;      /* Primary Green Hex */
-  color: #ffffff;                 /* On-primary Hex */
-  font-weight: 700;
-}
-
-.page-about .facts-table tbody tr:hover td {
-  background-color: #eef4ee;      /* Hover Highlight Hex */
-}
 
 
 /* ==========================================================================
@@ -900,7 +638,7 @@ textarea {
 
 /* ---- Tablet & Medium Screens (<= 56rem / 896px) ----------------------- */
 @media (max-width: 56rem) {
-  /* Section 5: index.html */
+  /* Section 5: index.html (Binh) */
   .page-home .hero-inner {
     grid-template-columns: 1fr;
   }
@@ -913,21 +651,14 @@ textarea {
     grid-template-columns: 1fr;
   }
 
-  /* Section 6: jobs.html - Unfloat aside for tablet display */
-  .page-jobs aside.jobs-sidebar {
-    float: none;
-    width: 100%;
-    margin: 2rem 0;
-  }
+  /* Section 6: jobs.html (Huy: unfloat <aside> and make it 100% width on tablet) */
+  
 
-  /* Section 7: apply.html - Form grid stacks to single column */
-  .page-apply .form-grid {
-    grid-template-columns: 1fr;
-  }
+  /* Section 7: apply.html (Duy: stack multi-column form grid to 1 column) */
+  
 
-  .page-apply .apply-card {
-    padding: 1.75rem;
-  }
+  /* Section 8: about.html (An: responsive adjustments for table/figure) */
+  
 }
 
 /* ---- Mobile Screens (<= 36rem / 576px) -------------------------------- */
@@ -944,7 +675,7 @@ textarea {
     gap: 0.25rem 1rem;
   }
 
-  /* Section 5: index.html */
+  /* Section 5: index.html (Binh) */
   .page-home .hero {
     padding: 2rem 0 3rem;
   }
@@ -966,39 +697,14 @@ textarea {
     padding: 0.5rem 0.5rem;
   }
 
-  /* Section 6: jobs.html */
-  .page-jobs .job-meta {
-    flex-direction: column;
-    gap: 0.5rem;
-  }
+  /* Section 6: jobs.html (Huy: mobile layout adjustments) */
+  
 
-  .page-jobs .job-card {
-    padding: 1.25rem;
-  }
+  /* Section 7: apply.html (Duy: mobile button and field adjustments) */
+  
 
-  /* Section 7: apply.html */
-  .page-apply .form-actions {
-    flex-direction: column;
-  }
-
-  .page-apply .form-actions .button {
-    width: 100%;
-  }
-
-  .page-apply .choice-group {
-    flex-direction: column;
-    gap: 0.6rem;
-  }
-
-  /* Section 8: about.html */
-  .page-about .facts-table {
-    font-size: 0.9rem;
-  }
-
-  .page-about .facts-table th,
-  .page-about .facts-table td {
-    padding: 0.55rem 0.65rem;
-  }
+  /* Section 8: about.html (An: mobile table scroll/compact adjustments) */
+  
 }
 
 
@@ -1037,12 +743,5 @@ textarea {
   .page-home .hero {
     background-image: none !important;
     padding: 1rem 0;
-  }
-
-  .job-card,
-  .apply-card,
-  aside.jobs-sidebar {
-    box-shadow: none !important;
-    border: 1px solid #cccccc !important;
   }
 }
