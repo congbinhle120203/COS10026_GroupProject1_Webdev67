@@ -1,25 +1,49 @@
 <!DOCTYPE html>
+
+
 <html lang="en-AU">
+
+
 <head>
+
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | Solstice Community Energy Careers</title>
   <meta name="description" content="Meet the student team behind this fictional recruitment website.">
+
+  <!-- EXTERNAL STYLESHEET -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Embedded CSS example (assessment requirement). An: replace with your own page-specific rule -->
+
+
+  <!-- EMBEDDED CSS -->
   <style>
     .page-intro { max-width: 40rem; }
   </style>
+
+
 </head>
+
+
+
+
 <body class="page-about">
+
+
   <a class="skip-link" href="#main">Skip to main content</a>
 
+
   <header class="site-header">
+
     <div class="container header-inner">
+
+      <!-- cOMPAMY LOGO AND NAME, CLICK WILL DIRECT TO HOME PAGE -->
       <a class="brand" href="index.html">
         <img src="images/logo.svg" width="44" height="44" alt="">
         <span>Solstice Community Energy</span>
       </a>
+
+
+      <!-- NAV LINKS FOR HOME, JOBS, APPLY, ABOUT. -->
       <nav class="main-nav" aria-label="Main">
         <ul>
           <li><a href="index.html">Home</a></li>
@@ -28,24 +52,165 @@
           <li><a href="about.html" aria-current="page">About</a></li>
         </ul>
       </nav>
+
+
     </div>
+
+
   </header>
 
   <main id="main">
-    <div class="container page-section">
-      <h1>About our team</h1>
-      <!-- Inline CSS example (assessment requirement). An: replace with your own if you like -->
-      <p class="page-intro" style="color: var(--ink-muted);">This page is being built. Our group details will be here.</p>
 
-      <!-- TODO (An): build this page. Brief requirements for about.html:
-        - group name and class day/time as a nested list
-        - member contributions and quotes as a definition list (<dl>)
-        - a quote from each member in their first language + English translation (use lang="vi" etc.)
-        - GROUP photo (not individual), under 300KB, in <figure> with <figcaption>
-        - fun facts table with <caption> (for example dream job, coding snack, hometown)
-        - CSS (section 8 of styles.css): styled student IDs, bordered figure, table with hex colours and hover
-      -->
+    <div class="container page-section">
+
+      <h1>About our team</h1>
+
+      <div class="section">
+        <!-- Inline Stylesheet -->
+        <h2 id = "title" style="display: inline;">Group Name</h2>
+        <p id = "name" style="display: inline;">Webdev67</p>
+      </div>
+
+      <section class="section">
+            <!-- Group's Class Day/Time using nested list -->
+
+            <h2>Class Day/Time</h2>
+
+            <ol>
+                <li>Thursday
+                    <ol>
+                        <li>7AM - 10AM</li>
+                    </ol>
+                </li>
+            </ol>
+
+
+        </section>
+
+
+        <section class="section">
+            <!-- Members' Contribution and Quotes -->
+
+            <h2>Members Contribution and Quotes</h2>
+
+
+            <dl class="member-section">
+
+                <dt>
+                    <p style="display: inline;" class="StudentName">Le Cong Binh</p>
+                    <p style="display: inline;" class="StudentID">ID: 106419738</p>
+                </dt>
+                <dd class="contributions">
+                    <p>Team Leader</p>
+                    <p>Owns index.html</p>
+                    <p>Writes the shared base of styles.css</p>
+                    <p>Sets up and manages the Jira board</p>
+                    <p>Responsible for the final check and the ZIP submission on Canvas</p>
+                </dd>
+
+                <dd class="quote">
+                    <p>"Wabba Wabbda doobi doobi baba bobiibib"</p>
+                </dd>
+
+                <hr>
+
+                <dt>
+                    <p style="display: inline;" class="StudentName">Vu Duc Thai An</p>
+                    <p style="display: inline;" class="StudentID">ID: 106909446</p>
+                </dt>
+                <dd class="contributions">
+                    <p>Owns about.html</p>
+                    <p>Collects each member's first-language quote with its English translation</p>
+                </dd>
+
+                <dd class="quote">
+                    <p>"goo goo gah gah"</p>
+                </dd>
+
+                <hr>
+
+                <dt>
+                    <p style="display: inline;" class="StudentName">Bach Gia Huy</p>
+                    <p style="display: inline;" class="StudentID">ID: 106395993</p>
+                </dt>
+                <dd class="contributions">
+                    <p>Owns jobs.html</p>
+                    <p>Writes the Aboriginal and Torres Strait Islander inclusion statement and places it on the site.</p>
+                    <p>Posts group questions on the Canvas discussion board</p>
+                </dd>
+                <dd class="quote">
+                    <p>"Meow meow kitty kityy"</p>
+                </dd>
+
+                <hr>
+
+                <dt>
+                    <p style="display: inline;" class="StudentName">Pham Duc Duy</p>
+                    <p style="display: inline;" class="StudentID">ID: 106684662</p>
+                </dt>
+                <dd class="contributions">
+                    <p>Owns apply.html</p>
+                    <p>Tests every validation rule</p>
+                </dd>
+                <dd class="quote">
+                    <p>"Vroom Vroommm Boooommmmmmmmm"</p>
+                </dd>
+
+            </dl>
+
+        </section>
+
+
+        <div>
+            <figure class="GroupPhoto">
+                <!-- Group Photo -->
+
+                <figcaption>Group Photo</figcaption>
+                <img src="./images/hero.svg" alt="placeholder photo for group photo">
+            
+            </figure>
+        </div>
+
+
+        <div class="FunFact">
+
+            <h2>Fun Facts</h2>
+
+            <table class="FunFactTable">
+                <caption>havent decide</caption>
+
+                <tbody>
+
+                    <tr>
+                        <td>Le Cong Binh</td>
+                        <td>leader</td>
+                    </tr>
+
+                    <tr>
+                        <td>An</td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td>Zack Bach</td>
+                        <td>pro programmer</td>
+                    </tr>
+
+                    <tr>
+                        <td>Duc Duy</td>
+                        <td>talented programmer</td>
+                    </tr>
+
+                </tbody>
+            </table>
+
+        </div>
+
+
+
     </div>
+
+
   </main>
 
   <footer class="site-footer">
