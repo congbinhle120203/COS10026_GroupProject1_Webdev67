@@ -761,40 +761,6 @@ textarea {
   border-radius: 4px;
   cursor: pointer;
 }
-@media screen and (max-width: 768px) {
-  .page-apply .apply_form {
-    padding: 1rem 0.5rem;
-  }
-
-  .page-apply .information {
-    padding: 1rem;
-  }
-  .page-apply .apply_form input[type="text"],
-  .page-apply .apply_form input[type="email"],
-  .page-apply .apply_form input[type="tel"],
-  .page-apply .apply_form input[type="date"],
-  .page-apply .apply_form select,
-  .page-apply .apply_form textarea {
-    max-width: 100%;
-  }
-}
-@media screen and (max-width: 480px) {
-  .page-apply .radio-group,
-  .page-apply .skills_form {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.8rem;
-  }
-  .page-apply .form-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .page-apply .form-actions input[type="submit"],
-  .page-apply .form-actions input[type="reset"] {
-    width: 100%;
-  }
-}
 /* ==========================================================================
    8. PAGE: about.html (Owner: Ân)
    ========================================================================== */
