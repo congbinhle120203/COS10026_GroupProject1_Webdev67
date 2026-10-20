@@ -672,6 +672,12 @@ textarea {
    7. PAGE: apply.html (Owner: Duy)
    ========================================================================== */
 /* (Duy's rules will go here) */
+
+.page-apply .page-intro{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
 .page-apply h2{
   text-align: center;
 }
@@ -680,8 +686,7 @@ textarea {
   margin: 0 auto;
   padding: 1.5rem;
   border: 1px solid gray;
-  border-radius: 10px;
-  
+  border-radius: 10px;  
 }
 .page-apply .information {
   border: 1px solid gray;
