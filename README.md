@@ -28,13 +28,13 @@ Each member owns one complete HTML page and their respective CSS section for the
 
 ## 3. Project File Structure
 
-COS10026_GroupProject1_Webdev67/
+<pre><code>COS10026_GroupProject1_Webdev67/
 ├── index.html       # Home page (Binh)
 ├── jobs.html        # Job listings & floated aside (Huy)
 ├── apply.html       # Application form & validation (Duy)
 ├── about.html       # Team profile, DL & table (An)
 ├── styles.css       # Single shared partitioned stylesheet
-└── images/          # Logos, hero graphics, team photo
+└── images/          # Logos, hero graphics, team photo</code></pre>
 
 ---
 
