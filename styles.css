@@ -746,11 +746,7 @@ textarea {
   cursor: pointer;
 }
 
-.page-apply .form-actions {
-  display: flex;
-  gap: 1rem;
-  margin-top: 1.5rem;
-}
+
 
 .page-apply .form-actions input[type="submit"],
 .page-apply .form-actions input[type="reset"] {
