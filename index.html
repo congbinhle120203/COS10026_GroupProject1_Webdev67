@@ -1,29 +1,40 @@
 <!DOCTYPE html>
 <html lang="en-AU">
+
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home | Solstice Community Energy Careers</title>
-  <meta name="description" content="Careers at Solstice Community Energy, a fictional renewable energy company. Find open digital roles and apply online.">
-  <meta name="author" content="Lê Công Bình - 106419738">
-  <link rel="icon" type="image/svg+xml" href="images/logo.svg">
+  <meta name="description" content="Careers at Solstice Community Energy, a fictional renewable energy company.">
+  <meta name="author" content="Le Cong Binh - 106419738">
+
+  <!-- EXTERNAL STYLESHEET -->
   <link rel="stylesheet" href="styles.css">
-  <!-- Embedded CSS example (assessment requirement): a rule that only this page needs -->
+
+  <!-- EMBEDDED CSS (Assessment Requirement) -->
   <style>
-    #search-jobs { max-width: 34rem; }
+    #search-jobs {
+      max-width: 32rem;
+    }
   </style>
 </head>
+
 <body class="page-home">
+
   <a class="skip-link" href="#main">Skip to main content</a>
 
+  <!-- SITE HEADER & NAVIGATION -->
   <header class="site-header">
     <div class="container header-inner">
-      <!-- Logo is decorative next to the visible company name, so alt is empty -->
+
+      <!-- COMPANY LOGO AND NAME -->
       <a class="brand" href="index.html">
-        <img src="images/logo.svg" width="44" height="44" alt="">
+        <img src="images/logo.svg" width="44" height="44" alt="Solstice Community Energy Logo">
         <span>Solstice Community Energy</span>
       </a>
-      <nav class="main-nav" aria-label="Main">
+
+      <!-- NAVIGATION MENU -->
+      <nav class="main-nav">
         <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="jobs.html">Jobs</a></li>
@@ -31,194 +42,161 @@
           <li><a href="about.html">About</a></li>
         </ul>
       </nav>
+
     </div>
   </header>
 
+  <!-- MAIN CONTENT -->
   <main id="main">
-    <!-- HERO SECTION -->
-    <section class="hero" aria-labelledby="hero-heading">
-      <div class="container hero-inner">
-        <div class="hero-copy">
-          <h1 id="hero-heading">Clean power, shared by everyone.</h1>
-          <p class="lead">Solstice Community Energy builds community-owned solar farms and storage batteries across Australia. We are growing our digital engineering team to help local communities take control of their clean energy transition.</p>
 
-          <form id="search-jobs" class="search-form" action="jobs.html" method="get" role="search">
-            <label for="job-search">Search open roles</label>
+    <!-- 1. HERO BANNER SECTION -->
+    <section class="hero">
+      <div class="container hero-inner">
+
+        <div class="hero-copy">
+          <h1>Clean power, shared by everyone.</h1>
+          <p class="lead">
+            Solstice Community Energy builds community-owned solar farms and battery storage across Australia. We are hiring IT and web engineering talent to help local towns manage clean energy.
+          </p>
+
+          <!-- Job Search Form -->
+          <form id="search-jobs" class="search-form" action="jobs.html" method="get">
+            <label for="job-search">Search open roles:</label>
             <div class="search-row">
-              <input type="search" id="job-search" name="q" placeholder="For example: front-end developer">
-              <button type="submit" class="button">Search jobs</button>
+              <input type="text" id="job-search" name="q" placeholder="e.g. Web Developer, Data Analyst">
+              <button type="submit" class="button">Search</button>
             </div>
           </form>
         </div>
-        <img class="hero-image" src="images/hero.svg" width="640" height="520" alt="Illustration of rows of solar panels on open ground under a rising sun">
+
+        <div class="hero-media">
+          <img class="hero-image" src="images/hero.svg" width="560" height="450" alt="Illustration of solar panels under a rising sun">
+        </div>
+
       </div>
     </section>
 
-    <!-- IMPACT STATS BAR -->
-    <section class="impact-bar" aria-label="Key organisational milestones">
-      <div class="container">
-        <div class="impact-grid">
-          <div class="impact-card">
-            <span class="impact-number">100%</span>
-            <span class="impact-label">Community-owned &amp; governed</span>
+    <div class="container">
+
+      <!-- 2. COMPANY OVERVIEW & KEY STATS SECTION -->
+      <section class="section">
+        <!-- Inline CSS Example (Assessment Requirement) -->
+        <h2 style="color: #2c5e4f;">About Our Mission</h2>
+        <p>
+          Founded in Victoria, Solstice Community Energy partners with regional councils to deliver affordable renewable power. Our digital team builds simple web portals so residents can track daily solar output and community savings.
+        </p>
+
+        <div class="stats-row">
+          <div class="stat-box">
+            <p class="stat-number">100%</p>
+            <p class="stat-label">Community Owned</p>
           </div>
-          <div class="impact-card">
-            <span class="impact-number">50 MW</span>
-            <span class="impact-label">Clean generation &amp; storage capacity</span>
+          <div class="stat-box">
+            <p class="stat-number">50 MW</p>
+            <p class="stat-label">Total Solar &amp; Battery</p>
           </div>
-          <div class="impact-card">
-            <span class="impact-number">28,000+</span>
-            <span class="impact-label">Regional households supplied</span>
+          <div class="stat-box">
+            <p class="stat-number">28,000+</p>
+            <p class="stat-label">Homes Powered</p>
           </div>
-          <div class="impact-card">
-            <span class="impact-number">Net Zero</span>
-            <span class="impact-label">Target across operations by 2030</span>
+          <div class="stat-box">
+            <p class="stat-number">2030</p>
+            <p class="stat-label">Net Zero Target</p>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- SECTION: PROJECTS AT A GLANCE (COMPLEX DATA TABLE) -->
-    <section class="page-section" aria-labelledby="glance-heading">
-      <div class="container">
-        <!-- Inline CSS example (assessment requirement): one-off spacing tweak -->
-        <h2 id="glance-heading" style="margin-top: 0;">Our projects at a glance</h2>
-        <p class="section-intro">Here is an overview of active and planned clean energy facilities co-developed with local Australian regional councils.</p>
+      <!-- 3. PROJECTS TABLE SECTION (ROWSPAN & COLSPAN) -->
+      <section class="section">
+        <h2>Our Projects at a Glance</h2>
+        <p>The table below summarises our active renewable energy sites across Australia.</p>
 
-        <!-- Table with merged cells: State uses rowspan, Total row uses colspan -->
-        <div class="table-wrap" tabindex="0" role="region" aria-labelledby="glance-heading">
-          <table class="data-table">
-            <caption>Selected community energy facilities (fictional figures for coursework)</caption>
-            <thead>
-              <tr>
-                <th scope="col">State</th>
-                <th scope="col">Project</th>
-                <th scope="col">Type</th>
-                <th scope="col">Capacity (MW)</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="rowgroup" rowspan="2">Victoria</th>
-                <td>Riverside Community Solar Farm</td>
-                <td>Solar</td>
-                <td>24</td>
-              </tr>
-              <tr>
-                <td>Hilltop Community Battery</td>
-                <td>Battery storage</td>
-                <td>8</td>
-              </tr>
-              <tr>
-                <th scope="rowgroup" rowspan="2">New South Wales</th>
-                <td>Valley Rooftop Solar Program</td>
-                <td>Rooftop solar</td>
-                <td>12</td>
-              </tr>
-              <tr>
-                <td>Coastal Microgrid</td>
-                <td>Solar and battery</td>
-                <td>6</td>
-              </tr>
-            </tbody>
-            <tfoot>
-              <tr>
-                <th scope="row" colspan="3">Total capacity</th>
-                <td>50</td>
-              </tr>
-            </tfoot>
-          </table>
-        </div>
-      </div>
-    </section>
+        <table class="data-table">
+          <caption>Active Community Energy Facilities (Coursework Data)</caption>
+          <thead>
+            <tr>
+              <th>State</th>
+              <th>Project Name</th>
+              <th>Technology Type</th>
+              <th>Capacity (MW)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th rowspan="2">Victoria</th>
+              <td>Riverside Community Solar Farm</td>
+              <td>Solar PV</td>
+              <td>24</td>
+            </tr>
+            <tr>
+              <td>Hilltop Community Battery</td>
+              <td>Battery Storage</td>
+              <td>8</td>
+            </tr>
+            <tr>
+              <th rowspan="2">New South Wales</th>
+              <td>Valley Rooftop Solar Program</td>
+              <td>Rooftop Solar</td>
+              <td>12</td>
+            </tr>
+            <tr>
+              <td>Coastal Microgrid</td>
+              <td>Solar &amp; Battery</td>
+              <td>6</td>
+            </tr>
+          </tbody>
+          <tfoot>
+            <tr>
+              <th colspan="3">Total Installed Capacity</th>
+              <td>50</td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
 
-    <!-- SECTION: CULTURE & VALUES (CARD GRID) -->
-    <section class="page-section" aria-labelledby="values-heading">
-      <div class="container">
-        <h2 id="values-heading">Why build your career at Solstice</h2>
-        <p class="section-intro">We balance meaningful environmental impact with supportive, progressive workplace conditions for all staff.</p>
+      <!-- 4. WHY WORK WITH US SECTION -->
+      <section class="section">
+        <h2>Why Work With Us</h2>
+        <p>We offer a supportive environment for graduate developers and IT specialists:</p>
 
-        <div class="values-grid">
-          <article class="value-card">
-            <h3>Direct Community Impact</h3>
-            <p>Every digital tool and dashboard you build directly helps regional residents track energy generation, participate in local voting, and lower household power bills.</p>
-          </article>
-          <article class="value-card">
-            <h3>Flexible &amp; Remote-First</h3>
-            <p>Work from our Melbourne collaborative space or remotely from regional Australia. We prioritize asynchronous communication and healthy work-life boundaries.</p>
-          </article>
-          <article class="value-card">
-            <h3>Ethical Compensation &amp; Super</h3>
-            <p>Enjoy transparent salary bandings, comprehensive health benefits, and 12% superannuation invested exclusively in verified fossil-fuel-free funds.</p>
-          </article>
-          <article class="value-card">
-            <h3>Modern, Accessible Web Craft</h3>
-            <p>We take pride in building fast, semantic, and accessible websites meeting WCAG 2.1 AA standards, avoiding unnecessary bloated dependencies.</p>
-          </article>
+        <div class="benefits-list">
+          <div class="benefit-item">
+            <h3>Real Community Impact</h3>
+            <p>Build web applications that directly help regional families reduce their electricity bills and carbon footprint.</p>
+          </div>
+
+          <div class="benefit-item">
+            <h3>Flexible Working</h3>
+            <p>Work from our Melbourne office in Hawthorn or remotely from anywhere in Australia with flexible hours.</p>
+          </div>
+
+          <div class="benefit-item">
+            <h3>Mentorship &amp; Growth</h3>
+            <p>Junior staff receive weekly code reviews, training budgets, and clear career progression paths.</p>
+          </div>
         </div>
 
-        <p class="cta-row"><a class="button" href="jobs.html">Explore Open Opportunities</a></p>
-      </div>
-    </section>
+        <p class="cta-box">
+          <a class="button" href="jobs.html">View Open Positions</a>
+          <a class="button button-secondary" href="apply.html">Apply Now</a>
+        </p>
+      </section>
 
-    <!-- SECTION: FREQUENTLY ASKED QUESTIONS (NATIVE HTML5 ACCORDION) -->
-    <section class="page-section" aria-labelledby="faq-heading">
-      <div class="container">
-        <h2 id="faq-heading">Frequently asked questions</h2>
-        <p class="section-intro">Have questions about working with our digital engineering team? Here are answers to common queries.</p>
+    </div>
 
-        <div class="faq-list">
-          <details class="faq-item">
-            <summary>Are open roles suitable for graduate and early-career developers?</summary>
-            <div class="faq-answer">
-              <p>Yes! We actively welcome early-career applicants. Junior engineers receive structured 1-on-1 mentorship, pair programming sessions, and dedicated weekly learning budgets to master semantic web engineering.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>How does the digital team ensure accessibility (WCAG AA)?</summary>
-            <div class="faq-answer">
-              <p>Accessibility is baked into our development lifecycle from day one. We test with keyboard navigation, screen readers (NVDA/VoiceOver), enforce color contrast minimums, and validate semantic HTML structures before shipping.</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>Where is the team based and what are the remote working options?</summary>
-            <div class="faq-answer">
-              <p>Our main collaboration hub is in Hawthorn, Melbourne (VIC), but all digital positions support hybrid or 100% remote arrangements anywhere within Australian time zones (AEST/AEDT).</p>
-            </div>
-          </details>
-
-          <details class="faq-item">
-            <summary>What does the hiring and interview process look like?</summary>
-            <div class="faq-answer">
-              <p>Our interview process consists of three respectful stages: an initial informal chat about your goals, a practical code review walkthrough (no surprise algorithmic whiteboarding), and a relaxed conversation with the team.</p>
-            </div>
-          </details>
-        </div>
-      </div>
-    </section>
-
-    <!-- SECTION: ACKNOWLEDGEMENT OF COUNTRY -->
-    <section class="page-section" aria-labelledby="country-heading">
-      <div class="container">
-        <div class="country-ack">
-          <h2 id="country-heading" class="country-heading">Acknowledgement of Country</h2>
-          <p>Solstice Community Energy respectfully acknowledges the Traditional Custodians of the lands, skies, and waterways across Australia on which our renewable projects and workplaces operate. We pay our deepest respects to Elders past, present, and emerging, and celebrate the enduring connection of First Nations peoples to Country and caring for the land.</p>
-        </div>
-      </div>
-    </section>
   </main>
 
+  <!-- SITE FOOTER -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
-        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">Project board (Jira)</a></li>
-        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">Source code (GitHub)</a></li>
+        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project board (Jira)</a></li>
+        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
       <p>&copy; 2026 Solstice Community Energy. Fictional company created for a university project (COS10026, Group G03).</p>
     </div>
   </footer>
+
 </body>
 </html>

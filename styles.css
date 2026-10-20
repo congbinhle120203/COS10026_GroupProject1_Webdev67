@@ -407,48 +407,47 @@ textarea {
    5. PAGE: index.html (Owner: Binh - .page-home)
    ========================================================================== */
 
-/* Hero. BACKGROUND GRAPHIC IN CSS (brief requirement):
-   layers from top to bottom = fade to page colour, solar-cell grid (two
-   gradients), sun glow in the top-right corner. No image file needed. */
+/* Hero Banner with CSS Background Gradient (Assessment Requirement) */
 .page-home .hero {
-  padding: 3rem 0 4rem;
-  background-image:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 55%, var(--bg) 100%),
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(circle at 92% 0%, var(--sun-glow) 0%, rgba(0, 0, 0, 0) 40%);
-  background-size: 100% 100%, 2.5rem 2.5rem, 2.5rem 2.5rem, 100% 100%;
+  padding: 2.5rem 0;
+  background-image: linear-gradient(to right, #eef4ee, #d7e8dc);
+  border-bottom: 2px solid var(--line);
 }
 
-/* Two columns: words left, picture right */
+/* Flexbox layout: left column for text, right column for image */
 .page-home .hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 2rem 3rem;
+  display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+.page-home .hero-copy {
+  flex: 1;
+}
+
+.page-home .hero-media {
+  flex: 1;
 }
 
 .page-home .hero h1 {
-  font-size: 3.25rem;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  max-width: 14ch;
+  font-size: 2.5rem;
+  margin-bottom: 0.75rem;
 }
 
 .page-home .hero .lead {
-  font-size: 1.2rem;
-  color: var(--ink);
+  font-size: 1.1rem;
+  color: var(--ink-muted);
 }
 
 .page-home .hero-image {
-  width: 100%;
-  border-radius: 0.9rem;
-  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+  border: 2px solid var(--line);
 }
 
-/* Search form: label above, field + button on one row */
+/* Search Form inside Hero */
 .page-home .search-form {
-  margin-top: 1.75rem;
+  margin-top: 1.5rem;
 }
 
 .page-home .search-row {
@@ -456,244 +455,117 @@ textarea {
   gap: 0.5rem;
 }
 
-.page-home .search-row input {
+/* Content Section Box (matches about.html .section style) */
+.page-home .section {
+  margin-top: 2.5rem;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: 1rem;
+}
+
+/* Key Stats Row (4 Flexbox boxes) */
+.page-home .stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.page-home .stat-box {
   flex: 1;
-}
-
-/* Sections under the hero */
-.page-home .page-section {
-  padding: 3rem 0 1rem;
-}
-
-.page-home .section-intro {
-  color: var(--ink-muted);
-  font-size: 1.05rem;
-  margin-top: -0.25rem;
-  margin-bottom: 1.75rem;
-  max-width: 48ch;
-}
-
-/* --- Impact Metrics Bar --- */
-.page-home .impact-bar {
-  background: var(--surface);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 2.25rem 0;
-}
-
-.page-home .impact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+  min-width: 10rem;
+  padding: 1rem;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.5rem;
   text-align: center;
 }
 
-.page-home .impact-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-}
-
-.page-home .impact-number {
-  font-size: 2.25rem;
-  font-weight: 800;
+.page-home .stat-number {
+  font-size: 1.8rem;
+  font-weight: bold;
   color: var(--primary);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  margin-bottom: 0.25rem;
 }
 
-.page-home .impact-label {
-  margin-top: 0.4rem;
+.page-home .stat-label {
   font-size: 0.95rem;
-  font-weight: 600;
   color: var(--ink-muted);
+  margin-bottom: 0;
 }
 
-/* --- Table: "projects at a glance" with merged cells --- */
-.page-home .table-wrap {
-  overflow-x: auto;
-}
-
+/* Projects Table (with rowspan and colspan) */
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--surface);
+  margin-top: 1rem;
+  background-color: var(--surface);
 }
 
 .page-home .data-table caption {
-  padding: 0 0 0.75rem;
   text-align: left;
-  font-weight: 700;
+  font-weight: bold;
   color: var(--ink-muted);
+  padding-bottom: 0.5rem;
 }
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.7rem 1rem;
+  padding: 0.75rem;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .page-home .data-table thead th {
-  background: var(--primary);
+  background-color: var(--primary);
   color: var(--on-primary);
 }
 
-/* Merged first column (State) */
 .page-home .data-table tbody th {
-  background: var(--bg);
+  background-color: var(--bg);
   vertical-align: top;
 }
 
-/* Numbers line up on the right */
-.page-home .data-table td:last-child,
-.page-home .data-table thead th:last-child,
-.page-home .data-table tfoot td {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
 .page-home .data-table tbody tr:hover td {
-  background: var(--bg);
+  background-color: var(--bg);
 }
 
 .page-home .data-table tfoot th,
 .page-home .data-table tfoot td {
-  font-weight: 800;
-  border-top: 3px solid var(--ink);
+  font-weight: bold;
+  background-color: var(--bg);
+  border-top: 2px solid var(--ink);
 }
 
-/* --- Culture & Value Cards --- */
-.page-home .values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+/* Benefits List (3 Flexbox cards) */
+.page-home .benefits-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 1rem;
+  margin-bottom: 1.5rem;
 }
 
-.page-home .value-card {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-left: 5px solid var(--primary);
+.page-home .benefit-item {
+  flex: 1;
+  min-width: 15rem;
+  padding: 1.25rem;
+  background-color: var(--bg);
+  border-left: 4px solid var(--primary);
   border-radius: 0.5rem;
-  padding: 1.5rem 1.5rem 1.25rem;
 }
 
-.page-home .value-card:nth-child(even) {
-  border-left-color: var(--accent);
-}
-
-.page-home .value-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-  font-size: 1.25rem;
-  color: var(--ink);
-}
-
-.page-home .value-card p {
+.page-home .benefit-item p {
   margin-bottom: 0;
   color: var(--ink-muted);
-  line-height: 1.55;
 }
 
-.page-home .cta-row {
-  margin-top: 2rem;
-}
-
-/* --- Interactive HTML5 FAQ Accordion (<details> & <summary>) --- */
-.page-home .faq-list {
+.page-home .cta-box {
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
-}
-
-.page-home details.faq-item {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: border-color 0.2s ease;
-}
-
-.page-home details.faq-item[open] {
-  border-color: var(--primary);
-}
-
-.page-home details.faq-item summary {
-  padding: 1.1rem 1.25rem;
-  font-weight: 700;
-  font-size: 1.05rem;
-  color: var(--ink);
-  cursor: pointer;
-  user-select: none;
-  list-style: none; /* Hide default triangle */
-  position: relative;
-  padding-right: 2.75rem;
-}
-
-.page-home details.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.page-home details.faq-item summary::after {
-  content: "+";
-  position: absolute;
-  right: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-}
-
-.page-home details.faq-item[open] summary::after {
-  content: "−";
-  color: var(--accent);
-}
-
-.page-home details.faq-item summary:hover {
-  background-color: rgba(44, 94, 79, 0.05);
-}
-
-.page-home details.faq-item summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: -3px;
-}
-
-.page-home .faq-answer {
-  padding: 0.75rem 1.25rem 1.25rem;
-  border-top: 1px solid var(--line);
-  color: var(--ink-muted);
-  line-height: 1.6;
-}
-
-.page-home .faq-answer p {
-  margin: 0;
-}
-
-/* --- Acknowledgement of Country Card --- */
-.page-home .country-ack {
-  background: var(--bg);
-  border: 1px dashed var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 0.5rem;
-  padding: 1.5rem 1.75rem;
-  margin-bottom: 2rem;
-}
-
-.page-home .country-heading {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-  font-size: 1.15rem;
-  color: var(--ink);
-}
-
-.page-home .country-ack p {
-  margin: 0;
-  font-size: 0.95rem;
-  line-height: 1.6;
-  color: var(--ink-muted);
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0;
 }
 
 
