@@ -722,8 +722,197 @@ textarea {
 
    Write your CSS rules for jobs.html below:
    -------------------------------------------------------------------------- */
+   
+   
+   /* ---- Page Intro / Header Banner ---- */
+  .page-jobs .jobs-header {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
+  }
+  
+  .page-jobs .jobs-intro {
+  color: var(--ink-muted);
+  font-size: 1.15rem;
+  max-width: 65ch;
+  margin-bottom: 0;
+  }
+
+  /* ---- Main Layout Wrapper (Clearfix for Floated Aside) ---- */
+.page-jobs .jobs-layout {
+  padding-bottom: 2rem;
+}
+
+/* ----Mandatory Clearfix: Prevents the 25% floated aside from overlapping the footer ---- */
+.page-jobs .jobs-layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* ---- Main Job Listings Column (Left 71% + 4% margin + 25% aside = 100%) ---- */
+.page-jobs .jobs-main {
+  width: 71%;
+  float: left;
+}
+
+/* ---- Floated Sidebar Aside (Mandatory 25% Right Float) ---- */
+.page-jobs aside.jobs-sidebar {
+  width: 25%;
+  float: right;
+  margin: 0 0 2rem 4%;
+  padding: 1.5rem;
+  background-color: var(--surface);
+  border: 2px solid var(--primary);
+  border-top: 6px solid var(--accent);
+  border-radius: var(--radius-lg);
+}
+
+.page-jobs aside.jobs-sidebar h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.page-jobs aside.jobs-sidebar h3 {
+  font-size: 1.05rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.page-jobs aside.jobs-sidebar p {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+/* ---- Job Description Cards (<section class="job-card">) ---- */
+.page-jobs .job-card {
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.page-jobs .job-card:nth-of-type(even) {
+  border-left-color: var(--accent);
+}
+
+.page-jobs .job-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-jobs .job-card h2 {
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+/* 5-Character Alphanumeric Reference Badge */
+.page-jobs .job-ref {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background-color: var(--bg);
+  border: 1px solid var(--primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius);
+}
 
 
+/* Metadata List (Location, Salary, Reports To) */
+.page-jobs .job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.page-jobs .job-meta strong {
+  color: var(--ink);
+}
+
+/* Sub-headings inside Job Cards */
+.page-jobs .job-card h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+
+/* Ordered (<ol>) and Unordered (<ul>) Lists inside Jobs */
+.page-jobs .job-card ul,
+.page-jobs .job-card ol,
+.page-jobs aside.jobs-sidebar ul,
+.page-jobs aside.jobs-sidebar ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.page-jobs .job-card ul li::marker {
+  color: var(--primary);
+}
+
+.page-jobs .job-card ol li::marker,
+.page-jobs aside.jobs-sidebar ol li::marker {
+  color: var(--primary);
+  font-weight: 700;
+}
+
+.page-jobs .job-actions {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* --- Acknowledgement of Country Card --- */
+
+.page-jobs .country-ack {
+  clear: both;
+  background: var(--bg);
+  border: 1px dashed var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+
+.page-jobs .country-heading {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+
+.page-jobs .country-ack p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
 
 
 /* ==========================================================================
