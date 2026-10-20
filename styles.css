@@ -672,8 +672,129 @@ textarea {
    7. PAGE: apply.html (Owner: Duy)
    ========================================================================== */
 /* (Duy's rules will go here) */
+.page-apply h2{
+  text-align: center;
+}
+.page-apply .apply_form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 10px;
+  
+}
+.page-apply .information {
+  border: 1px solid var(--border-color, #ccc);
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: var(--bg-surface, #ffffff);
+}
 
+.page-apply .information legend {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+.page-apply .apply_form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
 
+.page-apply .apply-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.page-apply .apply_form input[type="text"],
+.page-apply .apply_form input[type="email"],
+.page-apply .apply_form input[type="tel"],
+.page-apply .apply_form input[type="date"],
+.page-apply .apply_form select,
+.page-apply .apply_form textarea {
+  width: 100%;
+  max-width: 400px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.page-apply .gender_form,
+.page-apply .skills_form {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-apply .radio-group,
+.page-apply .skills_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.page-apply .checkbox-item,
+.page-apply .radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.page-apply .form-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1.5rem;
+}
+
+.page-apply .form-actions input[type="submit"],
+.page-apply .form-actions input[type="reset"] {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+@media screen and (max-width: 768px) {
+  .page-apply .apply_form {
+    padding: 1rem 0.5rem;
+  }
+
+  .page-apply .information {
+    padding: 1rem;
+  }
+  .page-apply .apply_form input[type="text"],
+  .page-apply .apply_form input[type="email"],
+  .page-apply .apply_form input[type="tel"],
+  .page-apply .apply_form input[type="date"],
+  .page-apply .apply_form select,
+  .page-apply .apply_form textarea {
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 480px) {
+  .page-apply .radio-group,
+  .page-apply .skills_form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+  .page-apply .form-actions {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .page-apply .form-actions input[type="submit"],
+  .page-apply .form-actions input[type="reset"] {
+    width: 100%;
+  }
+}
 /* ==========================================================================
    8. PAGE: about.html (Owner: Ân)
    ========================================================================== */

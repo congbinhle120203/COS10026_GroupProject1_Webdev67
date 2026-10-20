@@ -36,7 +36,7 @@
       <h1>Apply now</h1>
       <!-- Inline CSS example (assessment requirement). Duy: replace with your own if you like -->
       <p class="page-intro" style="color: var(--ink-muted);">This page is being built. The application form will be here.</p>
-
+      
       <!-- TODO (Duy): build this page. Brief requirements for apply.html:
         - form with HTML5 validation (patterns / regular expressions where useful, right input types)
         - method POST, action https://mercury.swin.edu.au/it000000/formtest.php
@@ -47,15 +47,105 @@
         - every input has a label; every field is required EXCEPT the textarea
         - layout with Flexbox or Grid (section 7 of styles.css)
       -->
-        <fieldset>
-          <p style="font-size: 20px; font-weight: bolder;">Let's Applying</p>
-          <p>Job reference</p>
-          <input type="text" required="required" pattern="[A-Za-z0-9]{5}" maxlength="5" value="job_reference"> </input>
-          <p></p>
+      
+        <fieldset class="apply_form">
+          <form action="https://mercury.swin.edu.au/it000000/formtest.php" method="post">
+          <h2 id="title_form">Personal Information</h2>
+          <fieldset class="information"> 
+            <p>
+              <label for="job_reference">Job Reference</label>
+              <input type="text" id="job_reference" name="job_reference" pattern="[A-Za-z0-9]{5}" maxlength="5" required title="Please fill exactly 5 alphanumeric.">
+            </p>
           
+            <p>
+              <label for="first_name">First Name</label>
+              <input type="text" id="first_name" name="first_name" pattern="[A-Za-z]{1,20}" maxlength="20" required title="Max 20 alpha">
+            </p>
+            
+            <p>
+              <label for="last_name">Last Name</label>
+              <input type="text" id="last_name" name="last_name" pattern="[A-Za-z]{1,20}" maxlength="20" required title="Max 20 alpha">
+            </p>
+            
+            <p>
+              <label for="date_of_birth">Date of Birth</label>
+              <input type="date" id="date_of_birth" name="date_of_birth" required>
+            </p>
+          
+
+            <fieldset class="gender_form">
+                <legend id="gender">Gender</legend>
+                  <p>
+                    <label><input type="radio" id="male" name="gender" value="male">Male</label>
+                  </p>
+
+                  <p>
+                    <label><input type="radio" id="female" name="gender" value="female">Female</label>
+                  </p>
+
+                  <p>
+                    <label><input type="radio" id="other" name="gender" value="other">Other</label>
+                  </p>
+
+            </fieldset>
+        
+
+            <p>
+              <label for="street_address">Street Address</label>
+              <input type="text" id="street_address" name="street_address" pattern="[A-Za-z0-9\s,\.\-\/]{1,40}" maxlength="40" required title="Max 40">
+            </p>
+
+            <p>
+              <label for="suburb_town"> Suburb/Town</label>
+              <input type="text" id="suburb_town" name="suburb_town" pattern="[A-Za-z0-9\s,\.\-\/]{1,40}" maxlength="40" required title="Max 40">
+            </p>
+
+            <p>
+              <label for="state">State</label>
+              <select id="state" name="state" required>
+                <option value="vic">VIC</option>
+                <option value="nsw">NSW</option>
+                <option value="qld">QLD</option>
+                <option value="nt">NT</option>
+                <option value="wa">WA</option>
+                <option value="sa">SA</option>
+                <option value="tas">TAS</option>
+                <option value="act">ACT</option>
+              </select>
+            </p>
+
+            <p>
+              <label for="postcode">Postcode</label>
+              <input type="text" id="postcode" name="postcode" pattern="\d{4}" maxlength="4" required title="Please fill exactly 4 digits">
+            </p>
+
+            <p>
+              <label for="email">Email</label>
+              <input type="email" id="email" name="email" required title="Please fill your email">
+            </p>
+
+            <p>
+              <label for="phone_numbers">Phone Numbers</label>
+              <input type="tel" id="phone_numbers" name="phone_numbers" pattern="\d{8,12}" maxlength="12" required title="Please fill 8-12 digits">
+            </p>
+
+            <p>
+              <label for="skills">Skills</label>
+                <div><input type="checkbox" id="html" name="skills" value="html">HTML</div>
+                <div><input type="checkbox" id="css" name="skills" value="css">CSS</div>
+                <div><input type="checkbox" id="js" name="skills" value="js">Javascript</div>
+                Other Skills
+                <div><textarea id="other_skills" name="otherSkills"></textarea></div>
+                
+            </p>
+          </fieldset> 
+          
+          <input type="submit" name="submit" id="submit">
+          <input type="reset" name="reset" id="reset">
+        </form>
         </fieldset>
-        <input type="submit" name="submit"/>
-        <input type="reset" name reset />
+        
+        
     </div>
   </main>
 
