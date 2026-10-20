@@ -714,8 +714,7 @@ textarea {
 .page-apply .apply_form input[type="date"],
 .page-apply .apply_form select,
 .page-apply .apply_form textarea {
-  width: 100%;
-  max-width: 400px; 
+  width: 600px; 
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
