@@ -708,6 +708,34 @@ textarea {
   border: 2px solid var(--line);
 }
 
+/* Display items in row */
+.page-about .section-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+
+  width: 90%;
+  max-width: var(--maxw);
+  margin: 1rem auto auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border-radius: 1rem;
+
+}
+
+.page-about .SubTitle {
+  color: var(--ink-muted);
+}
+
+.page-about #group-name {
+
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--ink-muted);
+
+}
+
 .page-about .member-section dt {
   margin: 1rem;
 }
@@ -742,12 +770,45 @@ textarea {
   border-top: 1px solid var(--line);
 }
 
+.page-about div.GroupName {
+
+
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+
+  border-left-color: var(--link);
+  border-left-width: var(--radius);
+
+  padding: 1rem;
+
+}
+
+.page-about div.ClassDayTime {
+
+
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+
+  border-left-color: var(--focus);
+  border-left-width: var(--radius);
+
+  padding: 1rem;
+
+}
+
+.page-about .member-info p {
+  display: inline;
+}
+
 .page-about .contributions {
   margin: auto;
   width: 95%;
   padding: 1rem 3rem;
   background-color: var(--bg);
   border-radius: 1rem;
+  border: 1px solid var(--line);
 }
 
 .page-about figure.GroupPhoto {
@@ -781,29 +842,33 @@ textarea {
 }
 
 .page-about .FunFactTable {
-  border: 2px solid var(--line);
-  border-radius: var(--radius-lg);
-  background-color: var(--surface);
+  border: 2px solid #735f5f;
+  background-color: #e7e7e7;
   width: 60%;
   text-align: center;
   border-collapse: collapse;
 }
 
 .page-about .FunFactTable caption {
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   font-weight: bold;
-  color: var(--ink);
+  color: #355066;
   margin-bottom: 0.75rem;
 }
 
 .page-about .FunFactTable th,
 .page-about .FunFactTable td {
   padding: 0.75rem;
-  border: 1px solid var(--line);
+  border: 1px solid #aeada6;
 }
 
-.page-about .FunFactTable tbody tr:hover {
-  background-color: var(--bg);
+.page-about .FunFactTable thead {
+  background-color: #464967;
+  color: #eaeae6;
+}
+
+.page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
+  background-color: #e0a526;
 }
 
 
