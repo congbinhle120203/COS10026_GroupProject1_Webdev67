@@ -1,13 +1,15 @@
 /* ==========================================================================
    styles.css - Solstice Community Energy Careers
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
+   Sustainable Energy Solutions Company
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. DESIGN TOKENS & PALETTE (Eucalyptus Theme)
+   1. DESIGN TOKENS & PALETTE
    ========================================================================== */
 :root {
+  /* Core Brand Colors */
   --bg: #eef4ee;                  /* Soft sage background */
   --surface: #fbfdfb;             /* Crisp card background */
   --ink: #1b2a23;                 /* Deep gum-leaf text color */
@@ -17,13 +19,14 @@
   --accent: #e0a526;              /* Solar amber accent */
   --line: #c5d4c8;                /* Subtle border tone */
   --link: #1f5a8a;                /* Accessible blue for links */
-  --focus: #9a3412;               /* High-contrast outline */
+  --focus: #9a3412;               /* Amber-rust focus outline */
 
+  /* Typography & Layout Metrics */
   --font: "Segoe UI", Calibri, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: Consolas, "SF Mono", Monaco, monospace;
+  --font-mono: Consolas, "SF Mono", Monaco, "Courier New", monospace;
   --radius: 0.375rem;
   --radius-lg: 0.75rem;
-  --maxw: 72rem;
+  --maxw: 72rem;                  /* 1152px max layout width */
 }
 
 
@@ -43,12 +46,11 @@ body {
   line-height: 1.6;
   color: var(--ink);
   background-color: var(--bg);
-  -webkit-font-smoothing: antialiased;
 }
 
+/* Headings */
 h1, h2, h3, h4 {
   line-height: 1.25;
-  letter-spacing: -0.01em;
   color: var(--ink);
   margin-top: 0;
 }
@@ -58,9 +60,10 @@ h2 { font-size: 1.65rem; margin-bottom: 1rem; }
 h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
 h4 { font-size: 1.1rem;  margin-bottom: 0.5rem; }
 
+/* Paragraphs & Lists */
 p {
   margin: 0 0 1rem;
-  max-width: 68ch;
+  max-width: 42rem;
 }
 
 ul, ol {
@@ -72,37 +75,31 @@ li {
   margin-bottom: 0.35rem;
 }
 
+/* Hyperlinks */
 a {
   color: var(--link);
   text-decoration: underline;
-  text-underline-offset: 0.2em;
-  transition: color 0.15s ease, text-decoration-thickness 0.15s ease;
 }
 
 a:hover {
   color: var(--primary);
-  text-decoration-thickness: 0.15em;
 }
 
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
+/* Accessible Keyboard Focus State */
+a:focus,
+button:focus,
+input:focus,
+select:focus,
+textarea:focus {
   outline: 3px solid var(--focus);
-  outline-offset: 3px;
+  outline-offset: 2px;
 }
 
+/* Images */
 img {
   max-width: 100%;
   height: auto;
   display: block;
-}
-
-::selection {
-  background: var(--accent);
-  color: #12263a;
 }
 
 
@@ -120,33 +117,32 @@ img {
   padding: 3rem 0 1.5rem;
 }
 
+/* Skip link for keyboard users */
 .skip-link {
   position: absolute;
   left: 1rem;
   top: -4rem;
   padding: 0.6rem 1rem;
-  background: var(--primary);
+  background-color: var(--primary);
   color: var(--on-primary);
-  font-weight: 700;
+  font-weight: bold;
   border-radius: var(--radius);
-  z-index: 999;
   text-decoration: none;
-  transition: top 0.2s ease-in-out;
+  z-index: 999;
 }
 
 .skip-link:focus {
   top: 1rem;
 }
 
+/* Visually hidden for screen readers */
 .visually-hidden {
-  position: absolute; 
+  position: absolute;
   width: 1px;
   height: 1px;
   margin: -1px;
   padding: 0;
   overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
   border: 0;
 }
 
@@ -154,8 +150,10 @@ img {
 /* ==========================================================================
    4. SHARED COMPONENTS
    ========================================================================== */
+
+/* Header & Navigation Bar */
 .site-header {
-  background: var(--surface);
+  background-color: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 
@@ -164,7 +162,7 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 2rem;
+  gap: 1rem 2rem;
   padding: 0.85rem 0;
 }
 
@@ -174,7 +172,7 @@ img {
   gap: 0.75rem;
   color: var(--ink);
   font-size: 1.15rem;
-  font-weight: 700;
+  font-weight: bold;
   text-decoration: none;
 }
 
@@ -199,7 +197,6 @@ img {
   font-weight: 600;
   text-decoration: none;
   border-bottom: 3px solid transparent;
-  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav a:hover {
@@ -208,44 +205,45 @@ img {
 }
 
 .main-nav a[aria-current="page"] {
-  font-weight: 800;
+  font-weight: bold;
   color: var(--primary);
   border-bottom-color: var(--primary);
 }
 
+/* Shared Buttons */
 .button {
   display: inline-block;
   padding: 0.65rem 1.35rem;
   font: inherit;
-  font-weight: 700;
+  font-weight: bold;
   color: var(--on-primary);
-  background: var(--primary);
+  background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
   text-decoration: none;
   cursor: pointer;
   text-align: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
 
 .button:hover {
   color: var(--bg);
-  background: var(--ink);
+  background-color: var(--ink);
   border-color: var(--ink);
 }
 
 .button-secondary {
-  background: transparent;
+  background-color: transparent;
   color: var(--ink);
   border: 2px solid var(--ink-muted);
 }
 
 .button-secondary:hover {
-  background: var(--bg);
+  background-color: var(--bg);
   color: var(--ink);
   border-color: var(--ink);
 }
 
+/* Form Controls */
 label {
   display: block;
   margin-bottom: 0.4rem;
@@ -258,11 +256,10 @@ select,
 textarea {
   font: inherit;
   color: var(--ink);
-  background: var(--surface);
+  background-color: var(--surface);
   border: 2px solid var(--line);
   border-radius: var(--radius);
   padding: 0.65rem 0.85rem;
-  transition: border-color 0.2s ease;
 }
 
 input:focus,
@@ -283,13 +280,13 @@ textarea {
 
 ::placeholder {
   color: var(--ink-muted);
-  opacity: 0.85;
 }
 
+/* Footer */
 .site-footer {
   margin-top: 4rem;
   padding: 2rem 0;
-  background: var(--surface);
+  background-color: var(--surface);
   border-top: 1px solid var(--line);
   font-size: 0.95rem;
 }
@@ -321,10 +318,6 @@ textarea {
   text-decoration: underline;
 }
 
-.footer-links a[href^="mailto:"] {
-  font-weight: 600;
-}
-
 .site-footer p {
   margin: 0;
   color: var(--ink-muted);
@@ -333,8 +326,10 @@ textarea {
 
 
 /* ==========================================================================
-   5. PAGE: index.html (Owner: Binh)
+   5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
+
+/* Hero Banner */
 .page-home .hero {
   padding: 2.5rem 0;
   background-image: linear-gradient(to right, #eef4ee, #d7e8dc);
@@ -357,20 +352,23 @@ textarea {
 }
 
 .page-home .hero h1 {
-  font-size: 2.5rem;
+  font-size: 2.25rem;
   margin-bottom: 0.75rem;
+  color: var(--ink);
 }
 
 .page-home .hero .lead {
   font-size: 1.1rem;
   color: var(--ink-muted);
+  line-height: 1.6;
 }
 
 .page-home .hero-image {
-  border-radius: 0.75rem;
+  border-radius: var(--radius-lg);
   border: 2px solid var(--line);
 }
 
+/* Search Form inside Hero */
 .page-home .search-form {
   margin-top: 1.5rem;
 }
@@ -380,6 +378,7 @@ textarea {
   gap: 0.5rem;
 }
 
+/* Content Box Section */
 .page-home .section {
   margin-top: 2.5rem;
   padding: 2rem;
@@ -388,6 +387,7 @@ textarea {
   border-radius: 1rem;
 }
 
+/* Key Stats Row */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
@@ -398,10 +398,10 @@ textarea {
 .page-home .stat-box {
   flex: 1;
   min-width: 10rem;
-  padding: 1rem;
+  padding: 1.25rem 1rem;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
   text-align: center;
 }
 
@@ -418,10 +418,11 @@ textarea {
   margin-bottom: 0;
 }
 
+/* Projects Table */
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   background-color: var(--surface);
 }
 
@@ -434,7 +435,7 @@ textarea {
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.75rem;
+  padding: 0.75rem 1rem;
   border: 1px solid var(--line);
   text-align: left;
 }
@@ -460,11 +461,12 @@ textarea {
   border-top: 2px solid var(--ink);
 }
 
+/* Benefits Card List */
 .page-home .benefits-list {
   display: flex;
   flex-wrap: wrap;
   gap: 1.25rem;
-  margin-top: 1rem;
+  margin-top: 1.25rem;
   margin-bottom: 1.5rem;
 }
 
@@ -474,7 +476,11 @@ textarea {
   padding: 1.25rem;
   background-color: var(--bg);
   border-left: 4px solid var(--primary);
-  border-radius: 0.5rem;
+  border-radius: var(--radius);
+}
+
+.page-home .benefit-item h3 {
+  color: var(--primary);
 }
 
 .page-home .benefit-item p {
@@ -482,16 +488,18 @@ textarea {
   color: var(--ink-muted);
 }
 
+/* Call to Action Buttons */
 .page-home .cta-box {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
+  margin-top: 1.5rem;
   margin-bottom: 0;
 }
 
 
 /* ==========================================================================
-   6. PAGE: jobs.html (Owner: Huy)
+   6. PAGE: jobs.html (Owner: Bach Gia Huy - Scope: .page-jobs)
    ========================================================================== */
 .page-jobs .jobs-header {
   padding: 2.5rem 0 1.5rem;
@@ -502,7 +510,7 @@ textarea {
 .page-jobs .jobs-intro {
   color: var(--ink-muted);
   font-size: 1.15rem;
-  max-width: 65ch;
+  max-width: 42rem;
   margin-bottom: 0;
 }
 
@@ -510,6 +518,7 @@ textarea {
   padding-bottom: 2rem;
 }
 
+/* Mandatory Clearfix for 25% Floated Aside */
 .page-jobs .jobs-layout::after {
   content: "";
   display: table;
@@ -521,6 +530,7 @@ textarea {
   float: left;
 }
 
+/* Floated Sidebar Aside (25% Width Float Right) */
 .page-jobs aside.jobs-sidebar {
   width: 25%;
   float: right;
@@ -551,6 +561,7 @@ textarea {
   color: var(--ink-muted);
 }
 
+/* Job Description Cards */
 .page-jobs .job-card {
   background-color: var(--surface);
   border: 1px solid var(--line);
@@ -585,7 +596,7 @@ textarea {
   display: inline-block;
   font-family: var(--font-mono);
   font-size: 0.9rem;
-  font-weight: 700;
+  font-weight: bold;
   letter-spacing: 0.05em;
   color: var(--primary);
   background-color: var(--bg);
@@ -631,7 +642,7 @@ textarea {
 .page-jobs .job-card ol li::marker,
 .page-jobs aside.jobs-sidebar ol li::marker {
   color: var(--primary);
-  font-weight: 700;
+  font-weight: bold;
 }
 
 .page-jobs .job-actions {
@@ -643,9 +654,10 @@ textarea {
   gap: 0.75rem;
 }
 
+/* Acknowledgement of Country Card */
 .page-jobs .country-ack {
   clear: both;
-  background: var(--bg);
+  background-color: var(--bg);
   border: 1px dashed var(--line);
   border-left: 4px solid var(--accent);
   border-radius: 0.5rem;
@@ -669,13 +681,13 @@ textarea {
 
 
 /* ==========================================================================
-   7. PAGE: apply.html (Owner: Duy)
+   7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
    ========================================================================== */
-/* (Duy's rules will go here) */
+/* Duy's form layout & grid rules go here */
 
 
 /* ==========================================================================
-   8. PAGE: about.html (Owner: Ân)
+   8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
 .page-about .section {
   display: flex;
@@ -789,53 +801,73 @@ textarea {
 
 
 /* ==========================================================================
-   9. RESPONSIVE RULES (Media Queries)
+   9. RESPONSIVE RULES (Media Queries - Week 05 Lab 05)
    ========================================================================== */
+
+/* Tablet & Medium Screens (<= 56rem / 896px) */
 @media (max-width: 56rem) {
   .page-home .hero-inner {
     flex-direction: column;
+    text-align: center;
+  }
+
+  .page-home .search-row {
+    justify-content: center;
   }
 }
 
+/* Mobile Screens (<= 36rem / 576px) */
 @media (max-width: 36rem) {
   body {
     font-size: 1rem;
   }
+
   .header-inner {
     padding: 0.6rem 0;
   }
+
   .main-nav ul {
     gap: 0.25rem 1rem;
   }
+
+  .page-home .hero {
+    padding: 2rem 0;
+  }
+
+  .page-home .hero h1 {
+    font-size: 1.85rem;
+  }
+
   .page-home .search-row {
     flex-direction: column;
+  }
+
+  .page-home .data-table th,
+  .page-home .data-table td {
+    padding: 0.5rem;
+    font-size: 0.9rem;
   }
 }
 
 
 /* ==========================================================================
-   10. USER PREFERENCES (Accessibility & Print Styles)
+   10. PRINT STYLESHEET
    ========================================================================== */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
 @media print {
   body {
-    background: #ffffff;
+    background-color: #ffffff;
     color: #000000;
   }
+
   .site-header,
   .site-footer,
   .skip-link,
   .search-form {
-    display: none !important;
+    display: none;
+  }
+
+  .page-home .hero {
+    background-image: none;
+    padding: 1rem 0;
   }
 }
