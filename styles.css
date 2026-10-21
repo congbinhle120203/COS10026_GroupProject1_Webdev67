@@ -5,7 +5,7 @@
 
 
 /* ==========================================================================
-   1. DESIGN TOKENS & PALETTE
+   1. COLOR VARIABLES & THEME
    ========================================================================== */
 :root {
   --bg: #eef4ee;
@@ -19,16 +19,16 @@
   --link: #1f5a8a;
   --focus: #9a3412;
 
-  --font: "Segoe UI", Calibri, Arial, sans-serif;
-  --font-mono: Consolas, "Courier New", monospace;
-  --radius: 0.375rem;
-  --radius-lg: 0.75rem;
-  --maxw: 72rem;
+  --font: Calibri, Arial, sans-serif;
+  --font-mono: Consolas, monospace;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --maxw: 1150px;
 }
 
 
 /* ==========================================================================
-   2. BASE / RESET
+   2. BASE STYLES
    ========================================================================== */
 * {
   box-sizing: border-box;
@@ -37,50 +37,40 @@
 body {
   margin: 0;
   font-family: var(--font);
-  font-size: 1.0625rem;
-  line-height: 1.6;
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--ink);
   background-color: var(--bg);
 }
 
 h1, h2, h3 {
-  line-height: 1.25;
   color: var(--ink);
   margin-top: 0;
 }
 
-h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-h2 { font-size: 1.65rem; margin-bottom: 1rem; }
-h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
+h1 { font-size: 2em; margin-bottom: 0.5em; }
+h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+h3 { font-size: 1.2em; margin-bottom: 0.5em; }
 
 p {
-  margin: 0 0 1rem;
-  max-width: 42rem;
+  margin: 0 0 1em;
 }
 
 ul, ol {
-  margin: 0 0 1.25rem;
-  padding-left: 1.5rem;
+  margin: 0 0 1em;
+  padding-left: 1.5em;
 }
 
 li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.35em;
 }
 
 a {
   color: var(--link);
-  text-decoration: underline;
 }
 
 a:hover {
   color: var(--primary);
-}
-
-a:focus,
-button:focus,
-input:focus {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
 }
 
 img {
@@ -91,38 +81,25 @@ img {
 
 
 /* ==========================================================================
-   3. LAYOUT HELPERS
+   3. LAYOUT CONTAINER
    ========================================================================== */
 .container {
   width: 90%;
   max-width: var(--maxw);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
 .page-section {
-  padding: 3rem 0 1.5rem;
+  padding: 2em 0;
 }
 
 .skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -4rem;
-  padding: 0.6rem 1rem;
-  background-color: var(--primary);
-  color: var(--on-primary);
-  font-weight: bold;
-  border-radius: var(--radius);
-  text-decoration: none;
-}
-
-.skip-link:focus {
-  top: 1rem;
+  display: none;
 }
 
 
 /* ==========================================================================
-   4. SHARED COMPONENTS (Header, Navigation, Buttons, Footer)
+   4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
 .site-header {
   background-color: var(--surface);
@@ -134,73 +111,64 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem 2rem;
-  padding: 0.85rem 0;
+  padding: 0.8em 0;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5em;
   color: var(--ink);
-  font-size: 1.15rem;
+  font-size: 1.15em;
   font-weight: bold;
   text-decoration: none;
-}
-
-.brand img {
-  width: 2.75rem;
-  height: 2.75rem;
 }
 
 .main-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .main-nav a {
-  display: block;
-  padding: 0.4rem 0.2rem;
+  display: inline-block;
+  padding: 0.3em 0.2em;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: bold;
   text-decoration: none;
   border-bottom: 3px solid transparent;
 }
 
 .main-nav a:hover {
   color: var(--primary);
-  border-bottom-color: var(--ink-muted);
+  border-bottom-color: var(--primary);
 }
 
 .main-nav a[aria-current="page"] {
-  font-weight: bold;
   color: var(--primary);
   border-bottom-color: var(--primary);
 }
 
-/* Shared Buttons */
+/* Buttons */
 .button {
   display: inline-block;
-  padding: 0.65rem 1.35rem;
-  font: inherit;
+  padding: 0.6em 1.2em;
   font-weight: bold;
   color: var(--on-primary);
   background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
   text-decoration: none;
-  cursor: pointer;
-  text-align: center;
+  margin-right: 0.5em;
 }
 
 .button:hover {
-  color: var(--bg);
   background-color: var(--ink);
   border-color: var(--ink);
+  color: var(--on-primary);
 }
 
 .button-secondary {
@@ -210,18 +178,17 @@ img {
 }
 
 .button-secondary:hover {
-  background-color: var(--bg);
+  background-color: var(--line);
   color: var(--ink);
-  border-color: var(--ink);
 }
 
-/* Shared Footer */
+/* Footer */
 .site-footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
+  margin-top: 3em;
+  padding: 1.5em 0;
   background-color: var(--surface);
   border-top: 1px solid var(--line);
-  font-size: 0.95rem;
+  font-size: 0.95em;
 }
 
 .footer-inner {
@@ -229,13 +196,13 @@ img {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1.25rem 2rem;
+  gap: 1em;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.75rem;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -247,14 +214,12 @@ img {
 }
 
 .footer-links a:hover {
-  color: var(--primary);
   text-decoration: underline;
 }
 
 .site-footer p {
   margin: 0;
   color: var(--ink-muted);
-  font-size: 0.9rem;
 }
 
 
@@ -262,14 +227,14 @@ img {
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
-/* hero banner with gradient background */
+/* hero banner */
 .page-home .hero {
   padding: 2.5em 0;
-  background-image: linear-gradient(to right, #eef4ee, #d7e8dc);
+  background-color: #d7e8dc;
   border-bottom: 2px solid var(--line);
 }
 
-/* split hero into two columns using flexbox */
+/* two columns using flexbox */
 .page-home .hero-inner {
   display: flex;
   align-items: center;
@@ -285,16 +250,9 @@ img {
   flex: 1;
 }
 
-.page-home .hero h1 {
-  font-size: 2.25em;
-  margin-bottom: 0.5em;
-  color: var(--ink);
-}
-
 .page-home .hero .lead {
   font-size: 1.1em;
   color: var(--ink-muted);
-  line-height: 1.6;
 }
 
 .page-home .hero-image {
@@ -302,52 +260,27 @@ img {
   border: 2px solid var(--line);
 }
 
-/* search form inside hero */
-.page-home .search-form {
-  margin-top: 1.5em;
-}
-
-.page-home .search-form label {
-  display: block;
-  margin-bottom: 0.4em;
-  font-weight: bold;
-}
-
-.page-home .search-row {
-  display: flex;
-  gap: 0.5em;
-}
-
-.page-home .search-row input[type="text"] {
-  width: 100%;
-  padding: 0.65em 0.85em;
-  font: inherit;
-  border: 2px solid var(--line);
-  border-radius: var(--radius);
-  background-color: var(--surface);
-}
-
-/* content section box with border and background */
+/* white box section */
 .page-home .section {
-  margin-top: 2.5em;
-  padding: 2em;
+  margin-top: 2em;
+  padding: 1.5em;
   background-color: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 14px;
+  border-radius: 12px;
 }
 
-/* key stats row with flexbox */
+/* stats row using flexbox */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1.25em;
+  margin-top: 1em;
 }
 
 .page-home .stat-box {
   flex: 1;
-  min-width: 10em;
-  padding: 1.25em 1em;
+  min-width: 150px;
+  padding: 1em;
   background-color: var(--bg);
   border: 1px solid var(--line);
   border-radius: 6px;
@@ -355,36 +288,33 @@ img {
 }
 
 .page-home .stat-number {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: bold;
   color: var(--primary);
-  margin-bottom: 0.25em;
+  margin-bottom: 0.2em;
 }
 
 .page-home .stat-label {
-  font-size: 0.95em;
-  color: var(--ink-muted);
   margin-bottom: 0;
+  color: var(--ink-muted);
 }
 
-/* data table styling */
+/* projects table */
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.25em;
-  background-color: var(--surface);
+  margin-top: 1em;
 }
 
 .page-home .data-table caption {
   text-align: left;
   font-weight: bold;
-  color: var(--ink-muted);
   padding-bottom: 0.5em;
 }
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.75em 1em;
+  padding: 0.6em;
   border: 1px solid var(--line);
   text-align: left;
 }
@@ -394,56 +324,11 @@ img {
   color: var(--on-primary);
 }
 
-.page-home .data-table tbody th {
-  background-color: var(--bg);
-  vertical-align: top;
-}
-
-.page-home .data-table tbody tr:hover td {
-  background-color: var(--bg);
-}
-
+.page-home .data-table tbody th,
 .page-home .data-table tfoot th,
 .page-home .data-table tfoot td {
+  background-color: var(--bg);
   font-weight: bold;
-  background-color: var(--bg);
-  border-top: 2px solid var(--ink);
-}
-
-/* benefits list layout */
-.page-home .benefits-list {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.25em;
-  margin-top: 1.25em;
-  margin-bottom: 1.5em;
-}
-
-.page-home .benefit-item {
-  flex: 1;
-  min-width: 15em;
-  padding: 1.25em;
-  background-color: var(--bg);
-  border-left: 4px solid var(--primary);
-  border-radius: 6px;
-}
-
-.page-home .benefit-item h3 {
-  color: var(--primary);
-}
-
-.page-home .benefit-item p {
-  margin-bottom: 0;
-  color: var(--ink-muted);
-}
-
-/* call to action buttons row */
-.page-home .cta-box {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1em;
-  margin-top: 1.5em;
-  margin-bottom: 0;
 }
 
 
@@ -885,47 +770,11 @@ img {
 
 
 /* ==========================================================================
-   9. RESPONSIVE RULES
+   9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-@media (max-width: 56rem) {
+@media (max-width: 768px) {
   .page-home .hero-inner {
     flex-direction: column;
     text-align: center;
-  }
-
-  .page-home .search-row {
-    justify-content: center;
-  }
-}
-
-@media (max-width: 36rem) {
-  body {
-    font-size: 1rem;
-  }
-
-  .header-inner {
-    padding: 0.6rem 0;
-  }
-
-  .main-nav ul {
-    gap: 0.25rem 1rem;
-  }
-
-  .page-home .hero {
-    padding: 2rem 0;
-  }
-
-  .page-home .hero h1 {
-    font-size: 1.85rem;
-  }
-
-  .page-home .search-row {
-    flex-direction: column;
-  }
-
-  .page-home .data-table th,
-  .page-home .data-table td {
-    padding: 0.5rem;
-    font-size: 0.9rem;
   }
 }
