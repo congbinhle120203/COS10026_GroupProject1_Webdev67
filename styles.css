@@ -1,225 +1,106 @@
 /* ==========================================================================
    styles.css - Solstice Community Energy Careers
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
-   Sustainable Energy Solutions Company
-
-   --------------------------------------------------------------------------
-   TABLE OF CONTENTS & FILE ARCHITECTURE
-   --------------------------------------------------------------------------
-   1. Design Tokens & Palette     - Theme variables (Eucalyptus Palette)
-   2. Base / Reset                - Global element defaults (shared by all)
-   3. Layout Helpers              - Containers, skip links, visually-hidden
-   4. Shared Components           - Header, Navigation, Buttons, Inputs, Footer
-   5. Page: index.html            - [Binh]  Scope: .page-home
-   6. Page: jobs.html             - [Huy]   Scope: .page-jobs
-   7. Page: apply.html            - [Duy]   Scope: .page-apply
-   8. Page: about.html            - [An]    Scope: .page-about
-   9. Responsive Rules            - Media queries (Tablet <= 56rem, Mobile <= 36rem)
-   10. User Preferences           - Prefers-reduced-motion, Print styles
-
-   --------------------------------------------------------------------------
-   COLLABORATION & CONFLICT-PREVENTION RULES (PLEASE READ!)
-   --------------------------------------------------------------------------
-   1. SCOPING: Never style bare tags (h1, p, table, form, input, aside...) 
-      directly in your section! Always scope with your page body class:
-         .page-jobs .job-card { ... }
-         .page-apply .form-grid { ... }
-         .page-about .facts-table { ... }
-      Body classes in HTML:
-         - index.html: <body class="page-home">
-         - jobs.html:  <body class="page-jobs">
-         - apply.html: <body class="page-apply">
-         - about.html: <body class="page-about">
-
-   2. OWNERSHIP: Only add or edit CSS inside YOUR designated section:
-         - Huy -> Section 6 and Section 9 (Jobs responsive)
-         - Duy -> Section 7 and Section 9 (Apply responsive)
-         - An  -> Section 8 and Section 9 (About responsive)
-         - Binh -> Section 1 to 5, Section 9 (Base), Section 10
-      Do NOT edit another member's section without talking on Discord first!
-
-   3. DESIGN TOKENS: Use CSS variables (var(--primary), var(--ink), etc.).
-      Do not invent new hex colors, except where the assessment rubric 
-      specifically demands hex colors (e.g. Section 8 about.html table).
-
-   4. UNITS: Use rem/em for font sizes, margins, and padding so user zooming
-      and accessibility settings work seamlessly.
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. DESIGN TOKENS & PALETTE (Eucalyptus / Sustainable Energy Theme)
+   1. COLOR VARIABLES & THEME
    ========================================================================== */
 :root {
-  /* Core Brand Colors */
-  --bg: #eef4ee;                  /* Soft sage background */
-  --surface: #fbfdfb;             /* Crisp card/section background */
-  --ink: #1b2a23;                 /* Deep gum-leaf text color (WCAG AAA) */
-  --ink-muted: #455a4e;           /* Muted secondary text (WCAG AA) */
-  --primary: #2c5e4f;             /* Forest eucalyptus green */
-  --on-primary: #ffffff;          /* Pure white text on primary */
-  --accent: #e0a526;              /* Golden wattle / solar accent */
-  --line: #c5d4c8;                /* Subtle border tone */
-  --link: #1f5a8a;                /* Accessible deep blue for links */
-  --focus: #9a3412;               /* High-contrast amber-rust outline */
+  --bg: #eef4ee;
+  --ink: #1b2a23;
+  --ink-muted: #455a4e;
+  --primary: #2c5e4f;
+  --accent: #e0a526;
+  --line: #c5d4c8;
+  --link: #1f5a8a;
+  --focus: #9a3412;
 
-  /* Decorative Visual Accents */
-  --sun-glow: rgba(224, 165, 38, 0.30);
-  --grid-line: rgba(44, 94, 79, 0.13);
-
-  /* Typography & Layout Metrics */
-  --font: "Segoe UI", Calibri, "Helvetica Neue", Arial, sans-serif;
-  --font-mono: Consolas, "SF Mono", Monaco, "Courier New", monospace;
-  --radius: 0.375rem;             /* 6px standard corner radius */
-  --radius-lg: 0.75rem;           /* 12px card corner radius */
-  --maxw: 72rem;                  /* 1152px max layout width */
+  --font: Calibri, Arial, sans-serif;
+  --font-mono: Consolas, monospace;
+  --radius: 6px;
+  --radius-lg: 12px;
+  --maxw: 1150px;
 }
 
 
 /* ==========================================================================
-   2. BASE / RESET (Universal Defaults Shared by Every Page)
+   2. BASE STYLES
    ========================================================================== */
-
-/* Predictable Box Sizing */
-*,
-*::before,
-*::after {
+* {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
   font-family: var(--font);
-  font-size: 1.0625rem;           /* ~17px baseline, accessible & readable */
-  line-height: 1.6;               /* Accessible readability standard */
+  font-size: 16px;
+  line-height: 1.5;
   color: var(--ink);
   background-color: var(--bg);
-  -webkit-font-smoothing: antialiased;
 }
 
-/* Headings Base */
-h1, h2, h3, h4 {
-  line-height: 1.25;
-  letter-spacing: -0.01em;
+h1, h2, h3 {
   color: var(--ink);
   margin-top: 0;
 }
 
-h1 { font-size: 2.25rem; margin-bottom: 1rem; }
-h2 { font-size: 1.65rem; margin-bottom: 1rem; }
-h3 { font-size: 1.25rem; margin-bottom: 0.5rem; }
-h4 { font-size: 1.1rem;  margin-bottom: 0.5rem; }
+h1 { font-size: 2em; margin-bottom: 0.5em; }
+h2 { font-size: 1.5em; margin-bottom: 0.5em; }
+h3 { font-size: 1.2em; margin-bottom: 0.5em; }
 
-/* Paragraphs & Lists */
 p {
-  margin: 0 0 1rem;
-  max-width: 68ch;               /* Ideal line length for cognitive ease */
+  margin: 0 0 1em;
 }
 
 ul, ol {
-  margin: 0 0 1.25rem;
-  padding-left: 1.5rem;
+  margin: 0 0 1em;
+  padding-left: 1.5em;
 }
 
 li {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.35em;
 }
 
-/* Accessible Hyperlinks */
 a {
   color: var(--link);
-  text-decoration: underline;
-  text-underline-offset: 0.2em;
-  transition: color 0.15s ease, text-decoration-thickness 0.15s ease;
 }
 
 a:hover {
   color: var(--primary);
-  text-decoration-thickness: 0.15em;
 }
 
-/* Visible Keyboard Focus Ring (WCAG 2.4.7 Requirement) */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible,
-[tabindex]:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 3px;
-}
-
-/* Images & Media */
 img {
   max-width: 100%;
   height: auto;
   display: block;
 }
 
-/* Text Selection Accent */
-::selection {
-  background: var(--accent);
-  color: #12263a;
-}
-
 
 /* ==========================================================================
-   3. LAYOUT HELPERS
+   3. LAYOUT CONTAINER
    ========================================================================== */
-
-/* Centered Layout Wrapper */
 .container {
   width: 90%;
   max-width: var(--maxw);
-  margin-left: auto;
-  margin-right: auto;
+  margin: 0 auto;
 }
 
-/* Standard Page Section Padding */
 .page-section {
-  padding: 3rem 0 1.5rem;
+  padding: 2em 0;
 }
 
-/* Accessible Skip Link (for Screen Readers & Keyboard Nav) */
 .skip-link {
-  position: absolute;
-  left: 1rem;
-  top: -4rem;
-  padding: 0.6rem 1rem;
-  background: var(--primary);
-  color: var(--on-primary);
-  font-weight: 700;
-  border-radius: var(--radius);
-  z-index: 999;
-  text-decoration: none;
-  transition: top 0.2s ease-in-out;
-}
-
-.skip-link:focus {
-  top: 1rem;
-}
-
-/* Visually Hidden Helper (Screen-reader accessible only) */
-.visually-hidden {
-  position: absolute; 
-  width: 1px;
-  height: 1px;
-  margin: -1px;
-  padding: 0;
-  overflow: hidden;
-  clip-path: inset(50%);
-  white-space: nowrap;
-  border: 0;
+  display: none;
 }
 
 
 /* ==========================================================================
-   4. SHARED COMPONENTS
+   4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
-
-/* ---- Site Header & Navigation Bar ------------------------------------- */
 .site-header {
-  background: var(--surface);
+  background-color: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -228,141 +109,84 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 2rem;
-  padding: 0.85rem 0;
+  padding: 0.8em 0;
 }
 
-/* Brand Identity */
 .brand {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5em;
   color: var(--ink);
-  font-size: 1.15rem;
-  font-weight: 700;
+  font-size: 1.15em;
+  font-weight: bold;
   text-decoration: none;
 }
 
-.brand img {
-  width: 2.75rem;
-  height: 2.75rem;
-}
-
-/* Navigation Links */
 .main-nav ul {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
   list-style: none;
 }
 
 .main-nav a {
-  display: block;
-  padding: 0.4rem 0.2rem;
+  display: inline-block;
+  padding: 0.3em 0.2em;
   color: var(--ink);
-  font-weight: 600;
+  font-weight: bold;
   text-decoration: none;
   border-bottom: 3px solid transparent;
-  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
 .main-nav a:hover {
   color: var(--primary);
-  border-bottom-color: var(--ink-muted);
+  border-bottom-color: var(--primary);
 }
 
-/* Active Nav State */
 .main-nav a[aria-current="page"] {
-  font-weight: 800;
   color: var(--primary);
   border-bottom-color: var(--primary);
 }
 
-/* ---- Shared Buttons ---------------------------------------------------- */
+/* Buttons */
 .button {
   display: inline-block;
-  padding: 0.65rem 1.35rem;
-  font: inherit;
-  font-weight: 700;
-  color: var(--on-primary);
-  background: var(--primary);
+  padding: 0.6em 1.2em;
+  font-weight: bold;
+  color: var(--bg);
+  background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
   text-decoration: none;
-  cursor: pointer;
-  text-align: center;
-  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+  margin-right: 0.5em;
 }
 
 .button:hover {
-  color: var(--bg);
-  background: var(--ink);
+  background-color: var(--ink);
   border-color: var(--ink);
+  color: var(--bg);
 }
 
-/* Secondary outline button style */
 .button-secondary {
-  background: transparent;
+  background-color: transparent;
   color: var(--ink);
   border: 2px solid var(--ink-muted);
 }
 
 .button-secondary:hover {
-  background: var(--bg);
-  color: var(--ink);
-  border-color: var(--ink);
-}
-
-/* ---- Shared Form Controls (Base Styles) -------------------------------- */
-label {
-  display: block;
-  margin-bottom: 0.4rem;
-  font-weight: 600;
+  background-color: var(--line);
   color: var(--ink);
 }
 
-input,
-select,
-textarea {
-  font: inherit;
-  color: var(--ink);
-  background: var(--surface);
-  border: 2px solid var(--line);
-  border-radius: var(--radius);
-  padding: 0.65rem 0.85rem;
-  transition: border-color 0.2s ease;
-}
-
-input:focus,
-select:focus,
-textarea:focus {
-  border-color: var(--primary);
-}
-
-input[type="search"],
-input[type="text"],
-input[type="email"],
-input[type="tel"],
-input[type="date"],
-select,
-textarea {
-  width: 100%;
-}
-
-::placeholder {
-  color: var(--ink-muted);
-  opacity: 0.85;
-}
-
-/* ---- Shared Footer ----------------------------------------------------- */
+/* Footer */
 .site-footer {
-  margin-top: 4rem;
-  padding: 2rem 0;
-  background: var(--surface);
+  margin-top: 3em;
+  padding: 1.5em 0;
+  background-color: var(--bg);
   border-top: 1px solid var(--line);
-  font-size: 0.95rem;
+  font-size: 0.95em;
 }
 
 .footer-inner {
@@ -370,13 +194,13 @@ textarea {
   flex-wrap: wrap;
   justify-content: space-between;
   align-items: center;
-  gap: 1.25rem 2rem;
+  gap: 1em;
 }
 
 .footer-links {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.75rem 1.75rem;
+  gap: 1.5em;
   margin: 0;
   padding: 0;
   list-style: none;
@@ -388,293 +212,284 @@ textarea {
 }
 
 .footer-links a:hover {
-  color: var(--primary);
   text-decoration: underline;
-}
-
-.footer-links a[href^="mailto:"] {
-  font-weight: 600;
 }
 
 .site-footer p {
   margin: 0;
   color: var(--ink-muted);
-  font-size: 0.9rem;
 }
 
 
 /* ==========================================================================
-   5. PAGE: index.html (Owner: Binh - .page-home)
+   5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
-/* Hero. BACKGROUND GRAPHIC IN CSS (brief requirement):
-   layers from top to bottom = fade to page colour, solar-cell grid (two
-   gradients), sun glow in the top-right corner. No image file needed. */
+/* hero banner */
 .page-home .hero {
-  padding: 3rem 0 4rem;
-  background-image:
-    linear-gradient(to bottom, rgba(0, 0, 0, 0) 55%, var(--bg) 100%),
-    linear-gradient(var(--grid-line) 1px, transparent 1px),
-    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
-    radial-gradient(circle at 92% 0%, var(--sun-glow) 0%, rgba(0, 0, 0, 0) 40%);
-  background-size: 100% 100%, 2.5rem 2.5rem, 2.5rem 2.5rem, 100% 100%;
+  padding: 2.5em 0;
+  background-color: #d7e8dc;
+  border-bottom: 2px solid var(--line);
 }
 
-/* Two columns: words left, picture right */
+/* two columns using flexbox */
 .page-home .hero-inner {
-  display: grid;
-  grid-template-columns: 1.1fr 0.9fr;
-  gap: 2rem 3rem;
-  align-items: center;
-}
-
-.page-home .hero h1 {
-  font-size: 3.25rem;
-  line-height: 1.08;
-  letter-spacing: -0.025em;
-  max-width: 14ch;
-}
-
-.page-home .hero .lead {
-  font-size: 1.2rem;
-  color: var(--ink);
-}
-
-.page-home .hero-image {
-  width: 100%;
-  border-radius: 0.9rem;
-  border: 1px solid var(--line);
-}
-
-/* Search form: label above, field + button on one row */
-.page-home .search-form {
-  margin-top: 1.75rem;
-}
-
-.page-home .search-row {
   display: flex;
-  gap: 0.5rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
 }
 
-.page-home .search-row input {
+.page-home .hero-copy {
   flex: 1;
 }
 
-/* Sections under the hero */
-.page-home .page-section {
-  padding: 3rem 0 1rem;
+.page-home .hero-media {
+  flex: 1;
 }
 
-.page-home .section-intro {
+.page-home .hero .lead {
+  font-size: 1.1em;
   color: var(--ink-muted);
-  font-size: 1.05rem;
-  margin-top: -0.25rem;
-  margin-bottom: 1.75rem;
-  max-width: 48ch;
 }
 
-/* --- Impact Metrics Bar --- */
-.page-home .impact-bar {
-  background: var(--surface);
-  border-top: 1px solid var(--line);
-  border-bottom: 1px solid var(--line);
-  padding: 2.25rem 0;
+.page-home .hero-image {
+  border-radius: 12px;
+  border: 2px solid var(--line);
 }
 
-.page-home .impact-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 1.5rem;
+/* white box section */
+.page-home .section {
+  margin-top: 2em;
+  padding: 1.5em;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+}
+
+/* stats row using flexbox */
+.page-home .stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.page-home .stat-box {
+  flex: 1;
+  min-width: 150px;
+  padding: 1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
   text-align: center;
 }
 
-.page-home .impact-card {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 0.5rem 0.75rem;
-}
-
-.page-home .impact-number {
-  font-size: 2.25rem;
-  font-weight: 800;
+.page-home .stat-number {
+  font-size: 1.6em;
+  font-weight: bold;
   color: var(--primary);
-  line-height: 1.1;
-  letter-spacing: -0.02em;
+  margin-bottom: 0.2em;
 }
 
-.page-home .impact-label {
-  margin-top: 0.4rem;
-  font-size: 0.95rem;
-  font-weight: 600;
+.page-home .stat-label {
+  margin-bottom: 0;
   color: var(--ink-muted);
 }
 
-/* --- Table: "projects at a glance" with merged cells --- */
-.page-home .table-wrap {
-  overflow-x: auto;
-}
-
+/* projects table */
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  background: var(--surface);
+  margin-top: 1em;
 }
 
 .page-home .data-table caption {
-  padding: 0 0 0.75rem;
   text-align: left;
-  font-weight: 700;
-  color: var(--ink-muted);
+  font-weight: bold;
+  padding-bottom: 0.5em;
 }
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.7rem 1rem;
+  padding: 0.6em;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .page-home .data-table thead th {
-  background: var(--primary);
-  color: var(--on-primary);
+  background-color: var(--primary);
+  color: var(--bg);
 }
 
-/* Merged first column (State) */
-.page-home .data-table tbody th {
-  background: var(--bg);
-  vertical-align: top;
-}
-
-/* Numbers line up on the right */
-.page-home .data-table td:last-child,
-.page-home .data-table thead th:last-child,
-.page-home .data-table tfoot td {
-  text-align: right;
-  font-variant-numeric: tabular-nums;
-}
-
-.page-home .data-table tbody tr:hover td {
-  background: var(--bg);
-}
-
+.page-home .data-table tbody th,
 .page-home .data-table tfoot th,
 .page-home .data-table tfoot td {
-  font-weight: 800;
-  border-top: 3px solid var(--ink);
+  background-color: var(--bg);
+  font-weight: bold;
 }
 
-/* --- Culture & Value Cards --- */
-.page-home .values-grid {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1.5rem;
+
+/* ==========================================================================
+   6. PAGE: jobs.html (Owner: Bach Gia Huy - Scope: .page-jobs)
+   ========================================================================== */
+.page-jobs .jobs-header {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
 }
 
-.page-home .value-card {
-  background: var(--surface);
+.page-jobs .jobs-intro {
+  color: var(--ink-muted);
+  font-size: 1.15rem;
+  max-width: 42rem;
+  margin-bottom: 0;
+}
+
+.page-jobs .jobs-layout {
+  padding-bottom: 2rem;
+}
+
+/* Mandatory Clearfix for 25% Floated Aside */
+.page-jobs .jobs-layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.page-jobs .jobs-main {
+  width: 71%;
+  float: left;
+}
+
+/* Floated Sidebar Aside (25% Width Float Right) */
+.page-jobs aside.jobs-sidebar {
+  width: 25%;
+  float: right;
+  margin: 0 0 2rem 4%;
+  padding: 1.5rem;
+  background-color: var(--bg);
+  border: 2px solid var(--primary);
+  border-top: 6px solid var(--accent);
+  border-radius: var(--radius-lg);
+}
+
+.page-jobs aside.jobs-sidebar h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.page-jobs aside.jobs-sidebar h3 {
+  font-size: 1.05rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.page-jobs aside.jobs-sidebar p {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+/* Job Description Cards */
+.page-jobs .job-card {
+  background-color: var(--bg);
   border: 1px solid var(--line);
   border-left: 5px solid var(--primary);
-  border-radius: 0.5rem;
-  padding: 1.5rem 1.5rem 1.25rem;
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
 }
 
-.page-home .value-card:nth-child(even) {
+.page-jobs .job-card:nth-of-type(even) {
   border-left-color: var(--accent);
 }
 
-.page-home .value-card h3 {
-  margin-top: 0;
-  margin-bottom: 0.6rem;
-  font-size: 1.25rem;
-  color: var(--ink);
-}
-
-.page-home .value-card p {
-  margin-bottom: 0;
-  color: var(--ink-muted);
-  line-height: 1.55;
-}
-
-.page-home .cta-row {
-  margin-top: 2rem;
-}
-
-/* --- Interactive HTML5 FAQ Accordion (<details> & <summary>) --- */
-.page-home .faq-list {
+.page-jobs .job-card-header {
   display: flex;
-  flex-direction: column;
-  gap: 0.85rem;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
 }
 
-.page-home details.faq-item {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 0.5rem;
-  overflow: hidden;
-  transition: border-color 0.2s ease;
-}
-
-.page-home details.faq-item[open] {
-  border-color: var(--primary);
-}
-
-.page-home details.faq-item summary {
-  padding: 1.1rem 1.25rem;
-  font-weight: 700;
-  font-size: 1.05rem;
+.page-jobs .job-card h2 {
+  font-size: 1.6rem;
   color: var(--ink);
-  cursor: pointer;
-  user-select: none;
-  list-style: none; /* Hide default triangle */
-  position: relative;
-  padding-right: 2.75rem;
-}
-
-.page-home details.faq-item summary::-webkit-details-marker {
-  display: none;
-}
-
-.page-home details.faq-item summary::after {
-  content: "+";
-  position: absolute;
-  right: 1.25rem;
-  top: 50%;
-  transform: translateY(-50%);
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: var(--primary);
-  line-height: 1;
-}
-
-.page-home details.faq-item[open] summary::after {
-  content: "−";
-  color: var(--accent);
-}
-
-.page-home details.faq-item summary:hover {
-  background-color: rgba(44, 94, 79, 0.05);
-}
-
-.page-home details.faq-item summary:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: -3px;
-}
-
-.page-home .faq-answer {
-  padding: 0.75rem 1.25rem 1.25rem;
-  border-top: 1px solid var(--line);
-  color: var(--ink-muted);
-  line-height: 1.6;
-}
-
-.page-home .faq-answer p {
   margin: 0;
 }
 
-/* --- Acknowledgement of Country Card --- */
-.page-home .country-ack {
-  background: var(--bg);
+.page-jobs .job-ref {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background-color: var(--bg);
+  border: 1px solid var(--primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius);
+}
+
+.page-jobs .job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.page-jobs .job-meta strong {
+  color: var(--ink);
+}
+
+.page-jobs .job-card h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-jobs .job-card ul,
+.page-jobs .job-card ol,
+.page-jobs aside.jobs-sidebar ul,
+.page-jobs aside.jobs-sidebar ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.page-jobs .job-card ul li::marker {
+  color: var(--primary);
+}
+
+.page-jobs .job-card ol li::marker,
+.page-jobs aside.jobs-sidebar ol li::marker {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.page-jobs .job-actions {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Acknowledgement of Country Card */
+.page-jobs .country-ack {
+  clear: both;
+  background-color: var(--bg);
   border: 1px dashed var(--line);
   border-left: 4px solid var(--accent);
   border-radius: 0.5rem;
@@ -682,14 +497,14 @@ textarea {
   margin-bottom: 2rem;
 }
 
-.page-home .country-heading {
+.page-jobs .country-heading {
   margin-top: 0;
   margin-bottom: 0.6rem;
   font-size: 1.15rem;
   color: var(--ink);
 }
 
-.page-home .country-ack p {
+.page-jobs .country-ack p {
   margin: 0;
   font-size: 0.95rem;
   line-height: 1.6;
@@ -698,103 +513,133 @@ textarea {
 
 
 /* ==========================================================================
-   6. PAGE: jobs.html (Owner: Huy - Scope: .page-jobs)
-   ==========================================================================
-   RUBRIC KEY REQUIREMENTS FOR HUY:
-   1. Scoping Rule:
-      - Always prefix every selector with .page-jobs:
-        .page-jobs .job-card { ... }
-        .page-jobs aside.jobs-sidebar { ... }
-      - NEVER style bare tags (h2, section, aside, ul, ol) globally!
-   2. Floated Aside (Mandatory Assessment Criterion):
-      - Include at least one <aside> floated right at 25% width.
-      - Style with visible border, padding, and margin.
-      - Wrap content in a container with clearfix so footer does not overlap.
-   3. Job Postings & Structure:
-      - Style at least 2 job descriptions (multiple <section> elements).
-      - Style 5-character alphanumeric reference badges (.job-ref).
-      - Ensure at least 2 heading levels (h2, h3).
-      - Style 1 ordered list (<ol>) and 1 unordered list (<ul>).
-   4. Cultural Element:
-      - Style Aboriginal & Torres Strait Islander acknowledgement statement.
-   5. Design Tokens:
-      - Use variables from Section 1 (var(--primary), var(--surface), var(--accent)).
+   7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
+   ========================================================================== */
+.page-apply .page-intro{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.page-apply h2{
+  text-align: center;
+}
+.page-apply .apply_form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid gray;
+  border-radius: 10px;  
+}
+.page-apply .information {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: white;
+}
 
-   Write your CSS rules for jobs.html below:
-   -------------------------------------------------------------------------- */
+.page-apply .information legend {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+.page-apply .apply_form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
 
+.page-apply .apply-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
 
+.page-apply .apply_form input[type="text"],
+.page-apply .apply_form input[type="email"],
+.page-apply .apply_form input[type="tel"],
+.page-apply .apply_form input[type="date"],
+.page-apply .apply_form select,
+.page-apply .apply_form textarea {
+  width: 600px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.page-apply .gender_form,
+.page-apply .skills_form {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-apply .radio-group,
+.page-apply .skills_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.page-apply .checkbox-item,
+.page-apply .radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.page-apply .form-actions input[type="submit"],
+.page-apply .form-actions input[type="reset"] {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 
 
 /* ==========================================================================
-   7. PAGE: apply.html (Owner: Duy - Scope: .page-apply)
-   ==========================================================================
-   RUBRIC KEY REQUIREMENTS FOR DUY:
-   1. Scoping Rule:
-      - Always prefix every selector with .page-apply:
-        .page-apply .apply-card { ... }
-        .page-apply .form-grid { ... }
-      - NEVER style bare tags (form, fieldset, label, input, select) globally!
-   2. Form Layout (Mandatory Assessment Criterion):
-      - MUST structure the form layout using CSS Grid or Flexbox.
-      - Create multi-column rows for matching fields (e.g. First/Last Name).
-   3. Form Elements & Validation:
-      - Style <fieldset> and <legend> for gender radio buttons.
-      - Style radio and checkbox groups with neat Flexbox alignment.
-      - Style labels, text inputs, date, dropdown select, and other skills textarea.
-      - Style Submit and Reset buttons (.button, .button-secondary).
-      - Clearly mark required fields (e.g. .required-mark).
-   4. Design Tokens:
-      - Use variables from Section 1 (var(--primary), var(--surface), var(--line)).
-
-   Write your CSS rules for apply.html below:
-   -------------------------------------------------------------------------- */
-
-
-
-
-/* ==========================================================================
-   8. PAGE: about.html (Owner: An - Scope: .page-about)
-   ==========================================================================
-   RUBRIC KEY REQUIREMENTS FOR AN:
-   1. Scoping Rule:
-      - Always prefix every selector with .page-about:
-        .page-about .facts-table { ... }
-        .page-about .student-id { ... }
-      - NEVER style bare tags (table, figure, dl, dt, dd) globally!
-   2. Student ID Badges (Mandatory Assessment Criterion):
-      - Style student IDs with distinctive typography (e.g., monospace font, background badge).
-   3. Group Photo Figure (Mandatory Assessment Criterion):
-      - Photo must be enclosed in <figure> with <figcaption>.
-      - <figure> MUST have a visible border, margin, and padding.
-   4. Lists & Quotes:
-      - Style nested list for group info and class day/time.
-      - Style definition list (<dl>, <dt>, <dd>) for contributions & member quotes.
-      - Style bilingual quotes (Vietnamese lang="vi" + English translation).
-   5. Fun Facts Table (Mandatory Assessment Criterion):
-      - Must include <caption>.
-      - MUST use explicit HEX colours (#2c5e4f, #fbfdfb, #c5d4c8, #eef4ee).
-      - MUST include interactive hover effect (e.g., tbody tr:hover).
-
-   Write your CSS rules for about.html below:
-   -------------------------------------------------------------------------- */
-
+   8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
+   ========================================================================== */
 .page-about .section {
   display: flex;
   flex-direction: column;
-
   width: 90%;
   max-width: var(--maxw);
-  margin-left: auto;
-  margin-right: auto;
-  margin-top: 3rem;
-  margin-bottom: auto;
-  padding: 2rem 2rem 2rem 2rem;
-  background-color: var(--surface);
+  margin: 3rem auto auto;
+  padding: 2rem;
+  background-color: var(--bg);
   border-radius: 1rem;
   border: 2px solid var(--line);
 }
 
+.page-about .section-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-evenly;
+  width: 90%;
+  max-width: var(--maxw);
+  margin: 1rem auto auto;
+  padding: 2rem;
+  background-color: var(--bg);
+  border-radius: 1rem;
+}
+
+.page-about .SubTitle {
+  color: var(--ink-muted);
+}
+
+.page-about #group-name {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: var(--ink-muted);
+}
 
 .page-about .member-section dt {
   margin: 1rem;
@@ -803,70 +648,63 @@ textarea {
 .page-about .StudentID {
   width: auto;
   text-align: center;
-  margin-top: 0.5rem;
-  margin-bottom: 0.5rem;
-  margin-left: 1.3rem;
-  margin-right: 1.3rem;
-
-  border: 2px solid var(--ink-muted);
+  margin: 0.5rem 1.3rem;
+  border: 2px solid var(--line);
   padding: 0.3rem;
   border-radius: 0.3em;
-
-  background-color: var(--line);
-
-  
+  background-color: var(--bg);
 }
 
 .page-about .StudentName {
-
   font-size: 1.1rem;
   font-weight: bold;
   color: var(--link);
-
 }
 
-
 .page-about .quote {
-  
-
-  margin-top: 1.5rem;
-  margin-bottom: 1.5rem;
-
+  margin: 1.5rem 0;
   width: 95%;
-
   padding-left: 0.7rem;
-  padding-right: 2rem;
-
   border-left: 3px solid var(--accent);
-
   font-size: 1.3rem;
-
 }
 
 .page-about hr {
-
-  margin-top: 1.5rem;
-  margin-bottom: 3rem;
-  color: var(--line);
-
+  margin: 1.5rem 0 3rem;
+  border: none;
+  border-top: 1px solid var(--line);
 }
 
+.page-about div.GroupName {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+  border-left-color: var(--link);
+  border-left-width: var(--radius);
+  padding: 1rem;
+}
+
+.page-about div.ClassDayTime {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+  border-left-color: var(--focus);
+  border-left-width: var(--radius);
+  padding: 1rem;
+}
+
+.page-about .member-info p {
+  display: inline;
+}
 
 .page-about .contributions {
-
   margin: auto;
   width: 95%;
-  
-  padding-left: 3rem;
-  padding-right: 3rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-
+  padding: 1rem 3rem;
   background-color: var(--bg);
   border-radius: 1rem;
-
+  border: 1px solid var(--line);
 }
-
 
 .page-about figure.GroupPhoto {
   display: flex;
@@ -874,222 +712,67 @@ textarea {
   align-items: center;
   text-align: center;
   width: fit-content;
-  align-self: center;
-
-  margin-top: 3rem;
-  margin-bottom: 3rem;
-  margin-left: auto;
-  margin-right: auto;
-
-  border: .1em solid var(--primary);
-  border-radius: 1.5em;
-
-  padding-left: 3%;
-  padding-right: 3%;
-  padding-top: 0.5%;
-  padding-bottom: 3%;
-
-  background-color: var(--on-primary);
+  margin: 3rem auto;
+  border: 2px solid var(--primary);
+  border-radius: 1.5rem;
+  padding: 1rem 3rem 2rem;
+  background-color: var(--bg);
 }
 
 .page-about figure.GroupPhoto figcaption {
   font-weight: bold;
   font-size: 1.3rem;
   color: var(--link);
-
   margin-bottom: 0.5rem;
 }
 
 .page-about figure.GroupPhoto img {
-
   border-radius: 1rem;
 }
-
 
 .page-about .FunFact {
   display: flex;
   flex-direction: column;
-
   align-items: center;
 }
 
 .page-about .FunFactTable {
-
-  border: 3px solid #ea9d9d;
-  border-radius: 1rem;
-  background-color: #f9ddc8;
-
-  width: 50%;
+  border: 2px solid #735f5f;
+  background-color: #e7e7e7;
+  width: 60%;
   text-align: center;
-
+  border-collapse: collapse;
 }
 
 .page-about .FunFactTable caption {
-
   font-size: 1.5rem;
-  font-weight: 1.3rem;
-
-  color: #222327;
-
+  font-weight: bold;
+  color: #355066;
+  margin-bottom: 0.75rem;
 }
 
+.page-about .FunFactTable th,
 .page-about .FunFactTable td {
-
-  border-radius: 0.8rem;
-
+  padding: 0.75rem;
+  border: 1px solid #aeada6;
 }
 
-.page-about .FunFactTable td:hover {
-
-  background-color: #97c0e2;
-
+.page-about .FunFactTable thead {
+  background-color: #464967;
+  color: #eaeae6;
 }
 
+.page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
+  background-color: #e0a526;
+}
 
 
 /* ==========================================================================
-   9. RESPONSIVE RULES (Media Queries)
+   9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-
-/* ---- Tablet & Medium Screens (<= 56rem / 896px) ----------------------- */
-@media (max-width: 56rem) {
-  /* Section 5: index.html (Binh) */
+@media (max-width: 768px) {
   .page-home .hero-inner {
-    grid-template-columns: 1fr;
-  }
-
-  .page-home .hero h1 {
-    font-size: 2.6rem;
-  }
-
-  .page-home .reasons {
-    grid-template-columns: 1fr;
-  }
-
-  /* Section 6: jobs.html (Huy: unfloat <aside> and make it 100% width on tablet) */
-  
-
-  /* Section 7: apply.html (Duy: stack multi-column form grid to 1 column) */
-@media screen and (max-width: 768px) {
-  .page-apply .information {
-    grid-template-columns: 1fr; /* Stack toàn bộ các trường thành 1 cột duy nhất */
-    gap: 1rem;
-    padding: 1rem;
-  }
-  
-  .page-apply .radio-group,
-  .page-apply .skills_form {
     flex-direction: column;
-    align-items: flex-start;
-    gap: 0.75rem;
-  }
-
-  .page-apply .form-actions {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  .page-apply .form-actions input[type="submit"],
-  .page-apply .form-actions input[type="reset"] {
-    width: 100%;
-  }
-}
-
-  /* Section 8: about.html (An: responsive adjustments for table/figure) */
-  
-}
-
-/* ---- Mobile Screens (<= 36rem / 576px) -------------------------------- */
-@media (max-width: 36rem) {
-  body {
-    font-size: 1rem;
-  }
-
-  .header-inner {
-    padding: 0.6rem 0;
-  }
-
-  .main-nav ul {
-    gap: 0.25rem 1rem;
-  }
-
-  /* Section 5: index.html (Binh) */
-  .page-home .hero {
-    padding: 2rem 0 3rem;
-  }
-
-  .page-home .hero h1 {
-    font-size: 2.1rem;
-  }
-
-  .page-home .search-row {
-    flex-direction: column;
-  }
-
-  .page-home .data-table {
-    font-size: 0.9rem;
-  }
-
-  .page-home .data-table th,
-  .page-home .data-table td {
-    padding: 0.5rem 0.5rem;
-  }
-}
-  /* Section 6: jobs.html (Huy: mobile layout adjustments) */
-  
-
-  /* Section 7: apply.html (Duy: mobile button and field adjustments) */
-@media screen and (max-width: 600px) {
-  .page-apply .apply-form input[type="text"],
-  .page-apply .apply-form input[type="email"],
-  .page-apply .apply-form input[type="tel"],
-  .page-apply .apply-form input[type="date"],
-  .page-apply .apply-form select,
-  .page-apply .apply-form textarea {
-    font-size: 16px;
-    padding: 0.8rem;
-    border-radius: 6px;
-  }
-}
-  /* Section 8: about.html (An: mobile table scroll/compact adjustments) */
-  
-
-
-
-/* ==========================================================================
-   10. USER PREFERENCES (Accessibility & Print Styles)
-   ========================================================================== */
-
-/* Motion Reduction Preference (WCAG 2.3.3) */
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
-  }
-}
-
-/* Print Stylesheet (Clean layout for printing resumes or pages) */
-@media print {
-  body {
-    background: #ffffff;
-    color: #000000;
-    font-size: 11pt;
-  }
-
-  .site-header,
-  .site-footer,
-  .skip-link,
-  .search-form,
-  .form-actions {
-    display: none !important;
-  }
-
-  .page-home .hero {
-    background-image: none !important;
-    padding: 1rem 0;
+    text-align: center;
   }
 }
