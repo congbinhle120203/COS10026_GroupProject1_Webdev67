@@ -9,7 +9,6 @@
    ========================================================================== */
 :root {
   --bg: #eef4ee;
-  --surface: #fbfdfb;
   --ink: #1b2a23;
   --ink-muted: #455a4e;
   --primary: #2c5e4f;
@@ -102,7 +101,7 @@ img {
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
 .site-header {
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -186,7 +185,7 @@ img {
 .site-footer {
   margin-top: 3em;
   padding: 1.5em 0;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-top: 1px solid var(--line);
   font-size: 0.95em;
 }
@@ -264,7 +263,7 @@ img {
 .page-home .section {
   margin-top: 2em;
   padding: 1.5em;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border: 2px solid var(--line);
   border-radius: 12px;
 }
@@ -370,7 +369,7 @@ img {
   float: right;
   margin: 0 0 2rem 4%;
   padding: 1.5rem;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border: 2px solid var(--primary);
   border-top: 6px solid var(--accent);
   border-radius: var(--radius-lg);
@@ -397,7 +396,7 @@ img {
 
 /* Job Description Cards */
 .page-jobs .job-card {
-  background-color: var(--surface);
+  background-color: var(--bg);
   border: 1px solid var(--line);
   border-left: 5px solid var(--primary);
   border-radius: var(--radius-lg);
@@ -615,7 +614,7 @@ img {
   max-width: var(--maxw);
   margin: 3rem auto auto;
   padding: 2rem;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-radius: 1rem;
   border: 2px solid var(--line);
 }
@@ -628,7 +627,7 @@ img {
   max-width: var(--maxw);
   margin: 1rem auto auto;
   padding: 2rem;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-radius: 1rem;
 }
 
@@ -718,7 +717,7 @@ img {
   border: 2px solid var(--primary);
   border-radius: 1.5rem;
   padding: 1rem 3rem 2rem;
-  background-color: var(--surface);
+  background-color: var(--bg);
 }
 
 .page-about figure.GroupPhoto figcaption {
