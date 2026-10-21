@@ -329,100 +329,105 @@ textarea {
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
-/* Hero Banner */
+/* hero banner with gradient background */
 .page-home .hero {
-  padding: 2.5rem 0;
+  padding: 2.5em 0;
   background-image: linear-gradient(to right, #eef4ee, #d7e8dc);
   border-bottom: 2px solid var(--line);
 }
 
+/* split hero into two columns using flexbox */
 .page-home .hero-inner {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2rem;
+  gap: 2em;
 }
 
+/* left column text */
 .page-home .hero-copy {
   flex: 1;
 }
 
+/* right column image */
 .page-home .hero-media {
   flex: 1;
 }
 
 .page-home .hero h1 {
-  font-size: 2.25rem;
-  margin-bottom: 0.75rem;
+  font-size: 2.25em;
+  margin-bottom: 0.5em;
   color: var(--ink);
 }
 
 .page-home .hero .lead {
-  font-size: 1.1rem;
+  font-size: 1.1em;
   color: var(--ink-muted);
   line-height: 1.6;
 }
 
+/* outline and border radius for hero preview image */
 .page-home .hero-image {
-  border-radius: var(--radius-lg);
+  border-radius: 12px;
   border: 2px solid var(--line);
 }
 
-/* Search Form inside Hero */
+/* search form inside hero */
 .page-home .search-form {
-  margin-top: 1.5rem;
+  margin-top: 1.5em;
 }
 
 .page-home .search-row {
   display: flex;
-  gap: 0.5rem;
+  gap: 0.5em;
 }
 
-/* Content Box Section */
+/* content section box with border and background */
 .page-home .section {
-  margin-top: 2.5rem;
-  padding: 2rem;
+  margin-top: 2.5em;
+  padding: 2em;
   background-color: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 1rem;
+  border-radius: 14px;
 }
 
-/* Key Stats Row */
+/* key stats row with flexbox */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.25rem;
+  gap: 1em;
+  margin-top: 1.25em;
 }
 
+/* individual stat card */
 .page-home .stat-box {
   flex: 1;
-  min-width: 10rem;
-  padding: 1.25rem 1rem;
+  min-width: 10em;
+  padding: 1.25em 1em;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  border-radius: var(--radius);
+  border-radius: 6px;
   text-align: center;
 }
 
 .page-home .stat-number {
-  font-size: 1.8rem;
+  font-size: 1.8em;
   font-weight: bold;
   color: var(--primary);
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.25em;
 }
 
 .page-home .stat-label {
-  font-size: 0.95rem;
+  font-size: 0.95em;
   color: var(--ink-muted);
   margin-bottom: 0;
 }
 
-/* Projects Table */
+/* data table styling */
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1.25rem;
+  margin-top: 1.25em;
   background-color: var(--surface);
 }
 
@@ -430,12 +435,12 @@ textarea {
   text-align: left;
   font-weight: bold;
   color: var(--ink-muted);
-  padding-bottom: 0.5rem;
+  padding-bottom: 0.5em;
 }
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.75rem 1rem;
+  padding: 0.75em 1em;
   border: 1px solid var(--line);
   text-align: left;
 }
@@ -450,6 +455,7 @@ textarea {
   vertical-align: top;
 }
 
+/* highlight table row on hover */
 .page-home .data-table tbody tr:hover td {
   background-color: var(--bg);
 }
@@ -461,22 +467,23 @@ textarea {
   border-top: 2px solid var(--ink);
 }
 
-/* Benefits Card List */
+/* benefits list layout */
 .page-home .benefits-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.25rem;
-  margin-top: 1.25rem;
-  margin-bottom: 1.5rem;
+  gap: 1.25em;
+  margin-top: 1.25em;
+  margin-bottom: 1.5em;
 }
 
+/* individual benefit card */
 .page-home .benefit-item {
   flex: 1;
-  min-width: 15rem;
-  padding: 1.25rem;
+  min-width: 15em;
+  padding: 1.25em;
   background-color: var(--bg);
   border-left: 4px solid var(--primary);
-  border-radius: var(--radius);
+  border-radius: 6px;
 }
 
 .page-home .benefit-item h3 {
@@ -488,12 +495,12 @@ textarea {
   color: var(--ink-muted);
 }
 
-/* Call to Action Buttons */
+/* call to action buttons row */
 .page-home .cta-box {
   display: flex;
   flex-wrap: wrap;
-  gap: 1rem;
-  margin-top: 1.5rem;
+  gap: 1em;
+  margin-top: 1.5em;
   margin-bottom: 0;
 }
 

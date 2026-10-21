@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Home | Solstice Community Energy Careers</title>
   <meta name="description" content="Careers at Solstice Community Energy, an Australian community-owned renewable energy provider.">
-  <meta name="keywords" content="Renewable Energy, Solar, Battery, Careers, IT, Web Developer, Australia">
-  <meta name="author" content="Le Cong Binh - 106419738">
+  <meta name="keywords" content="HTML, CSS, Renewable Energy, Careers, Solstice, Webdev67">
+  <meta name="author" content="Le Cong Binh">
 
   <!-- External Stylesheet -->
   <link rel="stylesheet" href="styles.css">
@@ -15,27 +15,27 @@
   <!-- Embedded CSS (Assessment Requirement) -->
   <style>
     #search-jobs {
-      max-width: 30rem;
+      max-width: 30em;
     }
   </style>
 </head>
 
 <body class="page-home">
 
-  <!-- Skip Link for Accessibility -->
+  <!-- Skip link for accessibility -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
-  <!-- Site Header & Navigation Bar -->
+  <!-- Header and navigation bar -->
   <header class="site-header">
     <div class="container header-inner">
 
-      <!-- Brand Logo & Name -->
+      <!-- Brand logo and company name -->
       <a class="brand" href="index.html">
         <img src="images/logo.svg" width="44" height="44" alt="Solstice Community Energy Logo">
         <span>Solstice Community Energy</span>
       </a>
 
-      <!-- Main Navigation -->
+      <!-- Main navigation menu -->
       <nav class="main-nav" aria-label="Main Navigation">
         <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
@@ -48,21 +48,20 @@
     </div>
   </header>
 
-  <!-- Main Content -->
+  <!-- Main content wrapper -->
   <main id="main">
 
-    <!-- 1. Hero Banner Section -->
+    <!-- 1. Hero banner section -->
     <section class="hero">
       <div class="container hero-inner">
 
-        <!-- Copy & Search Form -->
         <div class="hero-copy">
           <h1>Clean energy careers in Australia.</h1>
           <p class="lead">
             Solstice Community Energy builds solar farms and battery storage facilities across regional communities. We are hiring web and IT talent to manage clean power systems.
           </p>
 
-          <!-- Job Search Form -->
+          <!-- Search form with explicit label -->
           <form id="search-jobs" class="search-form" action="jobs.html" method="get">
             <label for="job-search">Search open roles:</label>
             <div class="search-row">
@@ -72,7 +71,6 @@
           </form>
         </div>
 
-        <!-- Hero Graphic -->
         <div class="hero-media">
           <img class="hero-image" src="images/hero.svg" width="560" height="450" alt="Illustration of solar panels and clean energy storage">
         </div>
@@ -80,10 +78,9 @@
       </div>
     </section>
 
-    <!-- Page Body Container -->
     <div class="container">
 
-      <!-- 2. Company Overview & Stats Section -->
+      <!-- 2. Company overview & stats section -->
       <section class="section">
         <!-- Inline CSS (Assessment Requirement) -->
         <h2 style="color: #2c5e4f;">About Our Mission</h2>
@@ -91,7 +88,7 @@
           Founded in Victoria, Solstice Community Energy partners with regional councils to provide affordable solar power. Our digital team builds simple web portals so residents can track daily energy generation and savings.
         </p>
 
-        <!-- Stats Row -->
+        <!-- Stats boxes row -->
         <div class="stats-row">
           <div class="stat-box">
             <p class="stat-number">100%</p>
@@ -112,7 +109,7 @@
         </div>
       </section>
 
-      <!-- 3. Projects Table Section -->
+      <!-- 3. Projects table section (with scope, rowspan and colspan) -->
       <section class="section">
         <h2>Active Community Facilities</h2>
         <p>The table below outlines our active renewable energy facilities across Australia.</p>
@@ -121,15 +118,15 @@
           <caption>Table 1: Active Energy Facilities Summary (Coursework Data)</caption>
           <thead>
             <tr>
-              <th>State</th>
-              <th>Facility Name</th>
-              <th>Technology Type</th>
-              <th>Capacity</th>
+              <th scope="col">State</th>
+              <th scope="col">Facility Name</th>
+              <th scope="col">Technology Type</th>
+              <th scope="col">Capacity</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <th rowspan="2">Victoria</th>
+              <th scope="row" rowspan="2">Victoria</th>
               <td>Riverside Solar Farm</td>
               <td>Solar PV</td>
               <td>24 MW</td>
@@ -140,7 +137,7 @@
               <td>8 MW</td>
             </tr>
             <tr>
-              <th rowspan="2">New South Wales</th>
+              <th scope="row" rowspan="2">New South Wales</th>
               <td>Valley Rooftop Program</td>
               <td>Rooftop Solar</td>
               <td>12 MW</td>
@@ -153,14 +150,14 @@
           </tbody>
           <tfoot>
             <tr>
-              <th colspan="3">Total Generation Capacity</th>
+              <th scope="row" colspan="3">Total Generation Capacity</th>
               <td>50 MW</td>
             </tr>
           </tfoot>
         </table>
       </section>
 
-      <!-- 4. Why Join Us Section -->
+      <!-- 4. Why join us section -->
       <section class="section">
         <h2>Why Join Our Team</h2>
         <p>We offer a supportive working environment for junior developers and IT graduates:</p>
@@ -182,6 +179,7 @@
           </div>
         </div>
 
+        <!-- Action buttons -->
         <p class="cta-box">
           <a class="button" href="jobs.html">View Open Positions</a>
           <a class="button button-secondary" href="apply.html">Apply Now</a>
@@ -192,15 +190,15 @@
 
   </main>
 
-  <!-- Site Footer -->
+  <!-- Footer with email link -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
         <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project Board (Jira)</a></li>
         <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source Code (GitHub)</a></li>
-        <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
+        <li><a href="mailto:106419738@student.swin.edu.au">106419738@student.swin.edu.au</a></li>
       </ul>
-      <p>&copy; 2026 Solstice Community Energy. Fictional company created for university coursework (COS10026, Group G03).</p>
+      <p>&copy; 2026 Solstice Community Energy. Fictional company created for a university project (COS10026, Group G03).</p>
     </div>
   </footer>
 
