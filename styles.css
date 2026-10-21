@@ -522,6 +522,7 @@ img {
 }
 .page-apply h2{
   text-align: center;
+  font-size: 1.5rem;
 }
 .page-apply .apply_form {
   max-width: 700px;
@@ -550,9 +551,9 @@ img {
   margin-bottom: 1.2rem;
 }
 
-.page-apply .apply-form label {
+.page-apply .apply_form label {
   font-weight: 600;
-  font-size: 0.95rem;
+  font-size: 1.25rem;
 }
 
 .page-apply .apply_form input[type="text"],
@@ -576,28 +577,26 @@ img {
 }
 
 .page-apply .radio-group,
-.page-apply .skills_form {
+.page-apply .skills_form, .gender_form {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
 }
 
-.page-apply .checkbox-item,
-.page-apply .radio-group label {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.4rem;
+.page-apply .skills_form label,
+.page-apply .gender_form label{
   font-weight: normal;
-  cursor: pointer;
+  font-size: 1rem;
+  
 }
 
-.page-apply .form-actions input[type="submit"],
-.page-apply .form-actions input[type="reset"] {
+.page-apply input[type="submit"],
+.page-apply input[type="reset"] {
   padding: 0.75rem 1.5rem;
   font-size: 1rem;
   font-weight: bold;
-  border: none;
+  border: 1px solid gray;
   border-radius: 4px;
   cursor: pointer;
 }

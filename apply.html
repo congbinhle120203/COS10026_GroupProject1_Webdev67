@@ -60,19 +60,14 @@
           
 
             <fieldset class="gender_form">
-                <legend id="gender">Gender</legend>
-                  <p>
-                    <label><input type="radio" id="male" name="gender" value="male">Male</label>
-                  </p>
+              <legend id="gender">Gender</legend>
 
-                  <p>
-                    <label><input type="radio" id="female" name="gender" value="female">Female</label>
-                  </p>
+              <label><input type="radio" id="male" name="gender" value="male">Male</label>
 
-                  <p>
-                    <label><input type="radio" id="other" name="gender" value="other">Other</label>
-                  </p>
+              <label><input type="radio" id="female" name="gender" value="female">Female</label>
 
+              <label><input type="radio" id="other" name="gender" value="other">Other</label>
+                
             </fieldset>
         
 
@@ -114,17 +109,31 @@
               <label for="phone_numbers">Phone Numbers</label>
               <input type="tel" id="phone_numbers" name="phone_numbers" pattern="\d{8,12}" maxlength="12" required title="Please fill 8-12 digits">
             </p>
-
-            <p>
-                <label for="skills">Skills</label>
-                <label for="skills"><input type="checkbox" id="html" name="skills" value="html">HTML</label>
-                <label for="skills"><input type="checkbox" id="css" name="skills" value="css">CSS</label>
-                <label for="skills"><input type="checkbox" id="js" name="skills" value="js">Javascript</label>
-                <label for="skills"> Other Skills<br>
-                  <textarea id="other_skills" name="other_skills"></textarea>
-                </label>
-                
+          
             </p>
+
+            <fieldset class="skills_form">
+              <legend>Skills</legend>
+              
+              <label><input type="checkbox" id="html" name="skills" value="html">HTML</label>
+              
+
+              
+              <label><input type="checkbox" id="css" name="skills" value="css">CSS</label>
+              
+
+              
+              <label><input type="checkbox" id="js" name="skills" value="js">Javascript</label>
+              
+
+              
+              <label>Other Skills
+                <textarea id="other_skills" name="other_skills"></textarea>
+              </label>
+              
+                
+                
+            </fieldset>
           </fieldset> 
           
           <input type="submit" name="submit" id="submit">
