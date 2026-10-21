@@ -692,7 +692,94 @@ textarea {
    ========================================================================== */
 /* Duy's form layout & grid rules go here */
 
+.page-apply .page-intro{
+  text-align: center;
+  margin: auto;
+  margin-bottom: 10px;
+}
+.page-apply h2{
+  text-align: center;
+}
+.page-apply .apply_form {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  border: 1px solid gray;
+  border-radius: 10px;  
+}
+.page-apply .information {
+  border: 1px solid gray;
+  border-radius: 8px;
+  padding: 1.5rem;
+  background-color: white;
+}
 
+.page-apply .information legend {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+.page-apply .apply_form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-apply .apply-form label {
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.page-apply .apply_form input[type="text"],
+.page-apply .apply_form input[type="email"],
+.page-apply .apply_form input[type="tel"],
+.page-apply .apply_form input[type="date"],
+.page-apply .apply_form select,
+.page-apply .apply_form textarea {
+  width: 600px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+.page-apply .gender_form,
+.page-apply .skills_form {
+  border: 1px solid #e0e0e0;
+  border-radius: 6px;
+  padding: 1rem;
+  margin-bottom: 1.2rem;
+}
+
+.page-apply .radio-group,
+.page-apply .skills_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.page-apply .checkbox-item,
+.page-apply .radio-group label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+
+
+.page-apply .form-actions input[type="submit"],
+.page-apply .form-actions input[type="reset"] {
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: bold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
