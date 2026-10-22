@@ -529,7 +529,7 @@ img {
   margin: 0 auto;
   padding: 1.5rem;
   border: 1px solid gray;
-  border-radius: 10px;  
+  border-radius: 10px;
 }
 .page-apply .information {
   border: 1px solid gray;
@@ -576,8 +576,9 @@ img {
   margin-bottom: 1.2rem;
 }
 
-.page-apply .radio-group,
-.page-apply .skills_form, .gender_form {
+
+.page-apply .skills_form, 
+.page-apply .gender_form {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
