@@ -576,7 +576,8 @@ img {
   margin-bottom: 1.2rem;
 }
 
-.page-apply .skills_form, .gender_form {
+.page-apply .skills_form, 
+.page-apply .gender_form {
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
