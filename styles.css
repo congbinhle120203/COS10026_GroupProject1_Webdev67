@@ -607,6 +607,11 @@ img {
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
+
+.page-about main {
+  background-color: #e7eeea;
+}
+
 .page-about .section {
   display: flex;
   flex-direction: column;
@@ -650,10 +655,10 @@ img {
   width: auto;
   text-align: center;
   margin: 0.5rem 1.3rem;
-  border: 2px solid var(--line);
+  border: 2px solid var(--ink-muted);
   padding: 0.3rem;
   border-radius: 0.3em;
-  background-color: var(--bg);
+  background-color: var(--line);
 }
 
 .page-about .StudentName {
@@ -702,7 +707,7 @@ img {
   margin: auto;
   width: 95%;
   padding: 1rem 3rem;
-  background-color: var(--bg);
+  background-color: #ebebeb;
   border-radius: 1rem;
   border: 1px solid var(--line);
 }
