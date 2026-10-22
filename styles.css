@@ -169,17 +169,6 @@ img {
   color: var(--bg);
 }
 
-.button-secondary {
-  background-color: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink-muted);
-}
-
-.button-secondary:hover {
-  background-color: var(--line);
-  color: var(--ink);
-}
-
 /* Footer */
 .site-footer {
   margin-top: 3em;
@@ -256,6 +245,18 @@ img {
 .page-home .hero-image {
   border-radius: 12px;
   border: 2px solid var(--line);
+}
+
+/* secondary outline button on home hero */
+.page-home .button-secondary {
+  background-color: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink-muted);
+}
+
+.page-home .button-secondary:hover {
+  background-color: var(--line);
+  color: var(--ink);
 }
 
 /* white box section */
