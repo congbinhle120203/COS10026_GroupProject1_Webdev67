@@ -105,8 +105,27 @@ img {
 }
 
 .skip-link {
-  display: none;
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--primary);
+  color: var(--bg);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 2px solid var(--accent);
+  transition: top 0.2s ease-in-out;
 }
+
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
 
 
 /* ==========================================================================
