@@ -563,13 +563,14 @@ img {
 }
 
 .page-apply h2{
-  font-size: 1.5rem;
+  font-size: 1.75rem;
   color: #1a1a1a;
   margin-top: 0;
   margin-bottom: 1.5rem;
   border-bottom: 1px solid gray;
   padding-bottom: 0.5rem;
 }
+
 .page-apply .apply_form {
   max-width: 750px;
   margin: 0 auto;
@@ -635,7 +636,10 @@ img {
   resize: none;
   margin-top: 0.4rem;
 }
-
+.page-apply .gender_form {
+  grid-column: auto;
+  margin: 0;
+}
 .page-apply .gender_form,
 .page-apply .skills_form {
   border: 1px solid #d0d7de;
@@ -652,7 +656,7 @@ img {
 .page-apply .gender_form legend,
 .page-apply .skills_form legend {
   font-weight: bold;
-  font-size: 0.9rem;
+  font-size: 1rem;
   padding: 0 0.5rem;
   color: black;
 }
