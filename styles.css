@@ -557,8 +557,12 @@ img {
   margin-bottom: 0.5rem;
 }
 .page-apply h2{
-  text-align: center;
   font-size: 1.5rem;
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding-bottom: 0.5rem;
 }
 .page-apply .apply_form {
   max-width: 750px;
@@ -572,10 +576,18 @@ img {
   box-sizing: border-box;  
 }
 .page-apply .information {
-  border: 1px solid gray;
-  border-radius: 8px;
-  padding: 1.5rem;
-  background-color: white;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.page-apply .information > p:first-child,
+.page-apply .information p:nth-child(6),
+.page-apply .gender_form,
+.page-apply .skills_form {
+  grid-column: 1 / -1;
 }
 
 .page-apply .information legend {
@@ -588,7 +600,7 @@ img {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  margin-bottom: 1.2rem;
+  margin: 0;
 }
 
 .page-apply .apply_form label {
