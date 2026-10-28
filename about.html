@@ -17,7 +17,9 @@
 
   <!-- EMBEDDED CSS -->
   <style>
-    .page-intro { max-width: 40rem; }
+    h1 {
+        color: #4e3d8b;
+    }
   </style>
 
 
@@ -65,24 +67,37 @@
 
       <h1>About our team</h1>
 
-      <div class="section">
-        <!-- Inline Stylesheet -->
-        <h2 id = "title" style="display: inline;">Group Name</h2>
-        <p id = "name" style="display: inline;">Webdev67</p>
-      </div>
+      <p class="SubTitle">Get to know the experts in our company.</p>
+
+      <hr>
+
 
       <section class="section">
             <!-- Group's Class Day/Time using nested list -->
 
-            <h2>Class Day/Time</h2>
+            <h2>Group Information</h2>
 
-            <ol>
-                <li>Thursday
+            <div class="section-row">
+
+                <div class="GroupName">
+                    <h2 id = "title">Group Name</h2>
+                    <p id = "group-name">Webdev67</p>
+                </div>
+
+            
+                <div class="ClassDayTime">
+                    <h2>Class Day/Time</h2>
+
                     <ol>
-                        <li>7AM - 10AM</li>
+                        <li>Thursday
+                            <ol>
+                                <li>7AM - 10AM</li>
+                            </ol>
+                        </li>
                     </ol>
-                </li>
-            </ol>
+                </div>
+
+            </div>
 
 
         </section>
@@ -96,6 +111,9 @@
 
             <dl class="member-section">
 
+                <!-- INLINE CSS -->
+
+                <!-- Cong Binh -->
                 <dt>
                     <p style="display: inline;" class="StudentName">Le Cong Binh</p>
                     <p style="display: inline;" class="StudentID">ID: 106419738</p>
@@ -109,14 +127,15 @@
                 </dd>
 
                 <dd class="quote">
-                    <p>"Wabba Wabbda doobi doobi baba bobiibib"</p>
+                    <p>No quote yet</p>
                 </dd>
 
                 <hr>
 
-                <dt>
-                    <p style="display: inline;" class="StudentName">Vu Duc Thai An</p>
-                    <p style="display: inline;" class="StudentID">ID: 106909446</p>
+                <!-- Thai An -->
+                <dt class="member-info">
+                    <p class="StudentName">Vu Duc Thai An</p>
+                    <p class="StudentID">ID: 106909446</p>
                 </dt>
                 <dd class="contributions">
                     <p>Owns about.html</p>
@@ -124,14 +143,15 @@
                 </dd>
 
                 <dd class="quote">
-                    <p>"goo goo gah gah"</p>
+                    <p>No quote yet</p>
                 </dd>
 
                 <hr>
 
-                <dt>
-                    <p style="display: inline;" class="StudentName">Bach Gia Huy</p>
-                    <p style="display: inline;" class="StudentID">ID: 106395993</p>
+                <!-- Gia Huy -->
+                <dt class="member-info">
+                    <p class="StudentName">Bach Gia Huy</p>
+                    <p class="StudentID">ID: 106395993</p>
                 </dt>
                 <dd class="contributions">
                     <p>Owns jobs.html</p>
@@ -139,21 +159,24 @@
                     <p>Posts group questions on the Canvas discussion board</p>
                 </dd>
                 <dd class="quote">
-                    <p>"Meow meow kitty kityy"</p>
+                    <p>Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng.</p>
+                    <p>"Life is short. Smile while you still have teeth."</p>
                 </dd>
 
                 <hr>
 
-                <dt>
-                    <p style="display: inline;" class="StudentName">Pham Duc Duy</p>
-                    <p style="display: inline;" class="StudentID">ID: 106684662</p>
+                <!-- Duc Duy -->
+                <dt class="member-info">
+                    <p class="StudentName">Pham Duc Duy</p>
+                    <p class="StudentID">ID: 106684662</p>
                 </dt>
                 <dd class="contributions">
                     <p>Owns apply.html</p>
                     <p>Tests every validation rule</p>
                 </dd>
                 <dd class="quote">
-                    <p>"Vroom Vroommm Boooommmmmmmmm"</p>
+                    <p>"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
+                    <p>“If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.”</p>
                 </dd>
 
             </dl>
@@ -172,39 +195,52 @@
         </div>
 
 
-        <div class="FunFact">
+        <section class="section">
 
             <h2>Fun Facts</h2>
 
-            <table class="FunFactTable">
-                <caption>havent decide</caption>
+            <div class="FunFact">
 
-                <tbody>
+                <table class="FunFactTable">
+                    <caption>Our Hometown</caption>
 
-                    <tr>
-                        <td>Le Cong Binh</td>
-                        <td>leader</td>
-                    </tr>
+                    <thead>
 
-                    <tr>
-                        <td>An</td>
-                        <td></td>
-                    </tr>
+                        <tr>
+                            <th>Member</th>
+                            <th>Hometown</th>
+                        </tr>
 
-                    <tr>
-                        <td>Zack Bach</td>
-                        <td>pro programmer</td>
-                    </tr>
+                    </thead>
 
-                    <tr>
-                        <td>Duc Duy</td>
-                        <td>talented programmer</td>
-                    </tr>
+                    <tbody>
 
-                </tbody>
-            </table>
+                        <tr>
+                            <td>Le Cong Binh</td>
+                            <td>leader</td>
+                        </tr>
 
-        </div>
+                        <tr>
+                            <td>An</td>
+                            <td>Ho Chi Minh city</td>
+                        </tr>
+
+                        <tr>
+                            <td>Zack Bach</td>
+                            <td>Ho Chi Minh city</td>
+                        </tr>
+
+                        <tr>
+                            <td>Duc Duy</td>
+                            <td>Dong Nai</td>
+                        </tr>
+
+                    </tbody>
+                </table>
+
+            </div>
+
+        </section>
 
 
 
@@ -220,7 +256,7 @@
         <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
-      <p>&copy; 2026 Solstice Community Energy. Fictional company created for a university project (COS10026, Group G03).</p>
+      <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
     </div>
   </footer>
 </body>
