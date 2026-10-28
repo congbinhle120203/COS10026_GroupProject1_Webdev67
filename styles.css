@@ -631,6 +631,12 @@ img {
   box-sizing: border-box;
 }
 
+.page-apply .required {
+  color: #d9383a;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
 .page-apply .apply_form textarea {
   min-height: 90px;
   resize: none;
