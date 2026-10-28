@@ -644,7 +644,7 @@ img {
 .page-about main {
   background-color: #e7eeea;
 }
-
+/* block-like section with borders and color for background */
 .page-about .section {
   display: flex;
   flex-direction: column;
@@ -657,26 +657,31 @@ img {
   border: 2px solid var(--line);
 }
 
+/* a section without borders and background color */
+.page-about .floating-section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: var(--maxw);
+  margin: 3rem auto auto;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
 .page-about .section-row {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
-  width: 90%;
+  justify-content: space-between;
+  gap: 3em;
+  width: 100%;
   max-width: var(--maxw);
   margin: 1rem auto auto;
-  padding: 2rem;
+  padding: 0.1rem;
   background-color: var(--bg);
   border-radius: 1rem;
 }
 
 .page-about .SubTitle {
-  color: var(--ink-muted);
-}
-
-.page-about #group-name {
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: bold;
   color: var(--ink-muted);
 }
 
@@ -701,11 +706,11 @@ img {
 }
 
 .page-about .quote {
-  margin: 1.5rem 0;
-  width: 95%;
+  margin: 1.5rem 2rem auto;
   padding-left: 0.7rem;
+  padding-right: 0.7rem;
   border-left: 3px solid var(--accent);
-  font-size: 1.3rem;
+  font-size: 1rem;
 }
 
 .page-about hr {
@@ -718,18 +723,51 @@ img {
   border: 2px solid var(--line);
   border-radius: var(--radius-lg);
   background-color: var(--bg);
-  border-left-color: var(--link);
-  border-left-width: var(--radius);
-  padding: 1rem;
+  
+  padding: .7rem;
+
+  margin: 3%;
+
+  font-size: 0.8rem;
+
+  flex: 1;
 }
 
 .page-about div.ClassDayTime {
   border: 2px solid var(--line);
   border-radius: var(--radius-lg);
   background-color: var(--bg);
-  border-left-color: var(--focus);
-  border-left-width: var(--radius);
-  padding: 1rem;
+  
+  padding: .7rem;
+
+  margin: 3%;
+
+  font-size: 0.8rem;
+
+  flex: 1;
+}
+
+.page-about div.GroupName .card-title, .page-about div.ClassDayTime .card-title {
+
+  text-align: center;
+
+}
+
+.page-about div.group-content {
+  flex: 1;
+
+}
+
+.page-about div.group-photo {
+  
+  flex: 1;
+}
+
+.page-about .group-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
 }
 
 .page-about .member-info p {
@@ -739,10 +777,10 @@ img {
 .page-about .contributions {
   margin: auto;
   width: 95%;
-  padding: 1rem 3rem;
+  padding: 1rem 3rem 0rem;
   background-color: #ebebeb;
   border-radius: 1rem;
-  border: 1px solid var(--line);
+  border: 2px solid var(--line);
 }
 
 .page-about figure.GroupPhoto {
@@ -750,23 +788,32 @@ img {
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   width: fit-content;
-  margin: 3rem auto;
-  border: 2px solid var(--primary);
+  height: fit-content;
+
+  margin: auto;
+
+  border: 2px solid var(--ink);
   border-radius: 1.5rem;
-  padding: 1rem 3rem 2rem;
-  background-color: var(--bg);
+  
+  padding: 0.1rem 2rem 1rem;
+  background-color: var(--link);
+
+  flex: 1;
 }
 
 .page-about figure.GroupPhoto figcaption {
   font-weight: bold;
   font-size: 1.3rem;
-  color: var(--link);
+  color: var(--bg);
   margin-bottom: 0.5rem;
 }
 
 .page-about figure.GroupPhoto img {
   border-radius: 1rem;
+  max-width: 100%;
+  border: 2px solid var(--ink);
 }
 
 .page-about .FunFact {
@@ -778,7 +825,7 @@ img {
 .page-about .FunFactTable {
   border: 2px solid #735f5f;
   background-color: #e7e7e7;
-  width: 60%;
+  width: 80%;
   text-align: center;
   border-collapse: collapse;
 }
@@ -788,6 +835,12 @@ img {
   font-weight: bold;
   color: #355066;
   margin-bottom: 0.75rem;
+}
+
+.page-about .FunFactTable .table-name {
+
+  font-weight: bold;
+
 }
 
 .page-about .FunFactTable th,
@@ -803,6 +856,18 @@ img {
 
 .page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
   background-color: #e0a526;
+}
+
+
+.page-about div.join-section {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-about div.join-section * {
+  align-items: center;
+  text-align: center;
 }
 
 

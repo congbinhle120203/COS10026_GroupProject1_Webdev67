@@ -65,40 +65,72 @@
 
     <div class="container page-section">
 
-      <h1>About our team</h1>
+        <h1>About Us</h1>
 
-      <p class="SubTitle">Get to know the experts in our company.</p>
+        <p class="SubTitle">Discover more about our company.</p>
 
-      <hr>
+        <hr>
 
 
-      <section class="section">
+        <section class="section">
             <!-- Group's Class Day/Time using nested list -->
 
-            <h2>Group Information</h2>
+            <h2>Who We Are</h2>
 
             <div class="section-row">
 
-                <div class="GroupName">
-                    <h2 id = "title">Group Name</h2>
-                    <p id = "group-name">Webdev67</p>
+                <div class="group-content">
+
+                    <p>We are the digital team at Solstice Community Energy, a clean energy company founded in Victoria. Our company builds solar farms and battery storage to provide affordable power to regional communities across Victoria and New South Wales. We are proud to be 67.67% community-owned and currently power over 36,000 homes.</p>
+
+                    <div class="section-row">
+
+                        <div class="GroupName">
+                            <h2 class = "card-title">Group Name</h2>
+                            <p class = "group-name">Webdev67</p>
+                        </div>
+
+                        <!-- Class Day/time using nested list! -->
+                        <div class="ClassDayTime">
+                            <h2 class = "card-title">Class Day/Time</h2>
+
+                            <ol>
+                                <li>Thursday
+                                    <ol>
+                                        <li>7AM - 10AM</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+
+                    </div>
+
                 </div>
 
-            
-                <div class="ClassDayTime">
-                    <h2>Class Day/Time</h2>
+                <div class="group-photo">
+                    <!-- Figure with border and caption! -->
+                    <figure class="GroupPhoto">
+                        <!-- Group Photo -->
 
-                    <ol>
-                        <li>Thursday
-                            <ol>
-                                <li>7AM - 10AM</li>
-                            </ol>
-                        </li>
-                    </ol>
+                        <figcaption>Group Photo</figcaption>
+                        <img src="./images/hero.svg" alt="placeholder photo for group photo">
+                    
+                    </figure>
                 </div>
 
             </div>
 
+            <hr>
+
+            <h2>What Our Digital Team Does</h2>
+
+            <p>As a team of web developers and IT professionals, we build simple, user-friendly web portals. These web applications allow residents to easily track their daily solar generation and manage their clean power systems.</p>
+
+            <hr>
+
+            <h2>Life on Our Team</h2>
+
+            <p>We are an active team of IT students and graduates who work from our Melbourne office in Hawthorn or remotely across Australia. Our junior developers receive weekly code reviews and strong mentorship from senior engineers to help them grow while making a real impact on the community.</p>
 
         </section>
 
@@ -108,6 +140,7 @@
 
             <h2>Members Contribution and Quotes</h2>
 
+            <p class="SubTitle">The work we do and the thoughts we share.</p>
 
             <dl class="member-section">
 
@@ -184,20 +217,12 @@
         </section>
 
 
-        <div>
-            <figure class="GroupPhoto">
-                <!-- Group Photo -->
-
-                <figcaption>Group Photo</figcaption>
-                <img src="./images/hero.svg" alt="placeholder photo for group photo">
-            
-            </figure>
-        </div>
-
 
         <section class="section">
 
             <h2>Fun Facts</h2>
+
+            <p class="SubTitle">Here are some fun facts about us.</p>
 
             <div class="FunFact">
 
@@ -216,27 +241,43 @@
                     <tbody>
 
                         <tr>
-                            <td>Le Cong Binh</td>
-                            <td>leader</td>
+                            <td class="table-name">Le Cong Binh</td>
+                            <td>Dong Nai city</td>
                         </tr>
 
                         <tr>
-                            <td>An</td>
+                            <td class="table-name">An</td>
                             <td>Ho Chi Minh city</td>
                         </tr>
 
                         <tr>
-                            <td>Zack Bach</td>
+                            <td class="table-name">Zack Bach</td>
                             <td>Ho Chi Minh city</td>
                         </tr>
 
                         <tr>
-                            <td>Duc Duy</td>
-                            <td>Dong Nai</td>
+                            <td class="table-name">Duc Duy</td>
+                            <td>Dong Nai city</td>
                         </tr>
 
                     </tbody>
                 </table>
+
+            </div>
+
+        </section>
+
+        <section class="floating-section">
+
+            <div class="join-section">
+
+                <h2>Come Work With Us</h2>
+
+                <p>We are always looking for great people to help us build tools that actually make a difference. If you want to use your coding skills to solve real problems and learn from a caring team, you will fit right in. Plus, we give you the freedom to work from home or join us in the office—whatever works best for you.</p>
+
+                <p>
+                    <a class="button" href="apply.html">Apply Now</a>
+                </p>
 
             </div>
 
