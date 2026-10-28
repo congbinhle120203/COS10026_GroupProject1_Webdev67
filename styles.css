@@ -605,7 +605,8 @@ img {
 
 .page-apply .apply_form label {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 0.9rem;
+  color: #222222;
 }
 
 .page-apply .apply_form input[type="text"],
