@@ -78,6 +78,19 @@ img {
 }
 
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+
 /* ==========================================================================
    3. LAYOUT CONTAINER
    ========================================================================== */
@@ -92,8 +105,27 @@ img {
 }
 
 .skip-link {
-  display: none;
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--primary);
+  color: var(--bg);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 2px solid var(--accent);
+  transition: top 0.2s ease-in-out;
 }
+
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
 
 
 /* ==========================================================================
@@ -167,17 +199,6 @@ img {
   background-color: var(--ink);
   border-color: var(--ink);
   color: var(--bg);
-}
-
-.button-secondary {
-  background-color: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink-muted);
-}
-
-.button-secondary:hover {
-  background-color: var(--line);
-  color: var(--ink);
 }
 
 /* Footer */
@@ -256,6 +277,18 @@ img {
 .page-home .hero-image {
   border-radius: 12px;
   border: 2px solid var(--line);
+}
+
+/* secondary outline button on home hero */
+.page-home .button-secondary {
+  background-color: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink-muted);
+}
+
+.page-home .button-secondary:hover {
+  background-color: var(--line);
+  color: var(--ink);
 }
 
 /* white box section */
@@ -512,6 +545,7 @@ img {
 }
 
 
+
 /* ==========================================================================
    7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
    ========================================================================== */
@@ -529,7 +563,7 @@ img {
   margin: 0 auto;
   padding: 1.5rem;
   border: 1px solid gray;
-  border-radius: 10px;
+  border-radius: 10px;  
 }
 .page-apply .information {
   border: 1px solid gray;
@@ -576,7 +610,6 @@ img {
   margin-bottom: 1.2rem;
 }
 
-
 .page-apply .skills_form, 
 .page-apply .gender_form {
   display: flex;
@@ -595,7 +628,7 @@ img {
 .page-apply input[type="submit"],
 .page-apply input[type="reset"] {
   padding: 0.75rem 1.5rem;
-  margin-top: 10px;
+   margin-top: 10px;
   font-size: 1rem;
   font-weight: bold;
   border: 1px solid gray;
@@ -607,6 +640,11 @@ img {
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
+
+.page-about main {
+  background-color: #e7eeea;
+}
+
 .page-about .section {
   display: flex;
   flex-direction: column;
@@ -650,10 +688,10 @@ img {
   width: auto;
   text-align: center;
   margin: 0.5rem 1.3rem;
-  border: 2px solid var(--line);
+  border: 2px solid var(--ink-muted);
   padding: 0.3rem;
   border-radius: 0.3em;
-  background-color: var(--bg);
+  background-color: var(--line);
 }
 
 .page-about .StudentName {
@@ -702,7 +740,7 @@ img {
   margin: auto;
   width: 95%;
   padding: 1rem 3rem;
-  background-color: var(--bg);
+  background-color: #ebebeb;
   border-radius: 1rem;
   border: 1px solid var(--line);
 }
