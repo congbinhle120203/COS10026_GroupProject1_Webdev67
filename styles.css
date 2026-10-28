@@ -693,18 +693,31 @@ img {
 
 .page-apply input[type="submit"],
 .page-apply input[type="reset"] {
-  padding: 0.75rem 1.5rem;
-  margin-top: 10px;
-  font-size: 1rem;
   font-weight: bold;
-  border: 1px solid gray;
-  border-radius: 10px;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.75rem;
+  border-radius: 20px;
+  margin-top: 1.5rem;
+  margin-right: 0.5rem;
   cursor: pointer;
 }
 
 .page-apply input[type="submit"] {
   background-color: green;
   color: white;
+  border: none;
+}
+
+.page-apply input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+.page-apply input[type="reset"] {
+  border: 1px solid gray;
+}
+
+.page-apply input[type="reset"]:hover {
+  background-color: rgb(227, 224, 224);
 }
 
 
