@@ -596,7 +596,8 @@ img {
 .page-apply .apply_form input[type="date"],
 .page-apply .apply_form select,
 .page-apply .apply_form textarea {
-  width: 600px; 
+  max-width: 600px; 
+  max-height: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
   font-size: 1rem;
@@ -628,14 +629,29 @@ img {
 .page-apply input[type="submit"],
 .page-apply input[type="reset"] {
   padding: 0.75rem 1.5rem;
-   margin-top: 10px;
+  margin-top: 10px;
   font-size: 1rem;
   font-weight: bold;
   border: 1px solid gray;
-  border-radius: 4px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
+.page-apply input[type="submit"] {
+  background-color: green;
+  color: white;
+}
+
+#first_name_input {
+  text-align: left;
+  float: left;
+  width: auto;
+}
+#last_name_input {
+  text-align: right;
+  float: right;
+  width: auto;
+}
 
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
