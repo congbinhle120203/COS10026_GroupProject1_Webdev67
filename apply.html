@@ -40,7 +40,7 @@
           <fieldset class="information"> 
             <p>
               <label for="job_reference">Job Reference<span class="required">*</label>
-              <input type="text" id="job_reference" name="job_reference" pattern="[A-Za-z0-9]{5}" maxlength="5" required title="Please fill exactly 5 alphanumeric.">
+              <input type="text" id="job_reference" name="job_reference" pattern="[A-Za-z0-9]{5}" maxlength="5" required title="Please fill exactly 5 alphanumeric." placeholder="Ex: 'SCE01' or 'SCE02'...">
             </p>
           
             <p>
@@ -100,12 +100,12 @@
 
             <p>
               <label for="email">Email<span class="required">*</label>
-              <input type="email" id="email" name="email" required title="Should include @">
+              <input type="email" id="email" name="email" required title="Should include @" placeholder="Ex:****@****">
             </p>
 
             <p>
               <label for="phone_numbers">Phone Numbers<span class="required">*</label>
-              <input type="tel" id="phone_numbers" name="phone_numbers" pattern="\d{8,12}" maxlength="12" required title="Please fill 8-12 digits">
+              <input type="tel" id="phone_numbers" name="phone_numbers" pattern="\d{8,12}" maxlength="12" required title="Please fill 8-12 digits" placeholder="Ex: 0123456789.">
             </p>
 
             <fieldset class="skills_form">
@@ -118,7 +118,7 @@
               <label><input type="checkbox" id="js" name="js" value="yes">Javascript</label>
               
               <label>Other Skills
-                <textarea id="other_skills" name="other_skills"></textarea>
+                <textarea id="other_skills" name="other_skills" placeholder="Write the other skills."></textarea>
               </label>
             </fieldset>
             
