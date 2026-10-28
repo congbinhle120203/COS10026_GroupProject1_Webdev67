@@ -551,8 +551,10 @@ img {
    ========================================================================== */
 .page-apply .page-intro{
   text-align: center;
-  margin: auto;
-  margin-bottom: 10px;
+  font-size: 2.25rem;
+  font-family: Georgia, serif;
+  color: #1e4d40;
+  margin-bottom: 0.5rem;
 }
 .page-apply h2{
   text-align: center;
@@ -597,6 +599,7 @@ img {
 .page-apply .apply_form select,
 .page-apply .apply_form textarea {
   max-width: 600px; 
+  min-width: 250px;
   max-height: 50px;
   border: 1px solid #ccc;
   border-radius: 4px;
@@ -643,12 +646,12 @@ img {
 }
 
 #first_name_input {
-  text-align: left;
+  text-align: center;
   float: left;
   width: auto;
 }
 #last_name_input {
-  text-align: right;
+  text-align: center;
   float: right;
   width: auto;
 }
