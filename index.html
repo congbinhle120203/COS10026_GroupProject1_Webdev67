@@ -1,4 +1,16 @@
 <!DOCTYPE html>
+<!--
+  index.html - Solstice Community Energy Careers (fictional company)
+  COS10026 Applied Web Project Part 1 - Group Webdev67, industry G03 Sustainable Energy Solutions
+  Author: Le Cong Binh
+
+  ACKNOWLEDGEMENTS
+  - Company concept inspired by public solar and energy company websites
+    (BlueTop Solar, TSE, SolarAccess, First Solar). No text or images were copied.
+  - Page structure, CSS and accessibility checks drafted with help from Claude (Anthropic,
+    Claude Sonnet 5.5), then reviewed, edited and tested by the author. See README.md.
+  - The company, people, quotes and figures on this page are fictional.
+-->
 <html lang="en-AU">
 
 <head>
@@ -12,15 +24,16 @@
   <!-- Link to styles.css -->
   <link rel="stylesheet" href="styles.css">
 
-  <!-- Embedded CSS -->
+  <!-- Embedded CSS: keeps the hero paragraph a readable line length -->
   <style>
-    .hero .lead {
+    .page-home .hero .lead {
       max-width: 38em;
     }
   </style>
 </head>
 
 <body class="page-home">
+
   <!-- Skip link for keyboard and screen reader users -->
   <a class="skip-link" href="#main">Skip to main content</a>
 
@@ -30,11 +43,11 @@
 
       <!-- Logo and company name; the name is real text, so the logo image needs no alt text -->
       <a class="brand" href="index.html">
-        <img src="images/logo.svg" width="44" height="44" alt="Solstice Community Energy Logo">
+        <img src="images/logo.svg" width="44" height="44" alt="">
         <span>Solstice Community Energy</span>
       </a>
 
-      <nav class="main-nav">
+      <nav class="main-nav" aria-label="Main">
         <ul>
           <li><a href="index.html" aria-current="page">Home</a></li>
           <li><a href="jobs.html">Jobs</a></li>
@@ -48,6 +61,7 @@
 
   <!-- Main content -->
   <main id="main">
+
     <!-- Search box with a button -->
     <section class="home-search" aria-label="Search">
       <div class="container">
@@ -59,7 +73,7 @@
       </div>
     </section>
 
-<!-- 1. Hero banner: slogan, name, description and image -->
+    <!-- 1. Hero banner: slogan, name, description and image -->
     <section class="hero" aria-labelledby="hero-title">
       <div class="container hero-inner">
 
@@ -173,6 +187,7 @@
           <li><strong>Mentorship</strong> Receive weekly code reviews and guidance from senior engineers.</li>
         </ul>
       </section>
+
       <!-- 5. Call to action -->
       <section class="cta-band" aria-labelledby="cta-title">
         <h2 id="cta-title">Ready to power your career?</h2>
@@ -187,22 +202,28 @@
 
   </main>
 
-  <!-- Footer -->
+  <!-- Footer: Jira board, GitHub repository and contact email -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
         <li>
           <a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">
-          Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
-        </a>
-      </li>
+            Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
         <li>
           <a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">
-          Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
-        </a>
-      </li>
+            Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://congbinhle120203.github.io/COS10026_GroupProject1_Webdev67/" target="_blank" rel="noopener noreferrer">
+            Live site (GitHub Pages) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
+      <p class="footer-country">We acknowledge the Traditional Custodians of the lands where we work. <a href="jobs.html#ack-heading">Read our Acknowledgment of Country</a>.</p>
       <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
     </div>
   </footer>
