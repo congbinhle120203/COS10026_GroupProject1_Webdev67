@@ -1385,3 +1385,27 @@ html {
 }
 
 
+/* ==========================================================================
+   10. PRINT STYLES (shared)
+   Cleaner paper copy: no navigation, search or buttons, black text,
+   and web addresses written out after links.
+   ========================================================================== */
+@media print {
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  .site-header,
+  .skip-link,
+  .home-search,
+  .button,
+  .cta-band {
+    display: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+}
