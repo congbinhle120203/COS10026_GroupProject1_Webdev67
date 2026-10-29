@@ -488,6 +488,75 @@ img {
   color: var(--primary);
   font-size: 1.1em;
 }
+/* ---- Call-to-action band above the footer ---- */
+.page-home .cta-band {
+  margin-top: 2.5em;
+  padding: 2em 1.75em;
+  text-align: center;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  background-image: radial-gradient(circle at 90% 0%, var(--sun-glow), transparent 55%);
+  border-radius: var(--radius-lg);
+}
+
+.page-home .cta-band h2 {
+  color: var(--on-primary);
+}
+
+.page-home .cta-band p {
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home .cta-band .button {
+  margin: 0.25em;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.page-home .cta-band .button:hover {
+  background-color: var(--surface);
+  border-color: var(--surface);
+  color: var(--ink);
+}
+
+/* ---- index.html on tablets and phones ---- */
+@media (max-width: 768px) {
+  .page-home .hero {
+    padding: 2.25em 0;
+  }
+
+  .page-home .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-home .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .search-form input[type="search"] {
+    max-width: none;
+  }
+}
+
+/* Smaller phones: tighter table so all four columns fit */
+@media (max-width: 36rem) {
+  .page-home .section {
+    padding: 1.25em;
+  }
+
+  .page-home .data-table {
+    font-size: 0.85em;
+  }
+
+  .page-home .data-table th,
+  .page-home .data-table td {
+    padding: 0.5em 0.4em;
+  }
+}
 
 
 /* ==========================================================================
