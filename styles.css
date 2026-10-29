@@ -260,6 +260,52 @@ img {
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
+/* search bar (strip under the header) */
+.page-home .home-search {
+  padding: 0.9em 0;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 0.75em;
+}
+
+.page-home .search-form label {
+  font-weight: bold;
+}
+
+.page-home .search-form input[type="search"] {
+  flex: 1 1 14em;
+  max-width: 28em;
+  padding: 0.55em 0.8em;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--ink);
+  background-color: var(--bg);
+  border: 2px solid var(--ink-muted);
+  border-radius: var(--radius);
+}
+
+.page-home .search-form button {
+  padding: 0.55em 1.3em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.page-home .search-form button:hover {
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
 /* hero banner */
 .page-home .hero {
   padding: 2.5em 0;
