@@ -1443,6 +1443,16 @@ html {
 }
 
 
+@media (max-width: 768px) {
+  .page-jobs .jobs-main,
+  .page-jobs aside.jobs-sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
 /* ==========================================================================
    10. PRINT STYLES (shared)
    Cleaner paper copy: no navigation, search or buttons, black text,
@@ -1467,3 +1477,5 @@ html {
     font-size: 0.85em;
   }
 }
+
+
