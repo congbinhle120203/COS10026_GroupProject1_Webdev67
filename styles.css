@@ -607,6 +607,61 @@ textarea:focus-visible {
   color: var(--primary);
 }
 
+/* ---- Team quote ---- */
+.page-home .voice {
+  margin: 1.25em 0 0;
+  padding: 1.25em 1.5em;
+  background-color: var(--bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.page-home .voice blockquote {
+  margin: 0;
+}
+
+.page-home .voice blockquote p {
+  margin: 0 0 0.6em;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.page-home .voice figcaption {
+  color: var(--ink-muted);
+  font-size: 0.95em;
+}
+
+/* ---- FAQ: details and summary ---- */
+.page-home .faq details {
+  margin-top: 0.75em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .faq summary {
+  padding: 0.8em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.page-home .faq summary:hover {
+  color: var(--primary);
+}
+
+.page-home .faq details[open] {
+  border-color: var(--primary);
+}
+
+.page-home .faq details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .faq details p {
+  margin: 0;
+  padding: 0.9em 1em;
+}
+
 /* ---- index.html on tablets and phones ---- */
 @media (max-width: 768px) {
   .page-home .hero {
