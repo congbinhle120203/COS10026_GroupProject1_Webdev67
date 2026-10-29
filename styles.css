@@ -120,10 +120,21 @@ textarea:focus-visible {
   border: 0;
 }
 
+/* Smooth scrolling for in-page links (skip link, footer link) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* keeps targets clear of the sticky header */
+}
+
 /* Respect visitors who turn animations off in their system settings */
 @media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
   * {
     transition: none !important;
+    animation: none !important;
   }
 }
 
@@ -167,7 +178,11 @@ textarea:focus-visible {
 /* ==========================================================================
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
+/* Header stays at the top of the screen while scrolling */
 .site-header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
   background-color: var(--surface);
   border-bottom: 1px solid var(--line);
 }
@@ -235,9 +250,11 @@ textarea:focus-visible {
   border-radius: var(--radius);
   text-decoration: none;
   margin-right: 0.5em;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .button:hover {
+  transform: translateY(-2px);
   background-color: var(--ink);
   border-color: var(--ink);
   color: var(--on-primary);
@@ -563,6 +580,38 @@ textarea:focus-visible {
   background-color: var(--surface);
   border-color: var(--surface);
   color: var(--ink);
+}
+
+/* ---- Gentle fade-in when the page loads (switched off by reduced-motion) ---- */
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-home .hero-copy {
+  animation: home-rise 0.7s ease-out both;
+}
+
+.page-home .hero-media {
+  animation: home-rise 0.7s ease-out 0.15s both;
+}
+
+/* ---- Cards lift slightly on hover ---- */
+.page-home .stat-box,
+.page-home .benefits li {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .stat-box:hover,
+.page-home .benefits li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
 }
 
 /* ---- How hiring works: numbered steps drawn with CSS counters ---- */
