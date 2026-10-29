@@ -565,6 +565,48 @@ textarea:focus-visible {
   color: var(--ink);
 }
 
+/* ---- How hiring works: numbered steps drawn with CSS counters ---- */
+.page-home .steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .steps li {
+  counter-increment: step;
+  position: relative;
+  margin-bottom: 0;
+  padding: 3.2em 1em 1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0.9em;
+  left: 1em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: bold;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.page-home .steps strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+}
+
 /* ---- index.html on tablets and phones ---- */
 @media (max-width: 768px) {
   .page-home .hero {
@@ -580,6 +622,10 @@ textarea:focus-visible {
     grid-template-columns: 1fr;
   }
 
+  .page-home .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
   .page-home .search-form input[type="search"] {
     max-width: none;
   }
@@ -589,6 +635,10 @@ textarea:focus-visible {
 @media (max-width: 36rem) {
   .page-home .section {
     padding: 1.25em;
+  }
+
+  .page-home .steps {
+    grid-template-columns: 1fr;
   }
 
   .page-home .data-table {
