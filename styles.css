@@ -19,22 +19,17 @@
 
 
 /* ==========================================================================
-   1. COLOR VARIABLES & THEME (Eucalyptus)
-   Change a colour here once and every page updates.
+   1. COLOR VARIABLES & THEME
    ========================================================================== */
 :root {
-  --bg: #eef4ee;          /* page background */
-  --surface: #fbfdfb;     /* cards and boxes sitting on the background */
-  --ink: #1b2a23;        /* main text */
-  --ink-muted: #455a4e;   /* secondary text */
-  --primary: #2c5e4f;     /* brand green */
-  --on-primary: #ffffff;  /* text placed on the brand green */
-  --accent: #e0a526;      /* sun yellow, used for highlights */
-  --line: #c5d4c8;        /* borders and dividers */
+  --bg: #eef4ee;
+  --ink: #1b2a23;
+  --ink-muted: #455a4e;
+  --primary: #2c5e4f;
+  --accent: #e0a526;
+  --line: #c5d4c8;
   --link: #1f5a8a;
-  --focus: #9a3412;       /* keyboard focus outline */
-  --sun-glow: rgba(224, 165, 38, 0.30);   /* soft sun in the hero background */
-  --grid-line: rgba(44, 94, 79, 0.13);    /* solar panel grid lines */
+  --focus: #9a3412;
 
   --font: Calibri, Arial, sans-serif;
   --font-mono: Consolas, monospace;
@@ -62,7 +57,6 @@ body {
 
 h1, h2, h3 {
   color: var(--ink);
-  line-height: 1.25;
   margin-top: 0;
 }
 
@@ -97,17 +91,7 @@ img {
   display: block;
 }
 
-/* Keyboard focus: a clear outline on every interactive element */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
 
-/* Text for screen readers only (hidden on screen) */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -115,16 +99,9 @@ textarea:focus-visible {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* Respect visitors who turn animations off in their system settings */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
 }
 
 
@@ -141,7 +118,6 @@ textarea:focus-visible {
   padding: 2em 0;
 }
 
-/* "Skip to main content" link: hidden until a keyboard user tabs to it */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -149,13 +125,14 @@ textarea:focus-visible {
   z-index: 9999;
   padding: 0.6rem 1.2rem;
   background-color: var(--primary);
-  color: var(--on-primary);
+  color: var(--bg);
   font-weight: bold;
   text-decoration: none;
   border-radius: 0 0 var(--radius) var(--radius);
   border: 2px solid var(--accent);
   transition: top 0.2s ease-in-out;
 }
+
 
 .skip-link:focus {
   top: 0;
@@ -164,11 +141,12 @@ textarea:focus-visible {
 }
 
 
+
 /* ==========================================================================
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
 .site-header {
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -177,7 +155,6 @@ textarea:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5em 1em;
   padding: 0.8em 0;
 }
 
@@ -200,10 +177,6 @@ textarea:focus-visible {
   list-style: none;
 }
 
-.main-nav li {
-  margin-bottom: 0;
-}
-
 .main-nav a {
   display: inline-block;
   padding: 0.3em 0.2em;
@@ -218,7 +191,6 @@ textarea:focus-visible {
   border-bottom-color: var(--primary);
 }
 
-/* The page you are on: bold green with an underline */
 .main-nav a[aria-current="page"] {
   color: var(--primary);
   border-bottom-color: var(--primary);
@@ -229,7 +201,7 @@ textarea:focus-visible {
   display: inline-block;
   padding: 0.6em 1.2em;
   font-weight: bold;
-  color: var(--on-primary);
+  color: var(--bg);
   background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
@@ -240,14 +212,14 @@ textarea:focus-visible {
 .button:hover {
   background-color: var(--ink);
   border-color: var(--ink);
-  color: var(--on-primary);
+  color: var(--bg);
 }
 
 /* Footer */
 .site-footer {
   margin-top: 3em;
   padding: 1.5em 0;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-top: 1px solid var(--line);
   font-size: 0.95em;
 }
@@ -269,18 +241,13 @@ textarea:focus-visible {
   list-style: none;
 }
 
-.footer-links li {
-  margin-bottom: 0;
-}
-
 .footer-links a {
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  text-decoration: underline;
 }
 
 .site-footer p {
