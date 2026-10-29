@@ -614,6 +614,57 @@ html {
   box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
 }
 
+/* ---- Featured roles: two cards that link to jobs.html ---- */
+.page-home .featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .featured li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 1.25em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--primary);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .featured li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
+}
+
+.page-home .featured h3 {
+  margin-bottom: 0.4em;
+}
+
+.page-home .featured-ref {
+  align-self: flex-start;
+  margin-bottom: 0.6em;
+  padding: 0.15em 0.6em;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .featured-meta {
+  color: var(--ink-muted);
+}
+
+.page-home .featured .button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
 /* ---- How hiring works: numbered steps drawn with CSS counters ---- */
 .page-home .steps {
   counter-reset: step;
@@ -722,7 +773,8 @@ html {
     text-align: center;
   }
 
-  .page-home .benefits {
+  .page-home .benefits,
+  .page-home .featured {
     grid-template-columns: 1fr;
   }
 
