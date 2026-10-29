@@ -107,6 +107,12 @@ textarea:focus-visible {
   outline-offset: 2px;
 }
 
+/* Placeholder text: the browser default is too pale on our background */
+::placeholder {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
 /* Text for screen readers only (hidden on screen) */
 .visually-hidden {
   position: absolute;
