@@ -21,11 +21,14 @@
 </head>
 
 <body class="page-home">
+  <!-- Skip link for keyboard and screen reader users -->
+  <a class="skip-link" href="#main">Skip to main content</a>
 
   <!-- Header and navigation bar -->
   <header class="site-header">
     <div class="container header-inner">
 
+      <!-- Logo and company name; the name is real text, so the logo image needs no alt text -->
       <a class="brand" href="index.html">
         <img src="images/logo.svg" width="44" height="44" alt="Solstice Community Energy Logo">
         <span>Solstice Community Energy</span>
@@ -166,8 +169,16 @@
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
-        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project board (Jira)</a></li>
-        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
+        <li>
+          <a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">
+          Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
+        </a>
+      </li>
+        <li>
+          <a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">
+          Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
+        </a>
+      </li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
       <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
