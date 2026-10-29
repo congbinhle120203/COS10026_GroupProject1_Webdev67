@@ -1,40 +1,21 @@
 /* ==========================================================================
    styles.css - Solstice Community Energy Careers
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
-
-   HOW THIS FILE IS ORGANISED
-   1. Colour variables and theme    (shared - Binh)
-   2. Base styles                   (shared - Binh)
-   3. Layout container              (shared - Binh)
-   4. Header, nav, buttons, footer  (shared - Binh)
-   5. index.html                    (Binh,  scope: .page-home)
-   6. jobs.html                     (Huy,   scope: .page-jobs)
-   7. apply.html                    (Duy,   scope: .page-apply)
-   8. about.html                    (An,    scope: .page-about)
-   9. Responsive media queries      (shared)
-
-   RULES: only edit inside your own section. Start every page-specific
-   selector with your body class so rules never clash between pages.
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. COLOR VARIABLES & THEME (Eucalyptus)
-   Change a colour here once and every page updates.
+   1. COLOR VARIABLES & THEME
    ========================================================================== */
 :root {
-  --bg: #eef4ee;          /* page background */
-  --surface: #fbfdfb;     /* cards and boxes sitting on the background */
-  --ink: #1b2a23;        /* main text */
-  --ink-muted: #455a4e;   /* secondary text */
-  --primary: #2c5e4f;     /* brand green */
-  --on-primary: #ffffff;  /* text placed on the brand green */
-  --accent: #e0a526;      /* sun yellow, used for highlights */
-  --line: #c5d4c8;        /* borders and dividers */
+  --bg: #eef4ee;
+  --ink: #1b2a23;
+  --ink-muted: #455a4e;
+  --primary: #2c5e4f;
+  --accent: #e0a526;
+  --line: #c5d4c8;
   --link: #1f5a8a;
-  --focus: #9a3412;       /* keyboard focus outline */
-  --sun-glow: rgba(224, 165, 38, 0.30);   /* soft sun in the hero background */
-  --grid-line: rgba(44, 94, 79, 0.13);    /* solar panel grid lines */
+  --focus: #9a3412;
 
   --font: Calibri, Arial, sans-serif;
   --font-mono: Consolas, monospace;
@@ -62,7 +43,6 @@ body {
 
 h1, h2, h3 {
   color: var(--ink);
-  line-height: 1.25;
   margin-top: 0;
 }
 
@@ -97,17 +77,7 @@ img {
   display: block;
 }
 
-/* Keyboard focus: a clear outline on every interactive element */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-select:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid var(--focus);
-  outline-offset: 2px;
-}
 
-/* Text for screen readers only (hidden on screen) */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -115,16 +85,9 @@ textarea:focus-visible {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip-path: inset(50%);
+  clip: rect(0, 0, 0, 0);
   white-space: nowrap;
   border: 0;
-}
-
-/* Respect visitors who turn animations off in their system settings */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    transition: none !important;
-  }
 }
 
 
@@ -141,7 +104,6 @@ textarea:focus-visible {
   padding: 2em 0;
 }
 
-/* "Skip to main content" link: hidden until a keyboard user tabs to it */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -149,13 +111,14 @@ textarea:focus-visible {
   z-index: 9999;
   padding: 0.6rem 1.2rem;
   background-color: var(--primary);
-  color: var(--on-primary);
+  color: var(--bg);
   font-weight: bold;
   text-decoration: none;
   border-radius: 0 0 var(--radius) var(--radius);
   border: 2px solid var(--accent);
   transition: top 0.2s ease-in-out;
 }
+
 
 .skip-link:focus {
   top: 0;
@@ -164,11 +127,12 @@ textarea:focus-visible {
 }
 
 
+
 /* ==========================================================================
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
 .site-header {
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-bottom: 1px solid var(--line);
 }
 
@@ -177,7 +141,6 @@ textarea:focus-visible {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.5em 1em;
   padding: 0.8em 0;
 }
 
@@ -200,10 +163,6 @@ textarea:focus-visible {
   list-style: none;
 }
 
-.main-nav li {
-  margin-bottom: 0;
-}
-
 .main-nav a {
   display: inline-block;
   padding: 0.3em 0.2em;
@@ -218,7 +177,6 @@ textarea:focus-visible {
   border-bottom-color: var(--primary);
 }
 
-/* The page you are on: bold green with an underline */
 .main-nav a[aria-current="page"] {
   color: var(--primary);
   border-bottom-color: var(--primary);
@@ -229,7 +187,7 @@ textarea:focus-visible {
   display: inline-block;
   padding: 0.6em 1.2em;
   font-weight: bold;
-  color: var(--on-primary);
+  color: var(--bg);
   background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
@@ -240,14 +198,14 @@ textarea:focus-visible {
 .button:hover {
   background-color: var(--ink);
   border-color: var(--ink);
-  color: var(--on-primary);
+  color: var(--bg);
 }
 
 /* Footer */
 .site-footer {
   margin-top: 3em;
   padding: 1.5em 0;
-  background-color: var(--surface);
+  background-color: var(--bg);
   border-top: 1px solid var(--line);
   font-size: 0.95em;
 }
@@ -269,21 +227,771 @@ textarea:focus-visible {
   list-style: none;
 }
 
-.footer-links li {
-  margin-bottom: 0;
-}
-
 .footer-links a {
   color: var(--ink);
-  text-decoration: underline;
-  text-underline-offset: 3px;
+  text-decoration: none;
 }
 
 .footer-links a:hover {
-  color: var(--primary);
+  text-decoration: underline;
 }
 
 .site-footer p {
   margin: 0;
   color: var(--ink-muted);
+}
+
+
+/* ==========================================================================
+   5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
+   ========================================================================== */
+
+/* hero banner */
+.page-home .hero {
+  padding: 2.5em 0;
+  background-color: #d7e8dc;
+  border-bottom: 2px solid var(--line);
+}
+
+/* two columns using flexbox */
+.page-home .hero-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2em;
+}
+
+.page-home .hero-copy {
+  flex: 1;
+}
+
+.page-home .hero-media {
+  flex: 1;
+}
+
+.page-home .hero .lead {
+  font-size: 1.1em;
+  color: var(--ink-muted);
+}
+
+.page-home .hero-image {
+  border-radius: 12px;
+  border: 2px solid var(--line);
+}
+
+/* secondary outline button on home hero */
+.page-home .button-secondary {
+  background-color: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink-muted);
+}
+
+.page-home .button-secondary:hover {
+  background-color: var(--line);
+  color: var(--ink);
+}
+
+/* white box section */
+.page-home .section {
+  margin-top: 2em;
+  padding: 1.5em;
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: 12px;
+}
+
+/* stats row using flexbox */
+.page-home .stats-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1em;
+  margin-top: 1em;
+}
+
+.page-home .stat-box {
+  flex: 1;
+  min-width: 150px;
+  padding: 1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  text-align: center;
+}
+
+.page-home .stat-number {
+  font-size: 1.6em;
+  font-weight: bold;
+  color: var(--primary);
+  margin-bottom: 0.2em;
+}
+
+.page-home .stat-label {
+  margin-bottom: 0;
+  color: var(--ink-muted);
+}
+
+/* projects table */
+.page-home .data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1em;
+}
+
+.page-home .data-table caption {
+  text-align: left;
+  font-weight: bold;
+  padding-bottom: 0.5em;
+}
+
+.page-home .data-table th,
+.page-home .data-table td {
+  padding: 0.6em;
+  border: 1px solid var(--line);
+  text-align: left;
+}
+
+.page-home .data-table thead th {
+  background-color: var(--primary);
+  color: var(--bg);
+}
+
+.page-home .data-table tbody th,
+.page-home .data-table tfoot th,
+.page-home .data-table tfoot td {
+  background-color: var(--bg);
+  font-weight: bold;
+}
+
+
+/* ==========================================================================
+   6. PAGE: jobs.html (Owner: Bach Gia Huy - Scope: .page-jobs)
+   ========================================================================== */
+.page-jobs .jobs-header {
+  padding: 2.5rem 0 1.5rem;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: 2rem;
+}
+
+.page-jobs .jobs-intro {
+  color: var(--ink-muted);
+  font-size: 1.15rem;
+  max-width: 42rem;
+  margin-bottom: 0;
+}
+
+.page-jobs .jobs-layout {
+  padding-bottom: 2rem;
+}
+
+/* Mandatory Clearfix for 25% Floated Aside */
+.page-jobs .jobs-layout::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.page-jobs .jobs-main {
+  width: 71%;
+  float: left;
+}
+
+/* Floated Sidebar Aside (25% Width Float Right) */
+.page-jobs aside.jobs-sidebar {
+  width: 25%;
+  float: right;
+  margin: 0 0 2rem 4%;
+  padding: 1.5rem;
+  background-color: var(--bg);
+  border: 2px solid var(--primary);
+  border-top: 6px solid var(--accent);
+  border-radius: var(--radius-lg);
+}
+
+.page-jobs aside.jobs-sidebar h2 {
+  font-size: 1.3rem;
+  color: var(--primary);
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+.page-jobs aside.jobs-sidebar h3 {
+  font-size: 1.05rem;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  color: var(--ink);
+}
+
+.page-jobs aside.jobs-sidebar p {
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+/* Job Description Cards */
+.page-jobs .job-card {
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+}
+
+.page-jobs .job-card:nth-of-type(even) {
+  border-left-color: var(--accent);
+}
+
+.page-jobs .job-card-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 0.75rem 1rem;
+  padding-bottom: 1rem;
+  margin-bottom: 1.25rem;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-jobs .job-card h2 {
+  font-size: 1.6rem;
+  color: var(--ink);
+  margin: 0;
+}
+
+.page-jobs .job-ref {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  color: var(--primary);
+  background-color: var(--bg);
+  border: 1px solid var(--primary);
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius);
+}
+
+.page-jobs .job-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem;
+  font-size: 0.95rem;
+  color: var(--ink-muted);
+}
+
+.page-jobs .job-meta strong {
+  color: var(--ink);
+}
+
+.page-jobs .job-card h3 {
+  font-size: 1.15rem;
+  color: var(--primary);
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.page-jobs .job-card ul,
+.page-jobs .job-card ol,
+.page-jobs aside.jobs-sidebar ul,
+.page-jobs aside.jobs-sidebar ol {
+  margin: 0 0 1.25rem;
+  padding-left: 1.4rem;
+}
+
+.page-jobs .job-card ul li::marker {
+  color: var(--primary);
+}
+
+.page-jobs .job-card ol li::marker,
+.page-jobs aside.jobs-sidebar ol li::marker {
+  color: var(--primary);
+  font-weight: bold;
+}
+
+.page-jobs .job-actions {
+  margin-top: 1.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+/* Acknowledgement of Country Card */
+.page-jobs .country-ack {
+  clear: both;
+  background-color: var(--bg);
+  border: 1px dashed var(--line);
+  border-left: 4px solid var(--accent);
+  border-radius: 0.5rem;
+  padding: 1.5rem 1.75rem;
+  margin-bottom: 2rem;
+}
+
+.page-jobs .country-heading {
+  margin-top: 0;
+  margin-bottom: 0.6rem;
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.page-jobs .country-ack p {
+  margin: 0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  color: var(--ink-muted);
+}
+
+
+
+/* ==========================================================================
+   7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
+   ========================================================================== */
+.page-apply .page-intro{
+  text-align: center;
+  font-size: 2.25rem;
+  font-family: Georgia, serif;
+  color: black;
+  margin: 0 auto 0.5rem auto;
+}
+.page-apply #description {
+  text-align: center;
+  max-width: 42rem;
+  margin: 0 auto 2rem auto;
+}
+
+.page-apply h2{
+  font-size: 1.75rem;
+  color: #1a1a1a;
+  margin-top: 0;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid gray;
+  padding-bottom: 0.5rem;
+}
+
+.page-apply .apply_form {
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: white;
+  border: 1px solid #d0d7de;
+  border-left: 6px solid #1e4d40;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;  
+}
+.page-apply .information {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+.page-apply .information > p:first-child,
+.page-apply .information p:nth-child(6),
+.page-apply .gender_form,
+.page-apply .skills_form {
+  grid-column: 1 / -1;
+}
+
+.page-apply .information legend {
+  font-weight: bold;
+  font-size: 1.25rem;
+  padding: 0 0.5rem;
+  text-align: center;
+}
+.page-apply .apply_form p {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin: 0;
+}
+
+.page-apply .apply_form label {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #222222;
+}
+
+.page-apply .apply_form input[type="text"],
+.page-apply .apply_form input[type="email"],
+.page-apply .apply_form input[type="tel"],
+.page-apply .apply_form input[type="date"],
+.page-apply .apply_form select,
+.page-apply .apply_form textarea {
+  width: 100%; 
+  padding: 0.65rem 0.85rem;
+  border: 1px solid #b0bec5;
+  border-radius: 8px;
+  font-size: 1rem;
+  background-color: white;
+  box-sizing: border-box;
+}
+
+.page-apply .required {
+  color: #d9383a;
+  font-weight: bold;
+  margin-left: 0.25rem;
+}
+
+.page-apply .apply_form textarea {
+  min-height: 90px;
+  resize: none;
+  margin-top: 0.4rem;
+}
+.page-apply .gender_form {
+  grid-column: auto;
+  margin: 0;
+}
+.page-apply .gender_form,
+.page-apply .skills_form {
+  border: 1px solid #d0d7de;
+  border-radius: 8px;
+  padding: 1rem 1.25rem;
+  margin: 0.5rem 0;
+  background-color: white;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.page-apply .gender_form legend,
+.page-apply .skills_form legend {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  color: black;
+}
+
+.page-apply .skills_form, 
+.page-apply .gender_form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.page-apply .gender_form label,
+.page-apply .skills_form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-weight: normal;
+  font-size: 0.9rem;
+  cursor: pointer;
+}
+
+.page-apply .skills_form label:last-child {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.page-apply input[type="radio"],
+.page-apply input[type="checkbox"] {
+  accent-color: #1e4d40;
+  width: 1.05rem;
+  height: 1.05rem;
+}
+
+.page-apply input[type="submit"],
+.page-apply input[type="reset"] {
+  font-weight: bold;
+  font-size: 0.95rem;
+  padding: 0.65rem 1.75rem;
+  border-radius: 20px;
+  margin-top: 1.5rem;
+  margin-right: 0.5rem;
+  cursor: pointer;
+}
+
+.page-apply input[type="submit"] {
+  background-color: green;
+  color: white;
+  border: none;
+}
+
+.page-apply input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+.page-apply input[type="reset"] {
+  border: 1px solid gray;
+}
+
+.page-apply input[type="reset"]:hover {
+  background-color: rgb(227, 224, 224);
+}
+/* ==========================================================================
+   8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
+   ========================================================================== */
+
+.page-about main {
+  background-color: #e7eeea;
+}
+/* block-like section with borders and color for background */
+.page-about .section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: var(--maxw);
+  margin: 3rem auto auto;
+  padding: 2rem;
+  background-color: var(--bg);
+  border-radius: 1rem;
+  border: 2px solid var(--line);
+}
+
+/* a section without borders and background color */
+.page-about .floating-section {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  max-width: var(--maxw);
+  margin: 3rem auto auto;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+.page-about .section-row {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  gap: 3em;
+  width: 100%;
+  max-width: var(--maxw);
+  margin: 1rem auto auto;
+  padding: 0.1rem;
+  background-color: var(--bg);
+  border-radius: 1rem;
+}
+
+.page-about .SubTitle {
+  color: var(--ink-muted);
+}
+
+.page-about .member-section dt {
+  margin: 1rem;
+}
+
+.page-about .StudentID {
+  width: auto;
+  text-align: center;
+  margin: 0.5rem 1.3rem;
+  border: 2px solid var(--ink-muted);
+  padding: 0.3rem;
+  border-radius: 0.3em;
+  background-color: var(--line);
+}
+
+.page-about .StudentName {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: var(--link);
+}
+
+.page-about .quote {
+  margin: 1.5rem 2rem auto;
+  padding-left: 0.7rem;
+  padding-right: 0.7rem;
+  border-left: 3px solid var(--accent);
+  font-size: 1rem;
+}
+
+.page-about hr {
+  margin: 1.5rem 0 3rem;
+  border: none;
+  border-top: 1px solid var(--line);
+}
+
+.page-about div.GroupName {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+  
+  padding: .7rem;
+
+  margin: 3%;
+
+  font-size: 0.8rem;
+
+  flex: 1;
+}
+
+.page-about div.ClassDayTime {
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  background-color: var(--bg);
+  
+  padding: .7rem;
+
+  margin: 3%;
+
+  font-size: 0.8rem;
+
+  flex: 1;
+}
+
+.page-about div.GroupName .card-title, .page-about div.ClassDayTime .card-title {
+
+  text-align: center;
+
+}
+
+.page-about div.group-content {
+  flex: 1;
+
+}
+
+.page-about div.group-photo {
+  
+  flex: 1;
+}
+
+.page-about .group-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+}
+
+.page-about .member-info p {
+  display: inline;
+}
+
+.page-about .contributions {
+  margin: auto;
+  width: 95%;
+  padding: 1rem 3rem 0rem;
+  background-color: #ebebeb;
+  border-radius: 1rem;
+  border: 2px solid var(--line);
+}
+
+.page-about figure.GroupPhoto {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  width: fit-content;
+  height: fit-content;
+
+  margin: auto;
+
+  border: 2px solid var(--ink);
+  border-radius: 1.5rem;
+  
+  padding: 0.1rem 2rem 1rem;
+  background-color: var(--link);
+
+  flex: 1;
+}
+
+.page-about figure.GroupPhoto figcaption {
+  font-weight: bold;
+  font-size: 1.3rem;
+  color: var(--bg);
+  margin-bottom: 0.5rem;
+}
+
+.page-about figure.GroupPhoto img {
+  border-radius: 1rem;
+  max-width: 100%;
+  border: 2px solid var(--ink);
+}
+
+.page-about .FunFact {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.page-about .FunFactTable {
+  border: 2px solid #735f5f;
+  background-color: #e7e7e7;
+  width: 80%;
+  text-align: center;
+  border-collapse: collapse;
+}
+
+.page-about .FunFactTable caption {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #355066;
+  margin-bottom: 0.75rem;
+}
+
+.page-about .FunFactTable .table-name {
+
+  font-weight: bold;
+
+}
+
+.page-about .FunFactTable th,
+.page-about .FunFactTable td {
+  padding: 0.75rem;
+  border: 1px solid #aeada6;
+}
+
+.page-about .FunFactTable thead {
+  background-color: #464967;
+  color: #eaeae6;
+}
+
+.page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
+  background-color: #e0a526;
+}
+
+
+.page-about div.join-section {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-about div.join-section * {
+  align-items: center;
+  text-align: center;
+}
+
+
+/* ==========================================================================
+   9. RESPONSIVE MEDIA QUERIES
+   ========================================================================== */
+@media (max-width: 768px) {
+  .page-home .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .page-apply .apply_form {
+    padding: 1.25rem;
+  }
+
+  .page-apply .information {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .page-apply .gender_form {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .page-apply input[type="submit"],
+  .page-apply input[type="reset"] {
+    width: 100%;
+    margin-right: 0;
+  }
 }
