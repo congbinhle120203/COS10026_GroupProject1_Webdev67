@@ -394,7 +394,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1.25em;
+  margin-top: 1em;
 }
 
 .page-home .stat-box {
@@ -409,7 +409,7 @@ img {
 }
 
 .page-home .stat-number {
-  font-size: 1.8em;
+  font-size: 1.6em;
   font-weight: bold;
   line-height: 1.2;
   color: var(--primary);
