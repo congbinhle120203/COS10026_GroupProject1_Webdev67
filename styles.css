@@ -1071,6 +1071,14 @@ img {
   border: 2px solid var(--line);
 }
 
+.page-about div.member {
+
+  margin: auto;
+  margin-top: 2rem;
+  margin-bottom: 3rem;
+
+}
+
 .page-about figure.GroupPhoto {
   display: flex;
   flex-direction: column;
