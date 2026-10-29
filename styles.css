@@ -379,36 +379,39 @@ img {
   color: var(--primary);
 }
 
-/* white box section */
+/* ---- White box sections ---- */
 .page-home .section {
-  margin-top: 2em;
-  padding: 1.5em;
-  background-color: var(--bg);
+  margin-top: 2.5em;
+  padding: 1.75em;
+  background-color: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
-/* stats row using flexbox */
+/* ---- Stats row using flexbox ---- */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1em;
+  margin-top: 1.25em;
 }
 
 .page-home .stat-box {
   flex: 1;
   min-width: 150px;
-  padding: 1em;
+  padding: 1.1em 1em;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
   text-align: center;
 }
 
 .page-home .stat-number {
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: bold;
+  line-height: 1.2;
   color: var(--primary);
   margin-bottom: 0.2em;
 }
@@ -418,11 +421,16 @@ img {
   color: var(--ink-muted);
 }
 
-/* projects table */
+/* ---- Projects table ---- */
+/* Wrapper lets the table scroll sideways on a narrow phone screen */
+.page-home .table-wrap {
+  margin-top: 1em;
+  overflow-x: auto;
+}
+
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1em;
 }
 
 .page-home .data-table caption {
@@ -433,14 +441,14 @@ img {
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.6em;
+  padding: 0.7em 0.8em;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .page-home .data-table thead th {
   background-color: var(--primary);
-  color: var(--bg);
+  color: var(--on-primary);
 }
 
 .page-home .data-table tbody th,
@@ -448,6 +456,37 @@ img {
 .page-home .data-table tfoot td {
   background-color: var(--bg);
   font-weight: bold;
+}
+
+/* highlight the row under the mouse */
+.page-home .data-table tbody td:hover {
+  background-color: #fdf3d6;
+}
+
+/* ---- Why join: list shown as three cards ---- */
+.page-home .benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .benefits li {
+  margin-bottom: 0;
+  padding: 1.1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .benefits strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+  font-size: 1.1em;
 }
 
 
