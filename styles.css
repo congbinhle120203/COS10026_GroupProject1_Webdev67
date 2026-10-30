@@ -1,6 +1,20 @@
 /* ==========================================================================
    styles.css - Solstice Community Energy Careers
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
+
+   HOW THIS FILE IS ORGANISED
+   1. Colour variables and theme    (shared)
+   2. Base styles                   (shared)
+   3. Layout container              (shared)
+   4. Header, nav, buttons, footer  (shared)
+   5. index.html                    (Binh,  scope: .page-home)
+   6. jobs.html                     (Huy,   scope: .page-jobs)
+   7. apply.html                    (Duy,   scope: .page-apply)
+   8. about.html                    (An,    scope: .page-about)
+   9. Responsive media queries      (shared)
+
+   RULES: only edit inside your own section. Start every page-specific
+   selector with your body class so rules never clash between pages.
    ========================================================================== */
 
 
@@ -246,10 +260,62 @@ img {
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
+/* search bar (strip under the header) */
+.page-home .home-search {
+  padding: 0.9em 0;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 0.75em;
+}
+
+.page-home .search-form label {
+  font-weight: bold;
+}
+
+.page-home .search-form input[type="search"] {
+  flex: 1 1 14em;
+  max-width: 28em;
+  padding: 0.55em 0.8em;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--ink);
+  background-color: var(--bg);
+  border: 2px solid var(--ink-muted);
+  border-radius: var(--radius);
+}
+
+.page-home .search-form button {
+  padding: 0.55em 1.3em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.page-home .search-form button:hover {
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
 /* hero banner */
 .page-home .hero {
-  padding: 2.5em 0;
+  padding: 3.5em 0;
   background-color: #d7e8dc;
+  background-image:
+    radial-gradient(circle at 88% 15%, var(--sun-glow), transparent 45%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(180deg, #e6f1e8, #cfe3d6);
+  background-size: auto, 44px 44px, 44px 44px, auto;
   border-bottom: 2px solid var(--line);
 }
 
@@ -258,7 +324,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2em;
+  gap: 2.5em;
 }
 
 .page-home .hero-copy {
@@ -269,14 +335,35 @@ img {
   flex: 1;
 }
 
+/* the slogan above the main heading */
+.page-home .hero-slogan {
+  display: inline-block;
+  margin-bottom: 0.8em;
+  padding: 0.25em 0.8em;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 2em;
+}
+
+.page-home .hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--ink);
+}
+
 .page-home .hero .lead {
-  font-size: 1.1em;
-  color: var(--ink-muted);
+  font-size: 1.15em;
+  color: var(--ink);
 }
 
 .page-home .hero-image {
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 2px solid var(--line);
+  box-shadow: 0 8px 24px rgba(27, 42, 35, 0.15);
 }
 
 /* secondary outline button on home hero */
@@ -287,20 +374,22 @@ img {
 }
 
 .page-home .button-secondary:hover {
-  background-color: var(--line);
-  color: var(--ink);
+  background-color: var(--surface);
+  border-color: var(--primary);
+  color: var(--primary);
 }
 
-/* white box section */
+/* ---- White box sections ---- */
 .page-home .section {
-  margin-top: 2em;
-  padding: 1.5em;
-  background-color: var(--bg);
+  margin-top: 2.5em;
+  padding: 1.75em;
+  background-color: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
-/* stats row using flexbox */
+/* ---- Stats row using flexbox ---- */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
@@ -311,16 +400,18 @@ img {
 .page-home .stat-box {
   flex: 1;
   min-width: 150px;
-  padding: 1em;
+  padding: 1.1em 1em;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
   text-align: center;
 }
 
 .page-home .stat-number {
   font-size: 1.6em;
   font-weight: bold;
+  line-height: 1.2;
   color: var(--primary);
   margin-bottom: 0.2em;
 }
@@ -330,11 +421,16 @@ img {
   color: var(--ink-muted);
 }
 
-/* projects table */
+/* ---- Projects table ---- */
+/* Wrapper lets the table scroll sideways on a narrow phone screen */
+.page-home .table-wrap {
+  margin-top: 1em;
+  overflow-x: auto;
+}
+
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1em;
 }
 
 .page-home .data-table caption {
@@ -345,14 +441,14 @@ img {
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.6em;
+  padding: 0.7em 0.8em;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .page-home .data-table thead th {
   background-color: var(--primary);
-  color: var(--bg);
+  color: var(--on-primary);
 }
 
 .page-home .data-table tbody th,
@@ -360,6 +456,106 @@ img {
 .page-home .data-table tfoot td {
   background-color: var(--bg);
   font-weight: bold;
+}
+
+/* highlight the row under the mouse */
+.page-home .data-table tbody td:hover {
+  background-color: #fdf3d6;
+}
+
+/* ---- Why join: list shown as three cards ---- */
+.page-home .benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .benefits li {
+  margin-bottom: 0;
+  padding: 1.1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .benefits strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+  font-size: 1.1em;
+}
+/* ---- Call-to-action band above the footer ---- */
+.page-home .cta-band {
+  margin-top: 2.5em;
+  padding: 2em 1.75em;
+  text-align: center;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  background-image: radial-gradient(circle at 90% 0%, var(--sun-glow), transparent 55%);
+  border-radius: var(--radius-lg);
+}
+
+.page-home .cta-band h2 {
+  color: var(--on-primary);
+}
+
+.page-home .cta-band p {
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home .cta-band .button {
+  margin: 0.25em;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.page-home .cta-band .button:hover {
+  background-color: var(--surface);
+  border-color: var(--surface);
+  color: var(--ink);
+}
+
+/* ---- index.html on tablets and phones ---- */
+@media (max-width: 768px) {
+  .page-home .hero {
+    padding: 2.25em 0;
+  }
+
+  .page-home .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-home .benefits {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .search-form input[type="search"] {
+    max-width: none;
+  }
+}
+
+/* Smaller phones: tighter table so all four columns fit */
+@media (max-width: 36rem) {
+  .page-home .section {
+    padding: 1.25em;
+  }
+
+  .page-home .data-table {
+    font-size: 0.85em;
+  }
+
+  .page-home .data-table th,
+  .page-home .data-table td {
+    padding: 0.5em 0.4em;
+  }
 }
 
 
