@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 
-
 <html lang="en-AU">
-
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | Solstice Community Energy Careers</title>
   <meta name="description" content="Meet the student team behind this fictional recruitment website.">
 
-  <!-- EXTERNAL STYLESHEET -->
+  <!-- EXTERNAL STYLESHEET FOR PAGE's REQUIREMENT -->
   <link rel="stylesheet" href="styles.css">
 
 
-  <!-- EMBEDDED CSS -->
+  <!-- EMBEDDED CSS FOR PAGE's REQUIREMENT -->
   <style>
     h1 {
-        color: #4e3d8b;
+        color: #1b2a23;
     }
   </style>
-
-
 </head>
 
+<!--
+  about.html - Solstice Community Energy Careers
+  COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
 
+  AUTHOR AND ACKNOWLEDGEMENTS:
+  - Author: Vu Duc Thai An (about.html owner)
+  - Collaborative components: Global header, footer and colour theme coordinated
+    with Le Cong Binh (index.html), Bach Gia Huy (jobs.html) and Pham Duc Duy (apply.html).
+  - Layout: Flexbox sections, definition list for contributions and quotes,
+    bordered figure, and styled fun facts table with hover effects.
+  - Inspiration: About page structure inspired by buffer.com/about.
+    No text or images were copied.
+  - AI assistance: Claude (Anthropic) was used to review errors, styling choices and page
+    accessibility. Some suggested code snippets were adapted, then reviewed, edited and 
+    tested by the author.
+  - The company, figures and info on this page are fictional except for the team members.
+  - Group photo: Photo of the team members and our teacher taken by a classmate.
+-->
 
 
 <body class="page-about">
@@ -38,7 +49,7 @@
 
     <div class="container header-inner">
 
-      <!-- cOMPAMY LOGO AND NAME, CLICK WILL DIRECT TO HOME PAGE -->
+      <!-- COMPANY LOGO AND NAME, CLICK WILL DIRECT TO HOME PAGE -->
       <a class="brand" href="index.html">
         <img src="images/logo.svg" width="44" height="44" alt="">
         <span>Solstice Community Energy</span>
@@ -63,17 +74,22 @@
 
   <main id="main">
 
+
+
     <div class="container page-section">
 
-        <h1>About Us</h1>
+        <!-- HEADER CARD OF THE PAGE TO BE CONSISTENT WITH THE JOB PAGE -->
+        <header class="header-card">
+            <h1>About Us</h1>
 
-        <p class="SubTitle">Discover more about our company.</p>
+            <p class="SubTitle">Discover more about our company.</p>
+        </header>
 
         <hr>
 
 
         <section class="section">
-            <!-- Group's Class Day/Time using nested list -->
+            <!-- Group's Class Day/Time using nested list FOR PAGE'S REQUIREMENT -->
 
             <h2>Who We Are</h2>
 
@@ -85,14 +101,16 @@
 
                     <div class="section-row">
 
+                        <!-- INFORMATION CARD -->
                         <div class="GroupName">
-                            <h2 class = "card-title">Group Name</h2>
+                            <h3 class = "card-title">Group Name</h3>
                             <p class = "group-name">Webdev67</p>
                         </div>
 
+                        <!-- INFORMATION CARD -->
                         <!-- Class Day/time using nested list! -->
                         <div class="ClassDayTime">
-                            <h2 class = "card-title">Class Day/Time</h2>
+                            <h3 class = "card-title">Class Day/Time</h3>
 
                             <ol>
                                 <li>Thursday
@@ -112,8 +130,8 @@
                     <figure class="GroupPhoto">
                         <!-- Group Photo -->
 
-                        <figcaption>Group Photo</figcaption>
-                        <img src="./images/group-photo.jpg" alt="Group photo">
+                        <figcaption>Webdev67</figcaption>
+                        <img src="./images/group-photo.jpg" alt="Webdev67 team members and Mr Wilson at the center">
                     
                     </figure>
                 </div>
@@ -121,13 +139,14 @@
             </div>
 
             <hr>
-
+            <!-- WHAT OUR TEAM DOES section -->
             <h2>What Our Digital Team Does</h2>
 
             <p>As a team of web developers and IT professionals, we build simple, user-friendly web portals. These web applications allow residents to easily track their daily solar generation and manage their clean power systems.</p>
 
             <hr>
 
+            <!-- LIFE ON OUR TEAM section -->
             <h2>Life on Our Team</h2>
 
             <p>We are an active team of IT students and graduates who work from our Melbourne office in Hawthorn or remotely across Australia. Our junior developers receive weekly code reviews and strong mentorship from senior engineers to help them grow while making a real impact on the community.</p>
@@ -136,7 +155,7 @@
 
 
         <section class="section">
-            <!-- Members' Contribution and Quotes -->
+            <!-- Members' Contribution and Quotes in VN and EN translation -->
 
             <h2>Members Contribution and Quotes</h2>
 
@@ -144,13 +163,13 @@
 
             <dl class="member-section">
 
-                <!-- INLINE CSS -->
+                <!-- INLINE CSS for PAGE's REQUIREMENT -->
 
                 <!-- Cong Binh -->
                 <div class="member">
                     <dt>
-                        <p style="display: inline;" class="StudentName">Le Cong Binh</p>
-                        <p style="display: inline;" class="StudentID">ID: 106419738</p>
+                        <p style="display: inline-block;" class="StudentName">Le Cong Binh</p>
+                        <p style="display: inline-block;" class="StudentID">ID: 106419738</p>
                     </dt>
                     <dd class="contributions">
                         <p>Team Leader</p>
@@ -161,7 +180,9 @@
                     </dd>
 
                     <dd class="quote">
-                        <p>No quote yet</p>
+                        <p lang="vi">"Ăn quả nhớ kẻ trồng cây"</p>
+                        <p>"When you eat the fruit, remember who planted the tree."</p>
+                        <p class="quote-author">Cong Binh</p>
                     </dd>
                 </div>
 
@@ -178,7 +199,9 @@
                     </dd>
 
                     <dd class="quote">
-                        <p>No quote yet</p>
+                        <p lang="vi">"Có công mài sắt, có ngày nên kim"</p>
+                        <p>"Practice makes perfect."</p>
+                        <p class="quote-author">T. An</p>
                     </dd>
                 </div>
 
@@ -195,8 +218,9 @@
                         <p>Posts group questions on the Canvas discussion board</p>
                     </dd>
                     <dd class="quote">
-                        <p>Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng.</p>
+                        <p lang="vi">"Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng."</p>
                         <p>"Life is short. Smile while you still have teeth."</p>
+                        <p class="quote-author">Zack Bach</p>
                     </dd>
                 </div>
 
@@ -212,8 +236,9 @@
                         <p>Tests every validation rule</p>
                     </dd>
                     <dd class="quote">
-                        <p>"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
+                        <p lang="vi">"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
                         <p>“If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.”</p>
+                        <p class="quote-author">Duc Duy</p>
                     </dd>
                 </div>
 
@@ -224,7 +249,7 @@
 
 
         <section class="section">
-
+            <!-- Fun Fact Section -->
             <h2>Fun Facts</h2>
 
             <p class="SubTitle">Here are some fun facts about us.</p>
@@ -246,12 +271,12 @@
                     <tbody>
 
                         <tr>
-                            <td class="table-name">Le Cong Binh</td>
+                            <td class="table-name">Cong Binh</td>
                             <td>Dong Nai city</td>
                         </tr>
 
                         <tr>
-                            <td class="table-name">An</td>
+                            <td class="table-name">Thai An</td>
                             <td>Ho Chi Minh city</td>
                         </tr>
 
@@ -273,7 +298,7 @@
         </section>
 
         <section class="floating-section">
-
+            <!-- NAV to Apply page at the bottom -->
             <div class="join-section">
 
                 <h2>Come Work With Us</h2>
@@ -295,13 +320,29 @@
 
   </main>
 
+
+  <!-- Footer | Should be consistent with that of the Home Page -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
-        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project board (Jira)</a></li>
-        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
+        <li>
+          <a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">
+            Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">
+            Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://congbinhle120203.github.io/COS10026_GroupProject1_Webdev67/" target="_blank" rel="noopener noreferrer">
+            Live site (GitHub Pages) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
+      <p class="footer-country">We acknowledge the Traditional Custodians of the lands where we work. <a href="jobs.html#ack-heading">Read our Acknowledgment of Country</a>.</p>
       <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
     </div>
   </footer>

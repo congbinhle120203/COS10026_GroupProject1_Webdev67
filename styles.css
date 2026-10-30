@@ -1207,20 +1207,18 @@ html {
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
 
-.page-about main {
-  background-color: #e7eeea;
-}
+
 /* block-like section with borders and color for background */
 .page-about .section {
   display: flex;
   flex-direction: column;
-  width: 90%;
   max-width: var(--maxw);
   margin: 3rem auto auto;
   padding: 2rem;
-  background-color: var(--bg);
+  background-color: var(--surface);
   border-radius: 1rem;
   border: 2px solid var(--line);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
 /* a section without borders and background color */
@@ -1234,6 +1232,7 @@ html {
   border-radius: 1rem;
 }
 
+/* Section displayed in flex - row */
 .page-about .section-row {
   display: flex;
   flex-wrap: nowrap;
@@ -1243,9 +1242,23 @@ html {
   max-width: var(--maxw);
   margin: 1rem auto auto;
   padding: 0.1rem;
-  background-color: var(--bg);
   border-radius: 1rem;
 }
+
+/* Header Card that is similar to the one in the Jobs page to retain pages consistency */
+.page-about .header-card {
+  padding: 3rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  margin-bottom: 2.5rem;
+  position: relative;
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+
+  font-size: 1.2rem;
+}
+
 
 .page-about .SubTitle {
   color: var(--ink-muted);
@@ -1255,14 +1268,31 @@ html {
   margin: 1rem;
 }
 
+
+.page-about .member-info p {
+  display: inline-block;
+}
+
+/*STYLED STUDENT ID Card next each member's name in the Contribution section */
 .page-about .StudentID {
   width: auto;
   text-align: center;
   margin: 0.5rem 1.3rem;
-  border: 2px solid var(--ink-muted);
+  border: 1px solid var(--ink);
   padding: 0.3rem;
   border-radius: 0.3em;
-  background-color: var(--line);
+  
+  background-color: var(--primary);
+
+  color: var(--on-primary);
+  font-weight: bold;
+  letter-spacing: .07rem;
+
+  
+  white-space: nowrap;
+  /* white space nowrap makes the whole ID: [number] put together as one line
+  to prevent the number enters a new line on smaller screen */
+
 }
 
 .page-about .StudentName {
@@ -1271,12 +1301,42 @@ html {
   color: var(--link);
 }
 
+/* Each member's quote, displayed using flex column */
 .page-about .quote {
-  margin: 1.5rem 2rem auto;
+  display: flex;
+  flex-direction: column;
+  
+  margin: 1.5rem 1.5rem auto;
+  margin-bottom: 3rem;
   padding-left: 0.7rem;
   padding-right: 0.7rem;
-  border-left: 3px solid var(--accent);
+  padding-top: 1rem;
+  padding-bottom: 0.7rem;
+
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: 10px;
+
   font-size: 1rem;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  background-color: var(--on-primary);
+}
+
+/* Quote Author at the bottom of the Quote block */
+.page-about .quote-author {
+  margin: auto;
+  padding: 0.15rem;
+  font-style: normal;
+  font-weight: normal;
+  border-radius: 0.6rem;
+  border: 1px solid #a1a99b;
+  color: #71756d;
+}
+
+.page-about .quote p[lang="vi"] {
+  color: var(--focus);
 }
 
 .page-about hr {
@@ -1285,10 +1345,13 @@ html {
   border-top: 1px solid var(--line);
 }
 
+/*Group Name card in the Who We Are section */
 .page-about div.GroupName {
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background-color: var(--bg);
+  background-color: var(--surface);
+
+  border-top: 3px solid var(--primary);
   
   padding: .7rem;
 
@@ -1299,10 +1362,13 @@ html {
   flex: 1;
 }
 
+/*Class day/time card in the Who We Are section */
 .page-about div.ClassDayTime {
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
   border-radius: var(--radius-lg);
-  background-color: var(--bg);
+  background-color: var(--surface);
+
+  border-top: 3px solid var(--primary);
   
   padding: .7rem;
 
@@ -1313,9 +1379,11 @@ html {
   flex: 1;
 }
 
+/* Make the titles of each aforementioned cards bigger for stylistic purposes */
 .page-about div.GroupName .card-title, .page-about div.ClassDayTime .card-title {
 
   text-align: center;
+  font-size: 1.1rem;
 
 }
 
@@ -1336,19 +1404,21 @@ html {
   color: var(--ink-muted);
 }
 
-.page-about .member-info p {
-  display: inline;
-}
-
+/* Member's contribution list card */
 .page-about .contributions {
   margin: auto;
   width: 95%;
   padding: 1rem 3rem 0rem;
-  background-color: #ebebeb;
+  background-color: var(--on-primary);
   border-radius: 1rem;
-  border: 2px solid var(--line);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--focus);
+
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
+/* FIGURE of Group Photo with BORDER and CAPTION  */
+/* ======================================================== */
 .page-about figure.GroupPhoto {
   display: flex;
   flex-direction: column;
@@ -1363,8 +1433,8 @@ html {
   border: 2px solid var(--ink);
   border-radius: 1.5rem;
   
-  padding: 0.1rem 2rem 1rem;
-  background-color: var(--link);
+  padding: 0.1rem 1rem 1rem;
+  background-color: var(--primary);
 
   flex: 1;
 }
@@ -1381,6 +1451,7 @@ html {
   max-width: 100%;
   border: 2px solid var(--ink);
 }
+/* ===================================== */
 
 .page-about .FunFact {
   display: flex;
@@ -1388,6 +1459,8 @@ html {
   align-items: center;
 }
 
+/* FUN FACT table uses hex color values and Hover Effect */
+/* ====================================================== */
 .page-about .FunFactTable {
   border: 2px solid #735f5f;
   background-color: #e7e7e7;
@@ -1415,16 +1488,26 @@ html {
   border: 1px solid #aeada6;
 }
 
+.page-about .FunFactTable tbody tr:nth-child(even) {
+
+  background-color: #d6d6d6;
+
+}
+
 .page-about .FunFactTable thead {
   background-color: #464967;
   color: #eaeae6;
 }
-
+/* HOVER EFFECT */
 .page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
   background-color: #e0a526;
+  color: var(--ink);
 }
+/* ============================================================= */
 
 
+
+/* Nav to Apply Page at the end of the page */
 .page-about div.join-section {
   width: auto;
   display: flex;
@@ -1476,6 +1559,40 @@ html {
     float: none;
     width: 100%;
     margin-left: 0;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .page-about .header-card {
+     padding: 1.75rem 1.25rem;
+   }
+
+  .page-about .section,
+  .page-about .floating-section {
+    padding: 1.25rem;
+  }
+
+  .page-about .section-row {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-about .contributions {
+    padding: 1rem 1.25rem 0;
+  }
+
+  .page-about .StudentID {
+    margin: 0.3rem 0.4rem;
+  }
+
+  .page-about .quote {
+    margin: 1rem 0.5rem 2rem;
+  }
+
+  .page-about figure.GroupPhoto {
+    padding: 0.1rem 1rem 1rem;
   }
 }
 
