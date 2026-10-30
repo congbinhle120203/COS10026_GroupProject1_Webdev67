@@ -3,10 +3,10 @@
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
 
    HOW THIS FILE IS ORGANISED
-   1. Colour variables and theme    (shared)
-   2. Base styles                   (shared)
-   3. Layout container              (shared)
-   4. Header, nav, buttons, footer  (shared)
+   1. Colour variables and theme    (shared - Binh)
+   2. Base styles                   (shared - Binh)
+   3. Layout container              (shared - Binh)
+   4. Header, nav, buttons, footer  (shared - Binh)
    5. index.html                    (Binh,  scope: .page-home)
    6. jobs.html                     (Huy,   scope: .page-jobs)
    7. apply.html                    (Duy,   scope: .page-apply)
@@ -19,17 +19,22 @@
 
 
 /* ==========================================================================
-   1. COLOR VARIABLES & THEME
+   1. COLOR VARIABLES & THEME (Eucalyptus)
+   Change a colour here once and every page updates.
    ========================================================================== */
 :root {
-  --bg: #eef4ee;
-  --ink: #1b2a23;
-  --ink-muted: #455a4e;
-  --primary: #2c5e4f;
-  --accent: #e0a526;
-  --line: #c5d4c8;
+  --bg: #eef4ee;          /* page background */
+  --surface: #fbfdfb;     /* cards and boxes sitting on the background */
+  --ink: #1b2a23;        /* main text */
+  --ink-muted: #455a4e;   /* secondary text */
+  --primary: #2c5e4f;     /* brand green */
+  --on-primary: #ffffff;  /* text placed on the brand green */
+  --accent: #e0a526;      /* sun yellow, used for highlights */
+  --line: #c5d4c8;        /* borders and dividers */
   --link: #1f5a8a;
-  --focus: #9a3412;
+  --focus: #9a3412;       /* keyboard focus outline */
+  --sun-glow: rgba(224, 165, 38, 0.30);   /* soft sun in the hero background */
+  --grid-line: rgba(44, 94, 79, 0.13);    /* solar panel grid lines */
 
   --font: Calibri, Arial, sans-serif;
   --font-mono: Consolas, monospace;
@@ -57,6 +62,7 @@ body {
 
 h1, h2, h3 {
   color: var(--ink);
+  line-height: 1.25;
   margin-top: 0;
 }
 
@@ -91,7 +97,23 @@ img {
   display: block;
 }
 
+/* Keyboard focus: a clear outline on every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
 
+/* Placeholder text: the browser default is too pale on our background */
+::placeholder {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
+/* Text for screen readers only (hidden on screen) */
 .visually-hidden {
   position: absolute;
   width: 1px;
@@ -99,9 +121,27 @@ img {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(50%);
   white-space: nowrap;
   border: 0;
+}
+
+/* Smooth scrolling for in-page links (skip link, footer link) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* keeps targets clear of the sticky header */
+}
+
+/* Respect visitors who turn animations off in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
 }
 
 
@@ -118,6 +158,7 @@ img {
   padding: 2em 0;
 }
 
+/* "Skip to main content" link: hidden until a keyboard user tabs to it */
 .skip-link {
   position: absolute;
   top: -100px;
@@ -125,14 +166,13 @@ img {
   z-index: 9999;
   padding: 0.6rem 1.2rem;
   background-color: var(--primary);
-  color: var(--bg);
+  color: var(--on-primary);
   font-weight: bold;
   text-decoration: none;
   border-radius: 0 0 var(--radius) var(--radius);
   border: 2px solid var(--accent);
   transition: top 0.2s ease-in-out;
 }
-
 
 .skip-link:focus {
   top: 0;
@@ -141,12 +181,15 @@ img {
 }
 
 
-
 /* ==========================================================================
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
+/* Header stays at the top of the screen while scrolling */
 .site-header {
-  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 
@@ -155,6 +198,7 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5em 1em;
   padding: 0.8em 0;
 }
 
@@ -177,6 +221,10 @@ img {
   list-style: none;
 }
 
+.main-nav li {
+  margin-bottom: 0;
+}
+
 .main-nav a {
   display: inline-block;
   padding: 0.3em 0.2em;
@@ -191,6 +239,7 @@ img {
   border-bottom-color: var(--primary);
 }
 
+/* The page you are on: bold green with an underline */
 .main-nav a[aria-current="page"] {
   color: var(--primary);
   border-bottom-color: var(--primary);
@@ -201,25 +250,27 @@ img {
   display: inline-block;
   padding: 0.6em 1.2em;
   font-weight: bold;
-  color: var(--bg);
+  color: var(--on-primary);
   background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
   text-decoration: none;
   margin-right: 0.5em;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .button:hover {
+  transform: translateY(-2px);
   background-color: var(--ink);
   border-color: var(--ink);
-  color: var(--bg);
+  color: var(--on-primary);
 }
 
 /* Footer */
 .site-footer {
   margin-top: 3em;
   padding: 1.5em 0;
-  background-color: var(--bg);
+  background-color: var(--surface);
   border-top: 1px solid var(--line);
   font-size: 0.95em;
 }
@@ -241,13 +292,18 @@ img {
   list-style: none;
 }
 
+.footer-links li {
+  margin-bottom: 0;
+}
+
 .footer-links a {
   color: var(--ink);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footer-links a:hover {
-  text-decoration: underline;
+  color: var(--primary);
 }
 
 .site-footer p {
@@ -255,12 +311,18 @@ img {
   color: var(--ink-muted);
 }
 
+/* Acknowledgment of Country line (takes a full row of the footer) */
+.site-footer .footer-country {
+  flex-basis: 100%;
+  font-size: 0.95em;
+}
+
 
 /* ==========================================================================
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
-/* search bar (strip under the header) */
+/* ---- Search bar (strip under the header) ---- */
 .page-home .home-search {
   padding: 0.9em 0;
   background-color: var(--surface);
@@ -306,7 +368,10 @@ img {
   background-color: var(--ink);
   border-color: var(--ink);
 }
-/* hero banner */
+
+/* ---- Hero banner: CSS background graphic ----
+   Layers, top to bottom: a soft sun glow, a solar panel grid
+   (two sets of thin lines), then a green gradient underneath. */
 .page-home .hero {
   padding: 3.5em 0;
   background-color: #d7e8dc;
@@ -394,7 +459,7 @@ img {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1em;
+  margin-top: 1.25em;
 }
 
 .page-home .stat-box {
@@ -409,7 +474,7 @@ img {
 }
 
 .page-home .stat-number {
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: bold;
   line-height: 1.2;
   color: var(--primary);
@@ -488,6 +553,7 @@ img {
   color: var(--primary);
   font-size: 1.1em;
 }
+
 /* ---- Call-to-action band above the footer ---- */
 .page-home .cta-band {
   margin-top: 2.5em;
@@ -522,6 +588,186 @@ img {
   color: var(--ink);
 }
 
+/* ---- Gentle fade-in when the page loads (switched off by reduced-motion) ---- */
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-home .hero-copy {
+  animation: home-rise 0.7s ease-out both;
+}
+
+.page-home .hero-media {
+  animation: home-rise 0.7s ease-out 0.15s both;
+}
+
+/* ---- Cards lift slightly on hover ---- */
+.page-home .stat-box,
+.page-home .benefits li {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .stat-box:hover,
+.page-home .benefits li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
+}
+
+/* ---- Featured roles: two cards that link to jobs.html ---- */
+.page-home .featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .featured li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 1.25em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--primary);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .featured li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
+}
+
+.page-home .featured h3 {
+  margin-bottom: 0.4em;
+}
+
+.page-home .featured-ref {
+  align-self: flex-start;
+  margin-bottom: 0.6em;
+  padding: 0.15em 0.6em;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .featured-meta {
+  color: var(--ink-muted);
+}
+
+.page-home .featured .button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ---- How hiring works: numbered steps drawn with CSS counters ---- */
+.page-home .steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .steps li {
+  counter-increment: step;
+  position: relative;
+  margin-bottom: 0;
+  padding: 3.2em 1em 1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0.9em;
+  left: 1em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: bold;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.page-home .steps strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+}
+
+/* ---- Team quote ---- */
+.page-home .voice {
+  margin: 1.25em 0 0;
+  padding: 1.25em 1.5em;
+  background-color: var(--bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.page-home .voice blockquote {
+  margin: 0;
+}
+
+.page-home .voice blockquote p {
+  margin: 0 0 0.6em;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.page-home .voice figcaption {
+  color: var(--ink-muted);
+  font-size: 0.95em;
+}
+
+/* ---- FAQ: details and summary ---- */
+.page-home .faq details {
+  margin-top: 0.75em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .faq summary {
+  padding: 0.8em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.page-home .faq summary:hover {
+  color: var(--primary);
+}
+
+.page-home .faq details[open] {
+  border-color: var(--primary);
+}
+
+.page-home .faq details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .faq details p {
+  margin: 0;
+  padding: 0.9em 1em;
+}
+
 /* ---- index.html on tablets and phones ---- */
 @media (max-width: 768px) {
   .page-home .hero {
@@ -533,8 +779,13 @@ img {
     text-align: center;
   }
 
-  .page-home .benefits {
+  .page-home .benefits,
+  .page-home .featured {
     grid-template-columns: 1fr;
+  }
+
+  .page-home .steps {
+    grid-template-columns: repeat(2, 1fr);
   }
 
   .page-home .search-form input[type="search"] {
@@ -546,6 +797,10 @@ img {
 @media (max-width: 36rem) {
   .page-home .section {
     padding: 1.25em;
+  }
+
+  .page-home .steps {
+    grid-template-columns: 1fr;
   }
 
   .page-home .data-table {
@@ -1162,12 +1417,7 @@ img {
 /* ==========================================================================
    9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-@media (max-width: 768px) {
-  .page-home .hero-inner {
-    flex-direction: column;
-    text-align: center;
-  }
-}
+/* (index.html's own phone rules live inside section 5, not here) */
 
 @media screen and (max-width: 768px) {
   .page-apply .apply_form {
@@ -1191,3 +1441,41 @@ img {
     margin-right: 0;
   }
 }
+
+
+@media (max-width: 768px) {
+  .page-jobs .jobs-main,
+  .page-jobs aside.jobs-sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
+/* ==========================================================================
+   10. PRINT STYLES (shared)
+   Cleaner paper copy: no navigation, search or buttons, black text,
+   and web addresses written out after links.
+   ========================================================================== */
+@media print {
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  .site-header,
+  .skip-link,
+  .home-search,
+  .button,
+  .cta-band {
+    display: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
+  }
+}
+
+
