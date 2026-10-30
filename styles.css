@@ -1103,7 +1103,7 @@ html {
   border-radius: 6px;
   padding: 1rem 1.25rem;
   margin: 0.5rem 0;
-  background-color: #ffffff;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
@@ -1149,7 +1149,7 @@ html {
 
 .page-apply input[type="submit"] {
   background-color: green;
-  color: #ffffff;
+  color: white;
   border: none;
 }
 
