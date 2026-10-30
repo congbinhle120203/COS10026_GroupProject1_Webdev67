@@ -818,16 +818,28 @@ html {
    6. PAGE: jobs.html (Owner: Bach Gia Huy - Scope: .page-jobs)
    ========================================================================== */
 .page-jobs .jobs-header {
-  padding: 2.5rem 0 1.5rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  margin-bottom: 2.5rem;
+  position: relative;
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+}
+
+.page-jobs .jobs-header h1 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  color: var(--ink);
+  margin-bottom: 0.5rem;
 }
 
 .page-jobs .jobs-intro {
   color: var(--ink-muted);
   font-size: 1.15rem;
-  max-width: 42rem;
+  max-width: 48rem;
   margin-bottom: 0;
+  line-height: 1.6;
 }
 
 .page-jobs .jobs-layout {
@@ -856,6 +868,7 @@ html {
   border: 2px solid var(--primary);
   border-top: 6px solid var(--accent);
   border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
 .page-jobs aside.jobs-sidebar h2 {
@@ -863,6 +876,8 @@ html {
   color: var(--primary);
   margin-top: 0;
   margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .page-jobs aside.jobs-sidebar h3 {
@@ -877,6 +892,16 @@ html {
   color: var(--ink-muted);
 }
 
+.page-jobs aside.jobs-sidebar code {
+  font-family: var(--font-mono);
+  background-color: var(--bg);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  color: var(--primary);
+  font-weight: bold;
+}
+
 /* Job Description Cards */
 .page-jobs .job-card {
   background-color: var(--bg);
@@ -885,10 +910,18 @@ html {
   border-radius: var(--radius-lg);
   padding: 2rem;
   margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .page-jobs .job-card:nth-of-type(even) {
   border-left-color: var(--accent);
+}
+
+
+.page-jobs .job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(27, 42, 35, 0.12);
 }
 
 .page-jobs .job-card-header {
@@ -924,12 +957,15 @@ html {
 .page-jobs .job-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 0.6rem 1.5rem;
   list-style: none;
-  padding: 0;
-  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.5rem;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   font-size: 0.95rem;
-  color: var(--ink-muted);
+  color: var(--ink-muted)
 }
 
 .page-jobs .job-meta strong {
@@ -973,18 +1009,19 @@ html {
 /* Acknowledgement of Country Card */
 .page-jobs .country-ack {
   clear: both;
-  background-color: var(--bg);
-  border: 1px dashed var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 0.5rem;
-  padding: 1.5rem 1.75rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
   margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
 .page-jobs .country-heading {
   margin-top: 0;
   margin-bottom: 0.6rem;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--ink);
 }
 
@@ -1430,6 +1467,10 @@ html {
 
 
 @media (max-width: 768px) {
+  .page-jobs .jobs-header {
+    padding: 1.75rem 1.25rem;
+  }
+
   .page-jobs .jobs-main,
   .page-jobs aside.jobs-sidebar {
     float: none;
