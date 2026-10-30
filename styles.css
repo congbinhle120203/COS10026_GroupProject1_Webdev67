@@ -1000,39 +1000,44 @@ html {
 /* ==========================================================================
    7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
    ========================================================================== */
-.page-apply .page-intro{
+.page-apply .page-intro {
   text-align: center;
   font-size: 2.25rem;
   font-family: Georgia, serif;
   color: black;
   margin: 0 auto 0.5rem auto;
 }
+
 .page-apply #description {
   text-align: center;
+  color: black;
   max-width: 42rem;
   margin: 0 auto 2rem auto;
-}
-
-.page-apply h2{
-  font-size: 1.75rem;
-  color: #1a1a1a;
-  margin-top: 0;
-  margin-bottom: 1.5rem;
-  border-bottom: 1px solid gray;
-  padding-bottom: 0.5rem;
 }
 
 .page-apply .apply_form {
   max-width: 750px;
   margin: 0 auto;
-  background-color: white;
-  border: 1px solid #d0d7de;
-  border-left: 6px solid #1e4d40;
+  background-color: #eef4ee;
+  border: 1px solid gray;
+  border-left: 6px solid #2c5e4f;
   border-radius: 12px;
   padding: 2rem;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
   box-sizing: border-box;  
 }
+
+.page-apply .information legend#title_form {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgb(206, 202, 202);
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
+
 .page-apply .information {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -1041,19 +1046,17 @@ html {
   padding: 0;
   margin: 0;
 }
-.page-apply .information > p:first-child,
-.page-apply .information p:nth-child(6),
-.page-apply .gender_form,
+
+.page-apply .information .full-width,
 .page-apply .skills_form {
   grid-column: 1 / -1;
 }
 
-.page-apply .information legend {
-  font-weight: bold;
-  font-size: 1.25rem;
-  padding: 0 0.5rem;
-  text-align: center;
+.page-apply .gender_form {
+  grid-column: auto;
+  margin: 0;
 }
+
 .page-apply .apply_form p {
   display: flex;
   flex-direction: column;
@@ -1064,26 +1067,26 @@ html {
 .page-apply .apply_form label {
   font-weight: 600;
   font-size: 1rem;
-  color: #222222;
+  color: black;
 }
 
 .page-apply .apply_form input[type="text"],
 .page-apply .apply_form input[type="email"],
 .page-apply .apply_form input[type="tel"],
-.page-apply .apply_form input[type="date"],
 .page-apply .apply_form select,
 .page-apply .apply_form textarea {
   width: 100%; 
   padding: 0.65rem 0.85rem;
-  border: 1px solid #b0bec5;
-  border-radius: 8px;
+  border: 1px solid gray;
+  border-radius: 6px;
   font-size: 1rem;
   background-color: white;
+  color: black;
   box-sizing: border-box;
 }
 
 .page-apply .required {
-  color: #d9383a;
+  color: red; 
   font-weight: bold;
   margin-left: 0.25rem;
 }
@@ -1093,14 +1096,11 @@ html {
   resize: none;
   margin-top: 0.4rem;
 }
-.page-apply .gender_form {
-  grid-column: auto;
-  margin: 0;
-}
+
 .page-apply .gender_form,
 .page-apply .skills_form {
-  border: 1px solid #d0d7de;
-  border-radius: 8px;
+  border: 1px solid #c5d4c8;
+  border-radius: 6px;
   padding: 1rem 1.25rem;
   margin: 0.5rem 0;
   background-color: white;
@@ -1118,36 +1118,20 @@ html {
   color: black;
 }
 
-.page-apply .skills_form, 
-.page-apply .gender_form {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 1.5rem;
-  align-items: center;
-}
-
 .page-apply .gender_form label,
 .page-apply .skills_form label {
   display: inline-flex;
   align-items: center;
   gap: 0.4rem;
   font-weight: normal;
-  font-size: 0.9rem;
+  font-size: 1rem;
   cursor: pointer;
-}
-
-.page-apply .skills_form label:last-child {
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  font-weight: 600;
-  margin-top: 0.5rem;
+  color: black;
 }
 
 .page-apply input[type="radio"],
 .page-apply input[type="checkbox"] {
-  accent-color: #1e4d40;
+  accent-color: black;
   width: 1.05rem;
   height: 1.05rem;
 }
@@ -1155,7 +1139,7 @@ html {
 .page-apply input[type="submit"],
 .page-apply input[type="reset"] {
   font-weight: bold;
-  font-size: 0.95rem;
+  font-size: 1rem;
   padding: 0.65rem 1.75rem;
   border-radius: 20px;
   margin-top: 1.5rem;
@@ -1174,11 +1158,13 @@ html {
 }
 
 .page-apply input[type="reset"] {
+  background-color: transparent;
+  color: black;
   border: 1px solid gray;
 }
 
 .page-apply input[type="reset"]:hover {
-  background-color: rgb(227, 224, 224);
+  background-color: #dcdcdc;
 }
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
@@ -1477,5 +1463,3 @@ html {
     font-size: 0.85em;
   }
 }
-
-
