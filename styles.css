@@ -1,21 +1,40 @@
 /* ==========================================================================
    styles.css - Solstice Community Energy Careers
    COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
+
+   HOW THIS FILE IS ORGANISED
+   1. Colour variables and theme    (shared - Binh)
+   2. Base styles                   (shared - Binh)
+   3. Layout container              (shared - Binh)
+   4. Header, nav, buttons, footer  (shared - Binh)
+   5. index.html                    (Binh,  scope: .page-home)
+   6. jobs.html                     (Huy,   scope: .page-jobs)
+   7. apply.html                    (Duy,   scope: .page-apply)
+   8. about.html                    (An,    scope: .page-about)
+   9. Responsive media queries      (shared)
+
+   RULES: only edit inside your own section. Start every page-specific
+   selector with your body class so rules never clash between pages.
    ========================================================================== */
 
 
 /* ==========================================================================
-   1. COLOR VARIABLES & THEME
+   1. COLOR VARIABLES & THEME (Eucalyptus)
+   Change a colour here once and every page updates.
    ========================================================================== */
 :root {
-  --bg: #eef4ee;
-  --ink: #1b2a23;
-  --ink-muted: #455a4e;
-  --primary: #2c5e4f;
-  --accent: #e0a526;
-  --line: #c5d4c8;
+  --bg: #eef4ee;          /* page background */
+  --surface: #fbfdfb;     /* cards and boxes sitting on the background */
+  --ink: #1b2a23;        /* main text */
+  --ink-muted: #455a4e;   /* secondary text */
+  --primary: #2c5e4f;     /* brand green */
+  --on-primary: #ffffff;  /* text placed on the brand green */
+  --accent: #e0a526;      /* sun yellow, used for highlights */
+  --line: #c5d4c8;        /* borders and dividers */
   --link: #1f5a8a;
-  --focus: #9a3412;
+  --focus: #9a3412;       /* keyboard focus outline */
+  --sun-glow: rgba(224, 165, 38, 0.30);   /* soft sun in the hero background */
+  --grid-line: rgba(44, 94, 79, 0.13);    /* solar panel grid lines */
 
   --font: Calibri, Arial, sans-serif;
   --font-mono: Consolas, monospace;
@@ -43,6 +62,7 @@ body {
 
 h1, h2, h3 {
   color: var(--ink);
+  line-height: 1.25;
   margin-top: 0;
 }
 
@@ -77,6 +97,53 @@ img {
   display: block;
 }
 
+/* Keyboard focus: a clear outline on every interactive element */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
+}
+
+/* Placeholder text: the browser default is too pale on our background */
+::placeholder {
+  color: var(--ink-muted);
+  opacity: 1;
+}
+
+/* Text for screen readers only (hidden on screen) */
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Smooth scrolling for in-page links (skip link, footer link) */
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;   /* keeps targets clear of the sticky header */
+}
+
+/* Respect visitors who turn animations off in their system settings */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
 
 /* ==========================================================================
    3. LAYOUT CONTAINER
@@ -91,16 +158,38 @@ img {
   padding: 2em 0;
 }
 
+/* "Skip to main content" link: hidden until a keyboard user tabs to it */
 .skip-link {
-  display: none;
+  position: absolute;
+  top: -100px;
+  left: 1rem;
+  z-index: 9999;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--primary);
+  color: var(--on-primary);
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 0 0 var(--radius) var(--radius);
+  border: 2px solid var(--accent);
+  transition: top 0.2s ease-in-out;
+}
+
+.skip-link:focus {
+  top: 0;
+  outline: 3px solid var(--focus);
+  outline-offset: 2px;
 }
 
 
 /* ==========================================================================
    4. HEADER, NAVIGATION, BUTTONS & FOOTER
    ========================================================================== */
+/* Header stays at the top of the screen while scrolling */
 .site-header {
-  background-color: var(--bg);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 
@@ -109,6 +198,7 @@ img {
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 0.5em 1em;
   padding: 0.8em 0;
 }
 
@@ -131,6 +221,10 @@ img {
   list-style: none;
 }
 
+.main-nav li {
+  margin-bottom: 0;
+}
+
 .main-nav a {
   display: inline-block;
   padding: 0.3em 0.2em;
@@ -145,6 +239,7 @@ img {
   border-bottom-color: var(--primary);
 }
 
+/* The page you are on: bold green with an underline */
 .main-nav a[aria-current="page"] {
   color: var(--primary);
   border-bottom-color: var(--primary);
@@ -155,36 +250,27 @@ img {
   display: inline-block;
   padding: 0.6em 1.2em;
   font-weight: bold;
-  color: var(--bg);
+  color: var(--on-primary);
   background-color: var(--primary);
   border: 2px solid var(--primary);
   border-radius: var(--radius);
   text-decoration: none;
   margin-right: 0.5em;
+  transition: background-color 0.2s, color 0.2s, transform 0.2s;
 }
 
 .button:hover {
+  transform: translateY(-2px);
   background-color: var(--ink);
   border-color: var(--ink);
-  color: var(--bg);
-}
-
-.button-secondary {
-  background-color: transparent;
-  color: var(--ink);
-  border: 2px solid var(--ink-muted);
-}
-
-.button-secondary:hover {
-  background-color: var(--line);
-  color: var(--ink);
+  color: var(--on-primary);
 }
 
 /* Footer */
 .site-footer {
   margin-top: 3em;
   padding: 1.5em 0;
-  background-color: var(--bg);
+  background-color: var(--surface);
   border-top: 1px solid var(--line);
   font-size: 0.95em;
 }
@@ -206,13 +292,18 @@ img {
   list-style: none;
 }
 
+.footer-links li {
+  margin-bottom: 0;
+}
+
 .footer-links a {
   color: var(--ink);
-  text-decoration: none;
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .footer-links a:hover {
-  text-decoration: underline;
+  color: var(--primary);
 }
 
 .site-footer p {
@@ -220,15 +311,76 @@ img {
   color: var(--ink-muted);
 }
 
+/* Acknowledgment of Country line (takes a full row of the footer) */
+.site-footer .footer-country {
+  flex-basis: 100%;
+  font-size: 0.95em;
+}
+
 
 /* ==========================================================================
    5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
    ========================================================================== */
 
-/* hero banner */
+/* ---- Search bar (strip under the header) ---- */
+.page-home .home-search {
+  padding: 0.9em 0;
+  background-color: var(--surface);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .search-form {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5em 0.75em;
+}
+
+.page-home .search-form label {
+  font-weight: bold;
+}
+
+.page-home .search-form input[type="search"] {
+  flex: 1 1 14em;
+  max-width: 28em;
+  padding: 0.55em 0.8em;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--ink);
+  background-color: var(--bg);
+  border: 2px solid var(--ink-muted);
+  border-radius: var(--radius);
+}
+
+.page-home .search-form button {
+  padding: 0.55em 1.3em;
+  font-family: inherit;
+  font-size: 1em;
+  font-weight: bold;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.page-home .search-form button:hover {
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* ---- Hero banner: CSS background graphic ----
+   Layers, top to bottom: a soft sun glow, a solar panel grid
+   (two sets of thin lines), then a green gradient underneath. */
 .page-home .hero {
-  padding: 2.5em 0;
+  padding: 3.5em 0;
   background-color: #d7e8dc;
+  background-image:
+    radial-gradient(circle at 88% 15%, var(--sun-glow), transparent 45%),
+    linear-gradient(var(--grid-line) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-line) 1px, transparent 1px),
+    linear-gradient(180deg, #e6f1e8, #cfe3d6);
+  background-size: auto, 44px 44px, 44px 44px, auto;
   border-bottom: 2px solid var(--line);
 }
 
@@ -237,7 +389,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 2em;
+  gap: 2.5em;
 }
 
 .page-home .hero-copy {
@@ -248,46 +400,83 @@ img {
   flex: 1;
 }
 
+/* the slogan above the main heading */
+.page-home .hero-slogan {
+  display: inline-block;
+  margin-bottom: 0.8em;
+  padding: 0.25em 0.8em;
+  font-size: 0.9em;
+  font-weight: bold;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--primary);
+  background-color: var(--surface);
+  border: 1px solid var(--primary);
+  border-radius: 2em;
+}
+
+.page-home .hero h1 {
+  font-size: clamp(2rem, 4.5vw, 3rem);
+  color: var(--ink);
+}
+
 .page-home .hero .lead {
-  font-size: 1.1em;
-  color: var(--ink-muted);
+  font-size: 1.15em;
+  color: var(--ink);
 }
 
 .page-home .hero-image {
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
   border: 2px solid var(--line);
+  box-shadow: 0 8px 24px rgba(27, 42, 35, 0.15);
 }
 
-/* white box section */
+/* secondary outline button on home hero */
+.page-home .button-secondary {
+  background-color: transparent;
+  color: var(--ink);
+  border: 2px solid var(--ink-muted);
+}
+
+.page-home .button-secondary:hover {
+  background-color: var(--surface);
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+/* ---- White box sections ---- */
 .page-home .section {
-  margin-top: 2em;
-  padding: 1.5em;
-  background-color: var(--bg);
+  margin-top: 2.5em;
+  padding: 1.75em;
+  background-color: var(--surface);
   border: 2px solid var(--line);
-  border-radius: 12px;
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
-/* stats row using flexbox */
+/* ---- Stats row using flexbox ---- */
 .page-home .stats-row {
   display: flex;
   flex-wrap: wrap;
   gap: 1em;
-  margin-top: 1em;
+  margin-top: 1.25em;
 }
 
 .page-home .stat-box {
   flex: 1;
   min-width: 150px;
-  padding: 1em;
+  padding: 1.1em 1em;
   background-color: var(--bg);
   border: 1px solid var(--line);
-  border-radius: 6px;
+  border-top: 4px solid var(--accent);
+  border-radius: var(--radius);
   text-align: center;
 }
 
 .page-home .stat-number {
-  font-size: 1.6em;
+  font-size: 1.8em;
   font-weight: bold;
+  line-height: 1.2;
   color: var(--primary);
   margin-bottom: 0.2em;
 }
@@ -297,11 +486,16 @@ img {
   color: var(--ink-muted);
 }
 
-/* projects table */
+/* ---- Projects table ---- */
+/* Wrapper lets the table scroll sideways on a narrow phone screen */
+.page-home .table-wrap {
+  margin-top: 1em;
+  overflow-x: auto;
+}
+
 .page-home .data-table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 1em;
 }
 
 .page-home .data-table caption {
@@ -312,14 +506,14 @@ img {
 
 .page-home .data-table th,
 .page-home .data-table td {
-  padding: 0.6em;
+  padding: 0.7em 0.8em;
   border: 1px solid var(--line);
   text-align: left;
 }
 
 .page-home .data-table thead th {
   background-color: var(--primary);
-  color: var(--bg);
+  color: var(--on-primary);
 }
 
 .page-home .data-table tbody th,
@@ -329,21 +523,323 @@ img {
   font-weight: bold;
 }
 
+/* highlight the row under the mouse */
+.page-home .data-table tbody td:hover {
+  background-color: #fdf3d6;
+}
+
+/* ---- Why join: list shown as three cards ---- */
+.page-home .benefits {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .benefits li {
+  margin-bottom: 0;
+  padding: 1.1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .benefits strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+  font-size: 1.1em;
+}
+
+/* ---- Call-to-action band above the footer ---- */
+.page-home .cta-band {
+  margin-top: 2.5em;
+  padding: 2em 1.75em;
+  text-align: center;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  background-image: radial-gradient(circle at 90% 0%, var(--sun-glow), transparent 55%);
+  border-radius: var(--radius-lg);
+}
+
+.page-home .cta-band h2 {
+  color: var(--on-primary);
+}
+
+.page-home .cta-band p {
+  max-width: 36em;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.page-home .cta-band .button {
+  margin: 0.25em;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-color: var(--accent);
+}
+
+.page-home .cta-band .button:hover {
+  background-color: var(--surface);
+  border-color: var(--surface);
+  color: var(--ink);
+}
+
+/* ---- Gentle fade-in when the page loads (switched off by reduced-motion) ---- */
+@keyframes home-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.page-home .hero-copy {
+  animation: home-rise 0.7s ease-out both;
+}
+
+.page-home .hero-media {
+  animation: home-rise 0.7s ease-out 0.15s both;
+}
+
+/* ---- Cards lift slightly on hover ---- */
+.page-home .stat-box,
+.page-home .benefits li {
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .stat-box:hover,
+.page-home .benefits li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
+}
+
+/* ---- Featured roles: two cards that link to jobs.html ---- */
+.page-home .featured {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .featured li {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 0;
+  padding: 1.25em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-top: 5px solid var(--primary);
+  border-radius: var(--radius);
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.page-home .featured li:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
+}
+
+.page-home .featured h3 {
+  margin-bottom: 0.4em;
+}
+
+.page-home .featured-ref {
+  align-self: flex-start;
+  margin-bottom: 0.6em;
+  padding: 0.15em 0.6em;
+  font-family: var(--font-mono);
+  font-weight: bold;
+  color: var(--primary);
+  border: 1px solid var(--primary);
+  border-radius: var(--radius);
+}
+
+.page-home .featured-meta {
+  color: var(--ink-muted);
+}
+
+.page-home .featured .button {
+  align-self: flex-start;
+  margin-top: auto;
+}
+
+/* ---- How hiring works: numbered steps drawn with CSS counters ---- */
+.page-home .steps {
+  counter-reset: step;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1em;
+  margin: 1.25em 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-home .steps li {
+  counter-increment: step;
+  position: relative;
+  margin-bottom: 0;
+  padding: 3.2em 1em 1em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .steps li::before {
+  content: counter(step);
+  position: absolute;
+  top: 0.9em;
+  left: 1em;
+  width: 2em;
+  height: 2em;
+  line-height: 2em;
+  text-align: center;
+  font-weight: bold;
+  color: var(--ink);
+  background-color: var(--accent);
+  border-radius: 50%;
+}
+
+.page-home .steps strong {
+  display: block;
+  margin-bottom: 0.3em;
+  color: var(--primary);
+}
+
+/* ---- Team quote ---- */
+.page-home .voice {
+  margin: 1.25em 0 0;
+  padding: 1.25em 1.5em;
+  background-color: var(--bg);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+.page-home .voice blockquote {
+  margin: 0;
+}
+
+.page-home .voice blockquote p {
+  margin: 0 0 0.6em;
+  font-size: 1.2em;
+  font-style: italic;
+}
+
+.page-home .voice figcaption {
+  color: var(--ink-muted);
+  font-size: 0.95em;
+}
+
+/* ---- FAQ: details and summary ---- */
+.page-home .faq details {
+  margin-top: 0.75em;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-home .faq summary {
+  padding: 0.8em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.page-home .faq summary:hover {
+  color: var(--primary);
+}
+
+.page-home .faq details[open] {
+  border-color: var(--primary);
+}
+
+.page-home .faq details[open] summary {
+  border-bottom: 1px solid var(--line);
+}
+
+.page-home .faq details p {
+  margin: 0;
+  padding: 0.9em 1em;
+}
+
+/* ---- index.html on tablets and phones ---- */
+@media (max-width: 768px) {
+  .page-home .hero {
+    padding: 2.25em 0;
+  }
+
+  .page-home .hero-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .page-home .benefits,
+  .page-home .featured {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .steps {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .page-home .search-form input[type="search"] {
+    max-width: none;
+  }
+}
+
+/* Smaller phones: tighter table so all four columns fit */
+@media (max-width: 36rem) {
+  .page-home .section {
+    padding: 1.25em;
+  }
+
+  .page-home .steps {
+    grid-template-columns: 1fr;
+  }
+
+  .page-home .data-table {
+    font-size: 0.85em;
+  }
+
+  .page-home .data-table th,
+  .page-home .data-table td {
+    padding: 0.5em 0.4em;
+  }
+}
+
 
 /* ==========================================================================
    6. PAGE: jobs.html (Owner: Bach Gia Huy - Scope: .page-jobs)
    ========================================================================== */
 .page-jobs .jobs-header {
-  padding: 2.5rem 0 1.5rem;
-  border-bottom: 1px solid var(--line);
-  margin-bottom: 2rem;
+  padding: 3rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  margin-bottom: 2.5rem;
+  position: relative;
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+}
+
+.page-jobs .jobs-header h1 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  color: var(--ink);
+  margin-bottom: 0.5rem;
 }
 
 .page-jobs .jobs-intro {
   color: var(--ink-muted);
   font-size: 1.15rem;
-  max-width: 42rem;
+  max-width: 48rem;
   margin-bottom: 0;
+  line-height: 1.6;
 }
 
 .page-jobs .jobs-layout {
@@ -372,6 +868,7 @@ img {
   border: 2px solid var(--primary);
   border-top: 6px solid var(--accent);
   border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
 .page-jobs aside.jobs-sidebar h2 {
@@ -379,6 +876,8 @@ img {
   color: var(--primary);
   margin-top: 0;
   margin-bottom: 0.75rem;
+  padding-bottom: 0.4rem;
+  border-bottom: 1px solid var(--line);
 }
 
 .page-jobs aside.jobs-sidebar h3 {
@@ -393,6 +892,16 @@ img {
   color: var(--ink-muted);
 }
 
+.page-jobs aside.jobs-sidebar code {
+  font-family: var(--font-mono);
+  background-color: var(--bg);
+  padding: 0.15em 0.4em;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  color: var(--primary);
+  font-weight: bold;
+}
+
 /* Job Description Cards */
 .page-jobs .job-card {
   background-color: var(--bg);
@@ -401,10 +910,18 @@ img {
   border-radius: var(--radius-lg);
   padding: 2rem;
   margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
 }
 
 .page-jobs .job-card:nth-of-type(even) {
   border-left-color: var(--accent);
+}
+
+
+.page-jobs .job-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 16px rgba(27, 42, 35, 0.12);
 }
 
 .page-jobs .job-card-header {
@@ -440,12 +957,15 @@ img {
 .page-jobs .job-meta {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.5rem 1.5rem;
+  gap: 0.6rem 1.5rem;
   list-style: none;
-  padding: 0;
-  margin: 0 0 1.25rem;
+  padding: 0.75rem 1rem;
+  margin: 0 0 1.5rem;
+  background-color: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
   font-size: 0.95rem;
-  color: var(--ink-muted);
+  color: var(--ink-muted)
 }
 
 .page-jobs .job-meta strong {
@@ -489,18 +1009,19 @@ img {
 /* Acknowledgement of Country Card */
 .page-jobs .country-ack {
   clear: both;
-  background-color: var(--bg);
-  border: 1px dashed var(--line);
-  border-left: 4px solid var(--accent);
-  border-radius: 0.5rem;
-  padding: 1.5rem 1.75rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-left: 6px solid var(--accent);
+  border-radius: var(--radius-lg);
+  padding: 1.75rem 2rem;
   margin-bottom: 2rem;
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
 .page-jobs .country-heading {
   margin-top: 0;
   margin-bottom: 0.6rem;
-  font-size: 1.15rem;
+  font-size: 1.2rem;
   color: var(--ink);
 }
 
@@ -512,130 +1033,234 @@ img {
 }
 
 
+
 /* ==========================================================================
    7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
    ========================================================================== */
-.page-apply .page-intro{
+.page-apply .page-intro {
   text-align: center;
-  margin: auto;
-  margin-bottom: 10px;
-}
-.page-apply h2{
-  text-align: center;
-  font-size: 1.5rem;
-}
-.page-apply .apply_form {
-  max-width: 700px;
-  margin: 0 auto;
-  padding: 1.5rem;
-  border: 1px solid gray;
-  border-radius: 10px;  
-}
-.page-apply .information {
-  border: 1px solid gray;
-  border-radius: 8px;
-  padding: 1.5rem;
-  background-color: white;
+  font-size: 2.25rem;
+  font-family: Georgia, serif;
+  color: black;
+  margin: 0 auto 0.5rem auto;
 }
 
-.page-apply .information legend {
-  font-weight: bold;
-  font-size: 1.25rem;
-  padding: 0 0.5rem;
+.page-apply #description {
   text-align: center;
+  color: black;
+  max-width: 42rem;
+  margin: 0 auto 2rem auto;
 }
+
+.page-apply .apply_form {
+  max-width: 750px;
+  margin: 0 auto;
+  background-color: #eef4ee;
+  border: 1px solid gray;
+  border-left: 6px solid #2c5e4f;
+  border-radius: 12px;
+  padding: 2rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;  
+}
+
+.page-apply .information legend#title_form {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: black;
+  margin-bottom: 1.5rem;
+  border-bottom: 2px solid rgb(206, 202, 202);
+  padding-bottom: 0.5rem;
+  width: 100%;
+  text-align: left;
+}
+
+.page-apply .information {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.25rem 1.5rem;
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+.page-apply .information .full-width,
+.page-apply .skills_form {
+  grid-column: 1 / -1;
+}
+
+.page-apply .gender_form {
+  grid-column: auto;
+  margin: 0;
+}
+
 .page-apply .apply_form p {
   display: flex;
   flex-direction: column;
   gap: 0.4rem;
-  margin-bottom: 1.2rem;
+  margin: 0;
 }
 
 .page-apply .apply_form label {
   font-weight: 600;
-  font-size: 1.25rem;
+  font-size: 1rem;
+  color: black;
 }
 
 .page-apply .apply_form input[type="text"],
 .page-apply .apply_form input[type="email"],
 .page-apply .apply_form input[type="tel"],
-.page-apply .apply_form input[type="date"],
 .page-apply .apply_form select,
 .page-apply .apply_form textarea {
-  width: 600px; 
-  border: 1px solid #ccc;
-  border-radius: 4px;
+  width: 100%; 
+  padding: 0.65rem 0.85rem;
+  border: 1px solid gray;
+  border-radius: 6px;
   font-size: 1rem;
+  background-color: white;
+  color: black;
   box-sizing: border-box;
 }
-.page-apply .gender_form,
-.page-apply .skills_form {
-  border: 1px solid #e0e0e0;
-  border-radius: 6px;
-  padding: 1rem;
-  margin-bottom: 1.2rem;
+
+.page-apply .required {
+  color: red; 
+  font-weight: bold;
+  margin-left: 0.25rem;
 }
 
-.page-apply .skills_form, .gender_form {
+.page-apply .apply_form textarea {
+  min-height: 90px;
+  resize: none;
+  margin-top: 0.4rem;
+}
+
+.page-apply .gender_form,
+.page-apply .skills_form {
+  border: 1px solid #c5d4c8;
+  border-radius: 6px;
+  padding: 1rem 1.25rem;
+  margin: 0.5rem 0;
+  background-color: white;
   display: flex;
   flex-wrap: wrap;
   gap: 1.5rem;
   align-items: center;
 }
 
-.page-apply .skills_form label,
-.page-apply .gender_form label{
+.page-apply .gender_form legend,
+.page-apply .skills_form legend {
+  font-weight: bold;
+  font-size: 1rem;
+  padding: 0 0.5rem;
+  color: black;
+}
+
+.page-apply .gender_form label,
+.page-apply .skills_form label {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
   font-weight: normal;
   font-size: 1rem;
-  
+  cursor: pointer;
+  color: black;
+}
+
+.page-apply input[type="radio"],
+.page-apply input[type="checkbox"] {
+  accent-color: black;
+  width: 1.05rem;
+  height: 1.05rem;
 }
 
 .page-apply input[type="submit"],
 .page-apply input[type="reset"] {
-  padding: 0.75rem 1.5rem;
-  font-size: 1rem;
   font-weight: bold;
-  border: 1px solid gray;
-  border-radius: 4px;
+  font-size: 1rem;
+  padding: 0.65rem 1.75rem;
+  border-radius: 20px;
+  margin-top: 1.5rem;
+  margin-right: 0.5rem;
   cursor: pointer;
 }
 
+.page-apply input[type="submit"] {
+  background-color: green;
+  color: white;
+  border: none;
+}
 
+.page-apply input[type="submit"]:hover {
+  background-color: darkgreen;
+}
+
+.page-apply input[type="reset"] {
+  background-color: transparent;
+  color: black;
+  border: 1px solid gray;
+}
+
+.page-apply input[type="reset"]:hover {
+  background-color: #dcdcdc;
+}
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
+
+
+/* block-like section with borders and color for background */
 .page-about .section {
+  display: flex;
+  flex-direction: column;
+  max-width: var(--maxw);
+  margin: 3rem auto auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border-radius: 1rem;
+  border: 2px solid var(--line);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+}
+
+/* a section without borders and background color */
+.page-about .floating-section {
   display: flex;
   flex-direction: column;
   width: 90%;
   max-width: var(--maxw);
   margin: 3rem auto auto;
   padding: 2rem;
-  background-color: var(--bg);
   border-radius: 1rem;
-  border: 2px solid var(--line);
 }
 
+/* Section displayed in flex - row */
 .page-about .section-row {
   display: flex;
   flex-wrap: nowrap;
-  justify-content: space-evenly;
-  width: 90%;
+  justify-content: space-between;
+  gap: 3em;
+  width: 100%;
   max-width: var(--maxw);
   margin: 1rem auto auto;
-  padding: 2rem;
-  background-color: var(--bg);
+  padding: 0.1rem;
   border-radius: 1rem;
 }
 
-.page-about .SubTitle {
-  color: var(--ink-muted);
+/* Header Card that is similar to the one in the Jobs page to retain pages consistency */
+.page-about .header-card {
+  padding: 3rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  margin-bottom: 2.5rem;
+  position: relative;
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+
+  font-size: 1.2rem;
 }
 
-.page-about #group-name {
-  text-align: center;
-  font-size: 1.3rem;
-  font-weight: bold;
+
+.page-about .SubTitle {
   color: var(--ink-muted);
 }
 
@@ -643,14 +1268,31 @@ img {
   margin: 1rem;
 }
 
+
+.page-about .member-info p {
+  display: inline-block;
+}
+
+/*STYLED STUDENT ID Card next each member's name in the Contribution section */
 .page-about .StudentID {
   width: auto;
   text-align: center;
   margin: 0.5rem 1.3rem;
-  border: 2px solid var(--line);
+  border: 1px solid var(--ink);
   padding: 0.3rem;
   border-radius: 0.3em;
-  background-color: var(--bg);
+  
+  background-color: var(--primary);
+
+  color: var(--on-primary);
+  font-weight: bold;
+  letter-spacing: .07rem;
+
+  
+  white-space: nowrap;
+  /* white space nowrap makes the whole ID: [number] put together as one line
+  to prevent the number enters a new line on smaller screen */
+
 }
 
 .page-about .StudentName {
@@ -659,12 +1301,42 @@ img {
   color: var(--link);
 }
 
+/* Each member's quote, displayed using flex column */
 .page-about .quote {
-  margin: 1.5rem 0;
-  width: 95%;
+  display: flex;
+  flex-direction: column;
+  
+  margin: 1.5rem 1.5rem auto;
+  margin-bottom: 3rem;
   padding-left: 0.7rem;
-  border-left: 3px solid var(--accent);
-  font-size: 1.3rem;
+  padding-right: 0.7rem;
+  padding-top: 1rem;
+  padding-bottom: 0.7rem;
+
+  border: 1px solid var(--line);
+  border-left: 5px solid var(--accent);
+  border-radius: .9rem;
+
+  font-size: 1rem;
+  text-align: center;
+  font-style: italic;
+  font-weight: bold;
+  background-color: var(--on-primary);
+}
+
+/* Quote Author at the bottom of the Quote block */
+.page-about .quote-author {
+  margin: auto;
+  padding: 0.15rem;
+  font-style: normal;
+  font-weight: normal;
+  border-radius: 0.6rem;
+  border: 1px solid #a1a99b;
+  color: #71756d;
+}
+
+.page-about .quote p[lang="vi"] {
+  color: var(--focus);
 }
 
 .page-about hr {
@@ -673,60 +1345,121 @@ img {
   border-top: 1px solid var(--line);
 }
 
-.page-about div.GroupName {
-  border: 2px solid var(--line);
-  border-radius: var(--radius-lg);
-  background-color: var(--bg);
-  border-left-color: var(--link);
-  border-left-width: var(--radius);
-  padding: 1rem;
+/*Group Name card in the Who We Are section and
+  Class day/time card in the Who We Are section */
+.page-about div.info-card {
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background-color: var(--on-primary);
+
+  border-top: 5px solid var(--primary);
+  
+  padding: .7rem;
+
+  margin: 1rem;
+
+  font-size: 0.8rem;
+
+  flex: 1;
 }
 
-.page-about div.ClassDayTime {
-  border: 2px solid var(--line);
-  border-radius: var(--radius-lg);
-  background-color: var(--bg);
-  border-left-color: var(--focus);
-  border-left-width: var(--radius);
-  padding: 1rem;
+/* Similiar to above but is used for paragraphs with different styling */
+.page-about div.para-card {
+  border: 1px solid var(--line);
+  border-radius: .5rem;
+  background-color: var(--on-primary);
+
+  border-left: 5px solid var(--accent);
+  
+  padding: 1rem 1.5rem 1rem;
+
+  margin: 1rem;
+
+
+  flex: 1;
 }
 
-.page-about .member-info p {
-  display: inline;
+
+/* Make the titles of each aforementioned cards bigger for stylistic purposes */
+.page-about div.info-card .card-title, .page-about div.info-card .card-title {
+
+  text-align: center;
+  font-size: 1.1rem;
+
 }
 
+.page-about div.group-content {
+  flex: 1;
+
+}
+
+.page-about div.group-photo {
+  
+  flex: 1;
+}
+
+.page-about .group-name {
+  text-align: center;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: var(--ink-muted);
+}
+
+/* Member's contribution list card */
 .page-about .contributions {
   margin: auto;
   width: 95%;
-  padding: 1rem 3rem;
-  background-color: var(--bg);
-  border-radius: 1rem;
+  padding: 1rem 1.7rem 0.5rem;
+  background-color: var(--on-primary);
+  border-radius: 0.7rem;
   border: 1px solid var(--line);
+  border-left: 5px solid var(--focus);
+
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
 }
 
+.page-about .contributions ol {
+
+  margin: auto;
+  list-style-type: disc;
+
+}
+
+/* FIGURE of Group Photo with BORDER and CAPTION  */
+/* ======================================================== */
 .page-about figure.GroupPhoto {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+
   width: fit-content;
-  margin: 3rem auto;
-  border: 2px solid var(--primary);
+  height: fit-content;
+
+  margin: auto;
+
+  border: 2px solid var(--ink);
   border-radius: 1.5rem;
-  padding: 1rem 3rem 2rem;
-  background-color: var(--bg);
+  
+  padding: 0.1rem 1rem 1rem;
+  background-color: var(--primary);
+
+  flex: 1;
 }
 
 .page-about figure.GroupPhoto figcaption {
   font-weight: bold;
   font-size: 1.3rem;
-  color: var(--link);
+  color: var(--bg);
   margin-bottom: 0.5rem;
 }
 
 .page-about figure.GroupPhoto img {
   border-radius: 1rem;
+  max-width: 100%;
+  border: 2px solid var(--ink);
 }
+/* ===================================== */
 
 .page-about .FunFact {
   display: flex;
@@ -734,10 +1467,12 @@ img {
   align-items: center;
 }
 
+/* FUN FACT table uses hex color values and Hover Effect */
+/* ====================================================== */
 .page-about .FunFactTable {
   border: 2px solid #735f5f;
   background-color: #e7e7e7;
-  width: 60%;
+  width: 80%;
   text-align: center;
   border-collapse: collapse;
 }
@@ -749,28 +1484,148 @@ img {
   margin-bottom: 0.75rem;
 }
 
+.page-about .FunFactTable .table-name {
+
+  font-weight: bold;
+
+}
+
 .page-about .FunFactTable th,
 .page-about .FunFactTable td {
   padding: 0.75rem;
   border: 1px solid #aeada6;
 }
 
+.page-about .FunFactTable tbody tr:nth-child(even) {
+
+  background-color: #d6d6d6;
+
+}
+
 .page-about .FunFactTable thead {
   background-color: #464967;
   color: #eaeae6;
 }
-
+/* HOVER EFFECT */
 .page-about .FunFactTable td:hover, .page-about .FunFactTable th:hover {
   background-color: #e0a526;
+  color: var(--ink);
+}
+/* ============================================================= */
+
+
+
+/* Nav to Apply Page at the end of the page */
+.page-about div.join-section {
+  width: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.page-about div.join-section * {
+  align-items: center;
+  text-align: center;
 }
 
 
 /* ==========================================================================
    9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
-@media (max-width: 768px) {
-  .page-home .hero-inner {
+/* (index.html's own phone rules live inside section 5, not here) */
+
+@media screen and (max-width: 768px) {
+  .page-apply .apply_form {
+    padding: 1.25rem;
+  }
+
+  .page-apply .information {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .page-apply .gender_form {
     flex-direction: column;
-    text-align: center;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .page-apply input[type="submit"],
+  .page-apply input[type="reset"] {
+    width: 100%;
+    margin-right: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .page-jobs .jobs-header {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .page-jobs .jobs-main,
+  .page-jobs aside.jobs-sidebar {
+    float: none;
+    width: 100%;
+    margin-left: 0;
+  }
+}
+
+
+@media (max-width: 768px) {
+  .page-about .header-card {
+     padding: 1.75rem 1.25rem;
+   }
+
+  .page-about .section,
+  .page-about .floating-section {
+    padding: 1.25rem;
+  }
+
+  .page-about .section-row {
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 1rem;
+  }
+
+  .page-about .contributions {
+    padding: 1rem 1.25rem 0;
+  }
+
+  .page-about .StudentID {
+    margin: 0.3rem 0.4rem;
+  }
+
+  .page-about .quote {
+    margin: 1rem 0.5rem 2rem;
+  }
+
+  .page-about figure.GroupPhoto {
+    padding: 0.1rem 1rem 1rem;
+  }
+}
+
+
+/* ==========================================================================
+   10. PRINT STYLES (shared)
+   Cleaner paper copy: no navigation, search or buttons, black text,
+   and web addresses written out after links.
+   ========================================================================== */
+@media print {
+  body {
+    color: #000000;
+    background-color: #ffffff;
+  }
+
+  .site-header,
+  .skip-link,
+  .home-search,
+  .button,
+  .cta-band {
+    display: none;
+  }
+
+  a[href^="http"]::after {
+    content: " (" attr(href) ")";
+    font-size: 0.85em;
   }
 }

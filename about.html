@@ -1,31 +1,42 @@
 <!DOCTYPE html>
 
-
 <html lang="en-AU">
-
-
 <head>
-
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About | Solstice Community Energy Careers</title>
   <meta name="description" content="Meet the student team behind this fictional recruitment website.">
 
-  <!-- EXTERNAL STYLESHEET -->
+  <!-- EXTERNAL STYLESHEET FOR PAGE's REQUIREMENT -->
   <link rel="stylesheet" href="styles.css">
 
 
-  <!-- EMBEDDED CSS -->
+  <!-- EMBEDDED CSS FOR PAGE's REQUIREMENT -->
   <style>
     h1 {
-        color: #4e3d8b;
+        color: #1b2a23;
     }
   </style>
-
-
 </head>
 
+<!--
+  about.html - Solstice Community Energy Careers
+  COS10026 Applied Web Project Part 1 - Group G03 (Webdev67)
 
+  AUTHOR AND ACKNOWLEDGEMENTS:
+  - Author: Vu Duc Thai An (about.html owner)
+  - Collaborative components: Global header, footer and colour theme coordinated
+    with Le Cong Binh (index.html), Bach Gia Huy (jobs.html) and Pham Duc Duy (apply.html).
+  - Layout: Flexbox sections, definition list for contributions and quotes,
+    bordered figure, and styled fun facts table with hover effects.
+  - Inspiration: About page structure inspired by buffer.com/about.
+    No text or images were copied.
+  - AI assistance: Claude (Anthropic) was used to review errors, styling choices and page
+    accessibility. Some suggested code snippets were adapted, then reviewed, edited and 
+    tested by the author.
+  - The company, figures and info on this page are fictional except for the team members.
+  - Group photo: Photo of the team members and our teacher taken by a classmate.
+-->
 
 
 <body class="page-about">
@@ -38,7 +49,7 @@
 
     <div class="container header-inner">
 
-      <!-- cOMPAMY LOGO AND NAME, CLICK WILL DIRECT TO HOME PAGE -->
+      <!-- COMPANY LOGO AND NAME, CLICK WILL DIRECT TO HOME PAGE -->
       <a class="brand" href="index.html">
         <img src="images/logo.svg" width="44" height="44" alt="">
         <span>Solstice Community Energy</span>
@@ -63,141 +74,204 @@
 
   <main id="main">
 
+
+
     <div class="container page-section">
 
-      <h1>About our team</h1>
+        <!-- HEADER CARD OF THE PAGE TO BE CONSISTENT WITH THE JOB PAGE -->
+        <header class="header-card">
+            <h1>About Us</h1>
 
-      <p class="SubTitle">Get to know the experts in our company.</p>
+            <p class="SubTitle">Discover more about our company.</p>
+        </header>
 
-      <hr>
+        <hr>
 
 
-      <section class="section">
-            <!-- Group's Class Day/Time using nested list -->
+        <section class="section">
+            <!-- Group's Class Day/Time using nested list FOR PAGE'S REQUIREMENT -->
 
-            <h2>Group Information</h2>
+            <h2>Introduction</h2>
+
+            <p class="SubTitle">Some information about us we would like to share with you.</p>
 
             <div class="section-row">
 
-                <div class="GroupName">
-                    <h2 id = "title">Group Name</h2>
-                    <p id = "group-name">Webdev67</p>
+                <div class="group-content">
+
+                    <h2>Who We Are</h2>
+
+                    <div class="para-card">
+                        <p>We are the digital team at Solstice Community Energy, a clean energy company founded in Victoria. Our company builds solar farms and battery storage to provide affordable power to regional communities across Victoria and New South Wales. We are proud to be 67.67% community-owned and currently power over 36,000 homes.</p>
+                    </div>
+
+                    <div class="section-row">
+
+                        <!-- INFORMATION CARD -->
+                        <div class="info-card">
+                            <h3 class = "card-title">Group Name</h3>
+                            <p class = "group-name">Webdev67</p>
+                        </div>
+
+                        <!-- INFORMATION CARD -->
+                        <!-- Class Day/time using nested list! -->
+                        <div class="info-card">
+                            <h3 class = "card-title">Class Day/Time</h3>
+
+                            <ol>
+                                <li>Thursday
+                                    <ol>
+                                        <li>7AM - 10AM</li>
+                                    </ol>
+                                </li>
+                            </ol>
+                        </div>
+
+                    </div>
+
                 </div>
 
-            
-                <div class="ClassDayTime">
-                    <h2>Class Day/Time</h2>
+                <div class="group-photo">
+                    <!-- Figure with border and caption! -->
+                    <figure class="GroupPhoto">
+                        <!-- Group Photo -->
 
-                    <ol>
-                        <li>Thursday
-                            <ol>
-                                <li>7AM - 10AM</li>
-                            </ol>
-                        </li>
-                    </ol>
+                        <figcaption>Webdev67</figcaption>
+                        <img src="./images/group-photo.jpg" alt="Webdev67 team members and Mr Wilson at the center">
+                    
+                    </figure>
                 </div>
 
             </div>
 
+            <hr>
+            <!-- WHAT OUR TEAM DOES section -->
+            <h2>What Our Digital Team Does</h2>
+
+            <div class="para-card">
+                <p>As a team of web developers and IT professionals, we build simple, user-friendly web portals. These web applications allow residents to easily track their daily solar generation and manage their clean power systems.</p>
+            </div>
+
+            <hr>
+
+            <!-- LIFE ON OUR TEAM section -->
+            <h2>Life on Our Team</h2>
+
+            <div class="para-card">
+                <p>We are an active team of IT students and graduates who work from our Melbourne office in Hawthorn or remotely across Australia. Our junior developers receive weekly code reviews and strong mentorship from senior engineers to help them grow while making a real impact on the community.</p>
+            </div>
 
         </section>
 
 
         <section class="section">
-            <!-- Members' Contribution and Quotes -->
+            <!-- Members' Contribution and Quotes in VN and EN translation -->
 
             <h2>Members Contribution and Quotes</h2>
 
+            <p class="SubTitle">The work we do and the thoughts we share.</p>
 
             <dl class="member-section">
 
-                <!-- INLINE CSS -->
+                <!-- INLINE CSS for PAGE's REQUIREMENT -->
 
                 <!-- Cong Binh -->
-                <dt>
-                    <p style="display: inline;" class="StudentName">Le Cong Binh</p>
-                    <p style="display: inline;" class="StudentID">ID: 106419738</p>
-                </dt>
-                <dd class="contributions">
-                    <p>Team Leader</p>
-                    <p>Owns index.html</p>
-                    <p>Writes the shared base of styles.css</p>
-                    <p>Sets up and manages the Jira board</p>
-                    <p>Responsible for the final check and the ZIP submission on Canvas</p>
-                </dd>
+                <div class="member">
+                    <dt>
+                        <p style="display: inline-block;" class="StudentName">Le Cong Binh</p>
+                        <p style="display: inline-block;" class="StudentID">ID: 106419738</p>
+                    </dt>
+                    <dd class="contributions">
+                        <ol>
+                            <li>Team Leader</li>
+                            <li>Owns index.html</li>
+                            <li>Writes the shared base of styles.css</li>
+                            <li>Sets up and manages the Jira board</li>
+                            <li>Responsible for the final check and the ZIP submission on Canvas</li>
+                        </ol>
+                    </dd>
 
-                <dd class="quote">
-                    <p>No quote yet</p>
-                </dd>
-
-                <hr>
+                    <dd class="quote">
+                        <p lang="vi">"Ăn quả nhớ kẻ trồng cây"</p>
+                        <p>"When you eat the fruit, remember who planted the tree."</p>
+                        <p class="quote-author">Cong Binh</p>
+                    </dd>
+                </div>
 
                 <!-- Thai An -->
-                <dt class="member-info">
-                    <p class="StudentName">Vu Duc Thai An</p>
-                    <p class="StudentID">ID: 106909446</p>
-                </dt>
-                <dd class="contributions">
-                    <p>Owns about.html</p>
-                    <p>Collects each member's first-language quote with its English translation</p>
-                </dd>
 
-                <dd class="quote">
-                    <p>No quote yet</p>
-                </dd>
+                <div class="member">
+                    <dt class="member-info">
+                        <p class="StudentName">Vu Duc Thai An</p>
+                        <p class="StudentID">ID: 106909446</p>
+                    </dt>
+                    <dd class="contributions">
+                        <ol>
+                            <li>Owns about.html</li>
+                            <li>Collects each member's first-language quote with its English translation</li>
+                        </ol>
+                    </dd>
 
-                <hr>
+                    <dd class="quote">
+                        <p lang="vi">"Có công mài sắt, có ngày nên kim"</p>
+                        <p>"Practice makes perfect."</p>
+                        <p class="quote-author">T. An</p>
+                    </dd>
+                </div>
+
 
                 <!-- Gia Huy -->
-                <dt class="member-info">
-                    <p class="StudentName">Bach Gia Huy</p>
-                    <p class="StudentID">ID: 106395993</p>
-                </dt>
-                <dd class="contributions">
-                    <p>Owns jobs.html</p>
-                    <p>Writes the Aboriginal and Torres Strait Islander inclusion statement and places it on the site.</p>
-                    <p>Posts group questions on the Canvas discussion board</p>
-                </dd>
-                <dd class="quote">
-                    <p>Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng.</p>
-                    <p>"Life is short. Smile while you still have teeth."</p>
-                </dd>
+                <div class="member">
+                    <dt class="member-info">
+                        <p class="StudentName">Bach Gia Huy</p>
+                        <p class="StudentID">ID: 106395993</p>
+                    </dt>
+                    <dd class="contributions">
+                        <ol>
+                            <li>Owns jobs.html</li>
+                            <li>Writes the Aboriginal and Torres Strait Islander inclusion statement and places it on the site.</li>
+                            <li>Posts group questions on the Canvas discussion board</li>
+                        </ol>
+                    </dd>
+                    <dd class="quote">
+                        <p lang="vi">"Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng."</p>
+                        <p>"Life is short. Smile while you still have teeth."</p>
+                        <p class="quote-author">Zack Bach</p>
+                    </dd>
+                </div>
 
-                <hr>
 
                 <!-- Duc Duy -->
-                <dt class="member-info">
-                    <p class="StudentName">Pham Duc Duy</p>
-                    <p class="StudentID">ID: 106684662</p>
-                </dt>
-                <dd class="contributions">
-                    <p>Owns apply.html</p>
-                    <p>Tests every validation rule</p>
-                </dd>
-                <dd class="quote">
-                    <p>"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
-                    <p>“If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.”</p>
-                </dd>
+                <div class="member">
+                    <dt class="member-info">
+                        <p class="StudentName">Pham Duc Duy</p>
+                        <p class="StudentID">ID: 106684662</p>
+                    </dt>
+                    <dd class="contributions">
+                        <ol>
+                            <li>Owns apply.html</li>
+                            <li>Tests every validation rule</li>
+                        </ol>
+                    </dd>
+                    <dd class="quote">
+                        <p lang="vi">"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
+                        <p>“If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.”</p>
+                        <p class="quote-author">Duc Duy</p>
+                    </dd>
+                </div>
 
             </dl>
 
         </section>
 
 
-        <div>
-            <figure class="GroupPhoto">
-                <!-- Group Photo -->
-
-                <figcaption>Group Photo</figcaption>
-                <img src="./images/hero.svg" alt="placeholder photo for group photo">
-            
-            </figure>
-        </div>
-
 
         <section class="section">
-
+            <!-- Fun Fact Section -->
             <h2>Fun Facts</h2>
+
+            <p class="SubTitle">Here are some fun facts about us.</p>
+
 
             <div class="FunFact">
 
@@ -216,27 +290,43 @@
                     <tbody>
 
                         <tr>
-                            <td>Le Cong Binh</td>
-                            <td>leader</td>
+                            <td class="table-name">Cong Binh</td>
+                            <td>Dong Nai city</td>
                         </tr>
 
                         <tr>
-                            <td>An</td>
+                            <td class="table-name">Thai An</td>
                             <td>Ho Chi Minh city</td>
                         </tr>
 
                         <tr>
-                            <td>Zack Bach</td>
+                            <td class="table-name">Zack Bach</td>
                             <td>Ho Chi Minh city</td>
                         </tr>
 
                         <tr>
-                            <td>Duc Duy</td>
-                            <td>Dong Nai</td>
+                            <td class="table-name">Duc Duy</td>
+                            <td>Dong Nai city</td>
                         </tr>
 
                     </tbody>
                 </table>
+
+            </div>
+
+        </section>
+
+        <section class="floating-section">
+            <!-- NAV to Apply page at the bottom -->
+            <div class="join-section">
+
+                <h2>Come Work With Us</h2>
+
+                <p>We are always looking for great people to help us build tools that actually make a difference. If you want to use your coding skills to solve real problems and learn from a caring team, you will fit right in. Plus, we give you the freedom to work from home or join us in the office—whatever works best for you.</p>
+
+                <p>
+                    <a class="button" href="apply.html">Apply Now</a>
+                </p>
 
             </div>
 
@@ -249,14 +339,30 @@
 
   </main>
 
+
+  <!-- Footer | Should be consistent with that of the Home Page -->
   <footer class="site-footer">
     <div class="container footer-inner">
       <ul class="footer-links">
-        <li><a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank">Project board (Jira)</a></li>
-        <li><a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank">Source code (GitHub)</a></li>
+        <li>
+          <a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">
+            Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">
+            Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
+        <li>
+          <a href="https://congbinhle120203.github.io/COS10026_GroupProject1_Webdev67/" target="_blank" rel="noopener noreferrer">
+            Live site (GitHub Pages) <span class="visually-hidden">(opens in a new tab)</span>
+          </a>
+        </li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
       </ul>
-      <p>&copy; 2026 Solstice Community Energy. Fictional company created for a university project (COS10026, Group Webdev67).</p>
+      <p class="footer-country">We acknowledge the Traditional Custodians of the lands where we work. <a href="jobs.html#ack-heading">Read our Acknowledgment of Country</a>.</p>
+      <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
     </div>
   </footer>
 </body>
