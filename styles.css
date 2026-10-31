@@ -1010,7 +1010,7 @@ html {
 
 .page-apply #description {
   text-align: center;
-  color: black;
+  color: #1b2a23;
   max-width: 42rem;
   margin: 0 auto 2rem auto;
 }
@@ -1067,7 +1067,12 @@ html {
 .page-apply .apply_form label {
   font-weight: 600;
   font-size: 1rem;
-  color: black;
+  color: #111827;
+}
+
+.page-apply .apply_form input::placeholder,
+.page-apply .apply_form textarea::placeholder {
+  color: #4b5563;
 }
 
 .page-apply .apply_form input[type="text"],
@@ -1086,7 +1091,7 @@ html {
 }
 
 .page-apply .required {
-  color: red; 
+  color: #d9383a; 
   font-weight: bold;
   margin-left: 0.25rem;
 }
@@ -1154,17 +1159,18 @@ html {
 }
 
 .page-apply input[type="submit"]:hover {
-  background-color: darkgreen;
+  background-color: #2c5e4f;
 }
 
 .page-apply input[type="reset"] {
   background-color: transparent;
-  color: black;
-  border: 1px solid gray;
+  color: #1b2a23;
+  border: 1px solid #1b2a23;
 }
 
 .page-apply input[type="reset"]:hover {
-  background-color: #dcdcdc;
+  background-color: #1b2a23;
+  color: #ffffff;
 }
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
