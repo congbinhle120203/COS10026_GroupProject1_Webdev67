@@ -486,6 +486,14 @@ html {
   color: var(--ink-muted);
 }
 
+/* small disclaimer under the stats */
+.page-home .stats-note {
+  margin: 1.25em 0 0;
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--ink-muted);
+}
+
 /* ---- Projects table ---- */
 /* Wrapper lets the table scroll sideways on a narrow phone screen */
 .page-home .table-wrap {
