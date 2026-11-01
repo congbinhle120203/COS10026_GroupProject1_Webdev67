@@ -141,7 +141,7 @@ The company concept and page ideas were inspired by public solar and energy comp
 
 Technical references: W3C. (n.d.). *HTML Living Standard and CSS specifications*; Mozilla Developer Network. (n.d.). *MDN Web Docs*. https://developer.mozilla.org; Swinburne University of Technology. (2026). *COS10026 Applied Web Project guidelines* [Unit material].
 
-Images: the logo and hero illustration (`logo.svg`, `hero.svg`) are original SVG graphics created for this project. The group photo (`group-photo.jpg`) shows the four team members.
+Images: the logo and hero illustration (`logo.svg`, `hero.svg`) are original SVG graphics created for this project. The group photo (`group-photo.jpg`) shows the four team members with our tutor and was taken by a classmate.
 
 ### Use of generative AI
 
