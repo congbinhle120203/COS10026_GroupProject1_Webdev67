@@ -1,0 +1,6 @@
+# Editor and operating system files: keep them out of the shared repository
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+desktop.ini
