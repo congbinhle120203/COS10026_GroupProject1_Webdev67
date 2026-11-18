@@ -442,14 +442,16 @@ html {
   box-shadow: 0 8px 24px rgba(27, 42, 35, 0.15);
 }
 
-/* secondary outline button on home hero */
-.page-home .button-secondary {
+/* secondary outline button on home hero and search results */
+.page-home .button-secondary,
+.page-search .button-secondary {
   background-color: transparent;
   color: var(--ink);
   border: 2px solid var(--ink-muted);
 }
 
-.page-home .button-secondary:hover {
+.page-home .button-secondary:hover,
+.page-search .button-secondary:hover {
   background-color: var(--surface);
   border-color: var(--primary);
   color: var(--primary);
@@ -1723,4 +1725,20 @@ html {
 
 .page-search .search-tips li {
   margin-bottom: 0.25em;
+}
+
+/* Result titles are h2 (they sit under the page h1) but look like h3 */
+.page-search .featured h2 {
+  margin-bottom: 0.4em;
+  font-size: 1.2em;
+}
+
+.page-search .search-form select {
+  padding: 0.55em 0.6em;
+  font-family: inherit;
+  font-size: 1em;
+  color: var(--ink);
+  background-color: var(--bg);
+  border: 2px solid var(--ink-muted);
+  border-radius: var(--radius);
 }
