@@ -40,7 +40,7 @@ $page_css         = $page_css ?? "";
 <?php if ($page_css !== "") { ?>
   <!-- Embedded CSS for this page only -->
   <style>
-<?php echo $page_css; ?>
+<?php echo $page_css . "\n"; ?>
   </style>
 <?php } ?>
 </head>

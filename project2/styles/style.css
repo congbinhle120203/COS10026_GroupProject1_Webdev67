@@ -323,28 +323,33 @@ html {
 
 
 /* ==========================================================================
-   5. PAGE: index.html (Owner: Le Cong Binh - Scope: .page-home)
+   5. PAGE: index.php + search.php (Owner: Le Cong Binh - Scope: .page-home, .page-search)
+   The search bar, section cards and role cards are shared with search.php.
    ========================================================================== */
 
 /* ---- Search bar (strip under the header) ---- */
-.page-home .home-search {
+.page-home .home-search,
+.page-search .home-search {
   padding: 0.9em 0;
   background-color: var(--surface);
   border-bottom: 1px solid var(--line);
 }
 
-.page-home .search-form {
+.page-home .search-form,
+.page-search .search-form {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 0.5em 0.75em;
 }
 
-.page-home .search-form label {
+.page-home .search-form label,
+.page-search .search-form label {
   font-weight: bold;
 }
 
-.page-home .search-form input[type="search"] {
+.page-home .search-form input[type="search"],
+.page-search .search-form input[type="search"] {
   flex: 1 1 14em;
   max-width: 28em;
   padding: 0.55em 0.8em;
@@ -356,7 +361,8 @@ html {
   border-radius: var(--radius);
 }
 
-.page-home .search-form button {
+.page-home .search-form button,
+.page-search .search-form button {
   padding: 0.55em 1.3em;
   font-family: inherit;
   font-size: 1em;
@@ -368,7 +374,8 @@ html {
   cursor: pointer;
 }
 
-.page-home .search-form button:hover {
+.page-home .search-form button:hover,
+.page-search .search-form button:hover {
   background-color: var(--ink);
   border-color: var(--ink);
 }
@@ -449,7 +456,8 @@ html {
 }
 
 /* ---- White box sections ---- */
-.page-home .section {
+.page-home .section,
+.page-search .section {
   margin-top: 2.5em;
   padding: 1.75em;
   background-color: var(--surface);
@@ -633,7 +641,8 @@ html {
 }
 
 /* ---- Featured roles: two cards that link to jobs.html ---- */
-.page-home .featured {
+.page-home .featured,
+.page-search .featured {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: 1em;
@@ -642,7 +651,8 @@ html {
   list-style: none;
 }
 
-.page-home .featured li {
+.page-home .featured li,
+.page-search .featured li {
   display: flex;
   flex-direction: column;
   margin-bottom: 0;
@@ -654,16 +664,19 @@ html {
   transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.page-home .featured li:hover {
+.page-home .featured li:hover,
+.page-search .featured li:hover {
   transform: translateY(-3px);
   box-shadow: 0 6px 14px rgba(27, 42, 35, 0.12);
 }
 
-.page-home .featured h3 {
+.page-home .featured h3,
+.page-search .featured h3 {
   margin-bottom: 0.4em;
 }
 
-.page-home .featured-ref {
+.page-home .featured-ref,
+.page-search .featured-ref {
   align-self: flex-start;
   margin-bottom: 0.6em;
   padding: 0.15em 0.6em;
@@ -674,11 +687,13 @@ html {
   border-radius: var(--radius);
 }
 
-.page-home .featured-meta {
+.page-home .featured-meta,
+.page-search .featured-meta {
   color: var(--ink-muted);
 }
 
-.page-home .featured .button {
+.page-home .featured .button,
+.page-search .featured .button {
   align-self: flex-start;
   margin-top: auto;
 }
@@ -792,7 +807,8 @@ html {
   }
 
   .page-home .benefits,
-  .page-home .featured {
+  .page-home .featured,
+  .page-search .featured {
     grid-template-columns: 1fr;
   }
 
@@ -800,14 +816,16 @@ html {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .page-home .search-form input[type="search"] {
+  .page-home .search-form input[type="search"],
+  .page-search .search-form input[type="search"] {
     max-width: none;
   }
 }
 
 /* Smaller phones: tighter table so all four columns fit */
 @media (max-width: 36rem) {
-  .page-home .section {
+  .page-home .section,
+  .page-search .section {
     padding: 1.25em;
   }
 
@@ -1646,4 +1664,63 @@ html {
     content: " (" attr(href) ")";
     font-size: 0.85em;
   }
+}
+
+
+/* ==========================================================================
+   11. PART 2: DATABASE NOTICES AND SEARCH RESULTS (Owner: Le Cong Binh)
+   Used by index.php and search.php. Other pages may reuse .db-notice
+   and .form-message for their own database messages.
+   ========================================================================== */
+
+/* Shown where live data could not be loaded (MySQL not running) */
+.db-notice,
+.form-message {
+  margin: 1em 0;
+  padding: 0.8em 1em;
+  color: var(--ink);
+  background-color: #fdf3dc;
+  border-left: 5px solid var(--accent);
+  border-radius: var(--radius);
+}
+
+/* "We are hiring for 2 open roles right now." in the hero */
+.page-home .open-roles {
+  display: inline-block;
+  padding: 0.3em 0.8em;
+  background-color: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+/* ---- search.php ---- */
+.page-search .search-summary {
+  font-size: 1.1em;
+}
+
+/* <mark> highlights the search term inside each result */
+.page-search mark {
+  padding: 0 0.15em;
+  color: var(--ink);
+  background-color: #f6dd9c;
+  border-radius: 3px;
+}
+
+.page-search .result-salary {
+  font-weight: bold;
+}
+
+.page-search .result-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  margin-top: auto;
+}
+
+.page-search .featured .result-actions .button {
+  margin-top: 0;
+}
+
+.page-search .search-tips li {
+  margin-bottom: 0.25em;
 }
