@@ -6,6 +6,8 @@ A static recruitment website for **Solstice Community Energy**, a fictional memb
 
 > The company, people, job listings, statistics and facilities on this site are **fictional**. They were created for a university assessment.
 
+> **Project Part 2** (PHP and MySQL) is in the [`project2/`](project2/) folder. See [`project2/README.md`](project2/README.md) for how to run it.
+
 ---
 
 ## 1. Quick links
