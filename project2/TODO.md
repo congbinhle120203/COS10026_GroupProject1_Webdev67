@@ -10,7 +10,7 @@ Each member converts **their own** Part 1 page to PHP and builds its database fe
 
 ## For everyone
 
-**1. Convert your page** from `../<page>.html` (Part 1, repository root) to `project2/<page>.php`:
+**1. Convert your page** from `../project1/<page>.html` (Part 1) to `project2/<page>.php`:
 
 ```php
 <?php
