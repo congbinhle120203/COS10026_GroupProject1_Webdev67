@@ -26,15 +26,13 @@ The connection details are in `settings.php` (`localhost`, user `root`, **no pas
 project2/
 ├── index.php        Home page (statistics, facilities, featured roles and FAQ from MySQL)
 ├── search.php       Job search results for the search bar
-├── jobs.php         Job descriptions          (owner: Huy)
-├── apply.php        Application form          (owner: Duy)
-├── about.php        About the team            (owner: An)
 ├── header.inc       <head> and opening <body>, set by page variables
 ├── nav.inc          Logo, company name and menu (current page marked automatically)
 ├── footer.inc       Footer with Jira and GitHub links
 ├── functions.inc    Shared helpers: db_connect, db_fetch_rows, clean_input, e
 ├── settings.php     Database connection settings
 ├── .htaccess        Blocks direct browser access to .inc and .sql files
+├── TODO.md          What each member still needs to do for Part 2
 ├── database/
 │   └── webdev67_db.sql   Creates the database, tables and starting data
 ├── images/          Images used in page content
@@ -43,7 +41,7 @@ project2/
     └── images/      Images used by the CSS
 ```
 
-Still to be added by their owners: `process_eoi.php`, `manage.php` and the login page (see the Jira board).
+Still to be added by their owners: `jobs.php` (Huy), `apply.php` and `process_eoi.php` (Duy), `about.php` (An), `manage.php` and the login page. Until a page exists, its menu link shows "Not Found". See [`TODO.md`](TODO.md).
 
 ---
 
@@ -104,8 +102,8 @@ Before submitting, export the full database from phpMyAdmin into `database/webde
 
 | Member | Student ID | Part 2 work |
 |---|---|---|
-| **Le Cong Binh** (Team Leader) | 106419738 | Folder structure, shared includes, `settings.php`, `functions.inc`, database script, `index.php`, `search.php`, page conversion |
-| **Bach Gia Huy** | 106395993 | `jobs.php` and the jobs table |
+| **Le Cong Binh** (Team Leader) | 106419738 | Folder structure, shared includes, `settings.php`, `functions.inc`, database script, `index.php`, `search.php` |
+| **Bach Gia Huy** | 106395993 | `jobs.php` and the jobs tables |
 | **Pham Duc Duy** | 106684662 | `apply.php`, `process_eoi.php` and the `eoi` table |
 | **Vu Duc Thai An** | 106909446 | `about.php` and the `about` table |
 
