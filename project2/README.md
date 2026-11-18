@@ -2,7 +2,7 @@
 
 **COS10026 Applied Web Project, Part 2 (Server-Side & Dynamic Web Programming) | Group Webdev67 | Industry G03**
 
-Part 2 turns the static Part 1 website into a dynamic PHP and MySQL website. Part 1 is kept unchanged in the repository root; Part 2 lives in this `project2/` folder, as the brief requires.
+Part 2 turns the static Part 1 website into a dynamic PHP and MySQL website. Part 1 is kept unchanged in [`../project1/`](../project1/); Part 2 lives in this `project2/` folder, as the brief requires.
 
 > The company, people, job listings and figures are **fictional** and were created for a university assessment.
 
