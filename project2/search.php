@@ -16,11 +16,7 @@
   5. Every value is escaped with e() when it is printed (no HTML injection).
   The jobs page search bar can send its form here too (action="search.php").
 
-  GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-  then reviewed, edited and tested by the author.
-  Prompt: "Build search.php for our home page search bar: validate the term on
-  the server, search the jobs table with a prepared statement, show the results
-  as cards, and handle empty, no-result and database-down cases."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Job search page"
 */
 
 $page_title       = "Search roles";

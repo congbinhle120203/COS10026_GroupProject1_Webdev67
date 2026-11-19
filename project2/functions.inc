@@ -6,10 +6,7 @@
 
   Include it near the top of a page:   require_once "functions.inc";
 
-  GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-  then reviewed and tested by the author.
-  Prompt: "Write shared PHP helpers for connecting to MySQL without a fatal
-  error, reading rows, and sanitising user input as the Part 2 brief asks."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Shared PHP helpers"
 */
 
 // Open a MySQL connection. Returns the connection, or false if it fails.

@@ -12,10 +12,7 @@
     $page_css         optional embedded CSS for that page only
   Then: include "header.inc"; include "nav.inc";
 
-  GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-  then reviewed and tested by the author.
-  Prompt: "Move the shared head, header and footer of our Part 1 pages into
-  PHP include files so every page uses the same template."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Shared page template"
 */
 
 // The ?? operator uses the value on the right when the variable was not set

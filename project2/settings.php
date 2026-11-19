@@ -8,8 +8,7 @@
   The brief says no database password, so $pwd stays empty (XAMPP default).
   Keep this file to connection settings only.
 
-  GenAI acknowledgement: reviewed with Claude (Anthropic, Claude Opus 5.5).
-  Prompt: "Check our settings.php matches the Part 2 brief."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Check settings.php"
 */
 $host   = "localhost";    // MySQL runs on this machine (XAMPP)
 $user   = "root";         // default XAMPP MySQL user

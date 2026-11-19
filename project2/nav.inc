@@ -8,10 +8,7 @@
   The link of the page being viewed gets aria-current="page", which the CSS
   highlights and screen readers announce as "current page".
 
-  GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-  then reviewed and tested by the author.
-  Prompt: "Build the navigation from a PHP array and mark the current page
-  automatically instead of hard-coding aria-current on every page."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Navigation from an array"
 */
 
 // file name => link text
