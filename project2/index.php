@@ -17,11 +17,7 @@
 
   ACKNOWLEDGEMENTS
   - The company, people, quotes and figures on this page are fictional.
-  - GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-    then reviewed, edited and tested by the author.
-    Prompt: "Convert our Part 1 home page to PHP for Project Part 2: use the
-    shared includes and settings.php, load the statistics, facilities table,
-    featured roles and FAQ from MySQL, and explain the code so I can present it."
+  - GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Home page from MySQL"
 */
 
 // ---------------------------------------------------------------------------

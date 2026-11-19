@@ -113,5 +113,5 @@ Project board (Jira, key `RWP`, label `part2`): https://defesttosiro.atlassian.n
 
 ## 7. Acknowledgements
 
-- GenAI: parts of the Part 2 code were drafted with Claude (Anthropic, Claude Opus 5.5), then reviewed, edited and tested by the team. Each file that used GenAI says so in its top comment, with the prompt, as the unit requires.
+- GenAI: some Part 2 code was assisted by Claude (Anthropic), then reviewed and tested by the team. Those files say so in their top comment.
 - Company concept inspired by public solar and energy company websites. No text or images were copied.

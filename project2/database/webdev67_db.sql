@@ -16,10 +16,7 @@
 -- Before submitting: export the whole database from phpMyAdmin and replace
 -- this file, so the marker gets every table and row.
 --
--- GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
--- then reviewed and tested by Le Cong Binh.
--- Prompt: "Design MySQL tables for the dynamic content on our home page and
--- the core fields of our Part 1 jobs page."
+-- GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Home page and jobs tables"
 -- ==========================================================================
 
 

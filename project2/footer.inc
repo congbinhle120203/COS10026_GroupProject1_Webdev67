@@ -7,10 +7,7 @@
   The brief asks for the GitHub link to be on the home page, so it lives here
   and appears on every page.
 
-  GenAI acknowledgement: drafted with Claude (Anthropic, Claude Opus 5.5),
-  then reviewed and tested by the author.
-  Prompt: "Move our Part 1 footer into a PHP include and keep the Jira,
-  GitHub and Acknowledgment of Country links."
+  GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Shared footer"
 */
 ?>
   <!-- Footer: Jira board, GitHub repository and contact email -->
