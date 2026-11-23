@@ -119,3 +119,54 @@ INSERT INTO jobs (job_ref, title, location, salary_min, salary_max, super_rate, 
 -- 4. EOI TABLE      -> Duy (apply.php / process_eoi.php)
 -- 5. USERS TABLE    -> manage.php and login owner (store password_hash() values, never plain text)
 -- 6. ABOUT TABLE    -> An (about.php)
+
+-- Member contributions and quotes.
+-- Part1_work and part2_work hold items separated by the | character.
+-- GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "SQL about table"
+DROP TABLE IF EXISTS about;
+
+CREATE TABLE about (
+    member_id         INT AUTO_INCREMENT PRIMARY KEY,
+    full_name         VARCHAR(60)  NOT NULL,
+    student_id        VARCHAR(12)  NOT NULL,
+    role              VARCHAR(40)  NOT NULL,
+    part1_work        TEXT         NOT NULL,
+    part2_work        TEXT         NOT NULL,
+    quote             TEXT         NOT NULL,
+    quote_language    VARCHAR(5)   NOT NULL DEFAULT 'vi',
+    quote_translation TEXT         NOT NULL,
+    quote_author      VARCHAR(40)  NOT NULL,
+    sort_order        INT          NOT NULL
+) ENGINE=InnoDB;
+
+INSERT INTO about
+    (full_name, student_id, role, part1_work, part2_work, quote, quote_language, quote_translation, quote_author, sort_order)
+VALUES
+('Le Cong Binh', '106419738', 'Team Leader',
+ 'Owns index.html|Writes the shared base of styles.css|Sets up and manages the Jira board|Responsible for the final check and the ZIP submission on Canvas',
+ 'Owns index.php and search.php|Writes the shared include files, settings.php and functions.inc|Writes the database script',
+ 'Quá khứ dạy mình bài học, hiện tại cho mình cơ hội thứ hai, còn tương lai là thứ mình tự viết.', 'vi',
+ 'The past taught me the lesson, the present gave me a second chance, and the future is mine to write.',
+ 'Cong Binh', 1),
+
+('Vu Duc Thai An', '106909446', 'Team Member',
+ 'Owns about.html|Collects each member first-language quote with its English translation',
+ 'Owns about.php|Builds the about table and loads this page from MySQL',
+ 'Có công mài sắt, có ngày nên kim', 'vi',
+ 'Practice makes perfect.',
+ 'Thai An', 2),
+
+('Bach Gia Huy', '106395993', 'Team Member',
+ 'Owns jobs.html|Writes the Aboriginal and Torres Strait Islander inclusion statement and places it on the site|Posts group questions on the Canvas discussion board',
+ 'Owns jobs.php|Builds the jobs tables and loads the jobs page from MySQL',
+ 'Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng.', 'vi',
+ 'Life is short. Smile while you still have teeth.',
+ 'Gia Huy', 3),
+
+('Pham Duc Duy', '106684662', 'Team Member',
+ 'Owns apply.html|Tests every validation rule',
+ 'Owns apply.php and process_eoi.php|Builds the eoi table and checks the form on the server',
+ 'Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước.', 'vi',
+ 'If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.',
+ 'Duc Duy', 4);
+

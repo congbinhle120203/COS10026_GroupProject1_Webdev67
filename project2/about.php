@@ -23,6 +23,15 @@ $page_description = "Meet the student team behind this fictional recruitment web
 $page_author      = "Vu Duc Thai An";
 $body_class       = "page-about";
 $page_css         = "    h1 { color: #1b2a23; }";
+
+require_once "settings.php";
+require_once "functions.inc";
+$conn = db_connect($host, $user, $pwd, $sql_db);
+// Read member contribution from the database.
+$members = db_fetch_rows($conn, "SELECT full_name, student_id, role, part1_work, part2_work,
+    quote, quote_language, quote_translation, quote_author
+    FROM about ORDER BY sort_order");
+
 include "header.inc";
 include "nav.inc";
 ?>
@@ -135,92 +144,47 @@ include "nav.inc";
 
             <dl class="member-section">
 
-                <!-- INLINE CSS for PAGE's REQUIREMENT -->
+                
 
-                <!-- Cong Binh -->
-                <div class="member">
-                    <dt>
-                        <p style="display: inline-block;" class="StudentName">Le Cong Binh</p>
-                        <p style="display: inline-block;" class="StudentID">ID: 106419738</p>
-                    </dt>
-                    <dd class="contributions">
-                        <ol>
-                            <li>Team Leader</li>
-                            <li>Owns index.html</li>
-                            <li>Writes the shared base of styles.css</li>
-                            <li>Sets up and manages the Jira board</li>
-                            <li>Responsible for the final check and the ZIP submission on Canvas</li>
-                        </ol>
-                    </dd>
+                <?php if ($members === null || count($members) == 0) { ?>
 
-                    <dd class="quote">
-                        <p lang="vi">"Quá khứ dạy mình bài học, hiện tại cho mình cơ hội thứ hai, còn tương lai là thứ mình tự viết."</p>
-                        <p>"The past taught me the lesson, the present gave me a second chance, and the future is mine to write."</p>
-                        <p class="quote-author">Cong Binh</p>
-                    </dd>
-                </div>
+                    <p class="db-notice">Member information is not available right now. Please try again later.</p>
 
-                <!-- Thai An -->
-
-                <div class="member">
-                    <dt class="member-info">
-                        <p class="StudentName">Vu Duc Thai An</p>
-                        <p class="StudentID">ID: 106909446</p>
-                    </dt>
-                    <dd class="contributions">
-                        <ol>
-                            <li>Owns about.html</li>
-                            <li>Collects each member's first-language quote with its English translation</li>
-                        </ol>
-                    </dd>
-
-                    <dd class="quote">
-                        <p lang="vi">"Có công mài sắt, có ngày nên kim"</p>
-                        <p>"Practice makes perfect."</p>
-                        <p class="quote-author">Thai An</p>
-                    </dd>
-                </div>
+                <?php } else { for ($i = 0; $i < count($members); $i++) { $m = $members[$i]; ?>
+                    <div class="member">
+                        <dt class="member-info">
+                            <p class="StudentName"><?php echo e($m['full_name']); ?></p>
+                            <p class="StudentID">ID: <?php echo e($m['student_id']); ?></p>
+                        </dt>
+                        <dd class="contributions">
+                            <p><strong><?php echo e($m['role']); ?></strong></p>
 
 
-                <!-- Gia Huy -->
-                <div class="member">
-                    <dt class="member-info">
-                        <p class="StudentName">Bach Gia Huy</p>
-                        <p class="StudentID">ID: 106395993</p>
-                    </dt>
-                    <dd class="contributions">
-                        <ol>
-                            <li>Owns jobs.html</li>
-                            <li>Writes the Aboriginal and Torres Strait Islander inclusion statement and places it on the site.</li>
-                            <li>Posts group questions on the Canvas discussion board</li>
-                        </ol>
-                    </dd>
-                    <dd class="quote">
-                        <p lang="vi">"Đời ngắn lắm. Hãy cười lên khi bạn vẫn còn đủ răng."</p>
-                        <p>"Life is short. Smile while you still have teeth."</p>
-                        <p class="quote-author">Gia Huy</p>
-                    </dd>
-                </div>
+                            <p>Part 1</p>
+                            <?php $part1 = explode('|', $m['part1_work']); ?>
+                            <ol>
+                                <?php for ($j = 0; $j < count($part1); $j++) { ?>
+                                    <li><?php echo e($part1[$j]); ?></li>
+                                <?php } ?>
+                            </ol>
+
+                            <p>Part 2</p>
+                            <?php $part2 = explode('|', $m['part2_work']); ?>
+                            <ol>
+                                <?php for ($j = 0; $j < count($part2); $j++) { ?>
+                                    <li><?php echo e($part2[$j]); ?></li>
+                                <?php } ?>
+                            </ol>
 
 
-                <!-- Duc Duy -->
-                <div class="member">
-                    <dt class="member-info">
-                        <p class="StudentName">Pham Duc Duy</p>
-                        <p class="StudentID">ID: 106684662</p>
-                    </dt>
-                    <dd class="contributions">
-                        <ol>
-                            <li>Owns apply.html</li>
-                            <li>Tests every validation rule</li>
-                        </ol>
-                    </dd>
-                    <dd class="quote">
-                        <p lang="vi">"Nếu bạn không thể bay, hãy chạy. Nếu không thể chạy, hãy đi. Nếu không thể đi, hãy bò. Nhất định phải tiếp tục tiến về phía trước."</p>
-                        <p>“If you can’t fly, then run. If you can’t run, then walk. If you can’t walk, then crawl. But whatever you do, you have to keep moving forward.”</p>
-                        <p class="quote-author">Duc Duy</p>
-                    </dd>
-                </div>
+                        </dd>
+                        <dd class="quote">
+                            <p lang="<?php echo e($m['quote_language']); ?>">"<?php echo e($m['quote']); ?>"</p>
+                            <p>"<?php echo e($m['quote_translation']); ?>"</p>
+                            <p class="quote-author"><?php echo e($m['quote_author']); ?></p>
+                        </dd>
+                    </div>
+                <?php } } ?>
 
             </dl>
 
