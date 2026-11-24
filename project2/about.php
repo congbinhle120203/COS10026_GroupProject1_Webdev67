@@ -144,7 +144,7 @@ include "nav.inc";
 
             <dl class="member-section">
 
-                
+                <!-- Loop to print each member contribution information from database -->
 
                 <?php if ($members === null || count($members) == 0) { ?>
 
@@ -157,10 +157,13 @@ include "nav.inc";
                             <p class="StudentID">ID: <?php echo e($m['student_id']); ?></p>
                         </dt>
                         <dd class="contributions">
-                            <p><strong><?php echo e($m['role']); ?></strong></p>
 
 
-                            <p>Part 1</p>
+                            <p class="member-role"><?php echo e($m['role']); ?></p>
+
+
+                            <p class="work-part">Part 1</p>
+
                             <?php $part1 = explode('|', $m['part1_work']); ?>
                             <ol>
                                 <?php for ($j = 0; $j < count($part1); $j++) { ?>
@@ -168,7 +171,8 @@ include "nav.inc";
                                 <?php } ?>
                             </ol>
 
-                            <p>Part 2</p>
+                            <p class="work-part">Part 2</p>
+
                             <?php $part2 = explode('|', $m['part2_work']); ?>
                             <ol>
                                 <?php for ($j = 0; $j < count($part2); $j++) { ?>
