@@ -148,23 +148,36 @@ if (empty($errors)) {
 }
 
 mysqli_close($conn);
+
+$page_title       = "EOI Confirmation";
+$page_description = "Expression of Interest submission status.";
+$page_author      = "Pham Duc Duy";
+$body_class       = "page-apply";
+
+include "header.inc";
+include "nav.inc";
 ?>
-<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-  <meta charset="utf-8">
-  <title>EOI Confirmation</title>
-</head>
-<body>
-  <?php if (empty($errors)): ?>
-    <p>Application submitted. Your EOI number is: <?php echo $eoi_number; ?></p>
-  <?php else: ?>
-    <ul>
-      <?php foreach ($errors as $error): ?>
-        <li><?php echo $error; ?></li>
-      <?php endforeach; ?>
-    </ul>
-    <p><a href="apply.php">Back to Apply</a></p>
-  <?php endif; ?>
-</body>
-</html>
+
+  <main id="main">
+    <div class="container page-section">
+      <?php if (empty($errors)): ?>
+        <h1 class="page-intro">Application Submitted</h1>
+        <div class="form-message">
+          <p>Application submitted. Your EOI number is: <strong><?php echo $eoi_number; ?></strong></p>
+        </div>
+        <p><a class="button" href="jobs.php">Back to Jobs</a></p>
+      <?php else: ?>
+        <h1 class="page-intro">Submission Failed</h1>
+        <div class="form-message">
+          <ul>
+            <?php foreach ($errors as $error): ?>
+              <li><?php echo $error; ?></li>
+            <?php endforeach; ?>
+          </ul>
+        </div>
+        <p><a class="button" href="apply.php">Back to Apply</a></p>
+      <?php endif; ?>
+    </div>
+  </main>
+
+<?php include "footer.inc"; ?>
