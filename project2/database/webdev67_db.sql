@@ -87,6 +87,8 @@ INSERT INTO faqs (question, answer, sort_order) VALUES
 -- 3. JOBS TABLE (core fields) -----------------------------------------------
 -- Used by index.php (featured roles) and search.php. Owner of jobs.php (Huy)
 -- can add columns and the responsibilities / requirements tables.
+DROP TABLE IF EXISTS job_responsibilities;
+DROP TABLE IF EXISTS job_requirements;
 DROP TABLE IF EXISTS jobs;
 CREATE TABLE jobs (
   job_ref     CHAR(5)       NOT NULL,        -- 5-character reference, e.g. SCE01
