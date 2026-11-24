@@ -118,3 +118,53 @@ if (!preg_match("/^\d{8,12}$/", $phone)) {
     $errors[] = "Phone Numbers must be 8 to 12 digits.";
 }
 
+// iv & v. CREATE TABLE IF NOT EXISTS eoi & INSERT with prepared statement
+$eoi_number = null;
+if (empty($errors)) {
+    $create_sql = "CREATE TABLE IF NOT EXISTS eoi (
+        EOInumber INT AUTO_INCREMENT PRIMARY KEY,
+        job_ref VARCHAR(5) NOT NULL,
+        first_name VARCHAR(20) NOT NULL,
+        last_name VARCHAR(20) NOT NULL,
+        date_of_birth VARCHAR(10) NOT NULL,
+        gender VARCHAR(10) NOT NULL,
+        street_address VARCHAR(40) NOT NULL,
+        suburb_town VARCHAR(40) NOT NULL,
+        state VARCHAR(3) NOT NULL,
+        postcode VARCHAR(4) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+        phone VARCHAR(12) NOT NULL,
+        skills VARCHAR(255),
+        other_skills TEXT,
+        status ENUM('New','Current','Final') DEFAULT 'New'
+    )";
+    mysqli_query($conn, $create_sql);
+
+    $stmt = mysqli_prepare($conn, "INSERT INTO eoi (job_ref, first_name, last_name, date_of_birth, gender, street_address, suburb_town, state, postcode, email, phone, skills, other_skills) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    mysqli_stmt_bind_param($stmt, "sssssssssssss", $job_ref, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb_town, $state, $postcode, $email, $phone, $skills, $other_skills);
+    mysqli_stmt_execute($stmt);
+    $eoi_number = mysqli_insert_id($conn);
+    mysqli_stmt_close($stmt);
+}
+
+mysqli_close($conn);
+?>
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <title>EOI Confirmation</title>
+</head>
+<body>
+  <?php if (empty($errors)): ?>
+    <p>Application submitted. Your EOI number is: <?php echo $eoi_number; ?></p>
+  <?php else: ?>
+    <ul>
+      <?php foreach ($errors as $error): ?>
+        <li><?php echo $error; ?></li>
+      <?php endforeach; ?>
+    </ul>
+    <p><a href="apply.php">Back to Apply</a></p>
+  <?php endif; ?>
+</body>
+</html>
