@@ -1,42 +1,10 @@
-<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-
-  <!-- 
-    Acknowledgements:
-    Author: Pham Duc Duy (COS10026 Group G03 / Webdev67)
-    Target: apply.php - Job Application Form for Solstice Community Energy
-    References: W3C HTML5 Specification, MDN Web Docs, Swinburne COS10026 Project Guidelines.
-  -->
-
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Apply | Solstice Community Energy Careers</title>
-  <meta name="description" content="Apply for a role at Solstice Community Energy, a fictional renewable energy company.">
-  <link rel="stylesheet" href="styles.css">
-  <style>
-    .page-intro { max-width: 40rem; }
-  </style>
-</head>
-<body class="page-apply">
-  <a class="skip-link" href="#main">Skip to main content</a>
-
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.html">
-        <img src="images/logo.svg" width="44" height="44" alt="">
-        <span>Solstice Community Energy</span>
-      </a>
-      <nav class="main-nav" aria-label="Main">
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="jobs.html">Jobs</a></li>
-          <li><a href="apply.php" aria-current="page">Apply</a></li>
-          <li><a href="about.html">About</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+<?php include "header.inc"; ?>
+<!-- 
+  Acknowledgements:
+  Author: Pham Duc Duy (COS10026 Group G03 / Webdev67)
+  Target: apply.php - Job Application Form for Solstice Community Energy
+  References: W3C HTML5 Specification, MDN Web Docs, Swinburne COS10026 Project Guidelines.
+-->
 
   <main id="main">
     <div class="container page-section">
@@ -132,29 +100,4 @@
     </div>
   </main>
 
-  <footer class="site-footer">
-    <div class="container footer-inner">
-      <ul class="footer-links">
-        <li>
-          <a href="https://defesttosiro.atlassian.net/jira/software/projects/RWP/boards/2/backlog" target="_blank" rel="noopener noreferrer">
-            Project board (Jira) <span class="visually-hidden">(opens in a new tab)</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://github.com/congbinhle120203/COS10026_GroupProject1_Webdev67.git" target="_blank" rel="noopener noreferrer">
-            Source code (GitHub) <span class="visually-hidden">(opens in a new tab)</span>
-          </a>
-        </li>
-        <li>
-          <a href="https://congbinhle120203.github.io/COS10026_GroupProject1_Webdev67/" target="_blank" rel="noopener noreferrer">
-            Live site (GitHub Pages) <span class="visually-hidden">(opens in a new tab)</span>
-          </a>
-        </li>
-        <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
-      </ul>
-      <p class="footer-country">We acknowledge the Traditional Custodians of the lands where we work. <a href="jobs.html#ack-heading">Read our Acknowledgment of Country</a>.</p>
-      <p>&copy; 2026 Solstice Community Energy (COS10026 Group Webdev67).</p>
-    </div>
-  </footer>
-</body>
-</html>
+<?php include "footer.inc"; ?>
