@@ -1463,6 +1463,31 @@ html {
 
 }
 
+.page-about .work-part {
+
+  font-weight: bold;
+
+}
+
+.page-about .member-role {
+
+  display: block;
+  width: fit-content;
+  max-width: 100%;
+  
+  text-align: center;
+  
+  border: 1px solid var(--ink);
+  padding: 0.3rem;
+  border-radius: 0.3em;
+
+  font-size: 1.15rem;
+  font-weight: bold;
+  letter-spacing: 0.1rem;
+
+
+}
+
 /* FIGURE of Group Photo with BORDER and CAPTION  */
 /* ======================================================== */
 .page-about figure.GroupPhoto {
@@ -1640,6 +1665,13 @@ html {
   .page-about figure.GroupPhoto {
     padding: 0.1rem 1rem 1rem;
   }
+
+  .page-about .member-role {
+    font-size: 1rem;
+    letter-spacing: 0.05rem;
+    padding: 0.25rem 0.6rem;
+  }
+
 }
 
 
