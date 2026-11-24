@@ -87,6 +87,7 @@ INSERT INTO faqs (question, answer, sort_order) VALUES
 -- 3. JOBS TABLE (core fields) -----------------------------------------------
 -- Used by index.php (featured roles) and search.php. Owner of jobs.php (Huy)
 -- can add columns and the responsibilities / requirements tables.
+-- GenAI: assisted by Gemini, reviewed and tested by me. Prompt: "Create and populate relational job_responsibilities and job_requirements tables linked to the jobs table via job_ref in webdev67_db.sql"
 DROP TABLE IF EXISTS job_responsibilities;
 DROP TABLE IF EXISTS job_requirements;
 DROP TABLE IF EXISTS jobs;
@@ -116,6 +117,56 @@ INSERT INTO jobs (job_ref, title, location, salary_min, salary_max, super_rate, 
    'Connect and monitor community batteries so regional networks stay reliable and secure.',
    'Lead the digital integration, SCADA telemetry configuration, and cybersecurity compliance of 5MWh-20MWh community battery energy storage systems (BESS) across regional distribution networks.',
    TRUE, '2026-10-20');
+
+
+
+-- 1. Key Responsibilities Table
+CREATE TABLE job_responsibilities (
+  item_id    INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  job_ref    CHAR(5)      NOT NULL,
+  sort_order TINYINT UNSIGNED NOT NULL DEFAULT 1,
+  item_text  TEXT         NOT NULL,
+  PRIMARY KEY (item_id),
+  FOREIGN KEY (job_ref) REFERENCES jobs(job_ref) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO job_responsibilities (job_ref, sort_order, item_text) VALUES
+  ('SCE01', 1, 'Build responsive, WCAG-accessible customer portals for community microgrid members.'),
+  ('SCE01', 2, 'Ingest smart-meter and inverter MQTT telemetry streams into cloud time-series databases.'),
+  ('SCE01', 3, 'Collaborate with grid engineers to visualise community battery dispatch schedules.'),
+  ('SCE01', 4, 'Maintain automated CI/CD pipelines, API documentation, and unit test coverage.'),
+
+  ('SCE02', 1, 'Configure and test DNP3, Modbus, and IEC 61850 communications between site controllers and control room SCADA.'),
+  ('SCE02', 2, 'Monitor real-time inverter and battery management system (BMS) diagnostics to maximise system uptime.'),
+  ('SCE02', 3, 'Automate regulatory reporting and grid performance validation using Python scripts.'),
+  ('SCE02', 4, 'Coordinate secure remote-access protocols and network segmentation with the cloud infrastructure team.');
+
+
+
+
+
+  -- 2. Essential & Preferable Requirements Table
+CREATE TABLE job_requirements (
+  item_id   INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  job_ref   CHAR(5)      NOT NULL,
+  req_type  ENUM('Essential', 'Preferable') NOT NULL,
+  item_text TEXT         NOT NULL,
+  PRIMARY KEY (item_id),
+  FOREIGN KEY (job_ref) REFERENCES jobs(job_ref) ON DELETE CASCADE
+) ENGINE=InnoDB;
+
+INSERT INTO job_requirements (job_ref, req_type, item_text) VALUES
+  ('SCE01', 'Essential',  'Bachelor\'s degree in Computer Science, Software Engineering, or equivalent industry experience.'),
+  ('SCE01', 'Essential',  '2+ years of experience with semantic HTML5, modern CSS, TypeScript/JavaScript, and Python or Node.js.'),
+  ('SCE01', 'Essential',  'Demonstrated experience building accessible web interfaces (WCAG 2.1 AA).'),
+  ('SCE01', 'Preferable', 'Familiarity with Australian National Electricity Market (NEM) data or AEMO APIs.'),
+  ('SCE01', 'Preferable', 'Experience with time-series databases (InfluxDB, TimescaleDB) or Docker.'),
+
+  ('SCE02', 'Essential',  'Degree in Information Technology, Electrical Engineering, or Mechatronics.'),
+  ('SCE02', 'Essential',  '3+ years of experience with industrial telemetry protocols, SCADA systems, or IoT edge gateways.'),
+  ('SCE02', 'Essential',  'Strong proficiency in Linux networking, firewalls, and Python data scripting.'),
+  ('SCE02', 'Preferable', 'Prior experience commissioning solar farms or utility/community battery storage (BESS).'),
+  ('SCE02', 'Preferable', 'Working knowledge of the Australian Energy Sector Cyber Security Framework (AESCSF).');
 
 
 -- 4. EOI TABLE      -> Duy (apply.php / process_eoi.php)
