@@ -1774,3 +1774,10 @@ html {
   border: 2px solid var(--ink-muted);
   border-radius: var(--radius);
 }
+
+/* Shown when a result matched words that are not on the card itself */
+.page-search .result-note {
+  font-size: 0.9em;
+  font-style: italic;
+  color: var(--ink-muted);
+}

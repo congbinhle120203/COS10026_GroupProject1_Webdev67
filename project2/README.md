@@ -24,15 +24,19 @@ The connection details are in `settings.php` (`localhost`, user `root`, **no pas
 
 ```
 project2/
-├── index.php        Home page (statistics, facilities, featured roles and FAQ from MySQL)
-├── search.php       Job search results for the search bar
+├── index.php        Home page: statistics, facilities, featured roles, FAQ from MySQL  (Binh)
+├── search.php       Job search for the home page and jobs page search bars           (Binh)
+├── jobs.php         Job descriptions from the jobs tables                             (Huy)
+├── apply.php        Application form, posts to process_eoi.php                       (Duy)
+├── process_eoi.php  Server-side validation, saves an EOI, shows the EOI number       (Duy)
+├── about.php        Team members and contributions from the about table              (An)
 ├── header.inc       <head> and opening <body>, set by page variables
 ├── nav.inc          Logo, company name and menu (current page marked automatically)
 ├── footer.inc       Footer with Jira and GitHub links
 ├── functions.inc    Shared helpers: db_connect, db_fetch_rows, clean_input, e
 ├── settings.php     Database connection settings
-├── .htaccess        Blocks direct browser access to .inc and .sql files
-├── TODO.md          What each member still needs to do for Part 2
+├── .htaccess        Blocks direct access to .inc, .sql and .md files; no folder listing
+├── TODO.md          Remaining Part 2 tasks
 ├── database/
 │   └── webdev67_db.sql   Creates the database, tables and starting data
 ├── images/          Images used in page content
@@ -41,7 +45,7 @@ project2/
     └── images/      Images used by the CSS
 ```
 
-Still to be added by their owners: `jobs.php` (Huy), `apply.php` and `process_eoi.php` (Duy), `about.php` (An), `manage.php` and the login page. Until a page exists, its menu link shows "Not Found". See [`TODO.md`](TODO.md).
+Still to be added: `manage.php` and the login page. See [`TODO.md`](TODO.md).
 
 ---
 
@@ -78,11 +82,12 @@ $conn = db_connect($host, $user, $pwd, $sql_db);   // false if MySQL is down
 | `facilities` | Home page facilities table (total from `SUM(capacity_mw)`) | Binh |
 | `faqs` | Home page FAQ | Binh |
 | `jobs` | Home page featured roles, `search.php`, `jobs.php` | core fields Binh, page Huy |
-| `eoi` | `process_eoi.php`, `manage.php` | Duy |
+| `job_responsibilities`, `job_requirements` | `jobs.php`, `search.php` (one job has many items, `job_ref` foreign key) | Huy |
+| `eoi` | `process_eoi.php` (creates it if missing), `manage.php` | Duy |
 | `users` | Login for `manage.php` | manage owner |
 | `about` | `about.php` member contributions | An |
 
-Before submitting, export the full database from phpMyAdmin into `database/webdev67_db.sql`.
+To add or change a table, edit `database/webdev67_db.sql` by hand in your own section, import it to test, and commit only that file. Do not paste a phpMyAdmin export over it. Before submitting, the team leader exports the whole database once.
 
 ---
 
@@ -94,7 +99,8 @@ Before submitting, export the full database from phpMyAdmin into `database/webde
 | HTML/JavaScript injection | Every database value and user input is printed through `e()` (`htmlspecialchars`) |
 | Bad input | The search term is checked on the server only: trimmed, slashes removed, length 2 to 50, allowed characters |
 | Fatal errors showing file paths | `db_connect()` turns off mysqli exceptions so pages show a friendly message when MySQL is down |
-| Template source code | `.htaccess` refuses direct requests for `.inc` and `.sql` files |
+| Template source code | `.htaccess` refuses direct requests for `.inc`, `.sql` and `.md` files and turns off folder listing (tested on Apache: 403) |
+| Broken Vietnamese text | The SQL file starts with `SET NAMES utf8mb4` so it imports correctly from phpMyAdmin or the command line |
 
 ---
 
@@ -103,7 +109,7 @@ Before submitting, export the full database from phpMyAdmin into `database/webde
 | Member | Student ID | Part 2 work |
 |---|---|---|
 | **Le Cong Binh** (Team Leader) | 106419738 | Folder structure, shared includes, `settings.php`, `functions.inc`, database script, `index.php`, `search.php` |
-| **Bach Gia Huy** | 106395993 | `jobs.php` and the jobs tables |
+| **Bach Gia Huy** | 106395993 | `jobs.php`, `job_responsibilities` and `job_requirements` tables |
 | **Pham Duc Duy** | 106684662 | `apply.php`, `process_eoi.php` and the `eoi` table |
 | **Vu Duc Thai An** | 106909446 | `about.php` and the `about` table |
 
