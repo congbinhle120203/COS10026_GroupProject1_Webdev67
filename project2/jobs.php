@@ -2,7 +2,7 @@
 /*
 - File: jobs.php
 - Author: Bach Gia Huy (jobs.php owner)
-- Jira Task: RWP-147
+- Jira Task: RWP-147, RWP-148
 - COS10026 Applied Web Project Part 2 - Group Webdev67, industry G03 Sustainable Energy Solutions
  *
 - GenAI Usage Disclosure:
@@ -59,7 +59,7 @@ include "nav.inc";
                   $ref = htmlspecialchars($job['job_ref']);
                   $title = htmlspecialchars($job['title']);
                   $location = htmlspecialchars($job['location']);
-                  $salary_min = number_format((float)$job['salary_min']);
+                  $salary_min = number_format((float)$job['salary_min']);`
                   $salary_max = number_format((float)$job['salary_max']);
                   $super_rate = htmlspecialchars($job['super_rate']);
                   $reports_to = htmlspecialchars($job['reports_to']);
@@ -85,14 +85,19 @@ include "nav.inc";
             <ol>
               <?php
               $resp_stmt = mysqli_prepare($conn, "SELECT item_text FROM job_responsibilities WHERE job_ref = ? ORDER BY sort_order ASC");
-              mysqli_stmt_bind_param($resp_stmt, "s", $job['job_ref']);
-              mysqli_stmt_execute($resp_stmt);
-              $resp_result = mysqli_stmt_get_result($resp_stmt);
+              
+              if ($resp_stmt) {
+                  mysqli_stmt_bind_param($resp_stmt, "s", $job['job_ref']);
+                  mysqli_stmt_execute($resp_stmt);
+                  $resp_result = mysqli_stmt_get_result($resp_stmt);
 
-              while ($resp = mysqli_fetch_assoc($resp_result)) {
-                  echo "<li>" . htmlspecialchars($resp['item_text']) . "</li>\n";
+                  while ($resp = mysqli_fetch_assoc($resp_result)) {
+                      echo "<li>" . htmlspecialchars($resp['item_text']) . "</li>\n";
+                  }
+                  mysqli_stmt_close($resp_stmt);
+              } else {
+                  echo "<li><em>Responsibilities currently unavailable.</em></li>\n";
               }
-              mysqli_stmt_close($resp_stmt);
               ?>
             </ol>
 
@@ -100,16 +105,21 @@ include "nav.inc";
             <ul>
               <?php
               $req_stmt = mysqli_prepare($conn, "SELECT req_type, item_text FROM job_requirements WHERE job_ref = ? ORDER BY req_type ASC, item_id ASC");
-              mysqli_stmt_bind_param($req_stmt, "s", $job['job_ref']);
-              mysqli_stmt_execute($req_stmt);
-              $req_result = mysqli_stmt_get_result($req_stmt);
+              
+              if ($req_stmt) {
+                  mysqli_stmt_bind_param($req_stmt, "s", $job['job_ref']);
+                  mysqli_stmt_execute($req_stmt);
+                  $req_result = mysqli_stmt_get_result($req_stmt);
 
-              while ($req = mysqli_fetch_assoc($req_result)) {
-                  $type = htmlspecialchars($req['req_type']);
-                  $text = htmlspecialchars($req['item_text']);
-                  echo "<li><strong>" . $type . ":</strong> " . $text . "</li>\n";
+                  while ($req = mysqli_fetch_assoc($req_result)) {
+                      $type = htmlspecialchars($req['req_type']);
+                      $text = htmlspecialchars($req['item_text']);
+                      echo "<li><strong>" . $type . ":</strong> " . $text . "</li>\n";
+                  }
+                  mysqli_stmt_close($req_stmt);
+              } else {
+                  echo "<li><em>Requirements currently unavailable.</em></li>\n";
               }
-              mysqli_stmt_close($req_stmt);
               ?>
             </ul>
 
