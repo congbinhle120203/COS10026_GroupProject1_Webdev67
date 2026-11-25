@@ -16,10 +16,8 @@ foreach ($required_fields as $field) {
     }
 }
 
-// ii. Clean every field with clean_input()
-function clean_input($data) {
-    return htmlspecialchars(stripslashes(trim($data)), ENT_QUOTES, 'UTF-8');
-}
+// ii. Use shared clean_input() and db_connect() from functions.inc
+require_once "functions.inc";
 
 $job_ref        = clean_input($_POST['job_reference']);
 $first_name     = clean_input($_POST['first_name']);
@@ -42,26 +40,13 @@ if (isset($_POST['skills']) && is_array($_POST['skills'])) {
 }
 $skills = implode(", ", $skills_list);
 
-require_once("settings.php");
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
-if (!$conn) {
-    die("Database connection failed: " . mysqli_connect_error());
-}
-
 // iii. Check every Part 1 rule on the server
 $errors = [];
 
+$job_ref_valid_format = true;
 if (!preg_match("/^[A-Za-z0-9]{5}$/", $job_ref)) {
     $errors[] = "Job Reference must be exactly 5 alphanumeric characters.";
-} else {
-    $stmt_job = mysqli_prepare($conn, "SELECT job_ref FROM jobs WHERE job_ref = ?");
-    mysqli_stmt_bind_param($stmt_job, "s", $job_ref);
-    mysqli_stmt_execute($stmt_job);
-    mysqli_stmt_store_result($stmt_job);
-    if (mysqli_stmt_num_rows($stmt_job) === 0) {
-        $errors[] = "Job Reference does not exist in jobs.";
-    }
-    mysqli_stmt_close($stmt_job);
+    $job_ref_valid_format = false;
 }
 
 if (!preg_match("/^[A-Za-z]{1,20}$/", $first_name)) {
@@ -118,36 +103,66 @@ if (!preg_match("/^\d{8,12}$/", $phone)) {
     $errors[] = "Phone Numbers must be 8 to 12 digits.";
 }
 
-// iv & v. CREATE TABLE IF NOT EXISTS eoi & INSERT with prepared statement
+// Database operations (guarded against stopped MySQL to avoid Fatal errors)
 $eoi_number = null;
-if (empty($errors)) {
-    $create_sql = "CREATE TABLE IF NOT EXISTS eoi (
-        EOInumber INT AUTO_INCREMENT PRIMARY KEY,
-        job_ref VARCHAR(5) NOT NULL,
-        first_name VARCHAR(20) NOT NULL,
-        last_name VARCHAR(20) NOT NULL,
-        date_of_birth VARCHAR(10) NOT NULL,
-        gender VARCHAR(10) NOT NULL,
-        street_address VARCHAR(40) NOT NULL,
-        suburb_town VARCHAR(40) NOT NULL,
-        state VARCHAR(3) NOT NULL,
-        postcode VARCHAR(4) NOT NULL,
-        email VARCHAR(100) NOT NULL,
-        phone VARCHAR(12) NOT NULL,
-        skills VARCHAR(255),
-        other_skills TEXT,
-        status ENUM('New','Current','Final') DEFAULT 'New'
-    )";
-    mysqli_query($conn, $create_sql);
+$conn = db_connect();
 
-    $stmt = mysqli_prepare($conn, "INSERT INTO eoi (job_ref, first_name, last_name, date_of_birth, gender, street_address, suburb_town, state, postcode, email, phone, skills, other_skills) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    mysqli_stmt_bind_param($stmt, "sssssssssssss", $job_ref, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb_town, $state, $postcode, $email, $phone, $skills, $other_skills);
-    mysqli_stmt_execute($stmt);
-    $eoi_number = mysqli_insert_id($conn);
-    mysqli_stmt_close($stmt);
+if (!$conn) {
+    $errors[] = "Database connection unavailable. Please try again later.";
+} else {
+    // Verify job reference exists in jobs table
+    if ($job_ref_valid_format) {
+        $stmt_job = mysqli_prepare($conn, "SELECT job_ref FROM jobs WHERE job_ref = ?");
+        if ($stmt_job) {
+            mysqli_stmt_bind_param($stmt_job, "s", $job_ref);
+            mysqli_stmt_execute($stmt_job);
+            mysqli_stmt_store_result($stmt_job);
+            if (mysqli_stmt_num_rows($stmt_job) === 0) {
+                $errors[] = "Job Reference does not exist in jobs.";
+            }
+            mysqli_stmt_close($stmt_job);
+        } else {
+            $errors[] = "Unable to verify Job Reference in the database.";
+        }
+    }
+
+    // iv & v. CREATE TABLE IF NOT EXISTS eoi & INSERT with prepared statement
+    if (empty($errors)) {
+        $create_sql = "CREATE TABLE IF NOT EXISTS eoi (
+            EOInumber INT AUTO_INCREMENT PRIMARY KEY,
+            job_ref VARCHAR(5) NOT NULL,
+            first_name VARCHAR(20) NOT NULL,
+            last_name VARCHAR(20) NOT NULL,
+            date_of_birth VARCHAR(10) NOT NULL,
+            gender VARCHAR(10) NOT NULL,
+            street_address VARCHAR(40) NOT NULL,
+            suburb_town VARCHAR(40) NOT NULL,
+            state VARCHAR(3) NOT NULL,
+            postcode VARCHAR(4) NOT NULL,
+            email VARCHAR(100) NOT NULL,
+            phone VARCHAR(12) NOT NULL,
+            skills VARCHAR(255),
+            other_skills TEXT,
+            status ENUM('New','Current','Final') DEFAULT 'New'
+        )";
+        mysqli_query($conn, $create_sql);
+
+        $stmt = mysqli_prepare($conn, "INSERT INTO eoi (job_ref, first_name, last_name, date_of_birth, gender, street_address, suburb_town, state, postcode, email, phone, skills, other_skills) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        if ($stmt) {
+            mysqli_stmt_bind_param($stmt, "sssssssssssss", $job_ref, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb_town, $state, $postcode, $email, $phone, $skills, $other_skills);
+            if (mysqli_stmt_execute($stmt)) {
+                $eoi_number = mysqli_insert_id($conn);
+            } else {
+                $errors[] = "Failed to save your application. Please try again.";
+            }
+            mysqli_stmt_close($stmt);
+        } else {
+            $errors[] = "Failed to prepare database statement.";
+        }
+    }
+
+    mysqli_close($conn);
 }
-
-mysqli_close($conn);
 
 $page_title       = "EOI Confirmation";
 $page_description = "Expression of Interest submission status.";
@@ -160,7 +175,7 @@ include "nav.inc";
 
   <main id="main">
     <div class="container page-section">
-      <?php if (empty($errors)): ?>
+      <?php if (empty($errors) && $eoi_number !== null): ?>
         <h1 class="page-intro">Application Submitted</h1>
         <div class="form-message">
           <p>Application submitted. Your EOI number is: <strong><?php echo $eoi_number; ?></strong></p>
