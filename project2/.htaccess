@@ -1,7 +1,11 @@
 # .htaccess - Apache rules for project2 (Le Cong Binh, RWP-136)
+
 # Template (.inc) and database (.sql) files are only meant to be included
 # or imported, never opened in the browser. Apache would otherwise show
 # their source code as plain text, so we refuse direct requests for them.
-<FilesMatch "\.(inc|sql)$">
+<FilesMatch "\.(inc|sql|md)$">
   Require all denied
 </FilesMatch>
+
+# Do not list folder contents (e.g. /project2/images/ or /project2/database/)
+Options -Indexes

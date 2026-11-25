@@ -1,10 +1,32 @@
 # Project Part 2: what each member still needs to do
 
-The shared base is ready on `main`: folder structure, `header.inc`, `nav.inc`, `footer.inc`, `settings.php`, `functions.inc`, `database/webdev67_db.sql`, `index.php` and `search.php`. See `README.md` for how to run it.
-
 **Interview:** Thursday 26/11 (week 11). **Due:** Canvas, 6/12 at 23:59.
 
-Each member converts **their own** Part 1 page to PHP and builds its database features. Until a page exists, its menu link shows "Not Found"; that is expected.
+## Status (25/11)
+
+| Part | Owner | Status |
+|---|---|---|
+| Shared includes, settings, functions, database script, `index.php`, `search.php` | Binh | Done |
+| `jobs.php` + jobs tables | Huy | Done, fixes below |
+| `apply.php` + `process_eoi.php` + `eoi` | Duy | Done, fixes below |
+| `about.php` + `about` table | An | Done |
+| `manage.php` + login + `users` table | **Not assigned** | **Not started (15 marks)** |
+| Presentation slides | Everyone | Not started |
+
+## Fixes found in the review (25/11)
+
+**Huy, `jobs.php`**
+
+- [ ] Use the shared template: set `$page_title`, `$page_description`, `$page_author`, `$body_class = "page-jobs"` and `$page_css`, then `include "header.inc"; include "nav.inc";`. Remove your own `<head>` and `<header>`: the page now has two site headers inside each other (2 validator errors).
+- [ ] Connect with `db_connect()` from `functions.inc` and show a `.db-notice` if it fails. Now the page shows a PHP Fatal error with file paths when MySQL is stopped.
+- [ ] Replace `RWP-xxx` in the top comment with your Jira keys.
+
+**Duy, `apply.php` and `process_eoi.php`**
+
+- [ ] Use `require_once "functions.inc"` and its `db_connect()` and `clean_input()` instead of your own copies (same Fatal error problem when MySQL is stopped).
+- [ ] Fill the job reference from the link: `value="<?php echo htmlspecialchars($_GET['ref'] ?? ''); ?>"` (the Apply buttons on jobs and search use `apply.php?ref=SCE01`).
+- [ ] Add your `CREATE TABLE IF NOT EXISTS eoi` to section 4 of `database/webdev67_db.sql`.
+- [ ] Create Jira tasks for the work you did and use the keys in your next commits.
 
 ---
 
@@ -43,6 +65,7 @@ if (!$conn) { echo '<p class="db-notice">...</p>'; }
 - Print every value from the database or the user with `e()` (`htmlspecialchars`).
 - Put your `CREATE TABLE` and starting rows in your section of `database/webdev67_db.sql`.
 - Messages: use the shared CSS classes `.db-notice` and `.form-message`.
+- **Changing the database file:** `git pull`, edit `database/webdev67_db.sql` **by hand** in your own section, import it in phpMyAdmin to test, then commit only that file. Do not export from phpMyAdmin and paste over the file: it removes other members' tables or adds test rows. The team leader exports the whole database once before submitting.
 
 **3. Team rules (lessons from Part 1)**
 
@@ -53,38 +76,6 @@ if (!$conn) { echo '<p class="db-notice">...</p>'; }
 - [ ] Be able to explain every line of your code at the interview (up to 30 marks).
 
 ---
-
-## Huy: `jobs.php` and the jobs table (12 marks)
-
-- [ ] Convert `jobs.html` to `jobs.php` (step 1 above).
-- [ ] Load **everything** on the page from MySQL. The `jobs` table already has the core fields (`job_ref`, `title`, `location`, `salary_min`, `salary_max`, `super_rate`, `reports_to`, `summary`, `overview`). Add the lists, for example:
-  - `job_responsibilities (item_id PK, job_ref FK -> jobs, sort_order, item_text)`
-  - `job_requirements (item_id PK, job_ref FK -> jobs, req_type ENUM('Essential','Preferable'), item_text)`
-- [ ] Give each job card `id="job-SCE01"` (the home page and `search.php` link to `jobs.php#job-SCE01`).
-- [ ] Add a search bar on the jobs page. Simplest: `<form action="search.php" method="get">` with an input `name="q"`.
-- [ ] Apply buttons link to `apply.php?ref=SCE01`.
-- [ ] Optional: add a third job in the database to show the page is dynamic.
-
-## Duy: `apply.php`, `process_eoi.php` and the `eoi` table (8 + 12 marks)
-
-- [ ] Convert `apply.html` to `apply.php`. Change the form to `action="process_eoi.php" method="post"`.
-- [ ] **Turn off all browser validation** (brief rule): add `novalidate` to `<form>`, remove `required` and `pattern`, use `type="text"` instead of `email`/`tel`. All checks happen in PHP.
-- [ ] Optional: fill the job reference from `apply.php?ref=SCE01`.
-- [ ] `eoi` table: one column per form field (`job_ref`, `first_name`, `last_name`, `date_of_birth`, `gender`, `street_address`, `suburb_town`, `state`, `postcode`, `email`, `phone`, skills, `other_skills`), `EOInumber INT AUTO_INCREMENT PRIMARY KEY`, and `status ENUM('New','Current','Final') DEFAULT 'New'`.
-- [ ] `process_eoi.php`:
-  1. Block direct access: if the request is not POST or a required field is missing, `header("Location: apply.php"); exit();`
-  2. Clean every field with `clean_input()`.
-  3. Check every Part 1 rule on the server, including postcode vs state and that the job reference exists in `jobs`.
-  4. `CREATE TABLE IF NOT EXISTS eoi (...)` in the code (brief rule).
-  5. `INSERT` with a prepared statement.
-  6. Show a confirmation with the number from `mysqli_insert_id($conn)`; on errors, list each one with a link back.
-
-## An: `about.php` and the about table (part of 10 marks)
-
-- [ ] Convert `about.html` to `about.php`.
-- [ ] `about` table: `member_id PK, full_name, student_id, role, part1_work, part2_work, quote, quote_language, quote_translation, sort_order`.
-- [ ] Load the member contributions from the table. The brief asks for what each member did in **Part 1 and Part 2**.
-- [ ] Update text such as "Owns index.html" to the `.php` names.
 
 ## Not assigned yet: `manage.php` + login (15 marks, the biggest item)
 

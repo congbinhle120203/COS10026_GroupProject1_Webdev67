@@ -8,19 +8,26 @@
 -- SECTIONS (each member adds their own tables in their section)
 --   1. Database                                   (Binh)
 --   2. Home page tables: company_stats, facilities, faqs   (Binh)
---   3. jobs table - core fields from the Part 1 jobs page  (Binh, owner: Huy)
---   4. eoi table          -> Duy  (process_eoi.php must also create it in code)
+--   3. jobs, job_responsibilities, job_requirements      (Binh core, Huy lists)
+--   4. eoi table          -> Duy  (process_eoi.php also creates it in code)
 --   5. users table        -> manage.php / login owner
 --   6. about table        -> An
 --
--- Before submitting: export the whole database from phpMyAdmin and replace
--- this file, so the marker gets every table and row.
+-- HOW TO ADD YOUR TABLE: git pull, then edit THIS file by hand in your
+-- section (DROP TABLE IF EXISTS, CREATE TABLE, INSERT). Import it to test,
+-- then commit only this file. Do not paste a phpMyAdmin export over it:
+-- that would remove other members' tables or add test rows.
+-- Before submitting, the team leader exports the whole database once.
 --
 -- GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Home page and jobs tables"
 -- ==========================================================================
 
 
 -- 1. DATABASE ---------------------------------------------------------------
+-- Read this file as UTF-8 so Vietnamese text (about table) is stored correctly
+-- even when it is imported from the MySQL command line, not only phpMyAdmin.
+SET NAMES utf8mb4;
+
 CREATE DATABASE IF NOT EXISTS webdev67_db
   CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 USE webdev67_db;

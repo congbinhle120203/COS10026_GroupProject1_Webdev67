@@ -9,8 +9,10 @@
      (GET because a search only reads data and the result can be bookmarked).
   2. The term is checked on the server: trimmed, slashes removed, length and
      allowed characters checked. Nothing is checked in the browser.
-  3. Each word must appear in at least one column (reference, title, location,
-     summary or overview). "melbourne developer" needs both words.
+  3. Each word must appear somewhere in the job: its reference, title,
+     location, summary, overview, or one of its responsibilities or
+     requirements (Huy's job_responsibilities and job_requirements tables).
+     "melbourne developer" needs both words.
   4. The query is a PREPARED STATEMENT: the SQL and the user's words are sent
      to MySQL separately, so the words can never change the SQL (no SQL injection).
   5. Every value is escaped with e() when it is printed (no HTML injection).
@@ -93,10 +95,15 @@ if ($searched && empty($errors)) {
     if (!$conn) {
         $db_error = true;
     } else {
-        // One group of "?" per word:
-        // (job_ref LIKE ? OR title LIKE ? OR ...) AND (job_ref LIKE ? OR ...)
+        // One group of "?" per word. A word matches a job when it is in one of
+        // the job's own columns, or in one of its responsibilities or
+        // requirements: "job_ref IN (SELECT ...)" is a subquery that returns
+        // the references of jobs with a matching list item.
         $columns   = ["job_ref", "title", "location", "summary", "overview"];
-        $one_group = "(" . implode(" LIKE ? OR ", $columns) . " LIKE ?)";
+        $one_group = "(" . implode(" LIKE ? OR ", $columns) . " LIKE ?"
+                   . " OR job_ref IN (SELECT job_ref FROM job_responsibilities WHERE item_text LIKE ?)"
+                   . " OR job_ref IN (SELECT job_ref FROM job_requirements WHERE item_text LIKE ?))";
+        $marks_per_word = count($columns) + 2;   // 5 columns + 2 subqueries = 7 "?"
         $where     = implode(" AND ", array_fill(0, count($words), $one_group));
 
         $sql = "SELECT job_ref, title, location, salary_min, salary_max, super_rate, summary
@@ -109,7 +116,7 @@ if ($searched && empty($errors)) {
         foreach ($words as $word) {
             // % and _ are wildcards in LIKE; a backslash makes them literal
             $like = "%" . addcslashes($word, "%_\\") . "%";
-            foreach ($columns as $column) {
+            for ($i = 0; $i < $marks_per_word; $i++) {
                 $params[] = $like;
             }
         }
@@ -154,6 +161,20 @@ function highlight($text, $words)
         $html .= ($position % 2 === 1) ? "<mark>" . e($part) . "</mark>" : e($part);
     }
     return $html;
+}
+
+// True when every search word is visible on the result card (reference,
+// title, summary or location). Otherwise the match came from the overview or
+// the job's lists, and the card says so.
+function shows_all_words($job, $words)
+{
+    $card_text = $job["job_ref"] . " " . $job["title"] . " " . $job["summary"] . " " . $job["location"];
+    foreach ($words as $word) {
+        if (mb_stripos($card_text, $word) === false) {
+            return false;
+        }
+    }
+    return true;
 }
 
 include "header.inc";
@@ -227,6 +248,9 @@ include "nav.inc";
             <p><?php echo highlight($job["summary"], $words); ?></p>
             <p class="featured-meta"><?php echo highlight($job["location"], $words); ?></p>
             <p class="result-salary"><?php echo e($salary); ?></p>
+<?php       if (!shows_all_words($job, $words)) { ?>
+            <p class="result-note">Matches words in the full job description.</p>
+<?php       } ?>
             <p class="result-actions">
               <a class="button" href="jobs.php#job-<?php echo $ref; ?>">View role <?php echo $ref; ?></a>
               <a class="button button-secondary" href="apply.php?ref=<?php echo urlencode($job["job_ref"]); ?>">Apply for <?php echo $ref; ?></a>
