@@ -1,85 +1,56 @@
 <?php
 /*
- * File: jobs.php
- * Author: Bach Gia Huy (jobs.php owner)
- * Jira Task: RWP-xxx (Replace xxx with your Jira ticket number)
- * COS10026 Applied Web Project Part 2 - Group Webdev67, industry G03 Sustainable Energy Solutions
+- File: jobs.php
+- Author: Bach Gia Huy (jobs.php owner)
+- Jira Task: RWP-147
+- COS10026 Applied Web Project Part 2 - Group Webdev67, industry G03 Sustainable Energy Solutions
  *
- * GenAI Usage Disclosure:
- * Tool Used: Gemini
- * Prompt Used: "Convert my jobs.html to PHP"
+- GenAI Usage Disclosure:
+- Tool Used: Gemini
+- Prompt Used: "Convert my jobs.html to PHP format, while making it consistent with our team requirements."
  */
 
-require_once("settings.php");
-$conn = @mysqli_connect($host, $user, $pwd, $sql_db);
+$page_title = "Jobs | Solstice Community Energy Careers";
+$page_description = "Current digital roles at Solstice Community Energy, a fictional renewable energy company.";
+$page_author = "Bach Gia Huy - Group 03 (Webdev67)";
+$body_class = "page-jobs";
+$page_css = "
+.page-jobs .jobs-intro { max-width: 55rem; font-size: 1.15rem; }
+.job-search-form { margin-top: 1.25rem; margin-bottom: 1.5rem; display: flex; gap: 0.5rem; max-width: 35rem; }
+.job-search-form input[type='search'] { flex: 1; padding: 0.6rem 0.85rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; }
+.country-ack { background-color: var(--surface); }
+";
 
-if (!$conn) {
-    die("<p>Database connection failure: " . mysqli_connect_error() . "</p>");
-}
+require_once "settings.php";
+require_once "functions.inc";
+$conn = db_connect($host, $user, $pwd, $sql_db); // false if MySQL is off
+
+include "header.inc";
+include "nav.inc";
 ?>
-<!DOCTYPE html>
-<html lang="en-AU">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jobs | Solstice Community Energy Careers</title>
-  <meta name="description" content="Current digital roles at Solstice Community Energy, a fictional renewable energy company.">
-  <meta name="author" content="Gia Huy Bach - Group 03 (Webdev67)">
-  <link rel="stylesheet" href="styles/style.css">
-  <style>
-    .page-jobs .jobs-intro {
-      max-width: 55rem;
-      font-size: 1.15rem;
-    }
-    .job-search-form {
-      margin-top: 1.25rem;
-      margin-bottom: 1.5rem;
-      display: flex;
-      gap: 0.5rem;
-      max-width: 35rem;
-    }
-    .job-search-form input[type="search"] {
-      flex: 1;
-      padding: 0.6rem 0.85rem;
-      font-size: 1rem;
-      border: 1px solid #ccc;
-      border-radius: 4px;
-    }
-  </style>
-</head>
-<body class="page-jobs">
-  <a class="skip-link" href="#main">Skip to main content</a>
 
-  <header class="site-header">
-    <div class="container header-inner">
-      <a class="brand" href="index.php">
-        <img src="images/logo.svg" width="44" height="44" alt="">
-        <span>Solstice Community Energy</span>
-      </a>
-      <?php include("nav.inc"); ?>
-    </div>
-  </header>
+<main id="main">
+  <div class="container page-section">
+    <header class="jobs-header">
+      <h1>Open roles</h1>
+      <p class="jobs-intro">
+        Join our renewable energy digital team to help build community-owned solar microgrids, real-time telemetry platforms, and utility-scale battery storage across Australia.
+      </p>
 
-  <main id="main">
-    <div class="container page-section">
-      <header class="jobs-header">
-        <h1>Open roles</h1>
-        <p class="jobs-intro">
-          Join our renewable energy digital team to help build community-owned solar microgrids, real-time telemetry platforms, and utility-scale battery storage across Australia.
-        </p>
+      <!-- Search bar linking to search.php -->
+      <form class="job-search-form" action="search.php" method="get" role="search">
+        <label for="job-search-input" class="visually-hidden">Search open roles</label>
+        <input type="search" id="job-search-input" name="q" placeholder="Search by title, keyword, or ref (e.g. SCE01)...">
+        <button type="submit" class="button">Search</button>
+      </form>
+    </header>
 
-        <!-- Search bar linking to search.php -->
-        <form class="job-search-form" action="search.php" method="get" role="search">
-          <label for="job-search-input" class="visually-hidden">Search open roles</label>
-          <input type="search" id="job-search-input" name="q" placeholder="Search by title, keyword, or ref (e.g. SCE01)...">
-          <button type="submit" class="button">Search</button>
-        </form>
-      </header>
-
-      <div class="jobs-layout">
-        
-        <div class="jobs-main">
-          <?php
+    <div class="jobs-layout">
+      
+      <div class="jobs-main">
+        <?php if (!$conn) { ?>
+          <p class="db-notice">Job listings are not available right now. Please try again later.</p>
+        <?php } else { 
           $job_query = "SELECT * FROM jobs ORDER BY job_ref ASC";
           $job_result = mysqli_query($conn, $job_query);
 
@@ -94,7 +65,7 @@ if (!$conn) {
                   $reports_to = htmlspecialchars($job['reports_to']);
                   $overview = nl2br(htmlspecialchars($job['overview']));
           ?>
-          <!-- Dynamic Job Card (e.g., id="job-SCE01") -->
+          <!-- Dynamic Job Card -->
           <section class="job-card" id="job-<?php echo $ref; ?>" aria-labelledby="title-<?php echo $ref; ?>">
             <div class="job-card-header">
               <h2 id="title-<?php echo $ref; ?>"><?php echo $title; ?></h2>
@@ -154,40 +125,38 @@ if (!$conn) {
               echo "<p>There are currently no open roles available. Please check back soon.</p>";
           }
           mysqli_close($conn);
-          ?>
+        }
+        ?>
 
-          <!-- Acknowledgment of Country -->
-          <section class="country-ack" aria-labelledby="ack-heading" style="background-color: var(--surface);">
-            <h2 id="ack-heading" class="country-heading">Acknowledgment of Country</h2>
-            <p>
-              Solstice Community Energy acknowledges the Traditional Custodians of Country throughout Australia and their continuing connection to land, sky, and waters. Because our work harnesses sunlight and renewable wind directly from the natural environment, we recognise Aboriginal and Torres Strait Islander peoples as Australia’s first engineers and enduring caretakers of Country. We deeply respect this sacred connection and are committed to developing community-led clean energy in sustainable harmony with the land, skies, and waterways. We pay our respects to Elders past and present, and warmly encourage applications from Aboriginal and Torres Strait Islander peoples.
-            </p>
-          </section>
-        </div>
-          
-        <!-- Sidebar -->
-        <aside class="jobs-sidebar" aria-label="Application process and benefits">
-          <h2>How to Apply</h2>
-          <p>Follow these steps to submit your Expression of Interest:</p>
-          <ol>
-            <li>Note the <strong>5-character reference code</strong> of your chosen role (e.g., <code>SCE01</code>).</li>
-            <li>Proceed to the <a href="apply.php">Apply</a> page.</li>
-            <li>Complete the application form with your reference code and technical skills.</li>
-          </ol>
-
-          <h3>Benefits when joining Solstice</h3>
-          <ul>
-            <li>9-day fortnight for digital and grid engineering teams</li>
-            <li>$1,500 annual clean-energy learning and certificate budget</li>
-            <li>Hybrid work flexibility across Victoria</li>
-            <li>Paid cultural, ceremonial, and community volunteer leave</li>
-          </ul>
-        </aside>
+        <!-- Acknowledgment of Country -->
+        <section class="country-ack" aria-labelledby="ack-heading">
+          <h2 id="ack-heading" class="country-heading">Acknowledgment of Country</h2>
+          <p>
+            Solstice Community Energy acknowledges the Traditional Custodians of Country throughout Australia and their continuing connection to land, sky, and waters. Because our work harnesses sunlight and renewable wind directly from the natural environment, we recognise Aboriginal and Torres Strait Islander peoples as Australia’s first engineers and enduring caretakers of Country. We deeply respect this sacred connection and are committed to developing community-led clean energy in sustainable harmony with the land, skies, and waterways. We pay our respects to Elders past and present, and warmly encourage applications from Aboriginal and Torres Strait Islander peoples.
+          </p>
+        </section>
       </div>
+        
+      <!-- Sidebar -->
+      <aside class="jobs-sidebar" aria-label="Application process and benefits">
+        <h2>How to Apply</h2>
+        <p>Follow these steps to submit your Expression of Interest:</p>
+        <ol>
+          <li>Note the <strong>5-character reference code</strong> of your chosen role (e.g., <code>SCE01</code>).</li>
+          <li>Proceed to the <a href="apply.php">Apply</a> page.</li>
+          <li>Complete the application form with your reference code and technical skills.</li>
+        </ol>
+
+        <h3>Benefits when joining Solstice</h3>
+        <ul>
+          <li>9-day fortnight for digital and grid engineering teams</li>
+          <li>$1,500 annual clean-energy learning and certificate budget</li>
+          <li>Hybrid work flexibility across Victoria</li>
+          <li>Paid cultural, ceremonial, and community volunteer leave</li>
+        </ul>
+      </aside>
     </div>
-  </main>
+  </div>
+</main>
 
-  <?php include("footer.inc"); ?>
-
-</body>
-</html>
+<?php include("footer.inc"); ?>
