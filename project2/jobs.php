@@ -59,7 +59,7 @@ include "nav.inc";
                   $ref = htmlspecialchars($job['job_ref']);
                   $title = htmlspecialchars($job['title']);
                   $location = htmlspecialchars($job['location']);
-                  $salary_min = number_format((float)$job['salary_min']);`
+                  $salary_min = number_format((float)$job['salary_min']);
                   $salary_max = number_format((float)$job['salary_max']);
                   $super_rate = htmlspecialchars($job['super_rate']);
                   $reports_to = htmlspecialchars($job['reports_to']);
