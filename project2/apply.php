@@ -26,9 +26,9 @@ include "nav.inc";
 
           <p class="full-width">
             <label for="job_reference">Job Reference <span class="required">*</span></label>
-            <input type="text" id="job_reference" name="job_reference" placeholder="Ex: 'SCE01' or 'SCE02'...">
+            <input type="text" id="job_reference" name="job_reference" value="<?php echo htmlspecialchars($_GET['ref'] ?? ''); ?>" placeholder="Ex: 'SCE01' or 'SCE02'...">
           </p>
-        
+          
           <p>
             <label for="first_name">First Name <span class="required">*</span></label>
             <input type="text" id="first_name" name="first_name">
