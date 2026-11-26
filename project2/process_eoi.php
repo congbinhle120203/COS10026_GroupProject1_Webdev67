@@ -17,6 +17,7 @@ foreach ($required_fields as $field) {
 }
 
 // ii. Use shared clean_input() and db_connect() from functions.inc
+require_once "settings.php";
 require_once "functions.inc";
 
 $job_ref        = clean_input($_POST['job_reference']);
@@ -105,7 +106,7 @@ if (!preg_match("/^\d{8,12}$/", $phone)) {
 
 // Database operations (guarded against stopped MySQL to avoid Fatal errors)
 $eoi_number = null;
-$conn = db_connect();
+$conn = db_connect($host, $user, $pwd, $sql_db);
 
 if (!$conn) {
     $errors[] = "Database connection unavailable. Please try again later.";
