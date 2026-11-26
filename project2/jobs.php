@@ -14,48 +14,7 @@ $page_title = "Jobs | Solstice Community Energy Careers";
 $page_description = "Current digital roles at Solstice Community Energy, a fictional renewable energy company.";
 $page_author = "Bach Gia Huy - Group 03 (Webdev67)";
 $body_class = "page-jobs";
-$page_css = "
-.page-jobs .jobs-intro { max-width: 55rem; font-size: 1.15rem; }
-.country-ack { background-color: var(--surface); }
-
-/* 1. Split the layout into two columns (Main Jobs vs Sidebar) */
-.jobs-layout {
-    display: flex;
-    gap: 2.5rem;
-    align-items: flex-start;
-}
-.jobs-main {
-    flex: 2;
-}
-.jobs-sidebar {
-    flex: 1;
-}
-
-/* 2. Format the job details into a 2x2 grid box */
-.job-meta {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 1rem;
-    background-color: #f4f7f5;
-    padding: 1.25rem;
-    border: 1px solid #dce4df;
-    border-radius: 6px;
-    list-style: none;
-    margin-bottom: 1.5rem;
-}
-
-/* 3. Mobile responsiveness */
-@media (max-width: 800px) {
-    .jobs-layout { flex-direction: column; }
-    .job-meta { grid-template-columns: 1fr; }
-}
-";
-
-require_once "settings.php";
-require_once "functions.inc";
-
-
-
+$page_css = ""; 
 
 require_once "settings.php";
 require_once "functions.inc";
