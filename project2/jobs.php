@@ -37,13 +37,7 @@ include "nav.inc";
         Join our renewable energy digital team to help build community-owned solar microgrids, real-time telemetry platforms, and utility-scale battery storage across Australia.
       </p>
 
-      <!-- Search bar linking to search.php -->
-      <form class="job-search-form" action="search.php" method="get" role="search">
-        <label for="job-search-input" class="visually-hidden">Search open roles</label>
-        <input type="search" id="job-search-input" name="q" placeholder="Search by title, keyword, or ref (e.g. SCE01)...">
-        <button type="submit" class="button">Search</button>
-      </form>
-    </header>
+      
 
     <div class="jobs-layout">
       
