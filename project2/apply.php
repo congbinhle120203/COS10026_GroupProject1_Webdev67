@@ -9,7 +9,6 @@ $page_title       = "Apply";
 $page_description = "Apply for a role at Solstice Community Energy, a fictional renewable energy company.";
 $page_author      = "Pham Duc Duy";
 $body_class       = "page-apply";
-$page_css         = ".page-intro { max-width: 40rem; }";
 
 include "header.inc";
 include "nav.inc";
@@ -17,8 +16,10 @@ include "nav.inc";
 
   <main id="main">
     <div class="container page-section">
-      <h1 class="page-intro" style="color: #2c5e4f;">Apply now</h1>
-      <p id="description">Apply for a position at Solstice Community Energy. Complete our easy online application form to join our team in delivering sustainable renewable energy solutions across Australia.</p>
+      <div class="header_card">
+        <h1>Apply now</h1>
+        <p class="subtitle">Apply for a position at Solstice Community Energy. Complete our easy online application form to join our team in delivering sustainable renewable energy solutions across Australia.</p>
+      </div>
       
       <form action="process_eoi.php" method="post" class="apply_form" novalidate>
         <fieldset class="information"> 
