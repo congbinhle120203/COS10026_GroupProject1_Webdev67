@@ -1069,25 +1069,37 @@ html {
 /* ==========================================================================
    7. PAGE: apply.html (Owner: Pham Duc Duy - Scope: .page-apply)
    ========================================================================== */
-.page-apply .page-intro {
-  text-align: center;
-  font-size: 2.25rem;
-  font-family: Georgia, serif;
-  color: black;
-  margin: 0 auto 0.5rem auto;
+.page-apply .header_card {
+  max-width: 750px;
+  margin: 0 auto 2.5rem auto;
+  padding: 2.5rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+  font-size: 1rem;
 }
 
-.page-apply #description {
+.page-apply .header_card h1 {
+  font-size: clamp(2rem, 3.5vw, 2.5rem);
+  color: var(--ink);
+  margin-bottom: 0.5rem;
   text-align: center;
-  color: #1b2a23;
-  max-width: 42rem;
-  margin: 0 auto 2rem auto;
+}
+
+.page-apply .header_card .subtitle {
+  color: var(--ink-muted);
+  max-width: 48rem;
+  margin-bottom: 0;
+  line-height: 1.6;
+  font-size: 1.2rem
 }
 
 .page-apply .apply_form {
   max-width: 750px;
   margin: 0 auto;
-  background-color: #eef4ee;
+  background-color: #ffffff;
   border: 1px solid gray;
   border-left: 6px solid #2c5e4f;
   border-radius: 12px;
@@ -1154,7 +1166,7 @@ html {
   border: 1px solid gray;
   border-radius: 6px;
   font-size: 1rem;
-  background-color: white;
+  background-color: rgb(244, 242, 242);
   color: black;
   box-sizing: border-box;
 }
@@ -1241,6 +1253,7 @@ html {
   background-color: #1b2a23;
   color: #ffffff;
 }
+
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
@@ -1597,6 +1610,10 @@ html {
 /* (index.html's own phone rules live inside section 5, not here) */
 
 @media screen and (max-width: 768px) {
+  .page-apply .header_card {
+    padding: 1.75rem 1.25rem;
+  }
+
   .page-apply .apply_form {
     padding: 1.25rem;
   }
