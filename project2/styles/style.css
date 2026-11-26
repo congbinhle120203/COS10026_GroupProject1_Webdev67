@@ -1610,7 +1610,7 @@ html {
 /* (index.html's own phone rules live inside section 5, not here) */
 
 @media screen and (max-width: 768px) {
-  .page-apply .header-card {
+  .page-apply .header_card {
     padding: 1.75rem 1.25rem;
   }
 
