@@ -56,7 +56,7 @@ include "nav.inc";
         <p class="subtitle">Apply for a position at Solstice Community Energy. Complete our easy online application form to join our team in delivering sustainable renewable energy solutions across Australia.</p>
       </div>
       <?php if (!empty($form_errors)): ?>
-        <div class="form_message">
+        <div class="form-message" style="max-width: 750px; margin: 0 auto 1.5rem auto;">
           <ul>
             <?php foreach ($form_errors as $err): ?>
               <li><?php echo htmlspecialchars($err); ?></li>
