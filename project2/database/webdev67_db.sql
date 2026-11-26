@@ -177,6 +177,28 @@ INSERT INTO job_requirements (job_ref, req_type, item_text) VALUES
 
 
 -- 4. EOI TABLE      -> Duy (apply.php / process_eoi.php)
+-- Applications sent from apply.php. process_eoi.php creates the same table
+-- in code, so keep both definitions identical if you change a column.
+-- status is changed by HR in manage.php (New -> Current -> Final).
+
+CREATE TABLE IF NOT EXISTS eoi (
+  EOInumber      INT AUTO_INCREMENT PRIMARY KEY,
+  job_ref        VARCHAR(5)   NOT NULL,
+  first_name     VARCHAR(20)  NOT NULL,
+  last_name      VARCHAR(20)  NOT NULL,
+  date_of_birth  VARCHAR(10)  NOT NULL,
+  gender         VARCHAR(10)  NOT NULL,
+  street_address VARCHAR(40)  NOT NULL,
+  suburb_town    VARCHAR(40)  NOT NULL,
+  state          VARCHAR(3)   NOT NULL,
+  postcode       VARCHAR(4)   NOT NULL,
+  email          VARCHAR(100) NOT NULL,
+  phone          VARCHAR(12)  NOT NULL,
+  skills         VARCHAR(255),
+  other_skills   TEXT,
+  status         ENUM('New','Current','Final') DEFAULT 'New'
+);
+
 -- 5. USERS TABLE    -> manage.php and login owner (store password_hash() values, never plain text)
 -- 6. ABOUT TABLE    -> An (about.php)
 

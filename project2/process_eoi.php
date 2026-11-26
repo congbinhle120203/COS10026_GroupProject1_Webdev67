@@ -1,4 +1,5 @@
 <?php
+session_start();
 // i. Block direct access if not POST or required field is missing
 if ($_SERVER["REQUEST_METHOD"] !== "POST") {
     header("Location: apply.php");
@@ -127,7 +128,7 @@ if (!$conn) {
         }
     }
 
-    // iv & v. CREATE TABLE IF NOT EXISTS eoi & INSERT with prepared statement
+    // iv. Create eoi table if not exists
     if (empty($errors)) {
         $create_sql = "CREATE TABLE IF NOT EXISTS eoi (
             EOInumber INT AUTO_INCREMENT PRIMARY KEY,
@@ -148,6 +149,21 @@ if (!$conn) {
         )";
         mysqli_query($conn, $create_sql);
 
+    // Enhancement: block duplicate applications (same email + same job)
+        $stmt_dup = mysqli_prepare($conn, "SELECT EOInumber FROM eoi WHERE email = ? AND job_ref = ?");
+        if ($stmt_dup) {
+            mysqli_stmt_bind_param($stmt_dup, "ss", $email, $job_ref);
+            mysqli_stmt_execute($stmt_dup);
+            mysqli_stmt_store_result($stmt_dup);
+            if (mysqli_stmt_num_rows($stmt_dup) > 0) {
+                $errors[] = "You have already applied for job $job_ref with this email.";
+            }
+            mysqli_stmt_close($stmt_dup);
+        }
+    }
+
+    // v. INSERT with prepared statement only if no errors (including duplicate check)
+    if (empty($errors)) {
         $stmt = mysqli_prepare($conn, "INSERT INTO eoi (job_ref, first_name, last_name, date_of_birth, gender, street_address, suburb_town, state, postcode, email, phone, skills, other_skills) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt) {
             mysqli_stmt_bind_param($stmt, "sssssssssssss", $job_ref, $first_name, $last_name, $date_of_birth, $gender, $street_address, $suburb_town, $state, $postcode, $email, $phone, $skills, $other_skills);
@@ -163,6 +179,14 @@ if (!$conn) {
     }
 
     mysqli_close($conn);
+}
+
+// Enhancement: sticky form - send errors and old input back to apply.php
+if (!empty($errors)) {
+    $_SESSION['eoi_errors'] = $errors;
+    $_SESSION['eoi_old']    = $_POST;
+    header("Location: apply.php");
+    exit();
 }
 
 $page_title       = "EOI Confirmation";
