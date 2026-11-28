@@ -1,7 +1,10 @@
 <?php
 // login.php - Staff login for manage.php (Part 2)
 // Author: Vu Duc Thai An
-// GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "create login.php"
+// GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "
+// help me build login.php with a POST form, a prepared statement to check the username, 
+// use password_verify() to check password, sessions, and locking the account after
+// 3 wrong attempts", plus explain each code part in details"
 
 session_start();
 
@@ -117,7 +120,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // 1st or 2nd wrong try: just save the new count
             $upd = mysqli_prepare($conn, "UPDATE users SET failed_attempts = ? WHERE user_id = ?");
             mysqli_stmt_bind_param($upd, "ii", $attempts, $row["user_id"]);
-            
+
           }
 
           mysqli_stmt_execute($upd);
@@ -189,19 +192,26 @@ include "nav.inc";
       <?php } ?>
 
       <form method="post" action="login.php" novalidate>
-        <p>
-          <label for="username">Username</label>
-          <input type="text" id="username" name="username" value="<?php echo e($username); ?>">
-        </p>
-        <p>
-          <label for="password">Password</label>
-          <input type="password" id="password" name="password">
-        </p>
-        <p>
-          <input type="submit" value="Log in">
-        </p>
-      </form>
 
+        <fieldset>
+
+          <legend>Solstice Community Energy</legend>
+
+          <p>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" value="<?php echo e($username); ?>">
+          </p>
+          <p>
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password">
+          </p>
+          <p>
+            <input type="submit" value="Log in">
+          </p>
+
+        </fieldset>
+      
+      </form>
 
     </div>
 
