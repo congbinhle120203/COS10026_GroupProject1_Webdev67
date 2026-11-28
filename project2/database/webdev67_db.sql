@@ -178,6 +178,27 @@ INSERT INTO job_requirements (job_ref, req_type, item_text) VALUES
 
 -- 4. EOI TABLE      -> Duy (apply.php / process_eoi.php)
 -- 5. USERS TABLE    -> manage.php and login owner (store password_hash() values, never plain text)
+
+-- GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "users table with a hashed admin account"
+
+DROP TABLE IF EXISTS users;
+CREATE TABLE users (
+  user_id         INT UNSIGNED NOT NULL AUTO_INCREMENT,
+  username        VARCHAR(30)  NOT NULL,
+  password_hash   VARCHAR(255) NOT NULL,   -- password_hash() output, never plain text
+  failed_attempts TINYINT UNSIGNED NOT NULL DEFAULT 0,
+  locked_until    DATETIME NULL,           -- set after 3 wrong tries
+  PRIMARY KEY (user_id),
+  UNIQUE KEY uq_username (username)
+) ENGINE=InnoDB;
+
+INSERT INTO users (username, password_hash)
+VALUES ('admin', '$2y$12$/D1lmq06FS9VWsaysgN53.VLQVUEoKagnvl2vmZvIrQT6.tmalki.');
+
+
+
+
+
 -- 6. ABOUT TABLE    -> An (about.php)
 
 -- Member contributions and quotes.

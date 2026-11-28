@@ -18,7 +18,7 @@ $page_css = "";
 
 require_once "settings.php";
 require_once "functions.inc";
-$conn = db_connect($host, $user, $pwd, $sql_db); // false if MySQL is off
+$conn = db_connect($host, $user, $pwd, $sql_db);
 
 include "header.inc";
 include "nav.inc";
