@@ -50,22 +50,81 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (!$conn) {
       $errors[] = "Login is unavailable right now. Please try again later.";
     } else {
-
+      // =====================
       // Use prepare statement here to prevent harmful code injection in the user's input.
       // Use "?" as the placeholder for the SQL query instead of using the user's input because
       // they might put in a harmful code that hack the database.
 
-      $stmt = mysqli_prepare($conn, "SELECT user_id, password_hash FROM users WHERE username = ?");
+       $stmt = mysqli_prepare($conn, "SELECT user_id, password_hash, failed_attempts,
+              (locked_until IS NOT NULL AND locked_until > NOW()) AS is_locked
+              FROM users WHERE username = ?");
+
+      // The locked_until condition in this statement 
+      // ask MySQL: "is this account locked due to failed attempts right now?"
+
+      //   locked_until is NULL by default, which means "no lock".
+      //   - "locked_until IS NOT NULL" checks that a lock time exists.
+      //   - "locked_until > NOW()" checks that the lock time is still in the future.
+      //   - NOW() is the current date and time on the MySQL server.
+
+      // Both must be true, so we get 1 (locked) or 0 (not locked) and name it is_locked.
+      // The NULL check comes first because comparing NULL with a time gives
+      // "unknown" in SQL, not a clean true/false.
+
+
       mysqli_stmt_bind_param($stmt, "s", $username);
       mysqli_stmt_execute($stmt);
       $result = mysqli_stmt_get_result($stmt);
       $row = mysqli_fetch_assoc($result);
+      // ==================
 
-      if ($row && password_verify($password, $row["password_hash"])) {
+
+      // ====================
+      // === Check for conditions before veifying $login_ok = true ===
+
+
+      if ($row && $row["is_locked"]) {
+        // account is locked: refuse, even if the password is right
+        $errors[] = "Too many failed attempts. Please try again in 2 minutes.";
+
+      } elseif ($row && password_verify($password, $row["password_hash"])) {
         $login_ok = true;
+        // correct password: clear the failed-attempt counter
+        $reset = mysqli_prepare($conn, "UPDATE users SET failed_attempts = 0, locked_until = NULL WHERE user_id = ?");
+        mysqli_stmt_bind_param($reset, "i", $row["user_id"]);
+        mysqli_stmt_execute($reset);
+        mysqli_stmt_close($reset);
+
       } else {
         $errors[] = "Incorrect username or password.";
+
+        if ($row) {   // only count wrong attempts for usernames that exist
+          $attempts = $row["failed_attempts"] + 1;
+
+          if ($attempts >= 3) {
+            // 3rd wrong try: lock for 2 minutes and restart the counter
+
+            $upd = mysqli_prepare($conn, "UPDATE users SET failed_attempts = 0, 
+              locked_until = DATE_ADD(NOW(), INTERVAL 2 MINUTE) WHERE user_id = ?");
+              // NOW() is the current date and time on the MySQL server.
+              // INTERVAL 2 MINUTE is an amount of time to add.
+              // DATE_ADD(a, b) adds b to the date a.
+
+            mysqli_stmt_bind_param($upd, "i", $row["user_id"]);
+
+          } else {
+
+            // 1st or 2nd wrong try: just save the new count
+            $upd = mysqli_prepare($conn, "UPDATE users SET failed_attempts = ? WHERE user_id = ?");
+            mysqli_stmt_bind_param($upd, "ii", $attempts, $row["user_id"]);
+            
+          }
+
+          mysqli_stmt_execute($upd);
+          mysqli_stmt_close($upd);
+        }
       }
+
 
       mysqli_stmt_close($stmt);
       // close the prepared statements.
