@@ -1,7 +1,7 @@
 <?php
 // logout.php - Ends the staff session (Part 2)
 // Author: Vu Duc Thai An
-// GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "create logout.php"
+// GenAI: assisted by Claude (Anthropic), reviewed and tested by me. Prompt: "Create a simple logout.php"
 
 // open the current session to end it
 session_start();          

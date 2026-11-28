@@ -1604,6 +1604,113 @@ html {
 }
 
 
+
+/* ==========================================================================
+   8b. PAGE: login.php (Owner: Vu Duc Thai An - Scope: .page-login)
+   ========================================================================== */
+.page-login form {
+  width: 60%;
+  margin: 0 auto;
+  padding: 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-top: 6px solid var(--primary);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+}
+
+.page-login fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+/* Header Card that is similar to the one in the Jobs page to retain pages consistency */
+.page-login h1 {
+
+  width: 60%;
+
+  padding: 3rem 2rem;
+  background-color: var(--surface);
+  border: 2px solid var(--line);
+  border-radius: var(--radius-lg);
+  box-shadow: 0 2px 8px rgba(27, 42, 35, 0.06);
+  margin: 0 auto 2.5rem;
+  position: relative;
+  background-image: radial-gradient(circle at 95% 10%, var(--sun-glow), transparent 40%);
+
+  font-size: 2.3rem;
+
+  text-align: center;
+
+}
+
+.page-login legend {
+
+  color: var(--ink-muted);
+
+  font-size: 0.9rem;
+  font-weight: bold;
+
+  padding: 0.5rem;
+  border-radius: 3rem;
+  border: 1px solid var(--line);
+
+  margin: 0 auto 2.5rem;
+
+}
+
+.page-login label {
+  display: block;
+  margin-bottom: 0.3rem;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.page-login input[type="text"],
+.page-login input[type="password"] {
+  width: 100%;
+  padding: 0.65rem 0.85rem;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--ink);
+  background-color: var(--bg);
+  border: 2px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.page-login input[type="submit"] {
+  width: 100%;
+  padding: 0.7rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: bold;
+  color: var(--on-primary);
+  background-color: var(--primary);
+  border: 2px solid var(--primary);
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+
+.page-login input[type="submit"]:hover {
+  background-color: var(--ink);
+  border-color: var(--ink);
+}
+
+/* the error box reuses the shared .form-message look, only centred to match the form */
+.page-login .form-message {
+  max-width: 60%;
+  margin: 0 auto 1rem;
+}
+
+
+
+
+
+
+
+
 /* ==========================================================================
    9. RESPONSIVE MEDIA QUERIES
    ========================================================================== */
@@ -1688,6 +1795,27 @@ html {
     letter-spacing: 0.05rem;
     padding: 0.25rem 0.6rem;
   }
+
+@media (max-width: 768px) {
+  .page-login h1,
+  .page-login form {
+    width: 100%;
+  }
+
+  .page-login h1 {
+    padding: 1.75rem 1.25rem;
+    font-size: 1.8rem;
+  }
+
+  .page-login form {
+    padding: 1.25rem;
+  }
+
+  .page-login .form-message {
+    max-width: 100%;
+  }
+}
+
 
 }
 
