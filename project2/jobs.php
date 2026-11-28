@@ -14,16 +14,11 @@ $page_title = "Jobs | Solstice Community Energy Careers";
 $page_description = "Current digital roles at Solstice Community Energy, a fictional renewable energy company.";
 $page_author = "Bach Gia Huy - Group 03 (Webdev67)";
 $body_class = "page-jobs";
-$page_css = "
-.page-jobs .jobs-intro { max-width: 55rem; font-size: 1.15rem; }
-.job-search-form { margin-top: 1.25rem; margin-bottom: 1.5rem; display: flex; gap: 0.5rem; max-width: 35rem; }
-.job-search-form input[type='search'] { flex: 1; padding: 0.6rem 0.85rem; font-size: 1rem; border: 1px solid #ccc; border-radius: 4px; }
-.country-ack { background-color: var(--surface); }
-";
+$page_css = ""; 
 
 require_once "settings.php";
 require_once "functions.inc";
-$conn = db_connect($host, $user, $pwd, $sql_db); // false if MySQL is off
+$conn = db_connect($host, $user, $pwd, $sql_db);
 
 include "header.inc";
 include "nav.inc";
@@ -36,8 +31,7 @@ include "nav.inc";
       <p class="jobs-intro">
         Join our renewable energy digital team to help build community-owned solar microgrids, real-time telemetry platforms, and utility-scale battery storage across Australia.
       </p>
-
-      
+    </header>
 
     <div class="jobs-layout">
       
