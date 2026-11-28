@@ -25,6 +25,7 @@
           </a>
         </li>
         <li><a href="mailto:info@solstice-community-energy.example">info@solstice-community-energy.example</a></li>
+        <li><a href="login.php">Staff login</a></li>
       </ul>
       <p class="footer-country">We acknowledge the Traditional Custodians of the lands where we work. <a href="jobs.php#ack-heading">Read our Acknowledgment of Country</a>.</p>
       <p>&copy; <?php echo date("Y"); ?> Solstice Community Energy (COS10026 Group Webdev67).</p>
