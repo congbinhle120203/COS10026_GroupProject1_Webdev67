@@ -1254,6 +1254,11 @@ html {
   color: #ffffff;
 }
 
+.page-apply .form-message {
+  max-width: 750px; 
+  margin: 0 auto 1.5rem auto;
+}
+
 /* ==========================================================================
    8. PAGE: about.html (Owner: Vu Duc Thai An - Scope: .page-about)
    ========================================================================== */
