@@ -10,7 +10,7 @@
 - Prompt Used: "Convert my jobs.html to PHP format, while making it consistent with our team requirements."
  */
 
-$page_title = "Jobs | Solstice Community Energy Careers";
+$page_title = "Jobs";
 $page_description = "Current digital roles at Solstice Community Energy, a fictional renewable energy company.";
 $page_author = "Bach Gia Huy - Group 03 (Webdev67)";
 $body_class = "page-jobs";
