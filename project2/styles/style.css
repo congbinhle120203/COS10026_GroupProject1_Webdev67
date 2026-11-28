@@ -1798,3 +1798,36 @@ html {
   font-style: italic;
   color: var(--ink-muted);
 }
+
+
+
+/* ==========================================================================
+12. PAGE: manage.php (Owner: Bach Gia Huy & Duy - Scope: .page-manage)
+   ========================================================================== */
+
+.page-manage .manage-filters {
+  background-color: var(--bg);
+  padding: 1.5rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  margin-bottom: 2rem;
+}
+
+.page-manage .filter-group {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  align-items: flex-end;
+}
+
+.page-manage .filter-item label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 0.25rem;
+}
+
+.page-manage .btn-clear {
+  background-color: var(--line);
+  color: var(--ink);
+  text-decoration: none;
+}
